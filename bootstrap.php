@@ -8,8 +8,12 @@ use Cradle\Frame\FrameHttp;
  */
 function cradle(...$args)
 {
-	$framework = FrameHttp::i();
-
+	static $framework = null;
+	
+	if(is_null($framework)) {
+		$framework = FrameHttp::i();
+	}
+	
 	if (func_num_args() == 0) {
 		return $framework;
 	}
