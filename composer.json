@@ -1,0 +1,13 @@
+{
+    "name": "cradlephp/cradle",
+    "description": "PHP Micro Framework powered by Event Pipes",
+    "type": "framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Blanquera",
+            "email": "cblanquera@openovate.com"
+        }
+    ],
+    "require": {}
+}
