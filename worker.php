@@ -1,6 +1,7 @@
 <?php //-->
+include(__DIR__.'/bootstrap.php');
 
-include(__DIR__.'/bootstrap.php')
+return cradle()
 	//add a logger
 	->addLogger(function($message) {
 		echo '* ' . $message . PHP_EOL;
@@ -46,5 +47,5 @@ include(__DIR__.'/bootstrap.php')
 			->service('rabbitmq-dispatch-main')
 			->dispatch($callback, 'queue');
 	})
-	//run in cli mode
+	//prepare will call the preprocssors
 	->prepare();
