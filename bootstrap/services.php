@@ -33,5 +33,14 @@ return function($request, $response) {
 		 */
 		->addMethod('sql', function() use (&$services) {
 			return $services['sql-main'];
+		})
+		
+		/**
+		 * Particularly returns a SQL interface
+		 *
+		 * @return Cradle\Sql\SqlInterface
+		 */
+		->addMethod('queue', function() use (&$services) {
+			return $services['queue-main'];
 		});
 };
