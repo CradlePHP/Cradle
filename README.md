@@ -1,6 +1,10 @@
 # Cradle PHP
 PHP Micro Framework powered by Event Pipes
 
+## Install
+
+`composer create-project --prefer-source --stability dev cradlephp/cradle <YOUR CUSTOM FOLDER>`
+
 ## Usage
 
 ```
