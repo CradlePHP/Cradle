@@ -6,5 +6,6 @@ return array(
 	'argument_test'	  => true,
     'i18n'            => 'en_US',
     'server_timezone' => 'Asia/Manila',
-	'cdn'			  => '/'
+	'cdn'			  => '/',
+	'queue'			  => 'queue'
 );

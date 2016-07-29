@@ -12,7 +12,7 @@ if(!function_exists('cradle')) {
 		static $framework = null;
 		
 		if(is_null($framework)) {
-			$framework = FrameHttp::i();
+			$framework = new FrameHttp;
 		}
 		
 		if (func_num_args() == 0) {
@@ -39,5 +39,8 @@ return cradle()
 	->preprocess(include(__DIR__ . '/bootstrap/i18n.php'))
 	->preprocess(include(__DIR__ . '/bootstrap/timezone.php'))
 	->preprocess(include(__DIR__ . '/bootstrap/queue.php'))
+	->preprocess(include(__DIR__ . '/bootstrap/handlebars.php'))
 	
-	->register('cradle-objects-address');
+	->flow('foobar', 'debug://hi')
+	
+	->register('cradlephp/objects/sql');

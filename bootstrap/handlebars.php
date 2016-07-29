@@ -4,7 +4,7 @@ use Cradle\Handlebars\HandlebarsHandler as Handlebars;
 
 return function($request, $response) {
 	//setup handlebars
-	$cache = $request->package('global')->path('templates');
+	$cache = $this->package('global')->path('templates');
 	
 	$handlebars = Handlebars::i()
 		//->setCache($cache)

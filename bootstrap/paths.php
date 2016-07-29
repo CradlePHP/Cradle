@@ -47,7 +47,7 @@ return function($request, $response) {
 		 *
 		 * @return mixed
 		 */
-		->registerMethod('config', function($key) use (&$cache) {
+		->addMethod('config', function($key) use (&$cache) {
 			//is it already in memory?
 			if(isset($cache[$key])) {
 				return $cache[$key];

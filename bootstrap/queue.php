@@ -23,6 +23,8 @@ return function($request, $response) {
 			->set('body', 'results', $data);
 	});
 	
+	$cradle = $this;
+	
 	//create a sudo method
 	$this
 		->package('global')
@@ -37,18 +39,33 @@ return function($request, $response) {
 		 * @param array  $data Data to use for this task
 		 *
 		 */
-		->addMethod('queue', function($task = null, $data = array(), $name = 'queue') {
+		->addMethod('queue', function(
+			$task = null, 
+			$data = array()
+		) 
+		use ($cradle) 
+		{
 			static $channel = null;
 			
+			//get the channel
 			if(is_null($channel)) {
-				$channel = $this
+				$channel = $cradle
 					->package('global')
 					->service('queue-main')
 					->channel();
 			}
 			
-			$data['__TASK__'] = $this->task;
+			//get the queue name
+			$settings = $cradle->package('global')->config('settings');
+			$name = 'queue';
+			if(isset($settings['queue']) && trim($settings['queue'])) {
+				$name = $settings['queue'];
+			}
 			
+			//set the task
+			$data['__TASK__'] = $task;
+			
+			//declare the queue
 			$channel->queue_declare(
 				$name, 
 				false, 
@@ -74,6 +91,6 @@ return function($request, $response) {
             $channel->queue_bind($name, $name.'-xchnge');
 
             // queue it up main queue container
-            $this->channel->basic_publish($message, $queue.'-xchnge');
+            $channel->basic_publish($message, $name.'-xchnge');
 		});
 };

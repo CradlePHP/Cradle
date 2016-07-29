@@ -11,6 +11,8 @@
     ],
     "require": {
 		"cradlephp/objects": "dev-master",
-		"cradlephp/packages": "dev-master"
+		"cradlephp/packages": "dev-master",
+		"cradlephp/command-line": "dev-master",
+		"php-amqplib/php-amqplib": "^2.6"
 	}
 }

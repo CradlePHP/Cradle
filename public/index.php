@@ -9,7 +9,6 @@ return cradle()
 	
 	//add bootstrap here
 	->preprocess(include(__DIR__ . '/../bootstrap/session.php'))
-	->preprocess(include(__DIR__ . '/../bootstrap/handlebars.php'))
 	
 	//start rendering
 	->render();

@@ -17,7 +17,7 @@ return function($request, $response) {
 	$translations = array();
 
 	//check if there is a translation file
-	$config = $request
+	$config = $this
 		->package('global')
 		->path('config');
 	
