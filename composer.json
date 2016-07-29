@@ -9,5 +9,8 @@
             "email": "cblanquera@openovate.com"
         }
     ],
-    "require": {}
+    "require": {
+		"cradlephp/objects": "dev-master",
+		"cradlephp/packages": "dev-master",
+	}
 }
