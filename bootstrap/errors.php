@@ -47,16 +47,26 @@ return function($request, $response) {
 		 * @return string
 		 */
 		->addMethod('errorHtml', function(Throwable $error, $detail = false) {
-			$message = 'A server Error occurred';
+			$message = 'A Server Error occurred';
 			
 			if(!$detail) {
 				return '<h1>' . $message . '</h1>';
 			}
 			
+			$exception = get_class($error);
 			$message = $error->getMessage();
+			$line = $error->getLine();
+			$file = $error->getFile();
 			$trace = $error->getTraceAsString();
-
-			return '<h1>' . $message . '</h1>' . nl2br($trace);
+			
+			return sprintf(
+				'<h1>%s thrown: %s</h1><br />%s(%s)<br /><br />%s', 
+				$exception, 
+				$message, 
+				$file, 
+				$line, 
+				nl2br($trace)
+			);
 		})
 		
 		/**
@@ -68,7 +78,7 @@ return function($request, $response) {
 		 * @return string
 		 */
 		->addMethod('errorJson', function(Throwable $error, $detail = false) {
-			$message = 'A server Error occurred';
+			$message = 'A Server Error occurred';
 			
 			if(!$detail) {
 				return json_encode(array(
@@ -77,13 +87,17 @@ return function($request, $response) {
 				), JSON_PRETTY_PRINT);
 			}
 			
+			$exception = get_class($error);
 			$message = $error->getMessage();
+			$line = $error->getLine();
+			$file = $error->getFile();
 			$trace = $error->getTraceAsString();
 			
 			return json_encode(array(
 				'error'     => true,
-				'message'    => $message,
-				'trace'        => explode("\n", $trace)
+				'message'   => $exception . 'thrown: ' . $message,
+				'file'		=> $file . '(' . $line . ')',
+				'trace'     => explode("\n", $trace)
 			), JSON_PRETTY_PRINT);
 		})
 		
@@ -96,15 +110,25 @@ return function($request, $response) {
 		 * @return string
 		 */
 		->addMethod('errorText', function(Throwable $error, $detail = false) {
-			$message = 'A server Error occurred';
+			$message = 'A Server Error occurred';
 			
 			if(!$detail) {
 				return $message;
 			}
 			
+			$exception = get_class($error);
 			$message = $error->getMessage();
+			$line = $error->getLine();
+			$file = $error->getFile();
 			$trace = $error->getTraceAsString();
 			
-			return $message . "\n\n" . $trace;
+			return sprintf(
+				"%s thrown: %s\n%s(%s)\n\n%s", 
+				$exception, 
+				$message, 
+				$file, 
+				$line, 
+				$trace
+			);
 		});
 };

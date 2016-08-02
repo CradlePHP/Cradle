@@ -1,5 +1,5 @@
 <?php //-->
-require_once __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use Cradle\Frame\FrameHttp;
 
@@ -31,16 +31,16 @@ if(!function_exists('cradle')) {
 }
 
 return cradle()
-	//now bootstrap
-	->preprocess(include(__DIR__ . '/bootstrap/paths.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/debug.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/errors.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/services.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/i18n.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/timezone.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/queue.php'))
-	->preprocess(include(__DIR__ . '/bootstrap/handlebars.php'))
+	//add flows here
 	
-	->flow('foobar', 'debug://hi')
+	//add bootstrap here
+	->preprocess(include('bootstrap/paths.php'))
+	->preprocess(include('bootstrap/debug.php'))
+	->preprocess(include('bootstrap/errors.php'))
+	->preprocess(include('bootstrap/services.php'))
+	->preprocess(include('bootstrap/i18n.php'))
+	->preprocess(include('bootstrap/timezone.php'))
+	->preprocess(include('bootstrap/queue.php'))
 	
-	->register('cradlephp/objects/sql');
+	//add packages here
+	;

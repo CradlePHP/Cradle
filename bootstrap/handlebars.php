@@ -3,6 +3,8 @@
 use Cradle\Handlebars\HandlebarsHandler as Handlebars;
 
 return function($request, $response) {
+	$cradle = $this;
+	
 	//setup handlebars
 	$cache = $this->package('global')->path('templates');
 	
@@ -59,8 +61,8 @@ return function($request, $response) {
 		})
 		
 		//intermediate helpers
-		->registerHelper('settings', function($key) {
-			$settings = $this->package('global')->config('settings');
+		->registerHelper('settings', function($key) use ($cradle) {
+			$settings = $cradle->package('global')->config('settings');
 			
 			if(!isset($settings[$key])) {
 				return $options['inverse']();
@@ -117,8 +119,8 @@ return function($request, $response) {
 			return http_build_query($query);
 		})
 		
-		->registerHelper('environment', function($value, $options) {
-			$settings = $this->package('global')->config('settings');
+		->registerHelper('environment', function($value, $options) use ($cradle) {
+			$settings = $cradle->package('global')->config('settings');
 	
 			if(isset($settings['environment']) && $settings['environment'] === $value) {
 				return $options['fn']();
@@ -128,7 +130,7 @@ return function($request, $response) {
 		})
 		
 		//advanced helpers
-		->registerHelper('_', function($key) {
+		->registerHelper('_', function($key) use ($cradle) {
 			$args = func_get_args();
 			$key = array_shift($args);
 			$options = array_pop($args);
@@ -145,7 +147,7 @@ return function($request, $response) {
 				}
 			}
 	
-			return $this->package('global')->translate((string) $key, $args);
+			return $cradle->package('global')->translate((string) $key, $args);
 		})
 		->registerHelper('in', function($value, $array, $options) {
 			if(is_string($array)) {
@@ -220,9 +222,9 @@ return function($request, $response) {
 				$_GET['start'] = ($i -1) * $range;
 	
 				$buffer[] = $options['fn'](array(
-					'href'        => http_build_query($_GET),
-					'active'    => $i == $page,
-					'page'        => $i
+					'href'    => http_build_query($_GET),
+					'active'  => $i == $page,
+					'page'    => $i
 				));
 			}
 	
@@ -272,14 +274,14 @@ return function($request, $response) {
 		 *
 		 * @return string
 		 */
-		->addMethod('template', function($file, array $data = array()) {
+		->addMethod('template', function($file, array $data = array()) use ($cradle) {
 			if(!file_exists($file)) {
 				return null;
 			}
 			
 			$template = file_get_contents($file);
 			
-			$compiled = $this
+			$compiled = $cradle
 				->package('global')
 				->handlebars()
 				->compile($template);
