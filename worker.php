@@ -1,10 +1,8 @@
 <?php //-->
-
-include(__DIR__.'/bootstrap.php');
-
 use PhpAmqpLib\Exception\AMQPProtocolChannelException;
 
-return cradle()
+//embrace the wierd
+return (include(__DIR__.'/bootstrap.php'))
 	//add a logger
 	->addLogger(function($message) {
 		echo '[cradle] ' . $message . PHP_EOL;

@@ -1,8 +1,7 @@
 <?php //-->
 
-include(__DIR__.'/../bootstrap.php');
-
-return cradle()
+//embrace the wierd
+return (include(__DIR__.'/../bootstrap.php'))
 	//add routes here
 	->get('/', 'Hello World')
 	
@@ -15,11 +14,6 @@ return cradle()
 			$response->setContent($message1 . $message2);
 		}
 	)
-	
-	//add bootstrap here
-	->preprocess(include(__DIR__ . '/../bootstrap/session.php'))
-	
-	//add packages here
 	
 	//start rendering
 	->render();

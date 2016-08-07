@@ -10,8 +10,9 @@
         }
     ],
     "require": {
-		"cradlephp/packages": "dev-master",
+		"cradlephp/framework": "dev-master",
 		"cradlephp/command-line": "dev-master",
+		"cblanquera/cradle-auth": "dev-master",
 		"php-amqplib/php-amqplib": "^2.6"
 	}
 }

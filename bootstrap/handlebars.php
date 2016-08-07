@@ -80,6 +80,7 @@ return function($request, $response) {
 			}
 	
 			if(is_object($_SESSION[$key]) || is_array($_SESSION[$key])) {
+				
 				return $options['fn']((array) $_SESSION[$key]);
 			}
 	
@@ -148,6 +149,17 @@ return function($request, $response) {
 			}
 	
 			return $cradle->package('global')->translate((string) $key, $args);
+		})
+		->registerHelper('key', function($key, $array, $options) {
+			if(is_string($array)) {
+				$array = explode(',', $array);
+			}
+			
+			if(isset($array[$key])) {
+				return $array[$key];
+			}
+			
+			return '';
 		})
 		->registerHelper('in', function($value, $array, $options) {
 			if(is_string($array)) {
