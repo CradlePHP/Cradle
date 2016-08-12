@@ -1,4 +1,4 @@
 <?php //-->
 return array(
-	'Address Search' => 'Addresso Search'
+    'Address Search' => 'Addresso Search'
 );
