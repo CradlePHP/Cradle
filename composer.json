@@ -4,6 +4,7 @@
     "type": "framework",
 	"minimum-stability": "dev",
     "license": "MIT",
+    "homepage": "https://cradlephp.github.io/",
     "authors": [
         {
             "name": "Christian Blanquera",
