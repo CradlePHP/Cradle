@@ -12,8 +12,6 @@ return cradle()
     ->preprocess(include('bootstrap/services.php'))
     ->preprocess(include('bootstrap/i18n.php'))
     ->preprocess(include('bootstrap/timezone.php'))
-    ->preprocess(include('bootstrap/queue.php'))
-    ->preprocess(include('bootstrap/handlebars.php'))
     ->preprocess(include('bootstrap/session.php'))
 
     //add packages here
