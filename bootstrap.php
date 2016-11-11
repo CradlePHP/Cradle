@@ -4,15 +4,28 @@ require_once 'vendor/autoload.php';
 //use the cradle function
 Cradle\Framework\Decorator::DECORATE;
 
+/**
+ * This is where you would add
+ */
 return cradle()
-    //add bootstrap here
-    ->preprocess(include('bootstrap/paths.php'))
-    ->preprocess(include('bootstrap/debug.php'))
-    ->preprocess(include('bootstrap/errors.php'))
-    ->preprocess(include('bootstrap/services.php'))
-    ->preprocess(include('bootstrap/i18n.php'))
-    ->preprocess(include('bootstrap/timezone.php'))
-    ->preprocess(include('bootstrap/session.php'))
+    //add preprocesses here
+    ->preprocess(function($request, $response) {
+        //errors
+        ini_set('display_errors', '1');
 
+        //timezone
+        date_default_timezone_set('GMT');
+
+        //prevent starting session in cli mode
+        if (php_sapi_name() !== 'cli') {
+            //start session
+            session_start();
+
+            //sync the session
+            $request->setSession($_SESSION);
+        }
+    })
+
+    //add postprocesses here
     //add packages here
     ;
