@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/command-line.git",
-                "reference": "43729200e6b17fcd857053e1c0339b9f7011e68b"
+                "reference": "752e4a870f58f508b55b90c957d223a22d3d3ed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/command-line/zipball/43729200e6b17fcd857053e1c0339b9f7011e68b",
-                "reference": "43729200e6b17fcd857053e1c0339b9f7011e68b",
+                "url": "https://api.github.com/repos/CradlePHP/command-line/zipball/752e4a870f58f508b55b90c957d223a22d3d3ed7",
+                "reference": "752e4a870f58f508b55b90c957d223a22d3d3ed7",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2016-08-17 10:51:40"
+            "time": "2016-11-27 18:20:28"
         },
         {
             "name": "cradlephp/framework",
@@ -63,12 +63,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/framework.git",
-                "reference": "e07caa5e23f4eff3c987e7368be1241936f454a2"
+                "reference": "dafe1d1730bb83fd6c98051dcc8085ee6dc2070c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/e07caa5e23f4eff3c987e7368be1241936f454a2",
-                "reference": "e07caa5e23f4eff3c987e7368be1241936f454a2",
+                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/dafe1d1730bb83fd6c98051dcc8085ee6dc2070c",
+                "reference": "dafe1d1730bb83fd6c98051dcc8085ee6dc2070c",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
                 "cradlephp",
                 "framework"
             ],
-            "time": "2016-08-19 16:32:30"
+            "time": "2016-11-27 06:27:23"
         },
         {
             "name": "php-amqplib/php-amqplib",

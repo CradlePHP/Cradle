@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 Cradle\Framework\Decorator::DECORATE;
 
 /**
- * This is where you would add
+ * This is where you would add CLI related tools
  */
 return cradle()
     //add preprocesses here
