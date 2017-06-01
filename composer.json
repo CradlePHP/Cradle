@@ -13,6 +13,7 @@
     ],
     "require": {
         "cradlephp/command-line": "dev-master",
-		"cradlephp/framework": "dev-master"
+		"cradlephp/framework": "~1.1.1",
+		"cradlephp/packages": "~1.1.1"
 	}
 }

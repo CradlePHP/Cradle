@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "81fa95a6e2ceef3d267aa6d75570ff82",
-    "content-hash": "90ef0acb38b1459144c030e92a40f5bb",
+    "hash": "8779099260346f8d9c0f428ec1ca69da",
+    "content-hash": "4a6ca4b4a081ec39f7b6f82f290cd1ae",
     "packages": [
         {
             "name": "cradlephp/command-line",
@@ -13,21 +13,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/command-line.git",
-                "reference": "752e4a870f58f508b55b90c957d223a22d3d3ed7"
+                "reference": "18ae3745214707213f642342e1c340a45e282f83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/command-line/zipball/752e4a870f58f508b55b90c957d223a22d3d3ed7",
-                "reference": "752e4a870f58f508b55b90c957d223a22d3d3ed7",
+                "url": "https://api.github.com/repos/CradlePHP/command-line/zipball/18ae3745214707213f642342e1c340a45e282f83",
+                "reference": "18ae3745214707213f642342e1c340a45e282f83",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0",
                 "php-amqplib/php-amqplib": "2.6.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.4",
-                "squizlabs/php_codesniffer": "~1.5"
+                "phpunit/phpunit": "5.7.9",
+                "squizlabs/php_codesniffer": "2.7.1"
             },
             "bin": [
                 "bin/cradle"
@@ -55,29 +54,78 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2016-11-27 18:20:28"
+            "time": "2017-06-01 10:08:29"
         },
         {
-            "name": "cradlephp/framework",
-            "version": "dev-master",
+            "name": "cradlephp/components",
+            "version": "1.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CradlePHP/framework.git",
-                "reference": "dafe1d1730bb83fd6c98051dcc8085ee6dc2070c"
+                "url": "https://github.com/CradlePHP/components.git",
+                "reference": "7faaf21d52ed2d6ab89f057927e42791bad62391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/dafe1d1730bb83fd6c98051dcc8085ee6dc2070c",
-                "reference": "dafe1d1730bb83fd6c98051dcc8085ee6dc2070c",
+                "url": "https://api.github.com/repos/CradlePHP/components/zipball/7faaf21d52ed2d6ab89f057927e42791bad62391",
+                "reference": "7faaf21d52ed2d6ab89f057927e42791bad62391",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.4",
+                "phpunit/phpunit": "5.7.9",
                 "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "~2.6"
+                "squizlabs/php_codesniffer": "2.7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Common PHP7 Patterns and Constructs",
+            "homepage": "https://cradlephp.github.io/",
+            "keywords": [
+                "cradle",
+                "cradlephp",
+                "library",
+                "php70",
+                "php71"
+            ],
+            "time": "2017-06-01 11:06:52"
+        },
+        {
+            "name": "cradlephp/framework",
+            "version": "1.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/framework.git",
+                "reference": "92e94de6f92eb258c5e3258b7e8965c75e0404fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/92e94de6f92eb258c5e3258b7e8965c75e0404fe",
+                "reference": "92e94de6f92eb258c5e3258b7e8965c75e0404fe",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/components": "~1.1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.9",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "2.7.1"
             },
             "type": "library",
             "autoload": {
@@ -102,7 +150,54 @@
                 "cradlephp",
                 "framework"
             ],
-            "time": "2016-11-27 06:27:23"
+            "time": "2017-06-01 11:19:39"
+        },
+        {
+            "name": "cradlephp/packages",
+            "version": "1.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/packages.git",
+                "reference": "c9069cc9b21083fe7ebafa6921fb429d944369fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/packages/zipball/c9069cc9b21083fe7ebafa6921fb429d944369fa",
+                "reference": "c9069cc9b21083fe7ebafa6921fb429d944369fa",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/components": "~1.1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.9",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "2.7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Framework Agnotic Packages for the Cradle micro framework",
+            "homepage": "https://cradlephp.github.io/",
+            "keywords": [
+                "cradle",
+                "cradlephp",
+                "library"
+            ],
+            "time": "2017-06-01 11:14:55"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -179,8 +274,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cradlephp/command-line": 20,
-        "cradlephp/framework": 20
+        "cradlephp/command-line": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
