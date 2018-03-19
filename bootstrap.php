@@ -24,8 +24,8 @@ return cradle()
     ->register('cradlephp/cradle-captcha')
     ->register('cradlephp/cradle-developer')
     ->register('cradlephp/cradle-system')
+    ->register('cradlephp/cradle-profile')
 
     //add modules here
     ->register('/module/utility')
-    ->register('/module/profile')
     ;
