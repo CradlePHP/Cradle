@@ -22,6 +22,7 @@
         "cradlephp/storm": "~1.0.1",
         "cradlephp/cradle-developer": "dev-master",
         "cradlephp/cradle-system": "0.*",
+        "cradlephp/cradle-profile": "0.*",
         "elasticsearch/elasticsearch": "2.2.2",
         "predis/predis": "1.1.1",
         "aws/aws-sdk-php": "3.19.30",
