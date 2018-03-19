@@ -1,0 +1,39 @@
+language: php
+branches:
+  only:
+  - master
+php:
+- 7.0
+services:
+- mysql
+- redis-server
+before_install:
+- sudo apt-get update
+
+install:
+- phpenv rehash
+sudo: required
+before_script:
+- echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | sudo debconf-set-selections
+- wget http://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
+- sudo dpkg --install mysql-apt-config_0.7.3-1_all.deb
+- sudo apt-get update -q
+- sudo apt-get install -q -y --force-yes -o Dpkg::Options::=--force-confnew mysql-server
+- sudo mysql_upgrade
+- rm -f mysql-apt-config_0.7.3-1_all.deb
+- cp config/settings.sample.php config/settings.php
+- cp config/test.sample.php config/test.php
+- cp config/test.sample.php config/services.php
+- cp config/deploy.sample.php config/deploy.php
+- composer self-update
+- composer install
+- npm install -g bower
+- bower install
+- bin/cradle faucet install -f --skip-configs
+- php -S 127.0.0.1:8888 -t ./public >/dev/null 2>&1 &
+- bin/phantomjs --webdriver=4444 >/dev/null 2>&1 &
+script:
+- bin/phpunit
+- bin/phpcs
+- bin/codecept run -c ./app/www
+- bin/codecept run -c ./app/admin

@@ -44,7 +44,7 @@ ExpiresByType image/jpg "access plus 1 month"
 
 # css and javascripts
 ExpiresByType text/css "access plus 1 day"
-ExpiresByType text/plain "access plus 1 month"    
+ExpiresByType text/plain "access plus 1 month"
 ExpiresByType application/x-javascript "access plus 1 day"
 ExpiresByType application/javascript "access plus 1 day"
 ExpiresByType application/x-icon "access plus 1 year"

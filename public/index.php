@@ -4,10 +4,9 @@ include(__DIR__.'/../bootstrap.php');
 
 return cradle()
     //add routes here
-    ->get('/', function ($request, $response) {
-        $message = '<h1>Welcome to Cradle!</h1>';
-        $response->setContent($message);
-    })
+    ->register('/app/admin')
+    ->register('/app/api')
+    ->register('/app/www')
 
     //start rendering
     ->render();

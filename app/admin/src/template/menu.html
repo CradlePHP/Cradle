@@ -1,0 +1,33 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/admin/system/schema/search">
+                <i class="fas fa-home"></i> Admin
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <i class="fas fa-bars"></i> Menu Builder
+        </li>
+    </ol>
+</nav>
+
+<div class="main-padding">
+    <h3 class="main-title">
+        <i class="fas fa-bars"></i> Menu Builder
+    </h3>
+
+    <form class="menu-builder" data-do="menu-builder" data-depth="3" method="post">
+        <button type="button" class="btn btn-success menu-builder-action-add">
+            <i class="fas fa-plus"></i>
+            Add Menu Item
+        </button>
+        <ol class="menu-builder-list">
+            {{#each item}}
+                {{> menu_item}}
+            {{/each}}
+        </ol>
+        <button class="btn btn-primary">Submit</button>
+        <span class="help-text has-error"></span>
+    </form>
+
+</div>
