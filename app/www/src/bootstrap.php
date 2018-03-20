@@ -122,7 +122,7 @@ return function ($request, $response) {
         $partials = []
     ) {
         // get the root directory
-        $root = __DIR__ . '/../template/';
+        $root = __DIR__ . '/template/';
 
         // check for partials
         if (!is_array($partials)) {
