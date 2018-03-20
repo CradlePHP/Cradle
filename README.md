@@ -1,5 +1,5 @@
 ```
-DEVELOPMENT MODE: Cradle OMS is in development and has not passed testing. We do not recommend using this in live environments. If you would [like to contribute](#contribute) please read on.
+DEVELOPMENT MODE: Cradle is in development and has not passed testing. We do not recommend using this in live environments. If you would [like to contribute](#contribute) please read on.
 ```
 
 # All the Back End You'll Ever Need
