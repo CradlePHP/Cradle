@@ -2,7 +2,13 @@
 
 return (function() {
     // load package config
-    $packages = include_once(__DIR__ . '/../config/packages.php');
+    $packages = @include_once(__DIR__ . '/../config/packages.php');
+    
+    // if package is not yet there
+    if (!$packages) {
+        // try to load default packages
+        $packages = @include_once(__DIR__ . '/../config/packages.sample.php');
+    }
 
     // on each packages
     foreach ($packages as $package => $config) {
