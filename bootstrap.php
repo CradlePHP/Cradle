@@ -18,14 +18,5 @@ return cradle()
     ->preprocess(include('bootstrap/i18n.php'))
     ->preprocess(include('bootstrap/handlebars.php'))
 
-    //add packages here
-    ->register('cradlephp/cradle-queue')
-    ->register('cradlephp/cradle-csrf')
-    ->register('cradlephp/cradle-captcha')
-    ->register('cradlephp/cradle-developer')
-    ->register('cradlephp/cradle-system')
-    ->register('cradlephp/cradle-profile')
-
-    //add modules here
-    ->register('/module/utility')
-    ;
+    //package loader
+    ->register(include('bootstrap/packages.php'));
