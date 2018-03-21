@@ -1188,9 +1188,9 @@ jQuery(function($) {
         });
 
         /**
-         * Object Range Change
+         * Model Range Change
          */
-        $(window).on('object-range-change', function(e, target) {
+        $(window).on('model-range-change', function(e, target) {
             var target = $(target);
 
             var form = $('<form>')
