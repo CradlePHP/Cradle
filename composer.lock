@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1d7743398231dfd6bb8e4960ee53503",
+    "content-hash": "c67d89b9be169f6a61aa03acb56bc557",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -436,12 +436,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "8b4ab44fde3a7e79e39a9c81bc84b590be868af6"
+                "reference": "4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/8b4ab44fde3a7e79e39a9c81bc84b590be868af6",
-                "reference": "8b4ab44fde3a7e79e39a9c81bc84b590be868af6",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed",
+                "reference": "4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed",
                 "shasum": ""
             },
             "require": {
@@ -473,24 +473,24 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-19T02:18:19+00:00"
+            "time": "2018-03-21T08:11:04+00:00"
         },
         {
             "name": "cradlephp/cradle-profile",
-            "version": "0.0.2",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-profile.git",
-                "reference": "bb275c4b59e622b7c391865247918836e54a7d7c"
+                "reference": "a17af5cae37fba76867e3526de0d1eb176873ef6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/bb275c4b59e622b7c391865247918836e54a7d7c",
-                "reference": "bb275c4b59e622b7c391865247918836e54a7d7c",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/a17af5cae37fba76867e3526de0d1eb176873ef6",
+                "reference": "a17af5cae37fba76867e3526de0d1eb176873ef6",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-system": "0.*"
+                "cradlephp/cradle-system": "1.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.0.2",
@@ -513,20 +513,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-19T04:03:59+00:00"
+            "time": "2018-03-21T10:53:21+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "0.1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "73251cbc423c58f1ae8560bc43400554641a3b13"
+                "reference": "7bbdd62f906a8979af1fee9549eb6e3a8585e805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/73251cbc423c58f1ae8560bc43400554641a3b13",
-                "reference": "73251cbc423c58f1ae8560bc43400554641a3b13",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/7bbdd62f906a8979af1fee9549eb6e3a8585e805",
+                "reference": "7bbdd62f906a8979af1fee9549eb6e3a8585e805",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-19T02:55:12+00:00"
+            "time": "2018-03-21T09:45:47+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -1597,12 +1597,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "9a1625df3f2d51cb73916822e150855a7b22bdba"
+                "reference": "851ba3618b9ecce197c225526c05504c6e83ca16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/9a1625df3f2d51cb73916822e150855a7b22bdba",
-                "reference": "9a1625df3f2d51cb73916822e150855a7b22bdba",
+                "url": "https://api.github.com/repos/symfony/console/zipball/851ba3618b9ecce197c225526c05504c6e83ca16",
+                "reference": "851ba3618b9ecce197c225526c05504c6e83ca16",
                 "shasum": ""
             },
             "require": {
@@ -1657,7 +1657,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-17T15:08:46+00:00"
+            "time": "2018-03-20T14:41:21+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1822,12 +1822,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "4424a9d19120bc4be5e26ab39264e022fd5b262b"
+                "reference": "22123ea9081f0f79b0f2a107f112a9cadf742c4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/4424a9d19120bc4be5e26ab39264e022fd5b262b",
-                "reference": "4424a9d19120bc4be5e26ab39264e022fd5b262b",
+                "url": "https://api.github.com/repos/symfony/process/zipball/22123ea9081f0f79b0f2a107f112a9cadf742c4d",
+                "reference": "22123ea9081f0f79b0f2a107f112a9cadf742c4d",
                 "shasum": ""
             },
             "require": {
@@ -1863,7 +1863,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-02T12:21:49+00:00"
+            "time": "2018-03-19T22:38:22+00:00"
         }
     ],
     "packages-dev": [
@@ -2922,16 +2922,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "93ade88c83f9e70040fdb8d0b7396d47998dd9f3"
+                "reference": "cd35e43a53ec1c10424a5dec250c30e952e09ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/93ade88c83f9e70040fdb8d0b7396d47998dd9f3",
-                "reference": "93ade88c83f9e70040fdb8d0b7396d47998dd9f3",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/cd35e43a53ec1c10424a5dec250c30e952e09ced",
+                "reference": "cd35e43a53ec1c10424a5dec250c30e952e09ced",
                 "shasum": ""
             },
             "require": {
-                "ext-posix": "*",
                 "php": "^7.0"
             },
             "require-dev": {
@@ -2965,7 +2964,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2018-03-02T16:25:54+00:00"
+            "time": "2018-03-21T07:21:42+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -3372,12 +3371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "ed30f449bb4bafa8d5dd469be820ee6ca220137c"
+                "reference": "84175cbbfbf80f135ba5087bd70f7cf69d10bd78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/ed30f449bb4bafa8d5dd469be820ee6ca220137c",
-                "reference": "ed30f449bb4bafa8d5dd469be820ee6ca220137c",
+                "url": "https://api.github.com/repos/symfony/config/zipball/84175cbbfbf80f135ba5087bd70f7cf69d10bd78",
+                "reference": "84175cbbfbf80f135ba5087bd70f7cf69d10bd78",
                 "shasum": ""
             },
             "require": {
@@ -3426,7 +3425,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-19T12:10:10+00:00"
+            "time": "2018-03-19T22:45:52+00:00"
         },
         {
             "name": "symfony/stopwatch",

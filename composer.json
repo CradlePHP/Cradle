@@ -21,13 +21,13 @@
         "cradlephp/handlebars": "~1.0.1",
         "cradlephp/storm": "~1.0.1",
         "cradlephp/cradle-developer": "dev-master",
-        "cradlephp/cradle-system": "0.*",
-        "cradlephp/cradle-profile": "0.*",
+        "cradlephp/cradle-system": "1.*",
         "elasticsearch/elasticsearch": "2.2.2",
         "predis/predis": "1.1.1",
         "aws/aws-sdk-php": "3.19.30",
         "swiftmailer/swiftmailer": "5.4.3",
-        "jakoch/phantomjs-installer": "2.1.1-p07"
+        "jakoch/phantomjs-installer": "2.1.1-p07",
+        "cradlephp/cradle-profile": "0.1.0"
     },
     "autoload": {
         "psr-4": {
