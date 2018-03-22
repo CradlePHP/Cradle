@@ -66,5 +66,5 @@ $this->post('/admin/menu', function ($request, $response) {
     $this->package('global')->flash('Menu was built', 'success');
 
     //redirect
-    $this->package('global')->redirect('/admin/system/menu');
+    $this->package('global')->redirect('/admin/menu');
 });

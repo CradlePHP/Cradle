@@ -10,10 +10,10 @@
 use Cradle\Http\Request;
 use Cradle\Http\Response;
 
-use Cradle\Package\System\Service;
+use Cradle\Package\System\Schema\Service;
 
 /**
- * Menu Get Record Count Job
+ * Admin Menu Count Job
  *
  * @param Request $request
  * @param Response $response
@@ -29,7 +29,7 @@ $this->on('admin-menu-count', function ($request, $response) {
     $recordCount = Service::get('sql')->getSchemaTableRecordCount($schema);
 
     // map navigation
-    $map = function($navigation, $recordCount) use ($map) {
+    $map = function($navigation, $recordCount) use (&$map) {
         // iterate on each navigation
         foreach ($navigation as $key => $value) {
             // do we have child navigation?
@@ -99,11 +99,11 @@ $this->on('admin-render-page', function ($request, $response) {
     // set navigation
     $menuRecordRequest->setStage('navigation', $navigation);
 
-    // trigger menu get record count
-    $this->trigger('menu-get-record-count', $menuRecordRequest, $menuRecordResponse);
+    // // trigger menu get record count
+    $this->trigger('admin-menu-count', $menuRecordRequest, $menuRecordResponse);
 
-    // get navigation
-    $navigation = $menuRecordResponse->getResults();
+    // // get navigation
+    // $navigation = $menuRecordResponse->getResults();
 
     //path
     $path = $request->getPath('string');
