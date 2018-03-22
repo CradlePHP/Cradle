@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a93763910f52c8e7162f7a2619001aa",
+    "content-hash": "128d1d03f45cdb831cebafa2f0f73c44",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -429,6 +429,51 @@
             ],
             "description": "Composer and Packagist Helpers",
             "time": "2018-03-17T17:27:55+00:00"
+        },
+        {
+            "name": "cradlephp/cradle-auth",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/cradle-auth.git",
+                "reference": "431bcac33cc1a5ec42b57a0a4636be1afb8cf9a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/431bcac33cc1a5ec42b57a0a4636be1afb8cf9a7",
+                "reference": "431bcac33cc1a5ec42b57a0a4636be1afb8cf9a7",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/cradle-system": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.2",
+                "satooshi/php-coveralls": "2.0.0",
+                "squizlabs/php_codesniffer": "3.2.3"
+            },
+            "type": "cradle-package",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\Package\\Auth\\": "cradlephp/cradle-auth/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Auth Schema for CradlePHP",
+            "keywords": [
+                "cradle",
+                "cradlephp"
+            ],
+            "time": "2018-03-22T11:24:56+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",
