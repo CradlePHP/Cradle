@@ -146,7 +146,7 @@ $handlebars->registerHelper('formula', function ($template, $variables = []) {
     $formula = $compiler($template, $variables);
 
     if (preg_match('/[a-zA-Z]/', $formula)) {
-        return cradle('global')->translate('Invalid Formaula');
+        return cradle('global')->translate('Invalid Formula');
     }
 
     $expression = sprintf('return %s ;', $formula);
@@ -195,6 +195,7 @@ $handlebars->registerHelper('number_format_short', function ($number, $precision
         $dotzero  = '.' . str_repeat('0', $precision);
         $number_format = str_replace($dotzero, '', $number_format);
     }
+    
     return $number_format . $suffix;
 });
 
@@ -483,6 +484,23 @@ $handlebars->registerHelper('pager', function ($total, $range, $options) {
 
 /* Conditional Helpers
 ------------------------------------------------------------------------------*/
+/**
+ * Returns a default value2 if value1 is empty
+ * 
+ * @param *scalar value
+ * @param *scalar default
+ * 
+ * @return *scalar
+ */
+$handlebars->registerHelper('defaults_to', function ($value, $default) {
+    // if value is not scalar, if empty or is null
+    if (!is_scalar($value) || empty($value) || is_null($value)) {
+        return $default;
+    }
+
+    return $value;
+});
+
 /**
  * A better if statement for handlebars
  *
