@@ -24,6 +24,10 @@ return array (
   array (
     'active' => true,
   ),
+  'cradlephp/cradle-history' => 
+  array (
+    'active' => true,
+  ),
   'cradlephp/cradle-profile' => 
   array (
     'active' => true,
