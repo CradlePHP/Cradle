@@ -492,7 +492,7 @@ $handlebars->registerHelper('pager', function ($total, $range, $options) {
  * 
  * @return *scalar
  */
-$handlebars->registerHelper('defaults_to', function ($value, $default) {
+$handlebars->registerHelper('or', function ($value, $default) {
     // if value is not scalar, if empty or is null
     if (!is_scalar($value) || empty($value) || is_null($value)) {
         return $default;
