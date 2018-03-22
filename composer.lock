@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c67d89b9be169f6a61aa03acb56bc557",
+    "content-hash": "6a93763910f52c8e7162f7a2619001aa",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -432,16 +432,16 @@
         },
         {
             "name": "cradlephp/cradle-developer",
-            "version": "dev-master",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed"
+                "reference": "4cf196172332ec95c247de08f1c8cb0f3f44ac75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed",
-                "reference": "4cf2f42cdd828ab73d7a3ce62eb6a3a8d28d50ed",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/4cf196172332ec95c247de08f1c8cb0f3f44ac75",
+                "reference": "4cf196172332ec95c247de08f1c8cb0f3f44ac75",
                 "shasum": ""
             },
             "require": {
@@ -473,20 +473,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-21T08:11:04+00:00"
+            "time": "2018-03-22T11:04:02+00:00"
         },
         {
             "name": "cradlephp/cradle-profile",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-profile.git",
-                "reference": "a17af5cae37fba76867e3526de0d1eb176873ef6"
+                "reference": "b001d81e5d64e02f4ddded9bd9119604f4fc6827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/a17af5cae37fba76867e3526de0d1eb176873ef6",
-                "reference": "a17af5cae37fba76867e3526de0d1eb176873ef6",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/b001d81e5d64e02f4ddded9bd9119604f4fc6827",
+                "reference": "b001d81e5d64e02f4ddded9bd9119604f4fc6827",
                 "shasum": ""
             },
             "require": {
@@ -513,20 +513,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-21T10:53:21+00:00"
+            "time": "2018-03-22T06:02:06+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "7bbdd62f906a8979af1fee9549eb6e3a8585e805"
+                "reference": "3f48023f3a3897b561141c79b57be9493763f468"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/7bbdd62f906a8979af1fee9549eb6e3a8585e805",
-                "reference": "7bbdd62f906a8979af1fee9549eb6e3a8585e805",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/3f48023f3a3897b561141c79b57be9493763f468",
+                "reference": "3f48023f3a3897b561141c79b57be9493763f468",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-21T09:45:47+00:00"
+            "time": "2018-03-22T09:17:43+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -3627,9 +3627,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "cradlephp/cradle-developer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
