@@ -20,6 +20,14 @@ return array (
   array (
     'active' => true,
   ),
+  'cradlephp/cradle-auth' => 
+  array (
+    'active' => true,
+  ),
+  'cradlephp/cradle-profile' => 
+  array (
+    'active' => true,
+  ),
   '/module/utility' => 
   array (
     'active' => true,
