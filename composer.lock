@@ -432,16 +432,16 @@
         },
         {
             "name": "cradlephp/cradle-auth",
-            "version": "0.0.5",
+            "version": "0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "180f2171a4bfb29b57021bfafe027f524ceaa2e3"
+                "reference": "1447f1bf3e88183348a5fa5fc17977d1506ebd42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/180f2171a4bfb29b57021bfafe027f524ceaa2e3",
-                "reference": "180f2171a4bfb29b57021bfafe027f524ceaa2e3",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/1447f1bf3e88183348a5fa5fc17977d1506ebd42",
+                "reference": "1447f1bf3e88183348a5fa5fc17977d1506ebd42",
                 "shasum": ""
             },
             "require": {
@@ -455,7 +455,7 @@
             "type": "cradle-package",
             "autoload": {
                 "psr-4": {
-                    "Cradle\\Package\\Auth\\": "cradlephp/cradle-auth/src/"
+                    "Cradle\\Package\\Auth\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -473,7 +473,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-22T12:24:47+00:00"
+            "time": "2018-03-23T05:52:01+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",

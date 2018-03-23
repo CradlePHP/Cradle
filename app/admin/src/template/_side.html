@@ -15,13 +15,11 @@
                     </span>
                 </a>
                 <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
+                    {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/module'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/template'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/docs'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/menu'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/configuration'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/translation'}} show{{/nav_match~}}
                 ">
                     <ul class="nav flex-column ml-4">
                         <li class="nav-item{{~#nav_match '/admin/system/schema'}} active{{/nav_match~}}">
@@ -32,16 +30,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item{{~#nav_match '/admin/system/module'}} active{{/nav_match~}}">
-                            <a class="nav-link" href="/admin/system/module/search">
-                                <i class="fas fa-cog"></i>
-                                <span class="nav-title">
-                                    <span class="nav-text">Modules</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item{{~#nav_match '/admin/system/menu'}} active{{/nav_match~}}">
-                            <a class="nav-link" href="/admin/system/menu">
+                        <li class="nav-item{{~#nav_match '/admin/menu'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/menu">
                                 <i class="fas fa-bars"></i>
                                 <span class="nav-title">
                                     <span class="nav-text">Menu Builder</span>
@@ -94,14 +84,6 @@
                                 <i class="fas fa-wrench"></i>
                                 <span class="nav-title">
                                     <span class="nav-text">Configuration</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item{{~#nav_match '/admin/system/translation'}} active{{/nav_match~}}">
-                            <a class="nav-link" href="/admin/system/translation/search">
-                                <i class="fas fa-language"></i>
-                                <span class="nav-title">
-                                    <span class="nav-text">Translations</span>
                                 </span>
                             </a>
                         </li>

@@ -52,7 +52,7 @@ $handlebars->registerHelper('lower', function ($value) {
  * @return string
  */
 $handlebars->registerHelper('chars', function ($value, $length) {
-    return strlen($value, $length);
+    return substr($value, 0, $length);
 });
 
 /**
