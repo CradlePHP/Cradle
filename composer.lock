@@ -602,16 +602,16 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "985e2de93bc97915b857ec58250300d0671cef1f"
+                "reference": "42e397245060ee79575508b200c1501a8181b184"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/985e2de93bc97915b857ec58250300d0671cef1f",
-                "reference": "985e2de93bc97915b857ec58250300d0671cef1f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/42e397245060ee79575508b200c1501a8181b184",
+                "reference": "42e397245060ee79575508b200c1501a8181b184",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +643,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-23T12:15:51+00:00"
+            "time": "2018-03-23T12:20:35+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
