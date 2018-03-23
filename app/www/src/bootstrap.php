@@ -38,9 +38,7 @@ return function ($request, $response) {
         }
 
         $config = $this->package('global')->config('settings');
-        if (($config['environment'] === 'production'
-            || $config['environment'] === 'dev')
-            && $response->getCode() === 500) {
+        if ($config['environment'] === 'production' && $response->getCode() === 500) {
             $body = $this->package('/app/www')->template('500');
             $class = 'page-500 page-error';
             $title = $this->package('global')->translate('Error');
