@@ -32,6 +32,10 @@ return array (
   array (
     'active' => true,
   ),
+  'cradlephp/cradle-role' => 
+  array (
+    'active' => true,
+  ),
   '/module/utility' => 
   array (
     'active' => true,
