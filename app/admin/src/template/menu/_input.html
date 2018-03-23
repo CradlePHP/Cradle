@@ -1,0 +1,46 @@
+<div class="menu-builder-input input-group">
+    <div class="input-group-prepend">
+        <button class="menu-builder-handle btn btn-light" type="button">
+            <i class="fas fa-arrows-alt fa-fw"></i>
+        </button>
+        <button class="menu-builder-handle btn btn-default" type="button">
+            <i
+                {{#if icon}}
+                    class="{{icon}} fa-fw"
+                {{else}}
+                    class="fas fa-question fa-fw"
+                {{/if}}
+                data-do="icon-field"
+                data-target-parent="3"
+            ></i>
+            <input
+                class="form-control"
+                data-name="icon"
+                type="hidden"
+                value="{{icon}}"
+            />
+        </button>
+    </div>
+    <input
+        class="form-control"
+        data-name="label"
+        placeholder="Key"
+        type="text"
+        value="{{label}}"
+    />
+    <input
+        class="form-control"
+        data-name="path"
+        placeholder="/some/path"
+        type="text"
+        value="{{path}}"
+    />
+    <div class="input-group-append">
+        <button class="btn btn-success menu-builder-action-add" type="button">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button class="btn btn-danger menu-builder-action-remove" type="button">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>

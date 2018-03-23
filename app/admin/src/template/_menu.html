@@ -1,0 +1,50 @@
+{{#if children.length}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#{{path}}">
+            {{#if icon}}
+                <i class="{{icon}} fa-fw"></i>
+            {{/if}}
+            <span class="nav-title">
+                <span class="nav-text">{{label}}</span>
+                <span class="nav-right">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </span>
+        </a>
+        <div
+            id="{{path}}"
+            class="collapse nav-sub
+                {{~#nav_match path}} show{{/nav_match~}}
+                {{~#each children~}}
+                    {{~#nav_match path}} show{{/nav_match~}}
+                    {{~#each children~}}
+                        {{~#nav_match path}} show{{/nav_match~}}
+                    {{~/each~}}
+                {{~/each}}"
+        >
+            <ul class="nav flex-column ml-4">
+                {{#each children}}
+                    {{{partial 'menu' this}}}
+                {{/each}}
+            </ul>
+        </div>
+    </li>
+{{else}}
+    <li class="nav-item{{#nav_match path}} active{{/nav_match}}">
+        <a class="nav-link" href="{{path}}">
+            {{#if icon}}
+                <i class="{{icon}} fa-fw"></i>
+            {{/if}}
+            <span class="nav-title">
+                <span class="nav-text">{{label}}</span>
+                {{#if records}}
+                    <span class="nav-right">
+                        <span class="badge badge-pill badge-default">
+                            {{number_format_short records 1}}
+                        </span>
+                    </span>
+                {{/if}}
+            </span>
+        </a>
+    </li>
+{{/if}}

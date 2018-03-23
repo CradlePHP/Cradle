@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img width="78" alt="Cradle PHP" src="/images/cradle/logo-long.png" /></a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        title="Choose Your Language"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        {{./i18n}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" title="Chinese" href="/can_CN{{page.meta.path}}">Catonese</a>
+                        <a class="dropdown-item" title="English" href="/en_US{{page.meta.path}}">English</a>
+                        <a class="dropdown-item" title="French" href="/fr_FR{{page.meta.path}}">French</a>
+                        <a class="dropdown-item" title="Chinese" href="/cmn_CN{{page.meta.path}}">Mandarin</a>
+                        <a class="dropdown-item" title="Spanish" href="/es_ES{{page.meta.path}}">Spanish</a>
+                        <a class="dropdown-item" title="Filipino" href="/tl_PH{{page.meta.path}}">Tagalog</a>
+                        <a class="dropdown-item" title="Thai" href="/th_TH{{page.meta.path}}">Thai</a>
+                        <a class="dropdown-item" title="Filipino" href="/ceb_PH{{page.meta.path}}">Visaya</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav my-2 my-lg-0">
+                {{#request 'session' 'me'}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/account?redirect_uri={{../page.meta.path}}">
+                            {{_ 'Account Settings'}}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout?redirect_uri={{../page.meta.path}}">
+                            {{_ 'Logout'}}
+                        </a>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login?redirect_uri={{page.meta.path}}">{{_ 'Login'}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/signup?redirect_uri={{page.meta.path}}">{{_ 'Signup'}}</a>
+                    </li>
+                {{/request}}
+            </ul>
+        </div>
+    </div>
+</nav>

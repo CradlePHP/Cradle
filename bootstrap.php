@@ -8,24 +8,15 @@ Cradle\Framework\Decorator::DECORATE;
  * This is where you would add CLI related tools
  */
 return cradle()
-    //add preprocesses here
-    ->preprocess(function($request, $response) {
-        //errors
-        ini_set('display_errors', '1');
+    //add bootstrap here
+    ->preprocess(include('bootstrap/paths.php'))
+    ->preprocess(include('bootstrap/debug.php'))
+    ->preprocess(include('bootstrap/errors.php'))
+    ->preprocess(include('bootstrap/services.php'))
+    ->preprocess(include('bootstrap/timezone.php'))
+    ->preprocess(include('bootstrap/session.php'))
+    ->preprocess(include('bootstrap/i18n.php'))
+    ->preprocess(include('bootstrap/handlebars.php'))
 
-        //timezone
-        date_default_timezone_set('GMT');
-
-        //prevent starting session in cli mode
-        if (php_sapi_name() !== 'cli') {
-            //start session
-            session_start();
-
-            //sync the session
-            $request->setSession($_SESSION);
-        }
-    })
-
-    //add postprocesses here
-    //add packages here
-    ;
+    //package loader
+    ->register(include('bootstrap/packages.php'));

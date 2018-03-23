@@ -1,0 +1,301 @@
+
+{{#request 'session' 'me'}}
+    <section class="section section-1 loggedin">
+        <h2>All the Back End You'll Ever Need</h2>
+        <p>Cradle is a feature rich, modern admin builder. Build apps faster. Developer friendly. Open Source.</p>
+        <div class="sample">
+            <img src="/images/cradle/showntell.png" />
+            <a class="btn btn-success" href="/admin/system/schema/search">Go To Admin</a>
+        </div>
+    </section>
+{{else}}
+    <section class="section section-1">
+        <h2>All the Back End You'll Ever Need</h2>
+        <p>Cradle is a feature rich, modern admin builder. Build apps faster. Developer friendly. Open Source.</p>
+        <div class="sample">
+            <img src="/images/cradle/showntell.png" />
+            <a class="btn btn-primary" href="/auth/login">Demo Now</a>
+        </div>
+    </section>
+
+    <section class="section section-2">
+        <h2>Things you can make</h2>
+        <p>Define your back end anyway you like. Design your front end anyway you like.</p>
+        <div class="row">
+            <div class="col-sm">
+                <div class="icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Company ERP</h3>
+                <p>HR, Accounting, File Repositories, Procurement, Task &amp; Production Planning, Event &amp; Time Management</p>
+            </div>
+            <div class="col-sm">
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Ecommerce Backends</h3>
+                <p>Product Management, Customer Management, Order Management, Logistics Systems</p>
+            </div>
+            <div class="col-sm">
+                <div class="icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>Application Backends</h3>
+                <p>Web, Mobile &amp; Desktop Apps like news, wikis, blogs, calendars, jobs, games, it really can be anything.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-3">
+        <h2>Features</h2>
+        <p>We compiled a list of feature requirements based on over 10 years of backend system development.</p>
+        <div class="row right">
+            <div class="col-1 col-sm-5">
+                <a href="/images/cradle/full-7.png" target="_blank">
+                    <img src="/images/cradle/preview-7.png" />
+                </a>
+            </div>
+            <div class="col-2 col-sm-7">
+                <h3>Objects and Relations</h3>
+                <p>Most, if not all, applications deal with objects and relations to other objects. If you can't find an out of box solution for what you want to build, ususally these things need to be custom developed. The time it takes to develop depends on how many objects and relations you have. It's really this gray area without proper planning can fail. At its core, Cradle provides a way to create, manage and dynamically generate an admin for all of your objects and relations.</p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="col-1 col-sm-7">
+                <h3>Fields as a Playground</h3>
+                <p>Create fields on the fly, make mistakes and change fields, re-order fields; Skies are the limits! Clone objects to make creating objects even faster. Relate objects in one-to-zero, one-to-one, one-to-many and many-to-many. You can even relate external tables not defined in our system. </p>
+            </div>
+            <div class="col-2 col-sm-5">
+                <a href="/images/cradle/full-8.png" target="_blank">
+                    <img src="/images/cradle/preview-8.png" />
+                </a>
+            </div>
+        </div>
+        <div class="row right">
+            <div class="col-1 col-sm-5">
+                <a href="/images/cradle/full-6.png" target="_blank">
+                    <img src="/images/cradle/preview-6.png" />
+                </a>
+            </div>
+            <div class="col-2 col-sm-7">
+                <h3>Validations and Output Formats</h3>
+                <p>On top of form submissions, we need to also consider field validation and final output formats. Cradle supports any kind of validation (required, empty, less, greater, regexp, etc.) and output formats (capital, lower, date, relative, link, email, image, formulas, etc.). Activate searchable, filter and sortable features per field and it will be dynamically rendered in your admin.</p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="col-1 col-sm-7">
+                <h3>Database Translations</h3>
+                <p>We compared against many popular CMS libraries to determine a proper database structure and concluded that none fit what we wanted in terms of raw flexibility. Our fields translates into proper SQL-3NF and ElasticSearch schemas without any fuss. You can create, update, sort fields even after creating an object. Just turn on Redis to take advantage of data caching and RabbitMQ to take advantage of queues.</p>
+            </div>
+            <div class="col-2 col-sm-5">
+                <a href="/images/cradle/full-10.png" target="_blank">
+                    <img src="/images/cradle/preview-10.png" />
+                </a>
+            </div>
+        </div>
+        <div class="row right">
+            <div class="col-1 col-sm-5">
+                <a href="/images/cradle/full-3.png" target="_blank">
+                    <img src="/images/cradle/preview-3.png" />
+                </a>
+            </div>
+            <div class="col-2 col-sm-7">
+                <h3>Dynamic Search Pages</h3>
+                <p>Developers usually miss out on some of the basic features of a general search because it is just so tedius to build out all the time. Cradle takes care of these for you. Featuring search queries, dynamic filters, relations, bulk actions, importing and exporting. Define searchable, filterable and sortable fields in your schema and watch the search page match your specifications.</p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="col-1 col-sm-7">
+                <h3>Dynamic Forms</h3>
+                <p>Developing form submissions is a very tedius process starting from creating the front end form and validating fields to creating or updating into the database, provide a success message and redirect to another page. With Cradle, no more! Forms are dynamically created, validated and processed based on your defined objects and relations.</p>
+            </div>
+            <div class="col-2 col-sm-5">
+                <a href="/images/cradle/full-4.png" target="_blank">
+                    <img src="/images/cradle/preview-4.png" />
+                </a>
+            </div>
+        </div>
+        <div class="row right">
+            <div class="col-1 col-sm-5">
+                <a href="/images/cradle/full-5.png" target="_blank">
+                    <img src="/images/cradle/preview-5.png" />
+                </a>
+            </div>
+            <div class="col-2 col-sm-7">
+                <h3>Relational Actions and Filters</h3>
+                <p>Easy navigation to object relations and do futher filters, bulk actions, importing and exporting. Create objects and have it automatically linked to its parent. Link existing objects together easily.</p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="col-1 col-sm-7">
+                <h3>Menu Builder</h3>
+                <p>Create menu items on the fly. Create menu groups and drag items and groups in any order you want. Choose any icon from the FontAwesome 5 library or none at all. Use any link you want, even not in the system. Menu items automatically will show on relative active pages and show counts on schema search menu items.</p>
+            </div>
+            <div class="col-2 col-sm-5">
+                <a href="/images/cradle/full-2.png" target="_blank">
+                    <img src="/images/cradle/preview-2.png" />
+                </a>
+            </div>
+        </div>
+        <div class="row right">
+            <div class="col-1 col-sm-5">
+                <a href="/images/cradle/full-1.png" target="_blank">
+                    <img src="/images/cradle/preview-1.png" />
+                </a>
+            </div>
+            <div class="col-2 col-sm-7">
+                <h3>Lots of Fields</h3>
+                <p>Supporting all HTML5 fields, mask, WYSIWYG, Markdown, Code Editors, Date Fields, Range Sliders, Switches, Dials &amp; Knobs, Files &amp; Images Tag and Meta fields. All fields accept an arbitrary amount of HTML attributes incase you want to add a placeholder or number min-max for example. You can also free add your own custom fields, use any JavaScript and CSS. Anything you like.</p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="col-1 col-sm-7">
+                <h3>Fully Templated</h3>
+                <p>We considered all UI elements in our admin to be flexible and usable anywhere including the front end. Built on top of jQuery, Bootstrap 4, and Font Awesome 5 and Handlebars to reduce the learning curve and for easier manipulation.</p>
+            </div>
+            <div class="col-2 col-sm-5">
+                <a href="/images/cradle/full-9.png" target="_blank">
+                    <img src="/images/cradle/preview-9.png" />
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section section-4">
+        <h2>Our Technology Stack</h2>
+        <p>Carefully chosen agnostic technologies that can be used with any major server stack.</p>
+        <div class="banner">
+            <a href="http://php.net/archive/2018.php#id2018-03-02-1" target="_blank">
+                <img src="/images/cradle/php.png" />
+            </a>
+            <a href="https://dev.mysql.com/doc/relnotes/mysql/5.7/en/" target="_blank">
+                <img src="/images/cradle/mysql.png" />
+            </a>
+            <a href="https://www.elastic.co/" target="_blank">
+                <img src="/images/cradle/elastic.png" />
+            </a>
+            <a href="https://redis.io/" target="_blank">
+                <img src="/images/cradle/redis.png" />
+            </a>
+            <a href="https://www.rabbitmq.com/" target="_blank">
+                <img src="/images/cradle/rabbit.png" />
+            </a>
+            <a href="https://cradlephp.github.io/" target="_blank">
+                <img src="/images/cradle/logo-square.png" />
+            </a>
+            <a href="https://getbootstrap.com/" target="_blank">
+                <img src="/images/cradle/bootstrap.png" />
+            </a>
+            <a href="https://jquery.com/" target="_blank">
+                <img src="/images/cradle/jquery.png" />
+            </a>
+            <a href="https://fontawesome.com/" target="_blank">
+                <img src="/images/cradle/fontawesome.png" />
+            </a>
+            <a href="https://yarnpkg.com/en/" target="_blank">
+                <img src="/images/cradle/yarn.png" />
+            </a>
+            <a href="https://handlebarsjs.com/" target="_blank">
+                <img src="/images/cradle/handlebars.png" />
+            </a>
+            <a href="https://github.com/" target="_blank">
+                <img src="/images/cradle/github.png" />
+            </a>
+            <a href="https://travis-ci.org/" target="_blank">
+                <img src="/images/cradle/travis.png" />
+            </a>
+            <a href="https://codeception.com/" target="_blank">
+                <img src="/images/cradle/codecept.png" />
+            </a>
+            <a href="https://coveralls.io/" target="_blank">
+                <img src="/images/cradle/coveralls.png" />
+            </a>
+            <a href="https://www.docker.com/" target="_blank">
+                <img src="/images/cradle/docker.png" />
+            </a>
+            <a href="https://aws.amazon.com/s3/" target="_blank">
+                <img src="/images/cradle/s3.png" />
+            </a>
+        </div>
+        <h4>Thanks to these Open Source Projects</h4>
+        <div class="row">
+            <div class="col-sm">
+                <ul>
+                    <li>
+                        <a href="https://ace.c9.io" target="_blank">
+                            Ace Editor <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://simplemde.com/" target="_blank">
+                            Simplemde <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://momentjs.com/" target="_blank">
+                            Moment.js <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://flatpickr.js.org/" target="_blank">
+                            Flatpickr <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul>
+                    <li>
+                        <a href="http://ionden.com/a/plugins/ion.rangeSlider/en.html" target="_blank">
+                            Ion <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://codeseven.github.io/toastr/" target="_blank">
+                            Toastr <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.papaparse.com/" target="_blank">
+                            Papa Parse <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/cblanquera/doon" target="_blank">
+                            Doon <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul>
+                    <li>
+                        <a href="http://wysihtml.com/" target="_blank">
+                            WYSIHTML <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/cblanquera/acquire" target="_blank">
+                            Acquire <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            Storm <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            Ace Editor <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-5">
+        <h2>Um, what are you waiting for?</h2>
+        <center><a class="btn btn-primary" href="/auth/login">Demo Now</a></center>
+    </section>
+{{/request}}

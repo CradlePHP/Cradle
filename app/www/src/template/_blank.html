@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="{{page.class}}">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{page.title}}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {{#each page.meta}}
+        <meta name="{{@key}}" content="{{this}}" />
+        {{/each}}
+
+        <link rel="shortcut icon" href="{{settings 'cdn'}}/favicon.ico" type="image/x-icon">
+
+        <link rel="icon" type="image/png" href="{{settings 'cdn'}}/favicon.png" />
+		<link rel="icon" type="image/gif" href="{{settings 'cdn'}}/favicon.gif" />
+        <link rel="icon" type="image/x-icon" href="{{settings 'cdn'}}/favicon.ico" />
+
+        <link href="{{settings 'cdn'}}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{settings 'cdn'}}/components/fontawesome5-webfont/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{settings 'cdn'}}/components/open-sans-fontface/open-sans.css" rel="stylesheet" type="text/css" />
+        <link href="{{settings 'cdn'}}/styles/www.css" rel="stylesheet" type="text/css" />
+
+        <script src="{{settings 'cdn'}}/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="{{settings 'cdn'}}/components/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="{{settings 'cdn'}}/components/yarn-acquire/acquire.js" type="text/javascript"></script>
+        <script src="{{settings 'cdn'}}/scripts/www.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div class="container pad-vertical">
+            {{{content}}}
+        </div>
+        {{#if page.flash}}
+            <div id="toast-container" class="toast-bottom-right" data-do="notify" data-timeout="10000">
+                <div class="toast toast-{{page.flash.type}}" aria-live="polite">
+                    <div class="toast-title">{{capital page.flash.type}}</div>
+                    <div class="toast-message">
+                        {{page.flash.message}}
+                        {{#if page.flash.list}}
+                            <ul>
+                                {{#each page.flash.list}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </body>
+</html>

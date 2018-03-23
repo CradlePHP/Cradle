@@ -1,0 +1,270 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/admin">
+                <i class="fas fa-home"></i> Admin
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <i class="fas fa-columns"></i> Templates
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <i class="fas fa-user"></i> Users Search Example
+        </li>
+    </ol>
+</nav>
+
+<div class="main-padding">
+    <h3 class="main-title"><i class="fa fa-user"></i> User Search Example</h3>
+
+    <div class="box search-filters">
+        <div class="box-head box-default">
+            <h3 class="box-title">Filters</h3>
+        </div>
+        <form method="get">
+            <div class="box-body box-padding">
+                    <div class="form-group">
+                        <label for="q">Search</label>
+                        <input class="form-control" name="q" placeholder="Enter Search Terms" type="search" />
+                    </div>
+
+                    <div class="form-group">
+                        <a
+                            data-do="search-filter-toggle"
+                            data-on="click"
+                            data-toggle="collapse"
+                            data-target="#filter-options"
+                        >
+                            <span>more</span> <i class="fas fa-caret-down"></i>
+                        </a>
+                    </div>
+
+                    <div id="filter-options" class="collapse">
+                        <div class="form-group">
+                            <label for="filter[user_name]">User Name</label>
+                            <input class="form-control" name="filter[user_name]" placeholder="Enter User Name" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="filter[user_type]">Type</label>
+                            <select class="form-control">
+                                <option value="">None</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <label>Created Date Range</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="span[user_created][0]" type="date" />
+                                <label for="span[user_created][0]">Start Date</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="span[user_created][1]" type="date" />
+                                <label for="span[user_created][1]">End Date</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="save">Save Filters</label>
+                            <input class="form-control" name="save" placeholder="Enter Filter Name" type="text" />
+                        </div>
+                    </div>
+
+            </div>
+            <div class="box-foot box-light">
+                <div class="box-left">
+                    <button class="btn btn-danger" type="reset">Reset</button>
+                </div>
+                <div class="box-right">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <form method="post">
+        <div class="clearfix mb-4 search-actions">
+            <div class="float-left mr-2">
+                <div class="input-group">
+                    <select class="form-control" name="action">
+                        <option value="remove">Remove</option>
+                        <option value="remove">Restore</option>
+                    </select>
+                    <button class="btn btn-secondary">Apply</button>
+                </div>
+            </div>
+            <div class="btn-group" role="group" aria-label="...">
+                <a class="btn btn-primary" href="?filter[active]=1">
+                    Active
+                </a>
+                <a class="btn btn-danger" href="?filter[active]=0">
+                    Inactive
+                </a>
+            </div>
+
+            <div class="float-right">
+                <a class="btn btn-pink" href="#">
+                    <i class="fas fa-upload"></i> Import
+                </a>
+                <a class="btn btn-purple" href="#">
+                    <i class="fas fa-download"></i> Export
+                </a>
+                <a class="btn btn-success" href="#">
+                    <i class="fas fa-plus"></i> Create User
+                </a>
+            </div>
+        </div>
+
+        <div class="table-overflow">
+            <table class="table table-responsive-sm table-striped table-data">
+                <thead>
+                    <tr>
+                        <th class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input
+                                    data-do="table-checkall"
+                                    type="checkbox"
+                                />
+                                <span></span>
+                            </label>
+                        </th>
+                        <th>Actions</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Date registered</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input type="checkbox" name="id[]" value="1" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="table-actions">
+                            <a class="text-info" href="/admin/system/template/update">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-danger" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>1</td>
+                        <td>Yiorgos Avraamu</td>
+                        <td>2012/01/01</td>
+                        <td>Member</td>
+                        <td>
+                        <span class="badge badge-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input name="id[]" type="checkbox" value="2" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="table-actions">
+                            <a class="text-info" href="/admin/system/template/update">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-danger" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>2</td>
+                        <td>Avram Tarasios</td>
+                        <td>2012/02/01</td>
+                        <td>Staff</td>
+                        <td>
+                        <span class="badge badge-danger">Banned</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input name="id[]" type="checkbox" value="3" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="table-actions">
+                            <a class="text-info" href="/admin/system/template/update">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-danger" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>3</td>
+                        <td>Quintin Ed</td>
+                        <td>2012/02/01</td>
+                        <td>Admin</td>
+                        <td>
+                        <span class="badge badge-secondary">Inactive</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input name="id[]" type="checkbox" value="4" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="table-actions">
+                            <a class="text-info" href="/admin/system/template/update">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-danger" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>4</td>
+                        <td>Enéas Kwadwo</td>
+                        <td>2012/03/01</td>
+                        <td>Member</td>
+                        <td>
+                        <span class="badge badge-warning">Pending</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-bulk-checkbox">
+                            <label class="checkbox checkbox-1">
+                                <input name="id[]" type="checkbox" value="5" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="table-actions">
+                            <a class="text-info" href="/admin/system/template/update">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="text-danger" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>5</td>
+                        <td>Agapetus Tadeáš</td>
+                        <td>2012/01/21</td>
+                        <td>Staff</td>
+                        <td>
+                        <span class="badge badge-success">Active</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+        <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+<li class="config-builder-item">
+    {{> configuration_input}}
+
+    <ol class="config-builder-list">
+        {{#each children}} 
+            {{{partial 'configuration_item' this}}}
+        {{/each}}
+    </ol>
+</li>

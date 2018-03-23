@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  web:
+    volumes:
+      - "${WEB_SOURCE_DIR}:/var/www/html"
+
+  composer:
+    volumes:
+      - "${COMPOSER_HOME_DIR}:/composer"
