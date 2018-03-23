@@ -16,10 +16,10 @@
                 </a>
                 <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
                     {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
+                    {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/template'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/docs'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/configuration'}} show{{/nav_match~}}
                 ">
                     <ul class="nav flex-column ml-4">
                         <li class="nav-item{{~#nav_match '/admin/system/schema'}} active{{/nav_match~}}">
@@ -79,8 +79,8 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item{{~#nav_match '/admin/system/configuration'}} active{{/nav_match~}}">
-                            <a class="nav-link" href="/admin/system/configuration">
+                        <li class="nav-item{{~#nav_match '/admin/configuration'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/configuration">
                                 <i class="fas fa-wrench"></i>
                                 <span class="nav-title">
                                     <span class="nav-text">Configuration</span>
