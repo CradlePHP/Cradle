@@ -17,9 +17,8 @@
                 <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
                     {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
+                    {{~#nav_match '/admin/template'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/template'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/system/docs'}} show{{/nav_match~}}
                 ">
                     <ul class="nav flex-column ml-4">
                         <li class="nav-item{{~#nav_match '/admin/system/schema'}} active{{/nav_match~}}">
@@ -49,27 +48,27 @@
                                 </span>
                             </a>
                             <div id="system-template-nav" class="collapse nav-sub nav-sub-2
-                                {{~#nav_match '/admin/system/template'}} show{{/nav_match~}}
+                                {{~#nav_match '/admin/template'}} show{{/nav_match~}}
                             ">
                                 <ul class="nav flex-column ml-4">
-                                    <li class="nav-item{{~#nav_match '/admin/system/template/ui'}} active{{/nav_match~}}">
-                                        <a class="nav-link" href="/admin/system/template/ui">
+                                    <li class="nav-item{{~#nav_match '/admin/template/ui'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/ui">
                                             <i class="fas fa-puzzle-piece"></i>
                                             <span class="nav-title">
                                                 <span class="nav-text">UI</span>
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item{{~#nav_match '/admin/system/template/search'}} active{{/nav_match~}}">
-                                        <a class="nav-link" href="/admin/system/template/search">
+                                    <li class="nav-item{{~#nav_match '/admin/template/search'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/search">
                                             <i class="fas fa-search"></i>
                                             <span class="nav-title">
                                                 <span class="nav-text">Search</span>
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item{{~#nav_match '/admin/system/template/form'}} active{{/nav_match~}}">
-                                        <a class="nav-link" href="/admin/system/template/form">
+                                    <li class="nav-item{{~#nav_match '/admin/template/form'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/form">
                                             <i class="fas fa-sliders-h"></i>
                                             <span class="nav-title">
                                                 <span class="nav-text">Form</span>
@@ -84,14 +83,6 @@
                                 <i class="fas fa-wrench"></i>
                                 <span class="nav-title">
                                     <span class="nav-text">Configuration</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item{{~#nav_match '/admin/system/docs'}} active{{/nav_match~}}">
-                            <a class="nav-link" href="/admin/system/docs">
-                                <i class="fas fa-book"></i>
-                                <span class="nav-title">
-                                    <span class="nav-text">Docs</span>
                                 </span>
                             </a>
                         </li>
