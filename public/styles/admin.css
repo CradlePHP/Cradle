@@ -1455,6 +1455,10 @@ body.dragging, body.dragging * {
     margin: -14px 0px -10px;
 }
 
+.head .nav-notifications .dropdown-menu {
+    left: -80px;
+}
+
 .head .nav-notifications .dropdown-item {
     padding: 10px 20px;
 }
