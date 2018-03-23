@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c6287c6236e60114d22b3198b0df800",
+    "content-hash": "4d0e67112fba8fadb8d86539011d9816",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -432,16 +432,16 @@
         },
         {
             "name": "cradlephp/cradle-auth",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "1447f1bf3e88183348a5fa5fc17977d1506ebd42"
+                "reference": "2d68b3ee27135eb163e3013bc6b6be08fe62cf33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/1447f1bf3e88183348a5fa5fc17977d1506ebd42",
-                "reference": "1447f1bf3e88183348a5fa5fc17977d1506ebd42",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/2d68b3ee27135eb163e3013bc6b6be08fe62cf33",
+                "reference": "2d68b3ee27135eb163e3013bc6b6be08fe62cf33",
                 "shasum": ""
             },
             "require": {
@@ -473,7 +473,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-23T05:52:01+00:00"
+            "time": "2018-03-23T11:54:54+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",
@@ -599,6 +599,51 @@
                 "cradlephp"
             ],
             "time": "2018-03-22T12:15:21+00:00"
+        },
+        {
+            "name": "cradlephp/cradle-role",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/cradle-role.git",
+                "reference": "985e2de93bc97915b857ec58250300d0671cef1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/985e2de93bc97915b857ec58250300d0671cef1f",
+                "reference": "985e2de93bc97915b857ec58250300d0671cef1f",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/cradle-system": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.2",
+                "satooshi/php-coveralls": "2.0.0",
+                "squizlabs/php_codesniffer": "3.2.3"
+            },
+            "type": "cradle-package",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\Package\\Role\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Role Schema for CradlePHP",
+            "keywords": [
+                "cradle",
+                "cradlephp"
+            ],
+            "time": "2018-03-23T12:15:51+00:00"
         },
         {
             "name": "cradlephp/cradle-system",

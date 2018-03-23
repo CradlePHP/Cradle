@@ -29,7 +29,8 @@
         "predis/predis": "1.1.1",
         "aws/aws-sdk-php": "3.19.30",
         "swiftmailer/swiftmailer": "5.4.3",
-        "jakoch/phantomjs-installer": "2.1.1-p07"
+        "jakoch/phantomjs-installer": "2.1.1-p07",
+        "cradlephp/cradle-role": "0.0.*"
     },
     "autoload": {
         "psr-4": {
