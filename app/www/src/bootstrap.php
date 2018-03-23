@@ -11,12 +11,10 @@ return function ($request, $response) {
      * @param Throwable $error
      */
     $this->error(function ($request, $response, $error) {
-        // return;
         //if this error has already been handled
         if ($response->hasContent()) {
-            return;
+            //return;
         }
-
         //if it was a call for an actual file
         $path = $request->getPath('string');
         if (preg_match('/\.[a-zA-Z0-9]{1,4}$/', $path)) {
@@ -34,7 +32,7 @@ return function ($request, $response) {
                 ->setPage('class', $class)
                 ->setContent($body);
 
-            $this->trigger('render-www-blank', $request, $response);
+            $this->trigger('www-render-blank', $request, $response);
 
             return true;
         }
@@ -51,7 +49,7 @@ return function ($request, $response) {
                 ->setPage('class', $class)
                 ->setContent($body);
 
-            $this->trigger('render-www-blank', $request, $response);
+            $this->trigger('www-render-blank', $request, $response);
 
             if (!isset($config['error_email'])
                 || $config['error_email'] === '<EMAIL ADDRESS>'
@@ -88,7 +86,7 @@ return function ($request, $response) {
             );
 
             //send mail
-            $message = new Swift_Message('Salaaap - Error');
+            $message = new Swift_Message('Cradle - Error');
             $message->setFrom($from);
             $message->setTo($to);
             $message->addPart($body, 'text/plain');

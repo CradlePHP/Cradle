@@ -201,7 +201,13 @@ jQuery(function($) {
                                     }
 
                                     if (response.error) {
-                                        $.notify(response.message, 'danger');
+                                        var message = response.message;
+
+                                        response.errors.forEach(function(error) {
+                                            message += '<br />' + error;
+                                        });
+
+                                        $.notify(message, 'danger');
                                     } else {
                                         if (typeof complete === 'undefined') {
                                             complete = response.message;
