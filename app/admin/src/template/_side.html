@@ -14,9 +14,9 @@
         </a>
         <div id="admin-nav" class="collapse nav-sub nav-sub-1
             {{~#nav_match '/admin/system/model/auth/search'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/history/search'}} show{{/nav_match~}}
             {{~#nav_match '/admin/profile/search'}} show{{/nav_match~}}
             {{~#nav_match '/admin/role/search'}} show{{/nav_match~}}
+            {{~#nav_match '/admin/access/search'}} show{{/nav_match~}}
         ">
             <ul class="nav flex-column ml-4">
                 <li class="nav-item{{~#nav_match '/admin/system/model/auth/search'}} active{{/nav_match~}}">
@@ -48,14 +48,6 @@
                         <i class="fas fa-unlock"></i>
                         <span class="nav-title">
                             <span class="nav-text">Access</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/history/search'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/history/search">
-                        <i class="fas fa-history"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">History</span>
                         </span>
                     </a>
                 </li>
