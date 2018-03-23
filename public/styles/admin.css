@@ -1390,6 +1390,64 @@ body.dragging, body.dragging * {
     z-index: 1000;
 }
 
+/* UI - Config Builder
+------------------------------*/
+.config-builder {
+    margin-top: 10px;
+}
+
+.config-builder > .btn {
+    margin-bottom: 10px;
+}
+
+.config-builder-list {
+    list-style: none;
+    padding: 0;
+}
+
+.config-builder-list .config-builder-list {
+    padding-left: 36px;
+}
+
+.config-builder-item {
+    width: 100%;
+}
+
+.config-builder-input {
+    margin-bottom: 10px;
+}
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.config-builder .config-builder-item.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+.config-builder li.placeholder {
+    height:0;
+    padding:0;
+    position: relative;
+    width: 100%;
+}
+
+.config-builder li.placeholder:before {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #DF0000;
+    content: " ";
+    height: 0;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    top:-15px;
+    width: 0;
+    z-index: 1000;
+}
+
 /* Head
 ------------------------------*/
 

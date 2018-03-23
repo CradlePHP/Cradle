@@ -22,6 +22,11 @@ $this->on('admin-menu-count', function ($request, $response) {
     // get navigation
     $navigation = $request->getStage('navigation');
 
+    // check if navigation is an array
+    if (!is_array($navigation)) {
+        $navigation = [];
+    }
+
     // get the schema name
     $schema = $this->package('global')->config('services', 'sql-main')['name'];
 

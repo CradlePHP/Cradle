@@ -1770,7 +1770,155 @@ jQuery(function($) {
      * Admin Configuration
      */
     (function() {
-        $(window).on('configuration-select-change', function(e, target) {
+        $(window).on('config-builder-init', function(e, target) {
+            var itemTemplate =
+                '<li class="config-builder-item" data-level="{LEVEL}">'
+                    + '<div class="config-builder-input input-group">'
+                        + '<div class="input-group-prepend">'
+                            + '<button class="config-builder-handle btn btn-light" type="button">'
+                                + '<i class="fas fa-arrows-alt fa-fw"></i>'
+                            + '</button>'
+                        + '</div>'
+                        + '<input '
+                            + 'class="form-control" '
+                            + 'data-name="key" '
+                            + 'placeholder="Config Key" '
+                            + 'type="text" '
+                        + '/>'
+                        + '<input '
+                            + 'class="form-control" '
+                            + 'data-name="value" '
+                            + 'placeholder="Config Value" '
+                            + 'type="text" '
+                        + '/>'
+                        + '<div class="input-group-append">'
+                            + '{ACTION_ADD}'
+                            + '<button class="btn btn-danger config-builder-action-remove" type="button">'
+                                + '<i class="fas fa-times"></i>'
+                            + '</button>'
+                        + '</div>'
+                    + '</div>'
+                    + '<ol class="config-builder-list"></ol>'
+                + '</li>';
+
+            var addTemplate =
+                '<button class="btn btn-success config-builder-action-add" type="button">'
+                    + '<i class="fas fa-plus"></i>'
+                + '</button>';
+
+            var depth = $(target).attr('data-depth') || 9;
+            var message = $(target).attr('data-error') || 'Some items were empty';
+
+            var reindex = function(list, level, path) {
+                path = path || 'item';
+                path += '[{INDEX}]';
+                $(list).children('li.config-builder-item').each(function(i) {
+                    var newPath = path.replace('{INDEX}', i);
+                    $('div.config-builder-input:first', this).find('input').each(function() {
+                        var name = $(this).attr('data-name');
+                        if(!name.length) {
+                            return;
+                        }
+
+                        $(this).attr('name', newPath + '[' + name + ']');
+                    });
+
+                    reindex($('ol.config-builder-list:first', this), level + 1, newPath + '[children]');
+                });
+            };
+
+            var listen = function(item, level) {
+                //by default level 1
+                level = level || 1;
+                item = $(item);
+
+                //on button add click
+                $('button.config-builder-action-add:first', item).click(function() {
+                    //do we need the add action?
+                    var add = '';
+                    if(level < depth) {
+                        add = addTemplate;
+                    }
+
+                    //make the template
+                    var newItem = $(
+                        itemTemplate
+                            .replace('{LEVEL}', level)
+                            .replace('{ACTION_ADD}', add)
+                    ).doon();
+
+                    //append the template
+                    $('ol.config-builder-list:first', item).append(newItem);
+
+                    //reindex the names
+                    reindex($('ol.config-builder-list:first', target), level);
+
+                    //listen to the item
+                    listen(newItem, level + 1);
+                });
+
+                //on button remove click
+                $('button.config-builder-action-remove:first', item).click(function() {
+                    $(this).closest('li.config-builder-item').remove();
+
+                    //reindex the names
+                    reindex($('ol.config-builder-list:first', target), level);
+                });
+
+                return item;
+            };
+
+            var checkForm = function(e) {
+                var errors = false;
+                $('input[data-name="label"]', target).each(function() {
+                    if(!$(this).val().trim().length) {
+                        $(this).parent().addClass('has-error');
+                        errors = true;
+                    }
+                });
+
+                $('input[data-name="path"]', target).each(function() {
+                    if(!$(this).val().trim().length) {
+                        $(this).parent().addClass('has-error');
+                        errors = true;
+                    }
+                });
+
+                if(errors) {
+                    $('span.help-text', target).html(message);
+                    e.preventDefault();
+                    return false;
+                }
+            };
+
+            //listen to the root
+            listen(target)
+                .submit(checkForm)
+                //find all the current elements
+                .find('li.config-builder-item')
+                .each(function() {
+                    listen(this).doon();
+                });
+
+            $.require('components/jquery-sortable/source/js/jquery-sortable-min.js', function() {
+                var root = $('ol.config-builder-list:first');
+
+                root.sortable({
+                    onDrop: function ($item, container, _super, event) {
+                        $item.removeClass(container.group.options.draggedClass).removeAttr('style');
+                        $('body').removeClass(container.group.options.bodyClass);
+
+                        setTimeout(function() {
+                            reindex(root, 1);
+                        }, 10);
+                    }
+                });
+
+                reindex(root, 1);
+            });
+        });
+        
+        $(window).on('config-select-change', function(e, target) {
             target = $(target);
 
             window.location.search = '?type=' + target.val();
