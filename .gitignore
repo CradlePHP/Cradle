@@ -2,15 +2,14 @@ composer.phar
 /vendor/
 /node_modules/
 /bin/
-config/schema/
-config/schema/*
 config/deploy.php
 config/packages.php
 config/services.php
 config/settings.php
 config/test.php
 config/version.php
-config/admin/
+config/schema/*.php
+config/admin/*.php
 public/components
 public/upload
 .DS_Store
