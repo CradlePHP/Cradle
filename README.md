@@ -34,7 +34,7 @@ On top of form submissions, we need to also consider field validation and final 
 
 [![Database Translations](https://github.com/CradlePHP/oms/blob/master/public/images/cradle/preview-10.png?raw=true)](https://github.com/CradlePHP/oms/blob/master/public/images/cradle/full-10.png?raw=true)
 
-On top of form submissions, we need to also consider field validation and final output formats. Cradle supports any kind of validation (required, empty, less, greater, regexp, etc.) and output formats (capital, lower, date, relative, link, email, image, formulas, etc.). Activate searchable, filter and sortable features per field and it will be dynamically rendered in your admin.
+We compared against many popular CMS libraries to determine a proper database structure and concluded that none fit what we wanted in terms of raw flexibility. Our fields translates into proper SQL-3NF and ElasticSearch schemas without any fuss. You can create, update, sort fields even after creating an object. Just turn on Redis to take advantage of data caching and RabbitMQ to take advantage of queues.
 
 ### Dynamic Search Pages
 

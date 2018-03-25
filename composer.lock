@@ -432,20 +432,20 @@
         },
         {
             "name": "cradlephp/cradle-auth",
-            "version": "0.0.7",
+            "version": "0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "2d68b3ee27135eb163e3013bc6b6be08fe62cf33"
+                "reference": "0db4452d88c17a6ba15df0b8c648aa9f033e8aa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/2d68b3ee27135eb163e3013bc6b6be08fe62cf33",
-                "reference": "2d68b3ee27135eb163e3013bc6b6be08fe62cf33",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/0db4452d88c17a6ba15df0b8c648aa9f033e8aa0",
+                "reference": "0db4452d88c17a6ba15df0b8c648aa9f033e8aa0",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-system": "1.*"
+                "cradlephp/cradle-profile": "0.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.0.2",
@@ -473,7 +473,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-23T11:54:54+00:00"
+            "time": "2018-03-25T04:05:19+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",
@@ -481,12 +481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "85efdc9636f79c347289605aeaec05e8b12dfc2b"
+                "reference": "88c39a30031508709834573fc114919803cbb905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/85efdc9636f79c347289605aeaec05e8b12dfc2b",
-                "reference": "85efdc9636f79c347289605aeaec05e8b12dfc2b",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/88c39a30031508709834573fc114919803cbb905",
+                "reference": "88c39a30031508709834573fc114919803cbb905",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-22T14:37:57+00:00"
+            "time": "2018-03-25T04:55:08+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
@@ -602,20 +602,20 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.0.3",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "42e397245060ee79575508b200c1501a8181b184"
+                "reference": "6a262420b3c592bc42ef07a26ef26d5c1300e129"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/42e397245060ee79575508b200c1501a8181b184",
-                "reference": "42e397245060ee79575508b200c1501a8181b184",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/6a262420b3c592bc42ef07a26ef26d5c1300e129",
+                "reference": "6a262420b3c592bc42ef07a26ef26d5c1300e129",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-system": "1.*"
+                "cradlephp/cradle-auth": "0.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.0.2",
@@ -643,7 +643,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-23T12:20:35+00:00"
+            "time": "2018-03-25T04:12:18+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
@@ -959,12 +959,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "0940c910fd14a68bd24a8b7c4a5528415a479c42"
+                "reference": "136531aa4e42f9b1971a47fb0faf60da00d2fefa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/0940c910fd14a68bd24a8b7c4a5528415a479c42",
-                "reference": "0940c910fd14a68bd24a8b7c4a5528415a479c42",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/136531aa4e42f9b1971a47fb0faf60da00d2fefa",
+                "reference": "136531aa4e42f9b1971a47fb0faf60da00d2fefa",
                 "shasum": ""
             },
             "require": {
@@ -1002,7 +1002,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2018-02-28T07:24:33+00:00"
+            "time": "2018-03-25T01:26:01+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
