@@ -1,6 +1,6 @@
 <?php //-->
 return [
-    'admin' => '/admin',
+    'home' => '/',
     'debug_mode' => E_ALL,
     'environment' => 'dev',
     'error_email' => '<EMAIL ADDRESS>',
