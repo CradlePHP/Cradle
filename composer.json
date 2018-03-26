@@ -22,7 +22,7 @@
         "cradlephp/storm": "~1.0.1",
         "cradlephp/cradle-developer": "1.*",
         "cradlephp/cradle-system": "1.*",
-        "cradlephp/cradle-auth": "0.0.*",
+        "cradlephp/cradle-auth": "0.1.*",
         "cradlephp/cradle-history": "0.0.*",
         "cradlephp/cradle-profile": "0.1.*",
         "elasticsearch/elasticsearch": "2.2.2",
