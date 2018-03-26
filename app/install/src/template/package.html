@@ -1,0 +1,146 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/admin/system/schema/search">
+                <i class="fas fa-home"></i> Admin
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <i class="fas fa-plug"></i> {{title}}
+        </li>
+    </ol>
+</nav>
+
+<div class="main-padding">
+    {{#if filter.active}}
+        <h3 class="main-title">
+            <i class="fas fa-plug"></i> {{number total}} {{title}}
+        </h3>
+    {{else}}
+        <h3 class="main-title">
+            <i class="fas fa-plug"></i> {{number total}} Inactive {{title}}
+        </h3>
+    {{/if}}
+
+    <div class="clearfix mb-4 search-actions">
+        <div class="btn-group" role="group" aria-label="...">
+            <a class="btn btn-primary" href="?filter[active]=1">
+                Active
+            </a>
+            <a class="btn btn-danger" href="?filter[active]=0">
+                Inactive
+            </a>
+        </div>
+    </div>
+
+    <div class="box search-filters">
+        <div class="box-head box-default">
+            <h3 class="box-title">Filters</h3>
+        </div>
+        <form method="get">
+            <div class="box-body box-padding">
+                <div class="form-group">
+                    <label for="q">Search</label>
+                    <input
+                        class="form-control"
+                        name="q"
+                        placeholder="Search Package(s) via Packagist.org"
+                        type="search"
+                        value="{{q}}"
+                    />
+                </div>
+            </div>
+            <div class="box-foot box-light">
+                <div class="box-left">
+                    <button class="btn btn-danger" type="reset">Reset</button>
+                </div>
+                <div class="box-right">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <form method="post">
+        <div class="table-overflow">
+        {{#if rows}}
+            <!-- START: TABLE -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each rows}}
+                        <tr>
+                            <td>
+                                <a class="text-danger" href="#" title="Disable Package">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                                <a class="text-warning" href="#" title="Remove Package">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                {{#if active}}
+                                    {{#if installable}}
+                                        {{#if version}}
+                                            <a href="#" title="Update Package">
+                                                <i class="fas fa-arrow-up"></i>
+                                            </a>
+                                        {{else}}
+                                            <a href="#" title="Install Package">
+                                                <i class="fas fa-arrow-down"></i>
+                                            </a>
+                                        {{/if}}
+                                    {{else}}
+                                        
+                                    {{/if}}
+                                {{/if}}
+                            </td>
+                            <td>
+                                <div>
+                                    <strong>{{name}}</strong>
+                                </div>
+
+                                <em>
+                                    {{#if description}}
+                                        {{description}}           
+                                    {{else}}
+                                        No Description
+                                    {{/if}}
+                                </em>
+                            </td>
+                            <td>
+                                {{#if version}}
+                                    {{version}}
+                                {{else}}
+                                    Not Available
+                                {{/if}}
+                            </td>
+                            <td>
+                                <strong
+                                    {{#when type '===' 'root'}}
+                                        class="text-danger"
+                                    {{/when}}
+
+                                    {{#when type '===' 'vendor'}}
+                                        class="text-success"
+                                    {{/when}}
+                                >{{type}}-package</strong>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <!-- END: TABLE -->
+        {{else}}
+            <!-- START: NO RESULTS -->
+            <div class="well no-results">No Results Found</div>
+            <!-- END: NO RESULTS -->
+        {{/if}}
+        </table>
+    </form>
+</div>
