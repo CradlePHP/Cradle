@@ -35,7 +35,7 @@
 
     <div class="box search-filters">
         <div class="box-head box-default">
-            <h3 class="box-title">Filters</h3>
+            <h3 class="box-title">Search from Packgists.org</h3>
         </div>
         <form method="get">
             <div class="box-body box-padding">
@@ -44,7 +44,7 @@
                     <input
                         class="form-control"
                         name="q"
-                        placeholder="Search Package(s) via Packagist.org"
+                        placeholder="Enter Package Name"
                         type="search"
                         value="{{q}}"
                     />
@@ -121,7 +121,7 @@
                                 {{/if}}
                             </td>
                             <td>
-                                <strong
+                                <span
                                     {{#when type '===' 'root'}}
                                         class="text-danger"
                                     {{/when}}
@@ -129,7 +129,7 @@
                                     {{#when type '===' 'vendor'}}
                                         class="text-success"
                                     {{/when}}
-                                >{{type}}-package</strong>
+                                >{{type}}-package</span>
                             </td>
                         </tr>
                     {{/each}}
