@@ -1,0 +1,109 @@
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/system/schema/search">
+                    <i class="fas fa-home"></i> Admin
+                </a>
+            </li>
+            <li class="breadcrumb-item active">
+                <i class="fas fa-plug"></i> Packages
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-search"></i> Packagist Search
+            </li>
+        </ol>
+    </nav>
+    
+    <div class="main-padding">
+        <h3 class="main-title">
+            {{#if total}}
+            <i class="fas fa-search"></i> {{total}} Packages Found - {{title}}
+            {{else}}
+            <i class="fas fa-search"></i> {{title}}
+            {{/if}}
+        </h3>
+    
+        <div class="clearfix mb-4 search-actions">
+            <form method="get">
+                <div class="form-group">
+                    <label for="q">Search for Packages</label>
+                    <input
+                        class="form-control"
+                        name="q"
+                        placeholder="Enter a Keyword"
+                        type="search"
+                        value="{{q}}"
+                    />
+                </div>
+            </form>
+        </div>
+    
+        <div class="table-overflow">
+            {{#if rows}}
+                <!-- START: TABLE -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Actions</th>
+                            <th>Name</th>
+                            <th>URL</th>
+                            <th>Repository</th>
+                            <th>Downloads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each rows}}
+                            <tr>
+                                <td>
+                                    {{#if installed}}
+                                        {{#if active}}
+                                        <a class="text-info" href="/admin/package/update/{{key}}">
+                                            <i class="fas fa-arrow-circle-up"></i>
+                                        </a>
+                                        {{else}}
+                                        <a class="text-success" href="/admin/package/enable/{{key}}">
+                                            <i class="fas fa-reply"></i>
+                                        </a>
+                                        {{/if}}
+                                        <a class="text-warning" href="/admin/package/remove/{{key}}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    {{else}}
+                                    <a class="text-success" href="/admin/package/install/{{key}}">
+                                        <i class="fas fa-arrow-circle-down"></i>
+                                    </a>
+                                    {{/if}}
+                                </td>
+                                <td>
+                                    <div>
+                                        <strong>{{name}}</strong>
+                                    </div>
+
+                                    <em>{{description}}</em>
+                                </td>
+                                <td>
+                                    <a href="{{url}}" target="_blank">
+                                        {{chars url 30}}...
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{repository}}" target="_blank">
+                                        {{chars repository 30}}...
+                                    </a>
+                                </td>
+                                <td>
+                                    {{downloads}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <!-- END: TABLE -->
+            {{else}}
+                <!-- START: NO RESULTS -->
+                <div class="well no-results">No Results Found</div>
+                <!-- END: NO RESULTS -->
+            {{/if}}
+        </div>
+    </div>
+    

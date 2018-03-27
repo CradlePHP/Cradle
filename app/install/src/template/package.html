@@ -23,7 +23,7 @@
     {{/if}}
 
     <div class="clearfix mb-4 search-actions">
-        <div class="btn-group" role="group" aria-label="...">
+        <div class="float-left btn-group" role="group" aria-label="...">
             <a class="btn btn-primary" href="?filter[active]=1">
                 Active
             </a>
@@ -31,38 +31,15 @@
                 Inactive
             </a>
         </div>
-    </div>
 
-    <div class="box search-filters">
-        <div class="box-head box-default">
-            <h3 class="box-title">Search from Packgists.org</h3>
+        <div class="float-right">
+            <a class="btn btn-success" href="/admin/package/packagist/search">
+                <i class="fas fa-search"></i> Search Packagist.org
+            </a>
         </div>
-        <form method="get">
-            <div class="box-body box-padding">
-                <div class="form-group">
-                    <label for="q">Search</label>
-                    <input
-                        class="form-control"
-                        name="q"
-                        placeholder="Enter Package Name"
-                        type="search"
-                        value="{{q}}"
-                    />
-                </div>
-            </div>
-            <div class="box-foot box-light">
-                <div class="box-left">
-                    <button class="btn btn-danger" type="reset">Reset</button>
-                </div>
-                <div class="box-right">
-                    <button class="btn btn-primary">Search</button>
-                </div>
-            </div>
-        </form>
     </div>
 
-    <form method="post">
-        <div class="table-overflow">
+    <div class="table-overflow">
         {{#if rows}}
             <!-- START: TABLE -->
             <table class="table table-striped">
@@ -151,6 +128,5 @@
             <div class="well no-results">No Results Found</div>
             <!-- END: NO RESULTS -->
         {{/if}}
-        </table>
-    </form>
+    </div>
 </div>

@@ -18,7 +18,7 @@ use Cradle\Framework\Package;
 $this->get('/admin/package/search', function ($request, $response) {
     //----------------------------//
     // 1. Prepare Data
-    if (!$request->hasStage()) {
+    if (!$request->hasStage('filter', 'active')) {
         $request->setStage('filter', 'active', 1);
     }
 
@@ -117,6 +117,94 @@ $this->get('/admin/package/search', function ($request, $response) {
     $class = 'page-install-package-search page-install';
     $data['title'] = $this->package('global')->translate('Packages');
     $body = $this->package('/app/install')->template('package', $data);
+
+    //set content
+    $response
+        ->setPage('title', $data['title'])
+        ->setPage('class', $class)
+        ->setContent($body);
+
+    $this->trigger('admin-render-page', $request, $response);
+});
+
+/**
+ * Render Packagists Search
+ * 
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/package/packagist/search', function ($request, $response) {
+    //----------------------------//
+    // 1. Prepare Data
+    
+    // get registered package
+    $registered = $this->package('global')->config('packages');
+
+    // package results
+    $results = [];
+    // package total
+    $total = 0;
+
+    // if we have query
+    if ($request->hasStage('q')) {
+        // set action
+        $request->setStage(0, 'search');
+        // set query
+        $request->setStage(1, $request->getStage('q'));
+
+        // we only need results
+        $request->setStage('results', true);
+
+        // trigger package event
+        $this->trigger('package', $request, $response);
+
+        // get results
+        $results = $response->get('json', 'results', 'packages');
+        // get total
+        $total = $response->get('json', 'results', 'total');
+
+        // if we have results
+        if (is_array($results)) {
+            // on each packages
+            foreach($results as $key => $package) {
+                // get package name
+                $name = $package['name'];
+
+                // format the unique key
+                $results[$key]['key'] = str_replace('/', ':', $name);
+
+                // inactive package?
+                if (isset($registered[$name]['active'])
+                && $registered[$name]['active'] == true) {
+                    $results[$key]['active'] = true;
+                }
+
+                // installed?
+                if (isset($registered[$name])) {
+                    $results[$key]['installed'] = true;
+                }
+            }
+        }
+    }
+
+    // set data
+    $data = [ 'rows' => $results, 'total' => $total ];
+
+    // stage data
+    $stage = [];
+
+    if ($request->getStage()) {
+        $stage = $request->getStage();
+    }
+
+    // merge stage
+    $data = array_merge($data, $stage);
+
+    //----------------------------//
+    // 2. Render Template
+    $class = 'page-install-package-packagist-search page-install';
+    $data['title'] = $this->package('global')->translate('Packagist Search');
+    $body = $this->package('/app/install')->template('packagist', $data);
 
     //set content
     $response
