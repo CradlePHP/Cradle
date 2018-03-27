@@ -67,8 +67,7 @@
         <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
             {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
             {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/template'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/package'}} show{{/nav_match~}}            
+            {{~#nav_match '/admin/template'}} show{{/nav_match~}}        
             {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
         ">
             <ul class="nav flex-column ml-4">
@@ -77,14 +76,6 @@
                         <i class="fas fa-database"></i>
                         <span class="nav-title">
                             <span class="nav-text">Schemas</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/package'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/package/search">
-                        <i class="fas fa-plug"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Packages</span>
                         </span>
                     </a>
                 </li>
