@@ -78,12 +78,22 @@
                     {{#each rows}}
                         <tr>
                             <td>
-                                <a class="text-danger" href="#" title="Disable Package">
+                                {{#if active}}
+                                <a class="text-danger" href="/admin/package/disable/{{key}}?type={{type}}" title="Disable Package">
                                     <i class="fas fa-times"></i>
                                 </a>
+                                {{else}}
+                                <a class="text-success" href="/admin/package/enable/{{key}}?type={{type}}" title="Enable Package">
+                                    <i class="fas fa-reply"></i>
+                                </a>
+                                {{/if}}
+
+                                {{#when type '===' 'vendor'}}
                                 <a class="text-warning" href="#" title="Remove Package">
                                     <i class="fas fa-trash"></i>
                                 </a>
+                                {{/when}}
+
                                 {{#if active}}
                                     {{#if installable}}
                                         {{#if version}}
@@ -102,7 +112,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <strong>{{name}}</strong>
+                                    <strong class="text-info">{{name}}</strong>
                                 </div>
 
                                 <em>

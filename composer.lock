@@ -140,7 +140,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-12-17 13:07:26"
+            "time": "2017-12-17T13:07:26+00:00"
         },
         {
             "name": "composer/composer",
@@ -217,7 +217,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2018-03-05 22:34:22"
+            "time": "2018-03-05T22:34:22+00:00"
         },
         {
             "name": "composer/semver",
@@ -279,7 +279,7 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2017-11-06 09:05:54"
+            "time": "2017-11-06T09:05:54+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -340,7 +340,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-01-31 13:17:27"
+            "time": "2018-01-31T13:17:27+00:00"
         },
         {
             "name": "cradlephp/components",
@@ -389,7 +389,7 @@
                 "php70",
                 "php71"
             ],
-            "time": "2018-03-15 12:45:01"
+            "time": "2018-03-15T12:45:01+00:00"
         },
         {
             "name": "cradlephp/composer",
@@ -428,20 +428,20 @@
                 }
             ],
             "description": "Composer and Packagist Helpers",
-            "time": "2018-03-17 17:27:55"
+            "time": "2018-03-17T17:27:55+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "34e7e9c90bada05c1838e37698ae9d4319cb7f09"
+                "reference": "b5825dbfb6b640cf6274b5ba60c56862b71e3584"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/34e7e9c90bada05c1838e37698ae9d4319cb7f09",
-                "reference": "34e7e9c90bada05c1838e37698ae9d4319cb7f09",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/b5825dbfb6b640cf6274b5ba60c56862b71e3584",
+                "reference": "b5825dbfb6b640cf6274b5ba60c56862b71e3584",
                 "shasum": ""
             },
             "require": {
@@ -473,7 +473,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-26T09:18:39+00:00"
+            "time": "2018-03-26T11:47:44+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",
@@ -518,7 +518,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-26 06:19:20"
+            "time": "2018-03-26T06:19:20+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
@@ -738,7 +738,7 @@
                 "cradlephp",
                 "framework"
             ],
-            "time": "2018-03-18 16:01:44"
+            "time": "2018-03-18T16:01:44+00:00"
         },
         {
             "name": "cradlephp/handlebars",
@@ -1002,7 +1002,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2018-03-25 01:26:01"
+            "time": "2018-03-25T01:26:01+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1111,7 +1111,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2017-01-13 20:44:38"
+            "time": "2017-01-13T20:44:38+00:00"
         },
         {
             "name": "guzzlehttp/streams",
@@ -1161,7 +1161,7 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2016-04-13 16:32:01"
+            "time": "2016-04-13T16:32:01+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -1277,7 +1277,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2018-02-14 22:26:30"
+            "time": "2018-02-14T22:26:30+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -1432,7 +1432,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -1479,7 +1479,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "react/promise",
@@ -1525,7 +1525,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-09-19 13:02:44"
+            "time": "2017-09-19T13:02:44+00:00"
         },
         {
             "name": "seld/cli-prompt",
@@ -1573,7 +1573,7 @@
                 "input",
                 "prompt"
             ],
-            "time": "2017-03-18 11:32:45"
+            "time": "2017-03-18T11:32:45+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -1666,7 +1666,7 @@
             "keywords": [
                 "phra"
             ],
-            "time": "2015-10-13 18:44:15"
+            "time": "2015-10-13T18:44:15+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1787,7 +1787,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-20 14:41:21"
+            "time": "2018-03-20T14:41:21+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1836,7 +1836,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-22 11:40:25"
+            "time": "2018-02-22T11:40:25+00:00"
         },
         {
             "name": "symfony/finder",
@@ -1885,7 +1885,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-05 18:28:38"
+            "time": "2018-03-05T18:28:38+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1944,7 +1944,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30 19:27:44"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/process",
@@ -1993,7 +1993,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-22 13:45:58"
+            "time": "2018-03-22T13:45:58+00:00"
         }
     ],
     "packages-dev": [
@@ -2050,7 +2050,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2018-03-05 09:41:42"
+            "time": "2018-03-05T09:41:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2100,7 +2100,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-12-18 00:20:24"
+            "time": "2017-12-18T00:20:24+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -2155,7 +2155,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2017-04-07 07:07:10"
+            "time": "2017-04-07T07:07:10+00:00"
         },
         {
             "name": "phar-io/version",
@@ -2256,7 +2256,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2018-02-14 18:58:54"
+            "time": "2018-02-14T18:58:54+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2303,7 +2303,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2018-02-14 19:00:58"
+            "time": "2018-02-14T19:00:58+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -2348,7 +2348,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2018-02-14 18:59:20"
+            "time": "2018-02-14T18:59:20+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -2411,7 +2411,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-02-19 10:16:54"
+            "time": "2018-02-19T10:16:54+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2474,7 +2474,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-02-02 07:01:41"
+            "time": "2018-02-02T07:01:41+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2521,7 +2521,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2017-11-27 13:52:08"
+            "time": "2017-11-27T13:52:08+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -2611,7 +2611,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2018-02-01 13:07:23"
+            "time": "2018-02-01T13:07:23+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -2660,7 +2660,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-02-01 13:16:43"
+            "time": "2018-02-01T13:16:43+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -2796,7 +2796,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-02-21 12:41:00"
+            "time": "2018-02-21T12:41:00+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -2924,7 +2924,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2017-03-04 10:23:55"
+            "time": "2017-03-04T10:23:55+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -2988,7 +2988,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2018-02-01 13:46:46"
+            "time": "2018-02-01T13:46:46+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -3044,7 +3044,7 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2018-02-02 07:14:03"
+            "time": "2018-02-02T07:14:03+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -3094,7 +3094,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2018-03-21 07:21:42"
+            "time": "2018-03-21T07:21:42+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -3161,7 +3161,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-11-16 09:48:09"
+            "time": "2017-11-16T09:48:09+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -3212,7 +3212,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2017-11-16 09:49:42"
+            "time": "2017-11-16T09:49:42+00:00"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -3259,7 +3259,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2017-11-16 09:50:04"
+            "time": "2017-11-16T09:50:04+00:00"
         },
         {
             "name": "sebastian/object-reflector",
@@ -3304,7 +3304,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2018-01-07 16:00:13"
+            "time": "2018-01-07T16:00:13+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -3357,7 +3357,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2017-11-16 10:04:08"
+            "time": "2017-11-16T10:04:08+00:00"
         },
         {
             "name": "sebastian/resource-operations",
@@ -3399,7 +3399,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2016-10-03 07:43:09"
+            "time": "2016-10-03T07:43:09+00:00"
         },
         {
             "name": "sebastian/version",
@@ -3555,7 +3555,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-19 22:45:52"
+            "time": "2018-03-19T22:45:52+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -3604,7 +3604,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-19 16:51:42"
+            "time": "2018-02-19T16:51:42+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -3662,7 +3662,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-22 11:40:25"
+            "time": "2018-02-22T11:40:25+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3752,7 +3752,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2018-01-29 19:49:41"
+            "time": "2018-01-29T19:49:41+00:00"
         }
     ],
     "aliases": [],

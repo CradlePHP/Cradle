@@ -22,52 +22,54 @@ $this->get('/admin/package/search', function ($request, $response) {
         $request->setStage('filter', 'active', 1);
     }
 
-    // get the registered packages
-    $registered = $this->getPackages();
-
-    // load package config
-    $config = $this->package('global')->config('packages');
-
-    // list of reserved packages
-    $reserved = [
-        'global', 
-        '/app/admin',
-        '/app/install',
-        '/app/www',
-        '/bootstrap/packages'
-    ];
+    // load package registry
+    $registered = $this->package('global')->config('packages');
 
     // valid packages
     $packages = [];
 
-    // clean up and setup
-    foreach($registered as $key => $package) {
-        // reserved package?
-        if (in_array($key, $reserved)) {
-            // remove it
-            unset($registered[$key]);
+    // active filter
+    $active = (bool) $request->getStage('filter', 'active');
+
+    // on each registered packages
+    foreach ($registered as $key => $package) {
+        // check filter
+        if (isset($package['active'])
+        && $package['active'] != $active) {
             continue;
         }
 
-        // package detail
-        $packages[$key] = [
-            'name' => $key,
-            'type' => $package->getPackageType()
-        ];
+        // set package info
+        $packages[$key] = $package;
 
-        // get package version
-        if (isset($config[$key]['version'])) {
-            $packages[$key]['version'] = $config[$key]['version'];
+        // set package name
+        $packages[$key]['name'] = $key;
+
+        // load package space
+        try {
+            $package = $this->package($key);
+        } catch(\Exception $e) {
+            $package = $this->register($key)->package($key);
         }
 
-        // get package status
-        if (isset($config[$key]['active'])) {
-            $packages[$key]['active'] = true;
+        // if root package
+        if ($package->getPackageType() === Package::TYPE_ROOT) {
+            // set package type
+            $packages[$key]['type'] = 'root';
+
+            // set package key
+            $packages[$key]['key'] = substr(str_replace('/', ':', $key), 1);
         }
 
-        // if it's a vendor package
+        // if vendor package
         if ($package->getPackageType() === Package::TYPE_VENDOR) {
-            // try to load composer
+            // set package type
+            $packages[$key]['type'] = 'vendor';
+
+            // set package key
+            $packages[$key]['key'] = str_replace('/', ':', $key);
+
+            // get composer data
             $composer = json_decode(
                 @file_get_contents(
                     $package->getPackagePath() . '/composer.json'
@@ -75,7 +77,7 @@ $this->get('/admin/package/search', function ($request, $response) {
                 true
             );
 
-            // merge composer data
+            // merge data
             if (is_array($composer)) {
                 // do not override type
                 if (isset($composer['type'])) {
@@ -88,14 +90,13 @@ $this->get('/admin/package/search', function ($request, $response) {
 
         // clone the package object
         $cloned = new ReflectionClass($package);
-
         // get methods
         $methods = $cloned->getProperty('methods');
         // make it accessible
         $methods->setAccessible(true);
         // get the value
         $methods = $methods->getValue($package);
-
+        
         // if package is installable
         if (isset($methods['install'])) {
             // set installable
@@ -124,4 +125,98 @@ $this->get('/admin/package/search', function ($request, $response) {
         ->setContent($body);
 
     $this->trigger('admin-render-page', $request, $response);
+});
+
+/**
+ * Process Package Enable
+ * 
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/package/enable/:name', function ($request, $response) {
+    //----------------------------//
+    // 1. Prepare Data
+    if (!$request->getStage('type')) {
+        $this->package('global')->flash('Invalid Request', 'error');
+        return $this->package('global')->redirect('/admin/package/search');
+    }
+    
+    // get package name
+    $name = $request->getStage('name');
+
+    // if it's a root package
+    if ($request->getStage('type') === 'root') {
+        $name = '/' . str_replace(':', '/', $name);
+    } else {
+        $name = str_replace(':', '/', $name);
+    }
+
+    // load package config
+    $config = $this->package('global')->config('packages');
+
+    // if package is not registered
+    if (!isset($config[$name])) {
+        $this->package('global')->flash('Package does not exists', 'error');
+        return $this->package('global')->redirect('/admin/package/search');
+    }
+
+    // set active flag
+    if (isset($config[$name]['active'])) {
+        $config[$name]['active'] = true;
+    }
+
+    // update package config
+    $this->package('global')->config('packages', $config);
+
+    // redirect back
+    $this->package('global')->flash('Package has been enabled', 'success');
+    return $this->package('global')->redirect(
+        '/admin/package/search?filter[active]=0'
+    );
+});
+
+/**
+ * Process Package Disable
+ * 
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/package/disable/:name', function ($request, $response) {
+    //----------------------------//
+    // 1. Prepare Data
+    if (!$request->getStage('type')) {
+        $this->package('global')->flash('Invalid Request', 'error');
+        return $this->package('global')->redirect('/admin/package/search');
+    }
+    
+    // get package name
+    $name = $request->getStage('name');
+
+    // if it's a root package
+    if ($request->getStage('type') === 'root') {
+        $name = '/' . str_replace(':', '/', $name);
+    } else {
+        $name = str_replace(':', '/', $name);
+    }
+
+    // load package config
+    $config = $this->package('global')->config('packages');
+
+    // if package is not registered
+    if (!isset($config[$name])) {
+        $this->package('global')->flash('Package does not exists', 'error');
+        return $this->package('global')->redirect('/admin/package/search');
+    }
+
+    // set active flag
+    if (isset($config[$name]['active'])) {
+        $config[$name]['active'] = false;
+    }
+
+    // update package config
+    $this->package('global')->config('packages', $config);
+
+    // redirect back
+    $this->package('global')->flash('Package has been disabled', 'success');
+    return $this->package('global')->redirect('/admin/package/search');
 });
