@@ -26,5 +26,5 @@ return (function() {
         cradle()->register($package);
     }
 
-    return 'bootstrap/packages';
+    return '/bootstrap/packages';
 })();

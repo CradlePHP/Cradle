@@ -2,6 +2,7 @@
 
 use Cradle\Data\Registry;
 use Cradle\Module\System\Utility\File;
+use Cradle\I18n\Timezone;
 
 /* String Helpers
 ------------------------------------------------------------------------------*/
@@ -195,7 +196,7 @@ $handlebars->registerHelper('number_format_short', function ($number, $precision
         $dotzero  = '.' . str_repeat('0', $precision);
         $number_format = str_replace($dotzero, '', $number_format);
     }
-    
+
     return $number_format . $suffix;
 });
 
@@ -486,10 +487,10 @@ $handlebars->registerHelper('pager', function ($total, $range, $options) {
 ------------------------------------------------------------------------------*/
 /**
  * Returns a default value2 if value1 is empty
- * 
+ *
  * @param *scalar value
  * @param *scalar default
- * 
+ *
  * @return *scalar
  */
 $handlebars->registerHelper('or', function ($value, $default) {
