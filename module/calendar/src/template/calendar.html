@@ -1,0 +1,30 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/admin">
+                <i class="fas fa-home"></i> {{_ 'Admin'}}
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/admin/system/model/{{model}}/search">
+                <i class="{{icon}}"></i> {{package}}
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <i class="fas fa-calendar-alt"></i> {{_ 'Calendar'}}
+        </li>
+    </ol>
+</nav>
+
+<div class="main-padding">
+    <h3 class="main-title">{{title}}</h3>
+    <div
+        data-do="calendar"
+        data-model="{{model}}"
+        data-start="{{show.0}}"
+        {{#if show.1}}
+            data-end="{{show.1}}"
+        {{/if}}
+        id="calendar"
+    ></div>
+</div>

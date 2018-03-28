@@ -4,6 +4,102 @@ jQuery(function($) {
      */
     (function() {
         /**
+         * Calendar
+         */
+        $(window).on('calendar-init', function(e, target) {
+            $(target).fullCalendar({
+                defaultView: 'month',
+                height: 750,
+                header: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                eventTextColor: '#fff',
+                eventLimit: true, // allow "more" link when too many events
+                navLinks: true,
+                events: function(start, end, timezone, callback) {
+                    var model = $(target).data('model');
+                    var evntStart = $(target).data('start');
+                    var evntEnd = $(target).data('end');
+
+                    var data = {
+                        render: false,
+                        span: {}
+                    };
+
+                    data.span[evntStart] = [];
+                    data.span[evntStart].push(start.format());
+
+                    if (evntEnd) {
+                        data.span[evntEnd] = [];
+                        data.span[evntEnd].push(start.format());
+                    }
+
+                    jQuery.ajax({
+                        url: '/admin/system/model/'+model+'/search',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: data,
+                        success: function(doc) {
+                            var events = [];
+                            if(!!doc.results.rows){
+                                $.map( doc.results.rows, function(res) {
+                                    var row = {
+                                        id: res[model+'_id'],
+                                        title: res[model+'_title'],
+                                        start: res[evntStart],
+                                    }
+
+                                    if (evntEnd) {
+                                        row.end = res[evntEnd];
+                                    }
+
+                                    if (res[model+'_description']) {
+                                        row.description = res[model+'_description'];
+                                    }
+
+                                    if (res[model+'_detail']) {
+                                        row.description = res[model+'_detail'];
+                                    }
+
+                                    if (res[model+'_details']) {
+                                        row.description = res[model+'_details'];
+                                    }
+                                    events.push(row);
+                                });
+                            }
+                            callback(events);
+                        }
+                    });
+                },
+                eventClick: function(eventData, jsEvent, view) {
+                    var model = $(target).data('model');
+
+                    // on click redirect to update page
+                    window.location.href='/admin/system/model/'+model+'/update/' +
+                        eventData.id;
+                },
+                eventRender: function(eventData, $el) {
+                    var content = eventData.description + ' start: ' +
+                        eventData.start.format('LLL');
+
+                    if (eventData.end) {
+                        content += ' end: ' + eventData.end.format('LLL')
+                    }
+
+                    $el.popover({
+                        title: eventData.title,
+                        content: content,
+                        trigger: 'hover',
+                        placement: 'top',
+                        container: 'body'
+                    });
+                },
+            });
+        });
+
+        /**
          * Search filter more less toggle
          */
         $(window).on('search-filter-toggle-click', function(e, target) {
@@ -1917,7 +2013,7 @@ jQuery(function($) {
                 reindex(root, 1);
             });
         });
-        
+
         $(window).on('config-select-change', function(e, target) {
             target = $(target);
 
