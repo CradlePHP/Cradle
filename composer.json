@@ -30,7 +30,8 @@
         "aws/aws-sdk-php": "3.19.30",
         "swiftmailer/swiftmailer": "5.4.3",
         "jakoch/phantomjs-installer": "2.1.1-p07",
-        "cradlephp/cradle-role": "0.0.*"
+        "cradlephp/cradle-role": "0.0.*",
+        "erusev/parsedown": "1.7.1"
     },
     "autoload": {
         "psr-4": {
