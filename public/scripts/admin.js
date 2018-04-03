@@ -509,7 +509,7 @@ jQuery(function($) {
                 + '<input type="text" class="meta-input key" /> '
                 + '<input type="text" class="meta-input value" /> '
                 + '<input type="hidden" name="post_tags[{{@key}}]" value=""/> '
-                + '<a class="remove" href="javascript:void(0)"><i class="fa fa-times"></i></a>'
+                + '<a class="remove text-danger" href="javascript:void(0)"><i class="fa fa-times"></i></a>'
                 + '</div>';
 
 
@@ -551,12 +551,11 @@ jQuery(function($) {
             };
 
             //append meta template
-            $('.add-meta').click(function() {
-                var last = $('div.meta:last', target);
-                if(!last.length || $('input', last).val()) {
-                    target.append(metaTemplate);
-                    initTag(target);
-                }
+            $('.add-meta', target).click(function() {
+                var key = $('div.meta', target).length;
+                metaTmp = metaTemplate.replace('{{@key}}', key);
+                $('div.meta-fields', target).append(metaTmp);
+                initTag(target);
 
                 return false;
             });
@@ -565,6 +564,8 @@ jQuery(function($) {
             $('div.meta', target).each(function() {
                 initTag($(this));
             });
+
+            $('.add-meta', target).trigger('click');
         });
 
         /**
@@ -1917,7 +1918,7 @@ jQuery(function($) {
                 reindex(root, 1);
             });
         });
-        
+
         $(window).on('config-select-change', function(e, target) {
             target = $(target);
 

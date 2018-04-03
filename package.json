@@ -6,6 +6,7 @@
     "doon": "^1.0.0",
     "flatpickr": "^4.3.2",
     "fontawesome5-webfont": "^5.0.4",
+    "fullcalendar": "3.9.0",
     "google-code-prettify": "^1.0.5",
     "handlebars": "^4.0.11",
     "inputmask": "^3.3.11",
