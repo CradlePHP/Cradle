@@ -674,6 +674,21 @@ $handlebars->registerHelper('notin', function ($array, $value, $options) {
     return $options['fn']();
 });
 
+/**
+ * Determines whether the param is an array
+ *
+ * @param mixed  param
+ *
+ * @return [BLOCK]
+ */
+$handlebars->registerHelper('is_array', function ($param, $options) {
+    if (is_array($param)) {
+        return $options['fn']();
+    }
+
+    return $options['inverse']();
+});
+
 /* Template Helpers
 ------------------------------------------------------------------------------*/
 /**
