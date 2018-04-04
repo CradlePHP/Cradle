@@ -9,6 +9,6 @@ return [
     'server_timezone' => 'GMT',
     'history' => [
         'file' => true,
-        'path' => 'log/history'
+        'path' => 'log'
     ]
 ];
