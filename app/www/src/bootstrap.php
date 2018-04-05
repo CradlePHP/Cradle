@@ -13,7 +13,7 @@ return function ($request, $response) {
     $this->error(function ($request, $response, $error) {
         //if this error has already been handled
         if ($response->hasContent()) {
-            //return;
+            
         }
         //if it was a call for an actual file
         $path = $request->getPath('string');
