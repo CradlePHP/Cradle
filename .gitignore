@@ -13,4 +13,5 @@ config/admin/*.php
 config/packages/*
 public/components
 public/upload
+log/
 .DS_Store
