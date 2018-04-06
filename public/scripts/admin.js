@@ -376,7 +376,7 @@ jQuery(function($) {
                     '</div>' +
                     '<div class="field created [[hide]]">' +
                         '<i class="fa fa-calendar-times-o"></i>' +
-                        '{{_ "created"}}: [[card_created]]' +
+                        'created: [[card_created]]' +
                     '</div>' +
                 '</li>';
 
