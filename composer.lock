@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "20f8cfdd0fa390d1dfdcf742b0111798",
+    "content-hash": "ed8239beed753add581c3dd4c7b3168b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -590,7 +590,7 @@
         },
         {
             "name": "cradlephp/cradle-install",
-            "version": "dev-master",
+            "version": "0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-install.git",
@@ -3862,9 +3862,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "cradlephp/cradle-install": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

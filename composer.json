@@ -22,6 +22,7 @@
         "cradlephp/storm": "~1.0.1",
         "cradlephp/cradle-developer": "1.*",
         "cradlephp/cradle-system": "1.*",
+        "cradlephp/cradle-install": "0.*",
         "cradlephp/cradle-auth": "0.1.*",
         "cradlephp/cradle-history": "0.0.*",
         "cradlephp/cradle-profile": "0.1.*",
@@ -32,8 +33,7 @@
         "jakoch/phantomjs-installer": "2.1.1-p07",
         "cradlephp/cradle-role": "0.0.*",
         "erusev/parsedown": "1.7.1",
-        "cjzamora/cradle-article": "1.3.0",
-        "cradlephp/cradle-install": "dev-master"
+        "cjzamora/cradle-article": "1.3.0"
     },
     "autoload": {
         "psr-4": {
