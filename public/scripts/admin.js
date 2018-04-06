@@ -349,11 +349,13 @@ jQuery(function($) {
                     var stage = $(container.el).parents('.column').data('stage');
 
                     var data = {};
+                    data.id = id;
                     data[field] = stage;
-                    $.post('/system/model/'+model+'/update/'+id, data)
+                    $.post('/admin/system/model/'+model+'/pipeline', data)
                         .done(function(res) {
                             if (!res.error) {
                                 var column = field.replace(model+'_', '');
+                                column = column.charAt(0).toUpperCase() + column.slice(1);
                                 toastr.success(column + ' updated successfully!');
                             } else {
                                 toastr.success('unable to update ' + column);
