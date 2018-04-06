@@ -1945,3 +1945,62 @@ body.dragging, body.dragging * {
         width: 165px;
     }
 }
+/* meta-list
+------------------------------*/
+ul.meta-list {
+    list-style: none;
+    padding: 0;
+}
+ul.meta-list .key {
+    font-weight: 600;
+}
+
+/* Pipeline
+------------------------------*/
+.pipeline-board {
+    align-self: stretch!important;
+    display: flex;
+    min-height: 70vh;
+    padding-left: 0;
+    overflow-x: auto;
+    width: 82.33%;
+}
+.pipeline-board .column {
+    background: #f6f8fa;
+    border: 1px solid #d6d5d5;
+    border-left: 0;
+    flex-shrink: 0 !important;
+    height: 685px;
+    min-width: 250px;
+    overflow: hidden;
+}
+
+.pipeline-board .column .draggable-wrapper {
+    padding: 10px;
+}
+.pipeline-board .column .draggable-wrapper ul {
+    height: 630px;
+    overflow-y: scroll;
+    padding: 0;
+}
+.pipeline-board .column .draggable-wrapper .card {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.pipeline-board .column .draggable-wrapper .card .field {}
+.pipeline-board .column .draggable-wrapper .card .field.created {
+    font-size: 12px;
+}
+.pipeline-board .column .draggable-wrapper .dragged {
+    opacity: 0.8;
+    position: absolute;
+    z-index: 2000;
+}
+.pipeline-board .column .stage {}
+.pipeline-board .column .stage .stage-label {
+    padding: 5px 10px;
+    text-align: center;
+}
+.pipeline-board .column .stage .stage-label .stage-name {
+    font-weight: 600;
+}
