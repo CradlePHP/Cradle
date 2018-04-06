@@ -233,6 +233,258 @@ jQuery(function($) {
                 })
                 .click();
         });
+
+        $(window).on('calendar-init', function(e, target) {
+            $(target).fullCalendar({
+                defaultView: 'month',
+                height: 750,
+                header: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                eventTextColor: '#fff',
+                eventLimit: true, // allow "more" link when too many events
+                navLinks: true,
+                events: function(start, end, timezone, callback) {
+                    var model = $(target).data('model');
+                    var evntStart = $(target).data('start');
+                    var evntEnd = $(target).data('end');
+
+                    var data = {
+                        render: false,
+                        span: {}
+                    };
+
+                    data.span[evntStart] = [];
+                    data.span[evntStart].push(start.format());
+
+                    if (evntEnd) {
+                        data.span[evntEnd] = [];
+                        data.span[evntEnd].push(start.format());
+                    }
+
+                    jQuery.ajax({
+                        url: '/admin/system/model/'+model+'/search',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: data,
+                        success: function(doc) {
+                            var events = [];
+                            if(!!doc.results.rows){
+                                $.map( doc.results.rows, function(res) {
+                                    var row = {
+                                        id: res[model+'_id'],
+                                        start: res[evntStart],
+                                    }
+
+                                    if (res[model+'_name']) {
+                                        row.title = res[model+'_name'];
+                                    }
+
+                                    if (res[model+'_title']) {
+                                        row.title = res[model+'_title'];
+                                    }
+
+                                    if (res[model+'_description']) {
+                                        row.description = res[model+'_description'];
+                                    }
+
+                                    if (res[model+'_detail']) {
+                                        row.description = res[model+'_detail'];
+                                    }
+
+                                    if (res[model+'_details']) {
+                                        row.description = res[model+'_details'];
+                                    }
+                                    events.push(row);
+                                });
+                            }
+                            callback(events);
+                        }
+                    });
+                },
+                eventClick: function(eventData, jsEvent, view) {
+                    var model = $(target).data('model');
+
+                    // on click redirect to update page
+                    window.location.href='/admin/system/model/'+model+'/update/' +
+                        eventData.id;
+                },
+                eventRender: function(eventData, $el) {
+                    var content = '';
+
+                    if (eventData.description) {
+                        content += eventData.description + ' ';
+                    }
+
+                    content += 'start: ' + eventData.start.format('LLL');
+
+                    if (eventData.end) {
+                        content += ' end: ' + eventData.end.format('LLL')
+                    }
+
+                    $el.popover({
+                        title: eventData.title,
+                        content: content,
+                        trigger: 'hover',
+                        placement: 'top',
+                        container: 'body'
+                    });
+                },
+            });
+        });
+
+        $(window).on('board-init', function(e, target) {
+            var stage = $(target).data('stage');
+            var model = $(target).data('model');
+            var field = $(target).data('field');
+
+            $('.board-stage', target).sortable({
+                group: 'nav',
+                nested: false,
+                vertical: false,
+                onDrop: function(item, container, _super) {
+                    var id = $(item).data('id');
+                    var stage = $(container.el).parents('.column').data('stage');
+
+                    var data = {};
+                    data[field] = stage;
+                    $.post('/system/model/'+model+'/update/'+id, data)
+                        .done(function(res) {
+                            if (!res.error) {
+                                var column = field.replace(model+'_', '');
+                                toastr.success(column + ' updated successfully!');
+                            } else {
+                                toastr.success('unable to update ' + column);
+                            }
+                        });
+                    _super(item, container);
+                }
+            });
+
+            var populateBoard = function(start, callback) {
+                var cardTemplate = '<li class="card" data-id="[[card_id]]">' +
+                    '<div class="card-name">' +
+                        '<a href="[[card_link]]">' +
+                            '<strong>' +
+                                '<span class="name">' +
+                                    '[[card_name]]' +
+                                '</span>' +
+                            '</strong>' +
+                        '</a>' +
+                    '</div>' +
+                    '<div class="field created [[hide]]">' +
+                        '<i class="fa fa-calendar-times-o"></i>' +
+                        '{{_ "created"}}: [[card_created]]' +
+                    '</div>' +
+                '</li>';
+
+                var data = {
+                    start: start,
+                    render: false,
+                    range: 20,
+                    filter: {}
+                };
+
+                data.filter[field] = stage;
+
+                $.get('/admin/system/model/'+model+'/search', data)
+                .done(function(res) {
+                    // stage total
+                    $(target).find('.stage .badge').html(res.results.total);
+                    if (!!res.results.rows) {
+                        var lists = '';
+                        $.map(res.results.rows, function(row) {
+                            var card = cardTemplate
+                                .replace('[[card_id]]', row[model+'_id'])
+                                .replace('[[card_link]]', '');
+
+                            if (row[model+'_title']) {
+                                card = card.replace('[[card_name]]', row[model+'_title']);
+                            }
+
+                            if (row[model+'_name']) {
+                                card = card.replace('[[card_name]]', row[model+'_name']);
+                            }
+
+                            if (row[model+'_created']) {
+                                const monthNames = [
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April",
+                                    "May",
+                                    "June",
+                                    "July",
+                                    "August",
+                                    "September",
+                                    "October",
+                                    "November",
+                                    "December"
+                                ];
+
+                                var created = new Date(row[model+'_created']);
+                                var date = monthNames[created.getMonth()] +
+                                    ' ' + created.getDate();
+                                card = card
+                                    .replace('[[hide]]', '')
+                                    .replace(
+                                        '[[card_created]]',
+                                        date
+                                    );
+                            } else {
+                                card = card.replace('[[hide]]', 'd-none');
+                            }
+
+                            lists += card;
+                        });
+
+                        $('.board-stage', target).append(lists);
+
+                        if (callback) {
+                            callback();
+                        }
+                    }
+
+                    if (!res.results.rows && callback) {
+                        callback();
+                    }
+                });
+            };
+
+            var start = 0,
+                paginating = false,
+                loader = $('.board-stage', target).next(),
+                paginator = loader.next();
+
+            $('.board-stage', target).scroll(function() {
+                //if we are already paginating
+                if(paginating) {
+                    return;
+                }
+
+                var variableHeight = $(this).scrollTop() + $(this).height();
+                var totalHeight = $(this).height();
+                var percent = variableHeight / totalHeight;
+                var range = 20;
+                if(percent < 1.75) {
+                    return;
+                }
+
+                paginating = true;
+                start += range;
+                var search = window.location.search;
+
+                // show ajax loader
+                loader.removeClass('hide');
+                populateBoard(start, function() {
+                    paginating = false;
+                });
+            });
+
+            populateBoard(0);
+        });
     })();
 
     /**
