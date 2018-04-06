@@ -1,6 +1,6 @@
 <?php //-->
 
-include(__DIR__.'/../bootstrap.php');
+include(__DIR__.'/../.cradle.php');
 
 return cradle()
     //add routes here

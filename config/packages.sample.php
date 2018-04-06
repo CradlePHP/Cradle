@@ -20,6 +20,10 @@ return array (
   array (
     'active' => true,
   ),
+  'cradlephp/cradle-install' => 
+  array (
+    'active' => true,
+  ),
   'cradlephp/cradle-auth' => 
   array (
     'active' => true,
