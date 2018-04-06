@@ -1,7 +1,3 @@
-```
-DEVELOPMENT MODE: Cradle is in development and has not passed testing. We do not recommend using this in live environments. If you would [like to contribute](#contribute) please read on.
-```
-
 # All the Back End You'll Ever Need
 
 **Cradle** is a feature rich, modern admin builder. Build apps faster. Developer friendly. Open Source.
