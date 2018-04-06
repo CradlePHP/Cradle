@@ -31,7 +31,9 @@
         "swiftmailer/swiftmailer": "5.4.3",
         "jakoch/phantomjs-installer": "2.1.1-p07",
         "cradlephp/cradle-role": "0.0.*",
-        "erusev/parsedown": "1.7.1"
+        "erusev/parsedown": "1.7.1",
+        "cjzamora/cradle-article": "1.3.0",
+        "cradlephp/cradle-install": "dev-master"
     },
     "autoload": {
         "psr-4": {
