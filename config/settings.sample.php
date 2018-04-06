@@ -6,5 +6,9 @@ return [
     'error_email' => '<EMAIL ADDRESS>',
     'i18n' => 'en_US',
     'name' => 'Custom Project',
-    'server_timezone' => 'GMT'
+    'server_timezone' => 'GMT',
+    'history' => [
+        'file' => true,
+        'path' => 'log'
+    ]
 ];

@@ -10,6 +10,8 @@ config/test.php
 config/version.php
 config/schema/*.php
 config/admin/*.php
+config/packages/*
 public/components
 public/upload
+log/
 .DS_Store
