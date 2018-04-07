@@ -522,16 +522,16 @@
         },
         {
             "name": "cradlephp/cradle-history",
-            "version": "0.0.6",
+            "version": "0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-history.git",
-                "reference": "bfb6d1d4d954ae318cf6e434e2380e75f5462e02"
+                "reference": "0cb63e9ce97a5a65d498db2bee16a7c291b41f6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/bfb6d1d4d954ae318cf6e434e2380e75f5462e02",
-                "reference": "bfb6d1d4d954ae318cf6e434e2380e75f5462e02",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/0cb63e9ce97a5a65d498db2bee16a7c291b41f6f",
+                "reference": "0cb63e9ce97a5a65d498db2bee16a7c291b41f6f",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-06T08:09:43+00:00"
+            "time": "2018-04-07T10:33:57+00:00"
         },
         {
             "name": "cradlephp/cradle-install",
@@ -2825,12 +2825,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d"
+                "reference": "df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3f5ca97eee66a07951d018f6726017629c85c86d",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8",
+                "reference": "df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8",
                 "shasum": ""
             },
             "require": {
@@ -2873,7 +2873,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-06T08:14:40+00:00"
+            "time": "2018-04-07T09:03:14+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
