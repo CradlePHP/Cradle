@@ -481,12 +481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "4383807e0e169895788bb5a4b8d432eb57b4b1d4"
+                "reference": "53f354c2f31c6c183cd3a63b8776ea2ee1ee3904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/4383807e0e169895788bb5a4b8d432eb57b4b1d4",
-                "reference": "4383807e0e169895788bb5a4b8d432eb57b4b1d4",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/53f354c2f31c6c183cd3a63b8776ea2ee1ee3904",
+                "reference": "53f354c2f31c6c183cd3a63b8776ea2ee1ee3904",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-05T08:54:51+00:00"
+            "time": "2018-04-07T04:39:54+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
