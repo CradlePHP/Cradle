@@ -30,6 +30,11 @@ use Cradle\Package\System\Schema\Service;
      // pull schemas
      $navigation = $this->package('global')->config('admin/menu');
 
+     // just in case there is no menu yet
+     if (!is_array($navigation)) {
+         $navigation = [];
+     }
+
      // add default schema
      $default = [
          [
@@ -53,7 +58,7 @@ use Cradle\Package\System\Schema\Service;
      $request->setStage('navigation', $navigation);
      $this->trigger('admin-menu-count', $request, $response);
      $data['schemas'] = $response->getResults();
-     
+
      //----------------------------//
      // 2. Render Template
      $class = sprintf('page-admin-dashboard page-admin');
