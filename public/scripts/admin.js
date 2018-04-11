@@ -261,7 +261,7 @@ jQuery(function($) {
 
                     if (evntEnd) {
                         data.span[evntEnd] = [];
-                        data.span[evntEnd].push(start.format());
+                        data.span[evntEnd].push(end.format());
                     }
 
                     jQuery.ajax({
@@ -333,6 +333,12 @@ jQuery(function($) {
                     });
                 },
             });
+
+            var date = $(target).data('date');
+
+            if (date) {
+                $(target).fullCalendar('gotoDate', date+'-01');
+            }
         });
 
         $(window).on('board-init', function(e, target) {
