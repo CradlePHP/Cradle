@@ -1,0 +1,124 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+            <a href="/admin">
+                <i class="fas fa-home"></i> {{_ 'Admin'}}
+            </a>
+        </li>
+    </ol>
+</nav>
+
+<div class="main-padding">
+    <h2 class="main-title">
+         {{_ 'Dashboard'}}
+    </h2>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="welcome card">
+                <div class="card-body">
+                    <h4>{{_ 'Welcome to Admin Dashboard!'}}</h4>
+                    <p class="welcome-message">
+                        {{_ "we've assembled some links to get you started:"}}
+                    </p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>{{_ 'Get Started'}}</h5>
+                            <a
+                                href="https://cradlephp.github.io/"
+                                class="btn btn-primary btn-lg">
+                                {{_ 'Know Cradle'}}
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>{{_ 'Next Steps'}}</h5>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-database fa-fw"></i>
+                                    <a href="/admin/system/schema/create?redirect_uri=%2Fadmin%2Fsystem%2Fschema%2Fsearch">
+                                        {{_ 'Add Schema'}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-bars fa-fw"></i>
+                                    <a href="/admin/menu">{{_ 'Modify Menu'}}</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-key fa-fw"></i>
+                                    <a href="/admin/role/search">
+                                        {{_ 'Set Roles and Permissions'}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>{{_ 'More Actions'}}</h5>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-wrench fa-fw"></i>
+                                    <a href="/admin/configuration?type=general">
+                                        {{_ 'Update your config'}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="overall card">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <h5 class="float-left">{{_ 'Overall'}}</h5>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        {{#each schemas}}
+                            <div class="col-md-6">
+                                <a href="{{path}}">
+                                    <span class="counter">{{records}}</span>
+                                    {{label}}
+                                </a>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="activities card">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <h5 class="float-left">{{_ 'Recent Activities'}}</h5>
+                        <a href="/admin/history/search" class="float-right">
+                            {{_ 'see more'}}
+                        </a>
+                    </div>
+                    <hr />
+                    <table>
+                        <tbody>
+                            {{#each activities}}
+                                <tr>
+                                    <td>{{relative history_created}}</td>
+                                    <td>{{history_activity}}</td>
+                                </tr>
+                            {{/each}}
+                            {{#unless activities}}
+                                <tr>
+                                    <td>No activities yet.</td>
+                                </tr>
+                            {{/unless}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <em class="bottom-regards">
+        {{{_ 'Thank you for creating with <a href="https://cradlephp.github.io">Cradle</a>'}}}
+    </em>
+</div>
