@@ -522,16 +522,16 @@
         },
         {
             "name": "cradlephp/cradle-history",
-            "version": "0.0.9",
+            "version": "0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-history.git",
-                "reference": "0cb63e9ce97a5a65d498db2bee16a7c291b41f6f"
+                "reference": "09acb653d40724c091695f030cb1bbd0b83be9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/0cb63e9ce97a5a65d498db2bee16a7c291b41f6f",
-                "reference": "0cb63e9ce97a5a65d498db2bee16a7c291b41f6f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/09acb653d40724c091695f030cb1bbd0b83be9f0",
+                "reference": "09acb653d40724c091695f030cb1bbd0b83be9f0",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-07T10:33:57+00:00"
+            "time": "2018-04-09T02:47:07+00:00"
         },
         {
             "name": "cradlephp/cradle-install",
@@ -1804,12 +1804,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "0d62adf9f4dc46a837560dee07b2b94675ddc492"
+                "reference": "21fe51593bc84b5f132b69a4abf5fb3c949afab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/0d62adf9f4dc46a837560dee07b2b94675ddc492",
-                "reference": "0d62adf9f4dc46a837560dee07b2b94675ddc492",
+                "url": "https://api.github.com/repos/symfony/console/zipball/21fe51593bc84b5f132b69a4abf5fb3c949afab9",
+                "reference": "21fe51593bc84b5f132b69a4abf5fb3c949afab9",
                 "shasum": ""
             },
             "require": {
@@ -1864,7 +1864,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-03T05:25:17+00:00"
+            "time": "2018-04-08T10:38:20+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -2496,12 +2496,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "774a82c0c5da4c1c7701790c262035d235ab7856"
+                "reference": "17f97a68562e514a3b5df9b12a408e19f07e3990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/774a82c0c5da4c1c7701790c262035d235ab7856",
-                "reference": "774a82c0c5da4c1c7701790c262035d235ab7856",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/17f97a68562e514a3b5df9b12a408e19f07e3990",
+                "reference": "17f97a68562e514a3b5df9b12a408e19f07e3990",
                 "shasum": ""
             },
             "require": {
@@ -2551,7 +2551,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-06T15:39:20+00:00"
+            "time": "2018-04-07T12:09:09+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2825,12 +2825,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8"
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8",
-                "reference": "df2956d8ef8afd94a1d06b7ad69e90deacdeb9b8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/70c740bde8fd9ea9ea295be1cd875dd7b267e157",
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157",
                 "shasum": ""
             },
             "require": {
@@ -2873,7 +2873,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-07T09:03:14+00:00"
+            "time": "2018-04-11T04:50:36+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -3689,12 +3689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "97c4a3753f1311c69383a268bf399f9479a4b871"
+                "reference": "abab82a85718604d95cbe58dbf464885f37b935a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/97c4a3753f1311c69383a268bf399f9479a4b871",
-                "reference": "97c4a3753f1311c69383a268bf399f9479a4b871",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/abab82a85718604d95cbe58dbf464885f37b935a",
+                "reference": "abab82a85718604d95cbe58dbf464885f37b935a",
                 "shasum": ""
             },
             "require": {
@@ -3739,7 +3739,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-03T05:25:17+00:00"
+            "time": "2018-04-08T09:02:26+00:00"
         },
         {
             "name": "theseer/tokenizer",
