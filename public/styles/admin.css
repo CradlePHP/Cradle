@@ -1963,7 +1963,6 @@ ul.meta-list .key {
     min-height: 70vh;
     padding-left: 0;
     overflow-x: auto;
-    width: 82.33%;
 }
 .pipeline-board .column {
     background: #f6f8fa;
@@ -1971,7 +1970,7 @@ ul.meta-list .key {
     border-left: 0;
     flex-shrink: 0 !important;
     height: 685px;
-    min-width: 250px;
+    width: 250px;
     overflow: hidden;
 }
 

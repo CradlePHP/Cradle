@@ -345,6 +345,12 @@ jQuery(function($) {
             var stage = $(target).data('stage');
             var model = $(target).data('model');
             var field = $(target).data('field');
+            var columns = $(target).parent().find('.column').length;
+            var width = $('.board-container').width()/columns;
+
+            if (width > 250) {
+                $(target).css('width', width);
+            }
 
             $('.board-stage', target).sortable({
                 group: 'nav',
@@ -404,9 +410,10 @@ jQuery(function($) {
                     if (!!res.results.rows) {
                         var lists = '';
                         $.map(res.results.rows, function(row) {
+                            var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
                             var card = cardTemplate
                                 .replace('[[card_id]]', row[model+'_id'])
-                                .replace('[[card_link]]', '');
+                                .replace('[[card_link]]', link);
 
                             if (row[model+'_title']) {
                                 card = card.replace('[[card_name]]', row[model+'_title']);
