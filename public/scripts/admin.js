@@ -382,7 +382,7 @@ jQuery(function($) {
 
                     // if status is the same we're left to assume that the user
                     // did a re-ordering of cards
-                    if ($(item).data('stage') == stage) {
+                    if (sort && $(item).data('stage') == stage) {
                         var order = $(container.el).sortable('serialize').get(0);
 
                         $.map(order, function(row, position) {
