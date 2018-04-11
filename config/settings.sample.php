@@ -7,8 +7,5 @@ return [
     'i18n' => 'en_US',
     'name' => 'Custom Project',
     'server_timezone' => 'GMT',
-    'history' => [
-        'file' => true,
-        'path' => 'log'
-    ]
+    'log_path' => 'log'
 ];

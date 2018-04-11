@@ -54,98 +54,102 @@
             </ul>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#system-schema-nav">
-            <i class="fas fa-code"></i>
-            <span class="nav-title">
-                <span class="nav-text">System</span>
-                <span class="nav-right">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-            </span>
-        </a>
-        <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
-            {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/template'}} show{{/nav_match~}}        
-            {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/package'}} show{{/nav_match~}}
-        ">
-            <ul class="nav flex-column ml-4">
-                <li class="nav-item{{~#nav_match '/admin/system/schema'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/system/schema/search">
-                        <i class="fas fa-database"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Schemas</span>
+    {{#request 'session' 'me'}}
+        {{#when auth_type '==' 'admin'}}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#system-schema-nav">
+                    <i class="fas fa-code"></i>
+                    <span class="nav-title">
+                        <span class="nav-text">System</span>
+                        <span class="nav-right">
+                            <i class="fas fa-chevron-down"></i>
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/menu'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/menu">
-                        <i class="fas fa-bars"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Menu Builder</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#system-template-nav">
-                        <i class="fas fa-columns"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Templates</span>
-                            <span class="nav-right">
-                                <i class="fas fa-chevron-down"></i>
-                            </span>
-                        </span>
-                    </a>
-                    <div id="system-template-nav" class="collapse nav-sub nav-sub-2
-                        {{~#nav_match '/admin/template'}} show{{/nav_match~}}
-                    ">
-                        <ul class="nav flex-column ml-4">
-                            <li class="nav-item{{~#nav_match '/admin/template/ui'}} active{{/nav_match~}}">
-                                <a class="nav-link" href="/admin/template/ui">
-                                    <i class="fas fa-puzzle-piece"></i>
-                                    <span class="nav-title">
-                                        <span class="nav-text">UI</span>
+                    </span>
+                </a>
+                <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
+                    {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
+                    {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
+                    {{~#nav_match '/admin/template'}} show{{/nav_match~}}        
+                    {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
+                    {{~#nav_match '/admin/package'}} show{{/nav_match~}}
+                ">
+                    <ul class="nav flex-column ml-4">
+                        <li class="nav-item{{~#nav_match '/admin/system/schema'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/system/schema/search">
+                                <i class="fas fa-database"></i>
+                                <span class="nav-title">
+                                    <span class="nav-text">Schemas</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item{{~#nav_match '/admin/menu'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/menu">
+                                <i class="fas fa-bars"></i>
+                                <span class="nav-title">
+                                    <span class="nav-text">Menu Builder</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#system-template-nav">
+                                <i class="fas fa-columns"></i>
+                                <span class="nav-title">
+                                    <span class="nav-text">Templates</span>
+                                    <span class="nav-right">
+                                        <i class="fas fa-chevron-down"></i>
                                     </span>
-                                </a>
-                            </li>
-                            <li class="nav-item{{~#nav_match '/admin/template/search'}} active{{/nav_match~}}">
-                                <a class="nav-link" href="/admin/template/search">
-                                    <i class="fas fa-search"></i>
-                                    <span class="nav-title">
-                                        <span class="nav-text">Search</span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item{{~#nav_match '/admin/template/form'}} active{{/nav_match~}}">
-                                <a class="nav-link" href="/admin/template/form">
-                                    <i class="fas fa-sliders-h"></i>
-                                    <span class="nav-title">
-                                        <span class="nav-text">Form</span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/configuration'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/configuration">
-                        <i class="fas fa-wrench"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Configuration</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/package'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/package/search">
-                        <i class="fas fa-plug"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Packages</span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
+                                </span>
+                            </a>
+                            <div id="system-template-nav" class="collapse nav-sub nav-sub-2
+                                {{~#nav_match '/admin/template'}} show{{/nav_match~}}
+                            ">
+                                <ul class="nav flex-column ml-4">
+                                    <li class="nav-item{{~#nav_match '/admin/template/ui'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/ui">
+                                            <i class="fas fa-puzzle-piece"></i>
+                                            <span class="nav-title">
+                                                <span class="nav-text">UI</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item{{~#nav_match '/admin/template/search'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/search">
+                                            <i class="fas fa-search"></i>
+                                            <span class="nav-title">
+                                                <span class="nav-text">Search</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item{{~#nav_match '/admin/template/form'}} active{{/nav_match~}}">
+                                        <a class="nav-link" href="/admin/template/form">
+                                            <i class="fas fa-sliders-h"></i>
+                                            <span class="nav-title">
+                                                <span class="nav-text">Form</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item{{~#nav_match '/admin/configuration'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/configuration">
+                                <i class="fas fa-wrench"></i>
+                                <span class="nav-title">
+                                    <span class="nav-text">Configuration</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item{{~#nav_match '/admin/package'}} active{{/nav_match~}}">
+                            <a class="nav-link" href="/admin/package/search">
+                                <i class="fas fa-plug"></i>
+                                <span class="nav-title">
+                                    <span class="nav-text">Packages</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        {{/when}}
+    {{/request}}
 </ul>
