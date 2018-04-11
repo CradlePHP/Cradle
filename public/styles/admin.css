@@ -2004,3 +2004,35 @@ ul.meta-list .key {
 .pipeline-board .column .stage .stage-label .stage-name {
     font-weight: 600;
 }
+
+/* Dashboard
+------------------------------*/
+.page-admin-dashboard {}
+.page-admin-dashboard ul {
+    list-style: none;
+    padding: 0;
+}
+.page-admin-dashboard ul li {
+    margin-bottom: 5px;
+}
+.page-admin-dashboard .card {
+    margin-bottom: 20px;
+}
+.page-admin-dashboard .counter {
+    margin-right: 5px;
+}
+.page-admin-dashboard .activities table tbody tr td {
+    width: 50%;
+}
+.page-admin-dashboard .activities table tbody tr td:first-child {
+    color: #888;
+}
+.page-admin-dashboard .welcome p {
+    margin-bottom: 20px;
+}
+.page-admin-dashboard .bottom-regards {
+    bottom: 0;
+    font-size: 12px;
+    margin-bottom: 10px;
+    position: absolute;
+}
