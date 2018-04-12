@@ -7,13 +7,24 @@
  * distributed with this package.
  */
 use Cradle\Package\System\Schema\Service;
+
+/**
+ * Render Template Actions
+ * 
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin', function ($request, $response) {
+    return $this->routeTo('get', '/admin/dashboard', $request, $response);
+});
+
  /**
   * Render Template Actions
   *
   * @param Request $request
   * @param Response $response
   */
- $this->get('/admin', function ($request, $response) {
+ $this->get('/admin/dashboard', function ($request, $response) {
      //----------------------------//
      // 1. Route Permissions
      //only for admin

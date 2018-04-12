@@ -1,4 +1,12 @@
 <ul class="nav flex-column">
+    <li class="nav-item {{~#nav_match '/admin/dashboard'}} active{{/nav_match~}}">
+        <a class="nav-link" href="/admin/dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="nav-title">
+                <span class="nav-text">Dashboard</span>
+            </span>
+        </a>
+    </li>
     {{#each navigation}}
         {{> menu}}
     {{/each}}

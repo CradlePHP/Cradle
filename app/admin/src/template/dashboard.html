@@ -1,16 +1,19 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item">
             <a href="/admin">
                 <i class="fas fa-home"></i> {{_ 'Admin'}}
             </a>
+        </li>
+        <li class="breadcrumb-item active">
+            <i class="fas fa-tachometer-alt"></i> {{_ 'Dashboard'}}
         </li>
     </ol>
 </nav>
 
 <div class="main-padding">
     <h2 class="main-title">
-         {{_ 'Dashboard'}}
+        <i class="fas fa-tachometer-alt"></i> {{_ 'Dashboard'}}
     </h2>
 
     <div class="row">
@@ -18,33 +21,35 @@
             <div class="welcome card">
                 <div class="card-body">
                     <h4>{{_ 'Welcome to Admin Dashboard!'}}</h4>
-                    <p class="welcome-message">
-                        {{_ "we've assembled some links to get you started:"}}
+                    <p class="welcome-message text-secondary">
+                        {{_ "We've assembled some links to get you started:"}}
                     </p>
                     <div class="row">
                         <div class="col-md-4">
                             <h5>{{_ 'Get Started'}}</h5>
                             <a
-                                href="https://cradlephp.github.io/"
-                                class="btn btn-primary btn-lg">
-                                {{_ 'Know Cradle'}}
+                                href="https://cradlephp.github.io/docs/installation.html"
+                                class="btn btn-primary btn-lg"
+                                target="_blank">
+                                <i class="fas fa-book"></i>
+                                {{_ 'View Documentation'}}
                             </a>
                         </div>
                         <div class="col-md-4">
                             <h5>{{_ 'Next Steps'}}</h5>
                             <ul>
                                 <li>
-                                    <i class="fas fa-database fa-fw"></i>
+                                    <i class="fas fa-database fa-fw text-secondary"></i>
                                     <a href="/admin/system/schema/create?redirect_uri=%2Fadmin%2Fsystem%2Fschema%2Fsearch">
                                         {{_ 'Add Schema'}}
                                     </a>
                                 </li>
                                 <li>
-                                    <i class="fas fa-bars fa-fw"></i>
+                                    <i class="fas fa-bars fa-fw text-secondary"></i>
                                     <a href="/admin/menu">{{_ 'Modify Menu'}}</a>
                                 </li>
                                 <li>
-                                    <i class="fas fa-key fa-fw"></i>
+                                    <i class="fas fa-key fa-fw text-secondary"></i>
                                     <a href="/admin/role/search">
                                         {{_ 'Set Roles and Permissions'}}
                                     </a>
@@ -55,9 +60,9 @@
                             <h5>{{_ 'More Actions'}}</h5>
                             <ul>
                                 <li>
-                                    <i class="fas fa-wrench fa-fw"></i>
+                                    <i class="fas fa-wrench fa-fw text-secondary"></i>
                                     <a href="/admin/configuration?type=general">
-                                        {{_ 'Update your config'}}
+                                        {{_ 'Update System Configuration'}}
                                     </a>
                                 </li>
                             </ul>
@@ -70,17 +75,19 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="overall card">
+            <div class="overall schemas card">
                 <div class="card-body">
                     <div class="clearfix">
-                        <h5 class="float-left">{{_ 'Overall'}}</h5>
+                        <h5 class="float-left">
+                            <i class="fas fa-database"></i> {{_ 'Schemas'}}
+                        </h5>
                     </div>
                     <hr />
                     <div class="row">
                         {{#each schemas}}
                             <div class="col-md-6">
+                                <span class="counter font-weight-bold text-secondary">{{records}}</span>                                
                                 <a href="{{path}}">
-                                    <span class="counter">{{records}}</span>
                                     {{label}}
                                 </a>
                             </div>
@@ -93,13 +100,15 @@
             <div class="activities card">
                 <div class="card-body">
                     <div class="clearfix">
-                        <h5 class="float-left">{{_ 'Recent Activities'}}</h5>
+                        <h5 class="float-left">
+                            <i class="fas fa-history"></i> {{_ 'Recent Activities'}}
+                        </h5>
                         <a href="/admin/history/search" class="float-right">
-                            {{_ 'see more'}}
+                            {{_ 'see more'}} <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                     <hr />
-                    <table>
+                    <table class="table table-striped">
                         <tbody>
                             {{#each activities}}
                                 <tr>
@@ -118,7 +127,4 @@
             </div>
         </div>
     </div>
-    <em class="bottom-regards">
-        {{{_ 'Thank you for creating with <a href="https://cradlephp.github.io">Cradle</a>'}}}
-    </em>
 </div>
