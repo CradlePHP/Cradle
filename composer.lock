@@ -481,12 +481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "3b663a6d8cb19b55893b0b737ae3f0e483b724b2"
+                "reference": "5c4721e1a30f585755befb8f13c57d5501a326f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/3b663a6d8cb19b55893b0b737ae3f0e483b724b2",
-                "reference": "3b663a6d8cb19b55893b0b737ae3f0e483b724b2",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/5c4721e1a30f585755befb8f13c57d5501a326f0",
+                "reference": "5c4721e1a30f585755befb8f13c57d5501a326f0",
                 "shasum": ""
             },
             "require": {
@@ -518,20 +518,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-11T09:56:38+00:00"
+            "time": "2018-04-11T10:42:18+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
-            "version": "0.0.10",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-history.git",
-                "reference": "09acb653d40724c091695f030cb1bbd0b83be9f0"
+                "reference": "62f70a340973adf58f35fed8b6ae8de968ddbe98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/09acb653d40724c091695f030cb1bbd0b83be9f0",
-                "reference": "09acb653d40724c091695f030cb1bbd0b83be9f0",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/62f70a340973adf58f35fed8b6ae8de968ddbe98",
+                "reference": "62f70a340973adf58f35fed8b6ae8de968ddbe98",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-09T02:47:07+00:00"
+            "time": "2018-04-11T10:45:27+00:00"
         },
         {
             "name": "cradlephp/cradle-install",
@@ -678,16 +678,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.7",
+            "version": "1.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "2aa892851909ad761fb7a06de2daffe3696e7b58"
+                "reference": "e5ee6f0ca7feb13616ad47a5d1c75cb21f453021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/2aa892851909ad761fb7a06de2daffe3696e7b58",
-                "reference": "2aa892851909ad761fb7a06de2daffe3696e7b58",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/e5ee6f0ca7feb13616ad47a5d1c75cb21f453021",
+                "reference": "e5ee6f0ca7feb13616ad47a5d1c75cb21f453021",
                 "shasum": ""
             },
             "require": {
@@ -719,7 +719,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-11T07:12:57+00:00"
+            "time": "2018-04-12T03:42:32+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -2496,12 +2496,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "17f97a68562e514a3b5df9b12a408e19f07e3990"
+                "reference": "3f2d17122766a73e55e7c78674fd3a58fb8922d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/17f97a68562e514a3b5df9b12a408e19f07e3990",
-                "reference": "17f97a68562e514a3b5df9b12a408e19f07e3990",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3f2d17122766a73e55e7c78674fd3a58fb8922d6",
+                "reference": "3f2d17122766a73e55e7c78674fd3a58fb8922d6",
                 "shasum": ""
             },
             "require": {
@@ -2551,7 +2551,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-07T12:09:09+00:00"
+            "time": "2018-04-11T14:11:30+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
