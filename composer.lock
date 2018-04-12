@@ -678,16 +678,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "e5ee6f0ca7feb13616ad47a5d1c75cb21f453021"
+                "reference": "ee4d4246659418d8c9a5bc26b007a37612ad728c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/e5ee6f0ca7feb13616ad47a5d1c75cb21f453021",
-                "reference": "e5ee6f0ca7feb13616ad47a5d1c75cb21f453021",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/ee4d4246659418d8c9a5bc26b007a37612ad728c",
+                "reference": "ee4d4246659418d8c9a5bc26b007a37612ad728c",
                 "shasum": ""
             },
             "require": {
@@ -719,7 +719,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-12T03:42:32+00:00"
+            "time": "2018-04-12T06:34:04+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -2496,12 +2496,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "3f2d17122766a73e55e7c78674fd3a58fb8922d6"
+                "reference": "a23ddc74c1c1c896ad2aa740d0c4183203a34d07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3f2d17122766a73e55e7c78674fd3a58fb8922d6",
-                "reference": "3f2d17122766a73e55e7c78674fd3a58fb8922d6",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a23ddc74c1c1c896ad2aa740d0c4183203a34d07",
+                "reference": "a23ddc74c1c1c896ad2aa740d0c4183203a34d07",
                 "shasum": ""
             },
             "require": {
@@ -2551,7 +2551,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-11T14:11:30+00:00"
+            "time": "2018-04-12T05:33:32+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

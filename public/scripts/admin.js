@@ -207,6 +207,10 @@ jQuery(function($) {
                                             message += '<br />' + error;
                                         });
 
+                                        notifier.fadeOut('fast', function() {
+                                            notifier.remove();
+                                        });
+
                                         $.notify(message, 'danger');
                                     } else {
                                         if (typeof complete === 'undefined') {
