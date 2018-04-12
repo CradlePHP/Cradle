@@ -188,7 +188,7 @@ jQuery(function($) {
                             header: true,
                             skipEmptyLines: true,
                             complete: function(results, file) {
-                                $.post(url, {rows:results.data}, function(response) {
+                                $.post(url, JSON.stringify(results.data), function(response) {
                                     //process data
                                     try {
                                         response = JSON.parse(response);
