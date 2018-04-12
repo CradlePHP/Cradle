@@ -18,73 +18,81 @@ $this->get('/admin', function ($request, $response) {
     return $this->routeTo('get', '/admin/dashboard', $request, $response);
 });
 
- /**
-  * Render Template Actions
-  *
-  * @param Request $request
-  * @param Response $response
-  */
- $this->get('/admin/dashboard', function ($request, $response) {
-     //----------------------------//
-     // 1. Route Permissions
-     //only for admin
-     $this->package('global')->requireLogin('admin');
+/**
+ * Render Template Actions
+ *
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/dashboard', function ($request, $response) {
+    //----------------------------//
+    // 1. Route Permissions
+    //only for admin
+    $this->package('global')->requireLogin('admin');
 
-     $data = $request->getStage();
+    $data = $request->getStage();
 
-     // pull top 5 recent activities
-     $request->setStage('range', 5);
-     $request->setStage('order', ['history_created' => 'DESC']);
-     $this->trigger('history-search', $request, $response);
-     $data['activities'] = $response->getResults('rows');
+    // pull top 5 recent activities
+    $request->setStage('range', 5);
+    $request->setStage('order', ['history_created' => 'DESC']);
+    $this->trigger('history-search', $request, $response);
+    $data['activities'] = $response->getResults('rows');
 
-     // pull schemas
-     $navigation = $this->package('global')->config('admin/menu');
+    // get schemas
+    $this->trigger('system-schema-search', $request, $response);
 
-     // just in case there is no menu yet
-     if (!is_array($navigation)) {
-         $navigation = [];
-     }
+    // schemas
+    $schemas = [];
 
-     // add default schema
-     $default = [
-         [
-             'label' => 'Auth',
-             'path' => '/admin/system/model/auth/search'
-         ],
-         [
-             'label' => 'Profile',
-             'path' => '/admin/system/model/profile/search'
-         ],
-         [
-             'label' => 'Role',
-             'path' => '/admin/system/model/role/search'
-         ],
-     ];
+    // get the schemas
+    $results = $response->getResults('rows');
 
-     foreach ($default as $schema) {
-         $navigation[] = $schema;
-     }
+    // if we have results
+    if (!empty($results)) {
+        foreach($results as $schema) {
+            $schemas[$schema['name']] = [
+                'name' => $schema['name'],
+                'label' => ucwords($schema['name']),
+                'path' => sprintf(
+                    '/admin/system/model/%s/search',
+                    $schema['name']
+                ),
+                'records' => 0
+            ];
+        }
 
-     $request->setStage('navigation', $navigation);
-     $this->trigger('admin-menu-count', $request, $response);
-     $data['schemas'] = $response->getResults();
+        // get the database name
+        $database = $this->package('global')->config('services', 'sql-main')['name'];
 
-     //----------------------------//
-     // 2. Render Template
-     $class = sprintf('page-admin-dashboard page-admin');
-     $data['title'] = $this->package('global')->translate('Admin Dashboard ');
-     $body = cradle('/app/admin')->template('dashboard', $data);
+        // get the record count
+        $records = Service::get('sql')->getSchemaTableRecordCount($database);
 
-     //set content
-     $response
-         ->setPage('title', $data['title'])
-         ->setPage('class', $class)
-         ->setContent($body);
+        // on each record
+        foreach($records as $record) {
+            if (isset($schemas[$record['table_name']])) {
+                $schemas[$record['table_name']]['records'] = $record['table_rows'];
+            }
+        }
+    }
 
-     //render page
-     $this->trigger('admin-render-page', $request, $response);
- });
+    // set schemas to data
+    $data['schemas'] = $schemas;
+
+    //----------------------------//
+    // 2. Render Template
+    $class = sprintf('page-admin-dashboard page-admin');
+    $data['title'] = $this->package('global')->translate('Admin Dashboard ');
+    $body = cradle('/app/admin')->template('dashboard', $data);
+
+    //set content
+    $response
+        ->setPage('title', $data['title'])
+        ->setPage('class', $class)
+        ->setContent($body);
+
+    //render page
+    $this->trigger('admin-render-page', $request, $response);
+});
 
 /**
  * Render Template Actions

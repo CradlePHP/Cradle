@@ -2024,6 +2024,9 @@ ul.meta-list .key {
 }
 .page-admin-dashboard .counter {
     margin-right: 5px;
+    display: inline-block;
+    width: 35px;
+    text-align: right;
 }
 .page-admin-dashboard .activities table tbody tr td {
     width: 50%;
