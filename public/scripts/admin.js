@@ -345,34 +345,67 @@ jQuery(function($) {
             var stage = $(target).data('stage');
             var model = $(target).data('model');
             var field = $(target).data('field');
+            var sort = $(target).data('order');
+            var columns = $(target).parent().find('.column').length;
+            var width = $('.board-container').width()/columns;
+
+            if (width > 250) {
+                $(target).css('width', width);
+            }
 
             $('.board-stage', target).sortable({
                 group: 'nav',
                 nested: false,
                 vertical: false,
                 onDrop: function(item, container, _super) {
-                    var id = $(item).data('id');
+                    var data = {};
                     var stage = $(container.el).parents('.column').data('stage');
 
-                    var data = {};
-                    data.id = id;
-                    data[field] = stage;
-                    $.post('/admin/system/model/'+model+'/pipeline', data)
-                        .done(function(res) {
-                            if (!res.error) {
-                                var column = field.replace(model+'_', '');
-                                column = column.charAt(0).toUpperCase() + column.slice(1);
-                                toastr.success(column + ' updated successfully!');
-                            } else {
-                                toastr.success('unable to update ' + column);
-                            }
+                    // if status is changed
+                    if ($(item).data('stage') != stage) {
+                        var id = $(item).data('id');
+
+                        data.id = id;
+                        data[field] = stage;
+
+                        $.post('/admin/system/model/'+model+'/pipeline', data)
+                            .done(function(res) {
+                                if (!res.error) {
+                                    var column = field.replace(model+'_', '');
+                                    column = column.charAt(0).toUpperCase() + column.slice(1);
+                                    toastr.success(column + ' updated successfully!');
+                                } else {
+                                    toastr.success('unable to update ' + column);
+                                }
+                            });
+                    }
+
+                    // if status is the same we're left to assume that the user
+                    // did a re-ordering of cards
+                    if (sort && $(item).data('stage') == stage) {
+                        var order = $(container.el).sortable('serialize').get(0);
+
+                        $.map(order, function(row, position) {
+                            data.id = row.id;
+                            data[sort] = position + 1;
+
+                            $.post('/admin/system/model/'+model+'/pipeline', data)
+                                .done(function(res) {
+                                    if (!res.error && position + 1 == order.length) {
+                                        toastr.success('Order update successful!');
+                                    }
+                                });
                         });
+                    }
+
+
                     _super(item, container);
                 }
             });
 
             var populateBoard = function(start, callback) {
-                var cardTemplate = '<li class="card" data-id="[[card_id]]">' +
+                var cardTemplate = '<li class="card" data-id="[[card_id]]"' +
+                'data-stage="[[card_stage]]">' +
                     '<div class="card-name">' +
                         '<a href="[[card_link]]">' +
                             '<strong>' +
@@ -396,6 +429,10 @@ jQuery(function($) {
                 };
 
                 data.filter[field] = stage;
+                if (sort) {
+                    data.order = {};
+                    data.order[sort] = 'ASC';
+                }
 
                 $.get('/admin/system/model/'+model+'/search', data)
                 .done(function(res) {
@@ -404,9 +441,11 @@ jQuery(function($) {
                     if (!!res.results.rows) {
                         var lists = '';
                         $.map(res.results.rows, function(row) {
+                            var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
                             var card = cardTemplate
                                 .replace('[[card_id]]', row[model+'_id'])
-                                .replace('[[card_link]]', '');
+                                .replace('[[card_link]]', link)
+                                .replace('[[card_stage]]', stage);
 
                             if (row[model+'_title']) {
                                 card = card.replace('[[card_name]]', row[model+'_title']);
