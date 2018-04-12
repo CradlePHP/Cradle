@@ -7,9 +7,6 @@
             </span>
         </a>
     </li>
-    {{#each navigation}}
-        {{> menu}}
-    {{/each}}
     <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#admin-nav">
             <i class="fas fa-coffee"></i>
@@ -62,6 +59,9 @@
             </ul>
         </div>
     </li>
+    {{#each navigation}}
+        {{> menu}}
+    {{/each}}
     {{#request 'session' 'me'}}
         {{#when auth_type '==' 'admin'}}
             <li class="nav-item">

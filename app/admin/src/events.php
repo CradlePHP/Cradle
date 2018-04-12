@@ -104,11 +104,11 @@ $this->on('admin-render-page', function ($request, $response) {
     // set navigation
     $menuRecordRequest->setStage('navigation', $navigation);
 
-    // // trigger menu get record count
+    // trigger menu get record count
     $this->trigger('admin-menu-count', $menuRecordRequest, $menuRecordResponse);
 
-    // // get navigation
-    // $navigation = $menuRecordResponse->getResults();
+    // get navigation
+    $navigation = $menuRecordResponse->getResults();
 
     //path
     $path = $request->getPath('string');
