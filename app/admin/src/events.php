@@ -85,15 +85,19 @@ $this->on('admin-render-page', function ($request, $response) {
 
         foreach ($args as $path) {
             $needle .= '/' . $path;
-        }
+		}
 
-        if (strpos($needle, '?') > 0) {
+		if (strpos($needle, '?') > 0) {
             $needle = substr($needle, 0, strpos($needle, '?'));
         }
 
-        if (strpos($haystack, $needle) === 0) {
+        if (strpos($haystack, $needle) && $haystack != $needle) {
             return $options['fn']();
         }
+
+        if ($haystack == $needle) {
+            return $options['fn']();
+        } 
 
         return $options['inverse']();
     };
