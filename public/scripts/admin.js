@@ -239,13 +239,20 @@ jQuery(function($) {
         });
 
         $(window).on('calendar-init', function(e, target) {
+            var date = $(target).data('date');
+            var view = 'month';
+
+            if ($(target).data('view')) {
+                view = $(target).data('view');
+            }
+
             $(target).fullCalendar({
-                defaultView: 'month',
+                defaultView: view,
                 height: 750,
                 header: {
-                  left: 'prev,next today',
+                  left: '',
                   center: 'title',
-                  right: 'month,agendaWeek,agendaDay,listWeek'
+                  right: ''
                 },
                 eventTextColor: '#fff',
                 eventLimit: true, // allow "more" link when too many events
@@ -262,9 +269,11 @@ jQuery(function($) {
 
                     data.span[evntStart] = [];
                     data.span[evntStart].push(start.format());
+                    data.span[evntStart].push(end.format());
 
                     if (evntEnd) {
                         data.span[evntEnd] = [];
+                        data.span[evntEnd].push(start.format());
                         data.span[evntEnd].push(end.format());
                     }
 
@@ -280,6 +289,10 @@ jQuery(function($) {
                                     var row = {
                                         id: res[model+'_id'],
                                         start: res[evntStart],
+                                    }
+
+                                    if (evntEnd) {
+                                        row.end = res[evntEnd];
                                     }
 
                                     if (res[model+'_name']) {
@@ -338,10 +351,8 @@ jQuery(function($) {
                 },
             });
 
-            var date = $(target).data('date');
-
             if (date) {
-                $(target).fullCalendar('gotoDate', date+'-01');
+                $(target).fullCalendar('gotoDate', date);
             }
         });
 
