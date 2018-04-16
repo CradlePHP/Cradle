@@ -2009,6 +2009,10 @@ ul.meta-list .key {
 .page-admin-calendar .fc-event {
     cursor: pointer;
 }
+.page-admin-calendar .calender-head .btn {
+    color: #333 !important;
+    border-color: #888;
+}
 
 /* Dashboard
 ------------------------------*/
