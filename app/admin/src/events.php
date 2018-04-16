@@ -91,13 +91,9 @@ $this->on('admin-render-page', function ($request, $response) {
             $needle = substr($needle, 0, strpos($needle, '?'));
         }
 
-        if (strpos($haystack, $needle) && $haystack != $needle) {
+        if ($haystack == $needle && strpos($haystack, $needle) === 0) {
             return $options['fn']();
         }
-
-        if ($haystack == $needle) {
-            return $options['fn']();
-        } 
 
         return $options['inverse']();
     };
