@@ -87,6 +87,10 @@ $this->on('admin-render-page', function ($request, $response) {
             $needle .= '/' . $path;
         }
 
+        if (strpos($needle, '?') > 0) {
+            $needle = substr($needle, 0, strpos($needle, '?'));
+        }
+
         if (strpos($haystack, $needle) === 0) {
             return $options['fn']();
         }
