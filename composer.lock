@@ -3626,12 +3626,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "86b8ecd97930fcc7048952ffd92b598372ac24b0"
+                "reference": "03620611d2b6cf1d5f217b0c8e2805972fd64614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/86b8ecd97930fcc7048952ffd92b598372ac24b0",
-                "reference": "86b8ecd97930fcc7048952ffd92b598372ac24b0",
+                "url": "https://api.github.com/repos/symfony/config/zipball/03620611d2b6cf1d5f217b0c8e2805972fd64614",
+                "reference": "03620611d2b6cf1d5f217b0c8e2805972fd64614",
                 "shasum": ""
             },
             "require": {
@@ -3680,7 +3680,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-04T16:31:13+00:00"
+            "time": "2018-04-16T08:25:21+00:00"
         },
         {
             "name": "symfony/stopwatch",
