@@ -7,58 +7,6 @@
             </span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#admin-nav">
-            <i class="fas fa-coffee"></i>
-            <span class="nav-title">
-                <span class="nav-text">Admin</span>
-                <span class="nav-right">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-            </span>
-        </a>
-        <div id="admin-nav" class="collapse nav-sub nav-sub-1
-            {{~#nav_match '/admin/system/model/auth/search'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/profile/search'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/role/search'}} show{{/nav_match~}}
-            {{~#nav_match '/admin/access/search'}} show{{/nav_match~}}
-        ">
-            <ul class="nav flex-column ml-4">
-                <li class="nav-item{{~#nav_match '/admin/system/model/auth/search'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/system/model/auth/search">
-                        <i class="fas fa-lock"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Auth</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/profile/search'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/profile/search">
-                        <i class="fas fa-user"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Profile</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/role/search'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/role/search">
-                        <i class="fas fa-key"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Role</span>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item{{~#nav_match '/admin/access/search'}} active{{/nav_match~}}">
-                    <a class="nav-link" href="/admin/access/search">
-                        <i class="fas fa-unlock"></i>
-                        <span class="nav-title">
-                            <span class="nav-text">Access</span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
     {{#each navigation}}
         {{> menu}}
     {{/each}}
@@ -160,4 +108,56 @@
             </li>
         {{/when}}
     {{/request}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#admin-nav">
+            <i class="fas fa-coffee"></i>
+            <span class="nav-title">
+                <span class="nav-text">Admin</span>
+                <span class="nav-right">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </span>
+        </a>
+        <div id="admin-nav" class="collapse nav-sub nav-sub-1
+            {{~#nav_match '/admin/system/model/auth/search'}} show{{/nav_match~}}
+            {{~#nav_match '/admin/profile/search'}} show{{/nav_match~}}
+            {{~#nav_match '/admin/role/search'}} show{{/nav_match~}}
+            {{~#nav_match '/admin/access/search'}} show{{/nav_match~}}
+        ">
+            <ul class="nav flex-column ml-4">
+                <li class="nav-item{{~#nav_match '/admin/system/model/auth/search'}} active{{/nav_match~}}">
+                    <a class="nav-link" href="/admin/system/model/auth/search">
+                        <i class="fas fa-lock"></i>
+                        <span class="nav-title">
+                            <span class="nav-text">Auth</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item{{~#nav_match '/admin/profile/search'}} active{{/nav_match~}}">
+                    <a class="nav-link" href="/admin/profile/search">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-title">
+                            <span class="nav-text">Profile</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item{{~#nav_match '/admin/role/search'}} active{{/nav_match~}}">
+                    <a class="nav-link" href="/admin/role/search">
+                        <i class="fas fa-key"></i>
+                        <span class="nav-title">
+                            <span class="nav-text">Role</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item{{~#nav_match '/admin/access/search'}} active{{/nav_match~}}">
+                    <a class="nav-link" href="/admin/access/search">
+                        <i class="fas fa-unlock"></i>
+                        <span class="nav-title">
+                            <span class="nav-text">Access</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
 </ul>
