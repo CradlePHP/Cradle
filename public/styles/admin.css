@@ -1986,7 +1986,6 @@ ul.meta-list .key {
     margin-bottom: 10px;
     padding: 10px;
 }
-.pipeline-board .column .draggable-wrapper .card .field {}
 .pipeline-board .column .draggable-wrapper .card .field.created {
     font-size: 12px;
 }
@@ -1995,7 +1994,6 @@ ul.meta-list .key {
     position: absolute;
     z-index: 2000;
 }
-.pipeline-board .column .stage {}
 .pipeline-board .column .stage .stage-label {
     padding: 5px 10px;
     text-align: center;
