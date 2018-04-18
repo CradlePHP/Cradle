@@ -148,7 +148,11 @@ jQuery(function($) {
          * Importer init
          */
         $(window).on('import-init', function(e, trigger) {
-            $.require('components/papaparse/papaparse.min.js');
+            $(trigger).toggleClass('disabled');
+            
+            $.require('components/papaparse/papaparse.min.js', function() {
+                $(trigger).toggleClass('disabled');
+            });
         });
 
         /**
