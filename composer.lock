@@ -726,16 +726,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.18",
+            "version": "1.2.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "6158dbeecb0ea7c3841b05fcd796069f7cc43cf7"
+                "reference": "da9fbdbefe1caba3673379d4784732c07930e035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/6158dbeecb0ea7c3841b05fcd796069f7cc43cf7",
-                "reference": "6158dbeecb0ea7c3841b05fcd796069f7cc43cf7",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/da9fbdbefe1caba3673379d4784732c07930e035",
+                "reference": "da9fbdbefe1caba3673379d4784732c07930e035",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-17T03:34:28+00:00"
+            "time": "2018-04-18T07:06:36+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -2544,12 +2544,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "a23ddc74c1c1c896ad2aa740d0c4183203a34d07"
+                "reference": "99d77487b58d70937d469cde6d43f04b07aa57ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a23ddc74c1c1c896ad2aa740d0c4183203a34d07",
-                "reference": "a23ddc74c1c1c896ad2aa740d0c4183203a34d07",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/99d77487b58d70937d469cde6d43f04b07aa57ef",
+                "reference": "99d77487b58d70937d469cde6d43f04b07aa57ef",
                 "shasum": ""
             },
             "require": {
@@ -2599,7 +2599,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-12T05:33:32+00:00"
+            "time": "2018-04-17T12:51:32+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2873,12 +2873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157"
+                "reference": "5a8650628d94029eafe1260b2edbaf64de852219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/70c740bde8fd9ea9ea295be1cd875dd7b267e157",
-                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5a8650628d94029eafe1260b2edbaf64de852219",
+                "reference": "5a8650628d94029eafe1260b2edbaf64de852219",
                 "shasum": ""
             },
             "require": {
@@ -2921,7 +2921,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-11T04:50:36+00:00"
+            "time": "2018-04-17T12:53:05+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
