@@ -634,9 +634,23 @@ $handlebars->registerHelper('hasnt', function ($array, $key, $options) {
  *
  * @return [BLOCK]
  */
-$handlebars->registerHelper('in', function ($array, $value, $options) {
+$handlebars->registerHelper('in', function (...$args) {
+    $options = array_pop($args);
+    $value = array_pop($args);
+
+    $array = array_shift($args);
+
     if (is_string($array)) {
         $array = explode(',', $array);
+    }
+
+    foreach ($args as $arg) {
+        if (!isset($array[$arg])) {
+            $array = null;
+            break;
+        }
+
+        $array = $array[$arg];
     }
 
     if (!is_array($array)) {
