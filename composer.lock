@@ -726,16 +726,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.25",
+            "version": "1.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "01ee970c59e605b01025e4b90c4541e567ef669a"
+                "reference": "d5a4a5026c892840e116fa8922451fb0342cc0b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/01ee970c59e605b01025e4b90c4541e567ef669a",
-                "reference": "01ee970c59e605b01025e4b90c4541e567ef669a",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/d5a4a5026c892840e116fa8922451fb0342cc0b0",
+                "reference": "d5a4a5026c892840e116fa8922451fb0342cc0b0",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-18T10:46:43+00:00"
+            "time": "2018-04-18T11:14:53+00:00"
         },
         {
             "name": "cradlephp/framework",
