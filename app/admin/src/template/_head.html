@@ -78,7 +78,7 @@
                     Welcome {{#request 'session' 'me'}}{{user_name}}{{/request}}
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/auth/account?redirect_uri={{../page.meta.path}}">Account Setting</a>
+                    <a class="dropdown-item" href="/auth/account?redirect_uri={{page.meta.path}}">Account Setting</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/auth/logout">Logout</a>
                 </div>
