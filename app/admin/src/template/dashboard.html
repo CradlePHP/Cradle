@@ -18,9 +18,12 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="welcome card">
-                <div class="card-body">
-                    <h4>{{_ 'Welcome to Admin Dashboard!'}}</h4>
+            <div class="welcome box">
+                <div class="box-head box-default">
+                    <h5 class="box-title"><i class="fas fa-tachometer-alt"></i> Welcome!</h5>
+                </div>
+                <div class="box-body box-padding">
+                    <h4 class="m-0">{{_ 'Welcome to Admin Dashboard!'}}</h4>
                     <p class="welcome-message text-secondary">
                         {{_ "We've assembled some links to get you started:"}}
                     </p>
@@ -29,7 +32,7 @@
                             <h5>{{_ 'Get Started'}}</h5>
                             <a
                                 href="https://cradlephp.github.io/docs/installation.html"
-                                class="btn btn-primary btn-lg"
+                                class="btn btn-default btn-lg"
                                 target="_blank">
                                 <i class="fas fa-book"></i>
                                 {{_ 'View Documentation'}}
@@ -75,39 +78,37 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="overall schemas card">
-                <div class="card-body">
-                    <div class="clearfix">
-                        <h5 class="float-left">
-                            <i class="fas fa-database"></i> {{_ 'Schemas'}}
-                        </h5>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        {{#each schemas}}
-                            <div class="col-md-6">
-                                <span class="counter font-weight-bold text-secondary">{{number_format_short records 1}}</span>                                
-                                <a href="{{path}}">
-                                    {{label}}
-                                </a>
-                            </div>
-                        {{/each}}
-                    </div>
+            <div class="overall schemas box">
+                <div class="box-head box-primary">
+                    <h5 class="box-title">
+                        <i class="fas fa-database"></i> {{_ 'Schemas'}}
+                    </h5>
+                </div>
+                <div class="box-body row box-padding">
+                    {{#each schemas}}
+                        <div class="col-md-6">
+                            <span class="counter font-weight-bold text-secondary">{{number_format_short records 1}}</span>                                
+                            <a href="{{path}}">
+                                {{label}}
+                            </a>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="activities card">
-                <div class="card-body">
-                    <div class="clearfix">
-                        <h5 class="float-left">
-                            <i class="fas fa-history"></i> {{_ 'Recent Activities'}}
-                        </h5>
-                        <a href="/admin/history/search" class="float-right">
+            <div class="activities box">
+                <div class="box-head box-success">
+                    <h5 class="box-title">
+                        <i class="fas fa-history"></i> {{_ 'Recent Activities'}}
+                    </h5>
+                    <div class="box-right box-padding">
+                        <a class="text-light" href="/admin/history/search" class="float-right">
                             {{_ 'see more'}} <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
-                    <hr />
+                </div>
+                <div class="box-body box-padding">
                     <table class="table table-striped">
                         <tbody>
                             {{#each activities}}
