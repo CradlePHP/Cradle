@@ -1879,6 +1879,74 @@ body.dragging, body.dragging * {
     padding: 3px;
 }
 
+/* Theme - Purple
+------------------------------*/
+.theme-purple a {
+    color: #9585BF;
+}
+
+.theme-purple .head .navbar {
+    background-color: #9585BF !important;
+}
+
+.theme-purple .head .navbar .nav-link {
+    color: #FDFDFD;
+}
+
+.theme-purple .body .sidebar > .nav > .nav-item > .nav-sub > .nav > .nav-item:before {
+    display: none;
+}
+
+.theme-purple .body .sidebar .nav-item.active a,
+.theme-purple .body .sidebar .nav-item.active a:hover,
+.theme-purple .body .sidebar .nav-item.active a:focus,
+.theme-purple .body .sidebar .nav-item.active a:active {
+    color: #9585BF;
+}
+
+.theme-purple .body .sidebar .nav-item.active:after {
+    border-right-color: #9585BF !important;
+}
+
+.theme-purple.theme-top .body .sidebar .nav-item.active:after {
+    border-left-color: #9585BF !important;
+    border-right-color:transparent !important;
+}
+
+/* Theme - Orange
+------------------------------*/
+.theme-orange a {
+    color: #ffa528;
+}
+
+.theme-orange .head .navbar {
+    background-color: #ffa528 !important;
+}
+
+.theme-orange .head .navbar .nav-link {
+    color: #FDFDFD;
+}
+
+.theme-orange .body .sidebar > .nav > .nav-item > .nav-sub > .nav > .nav-item:before {
+    display: none;
+}
+
+.theme-orange .body .sidebar .nav-item.active a,
+.theme-orange .body .sidebar .nav-item.active a:hover,
+.theme-orange .body .sidebar .nav-item.active a:focus,
+.theme-orange .body .sidebar .nav-item.active a:active {
+    color: #ffa528;
+}
+
+.theme-orange .body .sidebar .nav-item.active:after {
+    border-right-color: #ffa528 !important;
+}
+
+.theme-orange.theme-top .body .sidebar .nav-item.active:after {
+    border-left-color: #ffa528 !important;
+    border-right-color:transparent !important;
+}
+
 /* Theme - Top
 ------------------------------*/
 .theme-top .body .sidebar {
@@ -1945,6 +2013,7 @@ body.dragging, body.dragging * {
         width: 165px;
     }
 }
+
 /* meta-list
 ------------------------------*/
 ul.meta-list {

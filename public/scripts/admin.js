@@ -2189,14 +2189,14 @@ jQuery(function($) {
 
             var checkForm = function(e) {
                 var errors = false;
-                $('input[data-name="label"]', target).each(function() {
+                $('input[data-name="key"]', target).each(function() {
                     if(!$(this).val().trim().length) {
                         $(this).parent().addClass('has-error');
                         errors = true;
                     }
                 });
 
-                $('input[data-name="path"]', target).each(function() {
+                $('input[data-name="value"]', target).each(function() {
                     if(!$(this).val().trim().length) {
                         $(this).parent().addClass('has-error');
                         errors = true;

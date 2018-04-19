@@ -62,6 +62,11 @@
     </form>
 
     <form class="config-builder" data-do="config-builder" data-depth="3" method="post">
+        <button type="button" class="btn btn-success config-builder-action-add">
+            <i class="fas fa-plus"></i>
+            Add Configuration
+        </button>
+        
         <ol class="config-builder-list">
             {{#each item}}
                 {{> configuration_item}}
