@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "70bbf4c3440fea0245abfac4931b9893",
@@ -610,16 +610,16 @@
         },
         {
             "name": "cradlephp/cradle-install",
-            "version": "0.0.2",
+            "version": "0.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-install.git",
-                "reference": "57ac3513a9c163853e82b4209083fa25882014c8"
+                "reference": "16f420365db3d9bd7667283dbaa1e44ea700d7e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-install/zipball/57ac3513a9c163853e82b4209083fa25882014c8",
-                "reference": "57ac3513a9c163853e82b4209083fa25882014c8",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-install/zipball/16f420365db3d9bd7667283dbaa1e44ea700d7e3",
+                "reference": "16f420365db3d9bd7667283dbaa1e44ea700d7e3",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                 }
             ],
             "description": "Cradle Admin Package Manager",
-            "time": "2018-04-19T06:54:03+00:00"
+            "time": "2018-04-19T08:51:58+00:00"
         },
         {
             "name": "cradlephp/cradle-profile",
