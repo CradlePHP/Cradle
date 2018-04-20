@@ -1882,11 +1882,11 @@ body.dragging, body.dragging * {
 /* Theme - Purple
 ------------------------------*/
 .theme-purple a {
-    color: #9585BF;
+    color: #6f42c1;
 }
 
 .theme-purple .head .navbar {
-    background-color: #9585BF !important;
+    background-color: #6f42c1 !important;
 }
 
 .theme-purple .head .navbar .nav-link {
@@ -1901,15 +1901,15 @@ body.dragging, body.dragging * {
 .theme-purple .body .sidebar .nav-item.active a:hover,
 .theme-purple .body .sidebar .nav-item.active a:focus,
 .theme-purple .body .sidebar .nav-item.active a:active {
-    color: #9585BF;
+    color: #6f42c1;
 }
 
 .theme-purple .body .sidebar .nav-item.active:after {
-    border-right-color: #9585BF !important;
+    border-right-color: #6f42c1 !important;
 }
 
 .theme-purple.theme-top .body .sidebar .nav-item.active:after {
-    border-left-color: #9585BF !important;
+    border-left-color: #6f42c1 !important;
     border-right-color:transparent !important;
 }
 
