@@ -1852,12 +1852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "1d0045219173d36244cf55906b5bcbfda5830faf"
+                "reference": "58b4f88ec973bf52bdb85b8ef399ff33ab2d1b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/1d0045219173d36244cf55906b5bcbfda5830faf",
-                "reference": "1d0045219173d36244cf55906b5bcbfda5830faf",
+                "url": "https://api.github.com/repos/symfony/console/zipball/58b4f88ec973bf52bdb85b8ef399ff33ab2d1b62",
+                "reference": "58b4f88ec973bf52bdb85b8ef399ff33ab2d1b62",
                 "shasum": ""
             },
             "require": {
@@ -1912,7 +1912,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-14T16:36:26+00:00"
+            "time": "2018-04-20T11:04:56+00:00"
         },
         {
             "name": "symfony/filesystem",
