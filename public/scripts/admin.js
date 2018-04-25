@@ -265,7 +265,7 @@ jQuery(function($) {
                     var model = $(target).data('model');
                     var evntStart = $(target).data('start');
                     var evntEnd = $(target).data('end');
-
+                    // console.log($(target).data('suggestion'));
                     var data = {
                         render: false,
                         span: {}
@@ -294,17 +294,35 @@ jQuery(function($) {
                                         id: res[model+'_id'],
                                         start: res[evntStart],
                                     }
+                                    
+                                    //gets the suggestion value
+                                    var suggestionFormat = $(target).data('suggestion');
+
+                                    //gets suggestionFormat values inside of {{}}
+                                    var suggestionFormats = [], 
+                                        rxp = /{{([^}]+)}}/g,
+                                        curMatch;
+                                    while (curMatch = rxp.exec(suggestionFormat)) {
+                                        suggestionFormats.push(curMatch[1]);
+                                    }
+
+                                    //replace suggestionFormat with corresponding values
+                                    var count = -1;
+                                    suggestionFormat = suggestionFormat
+                                        .replace(/\{\{.*?\}\}/g, function() {
+                                            count = count + 1;
+                                            if (res[suggestionFormats[count]]) {
+                                                return (res[suggestionFormats[count]]);
+                                            } else {
+                                                return '';
+                                            }
+                                        });
+
+                                    //change row title into suggestion format
+                                    row.title = suggestionFormat;
 
                                     if (evntEnd) {
                                         row.end = res[evntEnd];
-                                    }
-
-                                    if (res[model+'_name']) {
-                                        row.title = res[model+'_name'];
-                                    }
-
-                                    if (res[model+'_title']) {
-                                        row.title = res[model+'_title'];
                                     }
 
                                     if (res[model+'_description']) {
@@ -360,7 +378,7 @@ jQuery(function($) {
             }
         });
 
-        $(window).on('board-init', function(e, target) {
+        $(window).on('board-init', function(e, target) { 
             var stage = $(target).data('stage');
             var model = $(target).data('model');
             var field = $(target).data('field');
@@ -417,8 +435,10 @@ jQuery(function($) {
                         });
                     }
 
-
                     _super(item, container);
+
+                    //reload page after updating
+                    window.location.reload();
                 }
             });
 
@@ -426,17 +446,18 @@ jQuery(function($) {
                 var cardTemplate = '<li class="card" data-id="[[card_id]]"' +
                 'data-stage="[[card_stage]]">' +
                     '<div class="card-name">' +
+                        '<i class="pull-right field updated">[[card_diff]]</i>' + 
                         '<a href="[[card_link]]">' +
                             '<strong>' +
-                                '<span class="name">' +
+                                '<span class="name" title="[[card_name_title]]">' +
                                     '[[card_name]]' +
                                 '</span>' +
                             '</strong>' +
                         '</a>' +
                     '</div>' +
-                    '<div class="field created [[hide]]">' +
+                    '<div class="field updated [[hide]]">' +
                         '<i class="fa fa-calendar-times-o"></i>' +
-                        'created: [[card_created]]' +
+                        'updated: [[card_updated]]' +
                     '</div>' +
                 '</li>';
 
@@ -466,15 +487,73 @@ jQuery(function($) {
                                 .replace('[[card_link]]', link)
                                 .replace('[[card_stage]]', stage);
 
-                            if (row[model+'_title']) {
-                                card = card.replace('[[card_name]]', row[model+'_title']);
+                            //gets the difference of today's date and updated date
+                            //in months, weeks, days, hours, minutes and seconds
+                            var dateUpdated = new Date(row[model+'_updated']);
+                            var dateToday = new Date();
+                            var diffDate = dateToday-dateUpdated;
+                            //gets the difference of date in UTC
+                            diffDate += new Date().getTimezoneOffset() * 60000;
+
+                            var diff = {
+                                month: Math.round(diffDate / 2419200000),
+                                week: Math.round(diffDate / 604800000),
+                                day: Math.round(diffDate / 86400000),
+                                hour: Math.round(diffDate / 3600000),
+                                min: Math.round(diffDate / 60000),
+                                sec: Math.round(diffDate / 1000)
+                            };
+
+                            //replace the value of card_diff with its values
+                            $.each(diff, function(key, value) {
+                                if (value != 0) {
+                                    switch(key) {
+                                        case 'month': value += 'mos'; break;
+                                        case 'week': value += 'w'; break;
+                                        case 'day': value += 'd'; break;
+                                        case 'hour': value += 'h'; break;
+                                        case 'min': value += 'mins'; break;
+                                        case 'sec': value += 's'; break;
+                                    }
+                                    card = card.replace('[[card_diff]]', value);
+                                    return false;
+                                }
+                            });
+
+                            //gets the suggestion value
+                            var suggestionFormat = $(target).data('suggestion');
+
+                            //gets suggestionFormat values inside of {{}}
+                            var suggestionFormats = [], 
+                                rxp = /{{([^}]+)}}/g,
+                                curMatch;
+                            while (curMatch = rxp.exec(suggestionFormat)) {
+                                suggestionFormats.push(curMatch[1]);
                             }
 
-                            if (row[model+'_name']) {
-                                card = card.replace('[[card_name]]', row[model+'_name']);
+                            //replace suggestionFormat with corresponding values
+                            var count = -1;
+                            suggestionFormat = suggestionFormat
+                                .replace(/\{\{.*?\}\}/g, function() {
+                                    count = count + 1;
+                                    if (row[suggestionFormats[count]]) {
+                                        return (row[suggestionFormats[count]]);
+                                    } else {
+                                        return '';
+                                    }
+                                });
+
+                            //change card title into suggestion format
+                            card = card.replace('[[card_name]]', suggestionFormat);
+                            //change tooltip value of card title
+                            if (suggestionFormat == "No Title") {
+                                card = card.replace('[[card_name_title]]', "There's no suggestion format.")
+                            } else {
+                                card = card.replace('[[card_name_title]]', suggestionFormat);
                             }
 
-                            if (row[model+'_created']) {
+                            //gets updated date
+                            if (row[model+'_updated']) {
                                 const monthNames = [
                                     "January",
                                     "February",
@@ -490,13 +569,13 @@ jQuery(function($) {
                                     "December"
                                 ];
 
-                                var created = new Date(row[model+'_created']);
-                                var date = monthNames[created.getMonth()] +
-                                    ' ' + created.getDate();
+                                var updated = new Date(row[model+'_updated']);
+                                var date = monthNames[updated.getMonth()] +
+                                    ' ' + updated.getDate();
                                 card = card
                                     .replace('[[hide]]', '')
                                     .replace(
-                                        '[[card_created]]',
+                                        '[[card_updated]]',
                                         date
                                     );
                             } else {
@@ -600,7 +679,7 @@ jQuery(function($) {
                                     || !isNaN(parseFloat(item[key]))
                                     //it's a string and is not like a number
                                     // but the first character is like a number
-                                    || !isNaN(parseFloat(item[key][0]))
+                                    || !isNaN(pasuggestion-itemrseFloat(item[key][0]))
                                 ) {
                                     continue;
                                 }
