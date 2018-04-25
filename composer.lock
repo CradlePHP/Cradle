@@ -681,16 +681,16 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.0.11",
+            "version": "0.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "e24779844784d476748410edafb42a5b4b512875"
+                "reference": "63fdffa892e36f8d646f22be0fab505b3b9aa193"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/e24779844784d476748410edafb42a5b4b512875",
-                "reference": "e24779844784d476748410edafb42a5b4b512875",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/63fdffa892e36f8d646f22be0fab505b3b9aa193",
+                "reference": "63fdffa892e36f8d646f22be0fab505b3b9aa193",
                 "shasum": ""
             },
             "require": {
@@ -722,20 +722,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-23T06:23:59+00:00"
+            "time": "2018-04-24T07:13:45+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.28",
+            "version": "1.2.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "eb02815dc2fe712df8f59b3de09b2ac032cc7c85"
+                "reference": "bad9f280890b37f7afa81ef07d4942c59442b99d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/eb02815dc2fe712df8f59b3de09b2ac032cc7c85",
-                "reference": "eb02815dc2fe712df8f59b3de09b2ac032cc7c85",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/bad9f280890b37f7afa81ef07d4942c59442b99d",
+                "reference": "bad9f280890b37f7afa81ef07d4942c59442b99d",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-19T07:00:12+00:00"
+            "time": "2018-04-23T07:55:01+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -1612,12 +1612,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "179520ec0b25cf4c742d9653be9f4964d64d4a6e"
+                "reference": "5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/179520ec0b25cf4c742d9653be9f4964d64d4a6e",
-                "reference": "179520ec0b25cf4c742d9653be9f4964d64d4a6e",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f",
+                "reference": "5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f",
                 "shasum": ""
             },
             "require": {
@@ -1650,7 +1650,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-09-19T13:02:44+00:00"
+            "time": "2018-04-23T18:39:35+00:00"
         },
         {
             "name": "seld/cli-prompt",
@@ -2873,12 +2873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "5a8650628d94029eafe1260b2edbaf64de852219"
+                "reference": "a75f06cca35652683c2b993247cb9ab2f8c57fb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5a8650628d94029eafe1260b2edbaf64de852219",
-                "reference": "5a8650628d94029eafe1260b2edbaf64de852219",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/a75f06cca35652683c2b993247cb9ab2f8c57fb9",
+                "reference": "a75f06cca35652683c2b993247cb9ab2f8c57fb9",
                 "shasum": ""
             },
             "require": {
@@ -2921,7 +2921,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-17T12:53:05+00:00"
+            "time": "2018-04-24T05:40:33+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
