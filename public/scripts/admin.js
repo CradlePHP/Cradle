@@ -265,7 +265,7 @@ jQuery(function($) {
                     var model = $(target).data('model');
                     var evntStart = $(target).data('start');
                     var evntEnd = $(target).data('end');
-                    // console.log($(target).data('suggestion'));
+                    
                     var data = {
                         render: false,
                         span: {}
@@ -294,7 +294,7 @@ jQuery(function($) {
                                         id: res[model+'_id'],
                                         start: res[evntStart],
                                     }
-                                    
+
                                     //gets the suggestion value
                                     var suggestionFormat = $(target).data('suggestion');
 
