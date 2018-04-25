@@ -148,12 +148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "0f373e3249b0d9523c94766d69d47676f190fdb4"
+                "reference": "34c371f5f23e25eb9aa54ccc65136cf50930612e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/0f373e3249b0d9523c94766d69d47676f190fdb4",
-                "reference": "0f373e3249b0d9523c94766d69d47676f190fdb4",
+                "url": "https://api.github.com/repos/composer/composer/zipball/34c371f5f23e25eb9aa54ccc65136cf50930612e",
+                "reference": "34c371f5f23e25eb9aa54ccc65136cf50930612e",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2018-04-13T13:51:58+00:00"
+            "time": "2018-04-24T21:56:25+00:00"
         },
         {
             "name": "composer/semver",
@@ -681,16 +681,16 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.0.13",
+            "version": "0.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "63fdffa892e36f8d646f22be0fab505b3b9aa193"
+                "reference": "3c01033dbe4a02063e3fedaadd02ddc6ad7d2de8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/63fdffa892e36f8d646f22be0fab505b3b9aa193",
-                "reference": "63fdffa892e36f8d646f22be0fab505b3b9aa193",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/3c01033dbe4a02063e3fedaadd02ddc6ad7d2de8",
+                "reference": "3c01033dbe4a02063e3fedaadd02ddc6ad7d2de8",
                 "shasum": ""
             },
             "require": {
@@ -722,20 +722,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-24T07:13:45+00:00"
+            "time": "2018-04-25T05:26:05+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.29",
+            "version": "1.2.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "bad9f280890b37f7afa81ef07d4942c59442b99d"
+                "reference": "7c924898be971e49f2e2ada2731ecf207b5a665b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/bad9f280890b37f7afa81ef07d4942c59442b99d",
-                "reference": "bad9f280890b37f7afa81ef07d4942c59442b99d",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/7c924898be971e49f2e2ada2731ecf207b5a665b",
+                "reference": "7c924898be971e49f2e2ada2731ecf207b5a665b",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-23T07:55:01+00:00"
+            "time": "2018-04-25T05:28:29+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -1612,12 +1612,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f"
+                "reference": "389551e3e55c2904a4307fcc9900ede5b80766ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f",
-                "reference": "5c3e69ce2bb97263a3a8bf1b280772bed2b25d7f",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/389551e3e55c2904a4307fcc9900ede5b80766ce",
+                "reference": "389551e3e55c2904a4307fcc9900ede5b80766ce",
                 "shasum": ""
             },
             "require": {
@@ -1650,7 +1650,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2018-04-23T18:39:35+00:00"
+            "time": "2018-04-24T18:35:03+00:00"
         },
         {
             "name": "seld/cli-prompt",
