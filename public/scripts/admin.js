@@ -1996,7 +1996,7 @@ jQuery(function($) {
                 });
 
                 if(errors) {
-                    $('span.help-text', target).html(message);
+                    $.notify(message, 'error');
                     e.preventDefault();
                     return false;
                 }
