@@ -265,7 +265,7 @@ jQuery(function($) {
                     var model = $(target).data('model');
                     var evntStart = $(target).data('start');
                     var evntEnd = $(target).data('end');
-                    
+
                     var data = {
                         render: false,
                         span: {}
@@ -679,7 +679,7 @@ jQuery(function($) {
                                     || !isNaN(parseFloat(item[key]))
                                     //it's a string and is not like a number
                                     // but the first character is like a number
-                                    || !isNaN(pasuggestion-itemrseFloat(item[key][0]))
+                                    || !isNaN(parseFloat(item[key][0]))
                                 ) {
                                     continue;
                                 }
