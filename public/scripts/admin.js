@@ -480,6 +480,12 @@ jQuery(function($) {
                     $(target).find('.stage .badge').html(res.results.total);
                     if (!!res.results.rows) {
                         var lists = '';
+                        var totalColumn = $(target).data('total');
+                        var rangeColumn = $(target).data('range');
+                        var total = 0;
+                        var range = new Array();
+                        var currency = $(target).data('currency');
+
                         $.map(res.results.rows, function(row) {
                             var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
                             var card = cardTemplate
@@ -487,12 +493,12 @@ jQuery(function($) {
                                 .replace('[[card_link]]', link)
                                 .replace('[[card_stage]]', stage);
 
-                            //gets the difference of today's date and updated date
-                            //in months, weeks, days, hours, minutes and seconds
+                            // gets the difference of today's date and updated date
+                            // in months, weeks, days, hours, minutes and seconds
                             var dateUpdated = new Date(row[model+'_updated']);
                             var dateToday = new Date();
                             var diffDate = dateToday-dateUpdated;
-                            //gets the difference of date in UTC
+                            // gets the difference of date in UTC
                             diffDate += new Date().getTimezoneOffset() * 60000;
 
                             var diff = {
@@ -504,7 +510,7 @@ jQuery(function($) {
                                 sec: Math.round(diffDate / 1000)
                             };
 
-                            //replace the value of card_diff with its values
+                            // replace the value of card_diff with its values
                             $.each(diff, function(key, value) {
                                 if (value != 0) {
                                     switch(key) {
@@ -520,10 +526,10 @@ jQuery(function($) {
                                 }
                             });
 
-                            //gets the suggestion value
+                            // gets the suggestion value
                             var suggestionFormat = $(target).data('suggestion');
 
-                            //gets suggestionFormat values inside of {{}}
+                            // gets suggestionFormat values inside of {{}}
                             var suggestionFormats = [], 
                                 rxp = /{{([^}]+)}}/g,
                                 curMatch;
@@ -531,7 +537,7 @@ jQuery(function($) {
                                 suggestionFormats.push(curMatch[1]);
                             }
 
-                            //replace suggestionFormat with corresponding values
+                            // replace suggestionFormat with corresponding values
                             var count = -1;
                             suggestionFormat = suggestionFormat
                                 .replace(/\{\{.*?\}\}/g, function() {
@@ -582,9 +588,81 @@ jQuery(function($) {
                                 card = card.replace('[[hide]]', 'd-none');
                             }
 
+                            if (totalColumn.length != 0) {
+                                // sums the total per row
+                                total+= (row[totalColumn] * 1);
+                            }
+
+                            if (rangeColumn.length != 0) {
+                                //gets the range column value for range array
+                                if (row[rangeColumn] != 0) {
+                                    range.push(row[rangeColumn] * 1);
+                                }
+                            }
+
                             lists += card;
                         });
 
+                        if (totalColumn.length != 0 || rangeColumn.length != 0) {
+                            //get range in stage header
+                            var minMaxRange;
+                            if (range.length == 0) {
+                                minMaxRange = 0;
+                            } else {
+                                if (range.length == 1) {
+                                    minRange = 0;
+                                    maxRange = Math.min.apply(Math, range);
+                                } else {
+                                    minRange = Math.min.apply(Math, range);
+                                    maxRange = Math.max.apply(Math, range);
+                                }
+                                minMaxRange = minRange + '-' + maxRange;
+                            }
+
+                            // insert total and range in stage header
+                            var templates = {
+                                totalTemplate: {
+                                    len: totalColumn.length,
+                                    template: 
+                                        '<i class="stage-total">' +
+                                            'Total: [[currency]]' +  total + 
+                                        '</i>'
+                                }, 
+                                rangeTemplate: {
+                                    len: rangeColumn.length,
+                                    template: 
+                                        '<i class="stage-range">' +
+                                            'Range: [[currency]]' +  minMaxRange + 
+                                        '</i>'
+                                }
+                            };
+
+                            $.each(templates, function(index, value) {
+                                if (currency.length != 0) {
+                                    value['template'] = value['template']
+                                        .replace('[[currency]]', currency);
+                                } else {
+                                    value['template'] = value['template']
+                                        .replace('[[currency]]', '');
+                                }
+                                
+                                if (value['len'] != 0) {
+                                    // append the template with its values
+                                    $('.total-range-container', target).
+                                        append(
+                                            '<div>' + 
+                                                value['template'] + 
+                                            '</div>'
+                                    );
+                                }
+                            });
+
+                            // make progress bar invisible
+                            $('div.progress-container').addClass('d-none');
+                        }
+                        
+
+                        //appends the card in the board-stage
                         $('.board-stage', target).append(lists);
 
                         if (callback) {
