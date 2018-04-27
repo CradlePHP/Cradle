@@ -282,7 +282,7 @@ jQuery(function($) {
                     }
 
                     jQuery.ajax({
-                        url: '/admin/system/model/'+model+'/search',
+                        url: '/admin/system/model/'+model+'/pipeline/data',
                         type: 'GET',
                         dataType: 'json',
                         data: data,
@@ -295,31 +295,8 @@ jQuery(function($) {
                                         start: res[evntStart],
                                     }
 
-                                    //gets the suggestion value
-                                    var suggestionFormat = $(target).data('suggestion');
-
-                                    //gets suggestionFormat values inside of {{}}
-                                    var suggestionFormats = [], 
-                                        rxp = /{{([^}]+)}}/g,
-                                        curMatch;
-                                    while (curMatch = rxp.exec(suggestionFormat)) {
-                                        suggestionFormats.push(curMatch[1]);
-                                    }
-
-                                    //replace suggestionFormat with corresponding values
-                                    var count = -1;
-                                    suggestionFormat = suggestionFormat
-                                        .replace(/\{\{.*?\}\}/g, function() {
-                                            count = count + 1;
-                                            if (res[suggestionFormats[count]]) {
-                                                return (res[suggestionFormats[count]]);
-                                            } else {
-                                                return '';
-                                            }
-                                        });
-
                                     //change row title into suggestion format
-                                    row.title = suggestionFormat;
+                                    row.title = res['suggestion'];
 
                                     if (evntEnd) {
                                         row.end = res[evntEnd];
@@ -455,10 +432,6 @@ jQuery(function($) {
                             '</strong>' +
                         '</a>' +
                     '</div>' +
-                    '<div class="field updated [[hide]]">' +
-                        '<i class="fa fa-calendar-times-o"></i>' +
-                        'updated: [[card_updated]]' +
-                    '</div>' +
                 '</li>';
 
                 var data = {
@@ -474,17 +447,19 @@ jQuery(function($) {
                     data.order[sort] = 'ASC';
                 }
 
-                $.get('/admin/system/model/'+model+'/search', data)
+                $.get('/admin/system/model/'+model+'/pipeline/data', data)
                 .done(function(res) {
                     // stage total
                     $(target).find('.stage .badge').html(res.results.total);
                     if (!!res.results.rows) {
-                        var lists = '';
-                        var totalColumn = $(target).data('total');
-                        var rangeColumn = $(target).data('range');
-                        var total = 0;
-                        var range = new Array();
                         var currency = $(target).data('currency');
+                        var lists = '';
+                        var maxRangeArr = new Array();
+                        var minRangeArr = new Array();
+                        var maxRangeColumn = $(target).data('max-range');
+                        var minRangeColumn = $(target).data('min-range');
+                        var total = 0;
+                        var totalColumn = $(target).data('total');
 
                         $.map(res.results.rows, function(row) {
                             var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
@@ -526,66 +501,14 @@ jQuery(function($) {
                                 }
                             });
 
-                            // gets the suggestion value
-                            var suggestionFormat = $(target).data('suggestion');
-
-                            // gets suggestionFormat values inside of {{}}
-                            var suggestionFormats = [], 
-                                rxp = /{{([^}]+)}}/g,
-                                curMatch;
-                            while (curMatch = rxp.exec(suggestionFormat)) {
-                                suggestionFormats.push(curMatch[1]);
-                            }
-
-                            // replace suggestionFormat with corresponding values
-                            var count = -1;
-                            suggestionFormat = suggestionFormat
-                                .replace(/\{\{.*?\}\}/g, function() {
-                                    count = count + 1;
-                                    if (row[suggestionFormats[count]]) {
-                                        return (row[suggestionFormats[count]]);
-                                    } else {
-                                        return '';
-                                    }
-                                });
-
                             //change card title into suggestion format
-                            card = card.replace('[[card_name]]', suggestionFormat);
+                            card = card.replace('[[card_name]]', row['suggestion']);
+                            
                             //change tooltip value of card title
-                            if (suggestionFormat == "No Title") {
+                            if (row['suggestion'] == "No Title") {
                                 card = card.replace('[[card_name_title]]', "There's no suggestion format.")
                             } else {
-                                card = card.replace('[[card_name_title]]', suggestionFormat);
-                            }
-
-                            //gets updated date
-                            if (row[model+'_updated']) {
-                                const monthNames = [
-                                    "January",
-                                    "February",
-                                    "March",
-                                    "April",
-                                    "May",
-                                    "June",
-                                    "July",
-                                    "August",
-                                    "September",
-                                    "October",
-                                    "November",
-                                    "December"
-                                ];
-
-                                var updated = new Date(row[model+'_updated']);
-                                var date = monthNames[updated.getMonth()] +
-                                    ' ' + updated.getDate();
-                                card = card
-                                    .replace('[[hide]]', '')
-                                    .replace(
-                                        '[[card_updated]]',
-                                        date
-                                    );
-                            } else {
-                                card = card.replace('[[hide]]', 'd-none');
+                                card = card.replace('[[card_name_title]]', row['suggestion']);
                             }
 
                             if (totalColumn.length != 0) {
@@ -593,30 +516,51 @@ jQuery(function($) {
                                 total+= (row[totalColumn] * 1);
                             }
 
-                            if (rangeColumn.length != 0) {
-                                //gets the range column value for range array
-                                if (row[rangeColumn] != 0) {
-                                    range.push(row[rangeColumn] * 1);
+                            if (minRangeColumn.length != 0) {
+                                //gets the min range column value for range array
+                                if (row[minRangeColumn] != 0) {
+                                    minRangeArr.push(row[minRangeColumn] * 1);
+                                }
+                            }
+
+                            if (maxRangeColumn.length != 0) {
+                                //gets the max range column value for range array
+                                if (row[maxRangeColumn] != 0) {
+                                    maxRangeArr.push(row[maxRangeColumn] * 1);
                                 }
                             }
 
                             lists += card;
                         });
 
-                        if (totalColumn.length != 0 || rangeColumn.length != 0) {
+                        var minMaxRangeColumnLen;
+
+                        // gets the length of entered column names 
+                        // to determine if range section will be rendered or not
+                        if (minRangeColumn.length == 0 || 
+                            maxRangeColumn.length == 0) {
+                            minMaxRangeColumnLen = 0;
+                        } else {
+                            minMaxRangeColumnLen = minRangeColumn.length + 
+                                maxRangeColumn.length;
+                        }
+
+                        // render template if column is not empty
+                        if (totalColumn.length != 0 || minMaxRangeColumnLen != 0) {
                             //get range in stage header
                             var minMaxRange;
-                            if (range.length == 0) {
-                                minMaxRange = 0;
-                            } else {
-                                if (range.length == 1) {
-                                    minRange = 0;
-                                    maxRange = Math.min.apply(Math, range);
-                                } else {
-                                    minRange = Math.min.apply(Math, range);
-                                    maxRange = Math.max.apply(Math, range);
-                                }
-                                minMaxRange = minRange + '-' + maxRange;
+
+                            // get total number of cards per row
+                            var cardTotal = res.results.rows.length;
+                            
+                            switch (cardTotal) {
+                                case 0: minMaxRange = 0; break;
+                                case 1: minMaxRange = 0 + '-' + 
+                                    Math.max.apply(Math, maxRangeArr);
+                                    break;
+                                default: minMaxRange = Math.min.apply(Math, minRangeArr) + 
+                                    '-' + Math.max.apply(Math, maxRangeArr);
+                                    break;
                             }
 
                             // insert total and range in stage header
@@ -629,7 +573,7 @@ jQuery(function($) {
                                         '</i>'
                                 }, 
                                 rangeTemplate: {
-                                    len: rangeColumn.length,
+                                    len: minMaxRangeColumnLen,
                                     template: 
                                         '<i class="stage-range">' +
                                             'Range: [[currency]]' +  minMaxRange + 

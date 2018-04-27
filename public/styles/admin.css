@@ -2059,6 +2059,7 @@ ul.meta-list .key {
 .pipeline-board .column .draggable-wrapper .card {
     margin-bottom: 10px;
     padding: 10px;
+    min-height: 75px;
 }
 .pipeline-board .column .draggable-wrapper .card .field.updated {
     font-size: 12px;
