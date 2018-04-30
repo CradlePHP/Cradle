@@ -432,6 +432,17 @@ jQuery(function($) {
                             '</strong>' +
                         '</a>' +
                     '</div>' +
+                    '<div class= "[[card_profile_div]]">' + 
+                        '<a href="[[card_profile_link]]">' + 
+                            '<i style="float: right;">' + 
+                                '<img ' + 
+                                    'src="" ' + 
+                                    'title="[[card_profile_name]]" ' + 
+                                    'width="40"' + 
+                                '/>' + 
+                            '</i>' + 
+                        '</a>' + 
+                    '</div>' + 
                 '</li>';
 
                 var data = {
@@ -458,6 +469,7 @@ jQuery(function($) {
                         var minRangeArr = new Array();
                         var maxRangeColumn = $(target).data('max-range');
                         var minRangeColumn = $(target).data('min-range');
+                        var profileTrue = $(target).data('profile-true');
                         var total = 0;
                         var totalColumn = $(target).data('total');
 
@@ -468,9 +480,32 @@ jQuery(function($) {
                                 .replace('[[card_link]]', link)
                                 .replace('[[card_stage]]', stage);
 
+                            // gets the photo of the current user
+                            if (profileTrue == 1) {
+                                var profileLink = '/admin/system/model/profile/update/' + 
+                                    res.results.me.profile_id;
+                                var defaultPhoto = '/images/default-avatar.png';
+
+                                card = card.replace('[[card_profile_div]]', '');
+                                card = card.replace('[[card_profile_name]]',
+                                    res.results.me.profile_name);
+                                card = card.replace('[[card_profile_link]]',
+                                    profileLink);
+
+                                if(res.results.me.profile_photo != null) {
+                                    card = card.replace('<img src=""', 
+                                        '<img src="' + res.results.me.profile_photo + '"');
+                                } else {
+                                    card = card.replace('<img src=""', 
+                                        '<img src="' + defaultPhoto + '"');
+                                }
+                            } else {
+                                card = card.replace('[[card_profile_div]]', 'd-none');
+                            }
+
                             // gets the difference of today's date and updated date
                             // in months, weeks, days, hours, minutes and seconds
-                            var dateUpdated = new Date(row[model+'_updated']);
+                            var dateUpdated = new Date(row[model + '_updated']);
                             var dateToday = new Date();
                             var diffDate = dateToday-dateUpdated;
                             // gets the difference of date in UTC
@@ -502,13 +537,13 @@ jQuery(function($) {
                             });
 
                             //change card title into suggestion format
-                            card = card.replace('[[card_name]]', row['suggestion']);
+                            card = card.replace('[[card_name]]', row[model + '_suggestion']);
                             
                             //change tooltip value of card title
                             if (row['suggestion'] == "No Title") {
                                 card = card.replace('[[card_name_title]]', "There's no suggestion format.")
                             } else {
-                                card = card.replace('[[card_name_title]]', row['suggestion']);
+                                card = card.replace('[[card_name_title]]', row[model + '_suggestion']);
                             }
 
                             if (totalColumn.length != 0) {
