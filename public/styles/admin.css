@@ -2042,7 +2042,12 @@ ul.meta-list .key {
     width: 250px;
     overflow: hidden;
 }
-
+.pipeline-board .column .stage .total-range-container {
+    text-align: center;
+}
+.pipeline-board .column .stage .total-range-container i {
+    font-size: 13px;
+}
 .pipeline-board .column .draggable-wrapper {
     padding: 10px;
 }
@@ -2054,6 +2059,7 @@ ul.meta-list .key {
 .pipeline-board .column .draggable-wrapper .card {
     margin-bottom: 10px;
     padding: 10px;
+    min-height: 75px;
 }
 .pipeline-board .column .draggable-wrapper .card .field.updated {
     font-size: 12px;

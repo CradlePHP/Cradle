@@ -282,7 +282,7 @@ jQuery(function($) {
                     }
 
                     jQuery.ajax({
-                        url: '/admin/system/model/'+model+'/search',
+                        url: '/admin/system/model/'+model+'/pipeline/data',
                         type: 'GET',
                         dataType: 'json',
                         data: data,
@@ -295,31 +295,8 @@ jQuery(function($) {
                                         start: res[evntStart],
                                     }
 
-                                    //gets the suggestion value
-                                    var suggestionFormat = $(target).data('suggestion');
-
-                                    //gets suggestionFormat values inside of {{}}
-                                    var suggestionFormats = [], 
-                                        rxp = /{{([^}]+)}}/g,
-                                        curMatch;
-                                    while (curMatch = rxp.exec(suggestionFormat)) {
-                                        suggestionFormats.push(curMatch[1]);
-                                    }
-
-                                    //replace suggestionFormat with corresponding values
-                                    var count = -1;
-                                    suggestionFormat = suggestionFormat
-                                        .replace(/\{\{.*?\}\}/g, function() {
-                                            count = count + 1;
-                                            if (res[suggestionFormats[count]]) {
-                                                return (res[suggestionFormats[count]]);
-                                            } else {
-                                                return '';
-                                            }
-                                        });
-
                                     //change row title into suggestion format
-                                    row.title = suggestionFormat;
+                                    row.title = res['suggestion'];
 
                                     if (evntEnd) {
                                         row.end = res[evntEnd];
@@ -455,10 +432,6 @@ jQuery(function($) {
                             '</strong>' +
                         '</a>' +
                     '</div>' +
-                    '<div class="field updated [[hide]]">' +
-                        '<i class="fa fa-calendar-times-o"></i>' +
-                        'updated: [[card_updated]]' +
-                    '</div>' +
                 '</li>';
 
                 var data = {
@@ -474,12 +447,20 @@ jQuery(function($) {
                     data.order[sort] = 'ASC';
                 }
 
-                $.get('/admin/system/model/'+model+'/search', data)
+                $.get('/admin/system/model/'+model+'/pipeline/data', data)
                 .done(function(res) {
                     // stage total
                     $(target).find('.stage .badge').html(res.results.total);
                     if (!!res.results.rows) {
+                        var currency = $(target).data('currency');
                         var lists = '';
+                        var maxRangeArr = new Array();
+                        var minRangeArr = new Array();
+                        var maxRangeColumn = $(target).data('max-range');
+                        var minRangeColumn = $(target).data('min-range');
+                        var total = 0;
+                        var totalColumn = $(target).data('total');
+
                         $.map(res.results.rows, function(row) {
                             var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
                             var card = cardTemplate
@@ -487,12 +468,12 @@ jQuery(function($) {
                                 .replace('[[card_link]]', link)
                                 .replace('[[card_stage]]', stage);
 
-                            //gets the difference of today's date and updated date
-                            //in months, weeks, days, hours, minutes and seconds
+                            // gets the difference of today's date and updated date
+                            // in months, weeks, days, hours, minutes and seconds
                             var dateUpdated = new Date(row[model+'_updated']);
                             var dateToday = new Date();
                             var diffDate = dateToday-dateUpdated;
-                            //gets the difference of date in UTC
+                            // gets the difference of date in UTC
                             diffDate += new Date().getTimezoneOffset() * 60000;
 
                             var diff = {
@@ -504,7 +485,7 @@ jQuery(function($) {
                                 sec: Math.round(diffDate / 1000)
                             };
 
-                            //replace the value of card_diff with its values
+                            // replace the value of card_diff with its values
                             $.each(diff, function(key, value) {
                                 if (value != 0) {
                                     switch(key) {
@@ -520,71 +501,112 @@ jQuery(function($) {
                                 }
                             });
 
-                            //gets the suggestion value
-                            var suggestionFormat = $(target).data('suggestion');
-
-                            //gets suggestionFormat values inside of {{}}
-                            var suggestionFormats = [], 
-                                rxp = /{{([^}]+)}}/g,
-                                curMatch;
-                            while (curMatch = rxp.exec(suggestionFormat)) {
-                                suggestionFormats.push(curMatch[1]);
-                            }
-
-                            //replace suggestionFormat with corresponding values
-                            var count = -1;
-                            suggestionFormat = suggestionFormat
-                                .replace(/\{\{.*?\}\}/g, function() {
-                                    count = count + 1;
-                                    if (row[suggestionFormats[count]]) {
-                                        return (row[suggestionFormats[count]]);
-                                    } else {
-                                        return '';
-                                    }
-                                });
-
                             //change card title into suggestion format
-                            card = card.replace('[[card_name]]', suggestionFormat);
+                            card = card.replace('[[card_name]]', row['suggestion']);
+                            
                             //change tooltip value of card title
-                            if (suggestionFormat == "No Title") {
+                            if (row['suggestion'] == "No Title") {
                                 card = card.replace('[[card_name_title]]', "There's no suggestion format.")
                             } else {
-                                card = card.replace('[[card_name_title]]', suggestionFormat);
+                                card = card.replace('[[card_name_title]]', row['suggestion']);
                             }
 
-                            //gets updated date
-                            if (row[model+'_updated']) {
-                                const monthNames = [
-                                    "January",
-                                    "February",
-                                    "March",
-                                    "April",
-                                    "May",
-                                    "June",
-                                    "July",
-                                    "August",
-                                    "September",
-                                    "October",
-                                    "November",
-                                    "December"
-                                ];
+                            if (totalColumn.length != 0) {
+                                // sums the total per row
+                                total+= (row[totalColumn] * 1);
+                            }
 
-                                var updated = new Date(row[model+'_updated']);
-                                var date = monthNames[updated.getMonth()] +
-                                    ' ' + updated.getDate();
-                                card = card
-                                    .replace('[[hide]]', '')
-                                    .replace(
-                                        '[[card_updated]]',
-                                        date
-                                    );
-                            } else {
-                                card = card.replace('[[hide]]', 'd-none');
+                            if (minRangeColumn.length != 0) {
+                                //gets the min range column value for range array
+                                if (row[minRangeColumn] != 0) {
+                                    minRangeArr.push(row[minRangeColumn] * 1);
+                                }
+                            }
+
+                            if (maxRangeColumn.length != 0) {
+                                //gets the max range column value for range array
+                                if (row[maxRangeColumn] != 0) {
+                                    maxRangeArr.push(row[maxRangeColumn] * 1);
+                                }
                             }
 
                             lists += card;
                         });
 
+                        var minMaxRangeColumnLen;
+
+                        // gets the length of entered column names 
+                        // to determine if range section will be rendered or not
+                        if (minRangeColumn.length == 0 || 
+                            maxRangeColumn.length == 0) {
+                            minMaxRangeColumnLen = 0;
+                        } else {
+                            minMaxRangeColumnLen = minRangeColumn.length + 
+                                maxRangeColumn.length;
+                        }
+
+                        // render template if column is not empty
+                        if (totalColumn.length != 0 || minMaxRangeColumnLen != 0) {
+                            //get range in stage header
+                            var minMaxRange;
+
+                            // get total number of cards per row
+                            var cardTotal = res.results.rows.length;
+                            
+                            switch (cardTotal) {
+                                case 0: minMaxRange = 0; break;
+                                case 1: minMaxRange = 0 + '-' + 
+                                    Math.max.apply(Math, maxRangeArr);
+                                    break;
+                                default: minMaxRange = Math.min.apply(Math, minRangeArr) + 
+                                    '-' + Math.max.apply(Math, maxRangeArr);
+                                    break;
+                            }
+
+                            // insert total and range in stage header
+                            var templates = {
+                                totalTemplate: {
+                                    len: totalColumn.length,
+                                    template: 
+                                        '<i class="stage-total">' +
+                                            'Total: [[currency]]' +  total + 
+                                        '</i>'
+                                }, 
+                                rangeTemplate: {
+                                    len: minMaxRangeColumnLen,
+                                    template: 
+                                        '<i class="stage-range">' +
+                                            'Range: [[currency]]' +  minMaxRange + 
+                                        '</i>'
+                                }
+                            };
+
+                            $.each(templates, function(index, value) {
+                                if (currency.length != 0) {
+                                    value['template'] = value['template']
+                                        .replace('[[currency]]', currency);
+                                } else {
+                                    value['template'] = value['template']
+                                        .replace('[[currency]]', '');
+                                }
+                                
+                                if (value['len'] != 0) {
+                                    // append the template with its values
+                                    $('.total-range-container', target).
+                                        append(
+                                            '<div>' + 
+                                                value['template'] + 
+                                            '</div>'
+                                    );
+                                }
+                            });
+
+                            // make progress bar invisible
+                            $('div.progress-container').addClass('d-none');
+                        }
+                        
+
+                        //appends the card in the board-stage
                         $('.board-stage', target).append(lists);
 
                         if (callback) {
