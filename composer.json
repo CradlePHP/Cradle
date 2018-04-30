@@ -23,7 +23,7 @@
         "cradlephp/cradle-developer": "1.*",
         "cradlephp/cradle-system": "1.*",
         "cradlephp/cradle-install": "0.*",
-        "cradlephp/cradle-auth": "0.1.2",
+        "cradlephp/cradle-auth": "0.*",
         "cradlephp/cradle-history": "0.*",
         "cradlephp/cradle-profile": "0.*",
         "elasticsearch/elasticsearch": "2.2.2",
