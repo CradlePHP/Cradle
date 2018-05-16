@@ -2042,8 +2042,12 @@ ul.meta-list .key {
     width: 250px;
     overflow: hidden;
 }
+.pipeline-board .column .stage .progress-container .bg-primary {
+    background-color: #428BCA !important;
+}
 .pipeline-board .column .stage .total-range-container {
     text-align: center;
+    margin-top: 10px !important;
 }
 .pipeline-board .column .stage .total-range-container i {
     font-size: 13px;

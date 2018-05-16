@@ -361,8 +361,8 @@ jQuery(function($) {
             var field = $(target).data('field');
             var sort = $(target).data('order');
             var columns = $(target).parent().find('.column').length;
-            var width = $('.board-container').width()/columns;
-
+            var width = $('.board-container').width()/columns; 
+ 
             if (width > 250) {
                 $(target).css('width', width);
             }
@@ -375,7 +375,7 @@ jQuery(function($) {
                     var data = {};
                     var stage = $(container.el).parents('.column').data('stage');
 
-                    // if status is changed
+                    // if status has changed
                     if ($(item).data('stage') != stage) {
                         var id = $(item).data('id');
 
@@ -432,6 +432,18 @@ jQuery(function($) {
                             '</strong>' +
                         '</a>' +
                     '</div>' +
+                    '<div class= "[[card_footer]]">' + 
+                        '<a class="[[card_profile]]" href="[[card_profile_link]]">' + 
+                            '<i style="float: right;">' + 
+                                '<img ' + 
+                                    'src="" ' + 
+                                    'title="[[card_profile_name]]" ' + 
+                                    'width="40"' + 
+                                '/>' + 
+                            '</i>' + 
+                        '</a>' + 
+                        '<p>[[card_currency]][[card_price]]</p>' + 
+                    '</div>' + 
                 '</li>';
 
                 var data = {
@@ -449,28 +461,71 @@ jQuery(function($) {
 
                 $.get('/admin/system/model/'+model+'/pipeline/data', data)
                 .done(function(res) {
+                    var totalAndPrice = $(target).data('total-price');
+                    
                     // stage total
                     $(target).find('.stage .badge').html(res.results.total);
                     if (!!res.results.rows) {
                         var currency = $(target).data('currency');
                         var lists = '';
-                        var maxRangeArr = new Array();
-                        var minRangeArr = new Array();
-                        var maxRangeColumn = $(target).data('max-range');
-                        var minRangeColumn = $(target).data('min-range');
-                        var total = 0;
-                        var totalColumn = $(target).data('total');
+                        var profileTrue = $(target).data('profile-true');
+
+                        if (totalAndPrice) {
+                            if (totalAndPrice['price']) {
+                                if (totalAndPrice['price'][0]) {
+                                    var price1 = totalAndPrice['price'][0];
+                                }
+                                if (totalAndPrice['price'][1]) {
+                                    var price2 = totalAndPrice['price'][1];
+                                }
+                            }
+
+                            if (totalAndPrice['total']) {
+                                if (totalAndPrice['total'][0]) {
+                                    var totalColumn = totalAndPrice['total'][0];
+                                    var total = 0;
+                                }
+                                if (totalAndPrice['total'][1]) {
+                                    var total1 = totalAndPrice['total'][1];
+                                }
+                            }
+                        }
 
                         $.map(res.results.rows, function(row) {
-                            var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
+                            var link = '/admin/system/model/' + model + 
+                                        '/update/' + row[model+'_id'];
                             var card = cardTemplate
                                 .replace('[[card_id]]', row[model+'_id'])
                                 .replace('[[card_link]]', link)
                                 .replace('[[card_stage]]', stage);
 
+                            // gets the photo of the current user
+                            if (profileTrue == 1) {
+                                var profileLink = '/admin/system/model/profile/update/' + 
+                                    res.results.me.profile_id;
+                                var defaultPhoto = '/images/default-avatar.png';
+
+                                card = card.replace('[[card_profile]]', '');
+                                card = card.replace('[[card_profile_name]]',
+                                        res.results.me.profile_name);
+                                card = card.replace('[[card_profile_link]]',
+                                        profileLink);
+
+                                if(res.results.me.profile_photo != null) {
+                                    card = card.replace('<img src=""', 
+                                        '<img src="' + 
+                                            res.results.me.profile_photo + '"');
+                                } else {
+                                    card = card.replace('<img src=""', 
+                                        '<img src="' + defaultPhoto + '"');
+                                }
+                            } else {
+                                card = card.replace('[[card_profile]]', 'd-none');
+                            }
+
                             // gets the difference of today's date and updated date
                             // in months, weeks, days, hours, minutes and seconds
-                            var dateUpdated = new Date(row[model+'_updated']);
+                            var dateUpdated = new Date(row[model + '_updated']);
                             var dateToday = new Date();
                             var diffDate = dateToday-dateUpdated;
                             // gets the difference of date in UTC
@@ -502,109 +557,88 @@ jQuery(function($) {
                             });
 
                             //change card title into suggestion format
-                            card = card.replace('[[card_name]]', row['suggestion']);
+                            card = card.replace('[[card_name]]', 
+                                    row[model + '_suggestion']);
                             
                             //change tooltip value of card title
                             if (row['suggestion'] == "No Title") {
-                                card = card.replace('[[card_name_title]]', "There's no suggestion format.")
+                                card = card.replace('[[card_name_title]]', 
+                                        "There's no suggestion format.");
                             } else {
-                                card = card.replace('[[card_name_title]]', row['suggestion']);
+                                card = card.replace('[[card_name_title]]', 
+                                        row[model + '_suggestion']);
                             }
 
-                            if (totalColumn.length != 0) {
-                                // sums the total per row
-                                total+= (row[totalColumn] * 1);
+                            // get total if totalColumn has value
+                            if (totalAndPrice && totalColumn) {
+                                total += (row[totalColumn] * 1);
                             }
 
-                            if (minRangeColumn.length != 0) {
-                                //gets the min range column value for range array
-                                if (row[minRangeColumn] != 0) {
-                                    minRangeArr.push(row[minRangeColumn] * 1);
+                            // gets the value/s to be displayed in card
+                            if (total1 || price1 || price2) {
+                                var template;
+
+                                if ((total1 && !price2) || 
+                                    (total1 && price1 && !price2)
+                                ) {
+                                    // get values if link == 
+                                    // total=totalColumn,total1 or
+                                    // total=totalColumn&price=price1
+                                    template = (row[total1] * 1).toFixed(2);
+                                } else if (price1 && !price2) {
+                                    // gets only column value from price1
+                                    template = (row[price1] * 1).toFixed(2);
+                                } else if (price1 && price2) {
+                                    // gets columns values of two prices
+                                    template = (row[price1] * 1).toFixed(2) + 
+                                        ' - [[card_currency]]' + 
+                                        (row[price2] * 1).toFixed(2);
                                 }
+
+                                // always display 2 decimal places
+                                card = card.replace('[[card_price]]', 
+                                        template);
+
+                            } else {
+                                card = card.replace('[[card_price]]', '');
                             }
 
-                            if (maxRangeColumn.length != 0) {
-                                //gets the max range column value for range array
-                                if (row[maxRangeColumn] != 0) {
-                                    maxRangeArr.push(row[maxRangeColumn] * 1);
-                                }
+                            // display currency if total1 or price1 exists
+                            if (currency && (total1 || price1)) {
+                                card = card.split('[[card_currency]]').join(currency);
+                            } else {
+                                card = card.split('[[card_currency]]').join('');
                             }
 
                             lists += card;
                         });
 
-                        var minMaxRangeColumnLen;
+                        // display the total in stage header if totalColumn has value
+                        if (totalAndPrice && totalColumn) {
+                            var template = 
+                                '<h4 class="stage-total">' +
+                                    '[[currency]]' +  total.toFixed(2) + 
+                                '</h4>';
 
-                        // gets the length of entered column names 
-                        // to determine if range section will be rendered or not
-                        if (minRangeColumn.length == 0 || 
-                            maxRangeColumn.length == 0) {
-                            minMaxRangeColumnLen = 0;
-                        } else {
-                            minMaxRangeColumnLen = minRangeColumn.length + 
-                                maxRangeColumn.length;
-                        }
-
-                        // render template if column is not empty
-                        if (totalColumn.length != 0 || minMaxRangeColumnLen != 0) {
-                            //get range in stage header
-                            var minMaxRange;
-
-                            // get total number of cards per row
-                            var cardTotal = res.results.rows.length;
-                            
-                            switch (cardTotal) {
-                                case 0: minMaxRange = 0; break;
-                                case 1: minMaxRange = 0 + '-' + 
-                                    Math.max.apply(Math, maxRangeArr);
-                                    break;
-                                default: minMaxRange = Math.min.apply(Math, minRangeArr) + 
-                                    '-' + Math.max.apply(Math, maxRangeArr);
-                                    break;
+                            if (currency) {
+                                template = template
+                                        .replace('[[currency]]', currency);
+                            } else {
+                                template = template
+                                        .replace('[[currency]]', '');
                             }
 
-                            // insert total and range in stage header
-                            var templates = {
-                                totalTemplate: {
-                                    len: totalColumn.length,
-                                    template: 
-                                        '<i class="stage-total">' +
-                                            'Total: [[currency]]' +  total + 
-                                        '</i>'
-                                }, 
-                                rangeTemplate: {
-                                    len: minMaxRangeColumnLen,
-                                    template: 
-                                        '<i class="stage-range">' +
-                                            'Range: [[currency]]' +  minMaxRange + 
-                                        '</i>'
-                                }
-                            };
-
-                            $.each(templates, function(index, value) {
-                                if (currency.length != 0) {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', currency);
-                                } else {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', '');
-                                }
-                                
-                                if (value['len'] != 0) {
-                                    // append the template with its values
-                                    $('.total-range-container', target).
-                                        append(
-                                            '<div>' + 
-                                                value['template'] + 
-                                            '</div>'
-                                    );
-                                }
-                            });
+                            // append the template with its values
+                            $('.total-range-container', target).
+                                append(
+                                    '<div>' + 
+                                        template + 
+                                    '</div>'
+                                );
 
                             // make progress bar invisible
                             $('div.progress-container').addClass('d-none');
                         }
-                        
 
                         //appends the card in the board-stage
                         $('.board-stage', target).append(lists);
