@@ -291,12 +291,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "7e111c50db92fa2ced140f5ba23b4e261bc77a30"
+                "reference": "cb17687e9f936acd7e7245ad3890f953770dec1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/7e111c50db92fa2ced140f5ba23b4e261bc77a30",
-                "reference": "7e111c50db92fa2ced140f5ba23b4e261bc77a30",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/cb17687e9f936acd7e7245ad3890f953770dec1b",
+                "reference": "cb17687e9f936acd7e7245ad3890f953770dec1b",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +344,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-01-31T13:17:27+00:00"
+            "time": "2018-04-30T10:33:04+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -681,16 +681,16 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.0.15",
+            "version": "0.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "e7e96755a40719c0047a5e269c741a844ad3a84f"
+                "reference": "a8b6dbf0f3ab6a21603ec2cb35adc25b9a98ccac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/e7e96755a40719c0047a5e269c741a844ad3a84f",
-                "reference": "e7e96755a40719c0047a5e269c741a844ad3a84f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/a8b6dbf0f3ab6a21603ec2cb35adc25b9a98ccac",
+                "reference": "a8b6dbf0f3ab6a21603ec2cb35adc25b9a98ccac",
                 "shasum": ""
             },
             "require": {
@@ -722,7 +722,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-30T06:54:23+00:00"
+            "time": "2018-04-30T09:53:28+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
@@ -1920,16 +1920,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "272969a3946c3aca0f8ae27cf29a7640bd41c57c"
+                "reference": "331138284c7472ba72ea7be5102ba97774fa063e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/272969a3946c3aca0f8ae27cf29a7640bd41c57c",
-                "reference": "272969a3946c3aca0f8ae27cf29a7640bd41c57c",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/331138284c7472ba72ea7be5102ba97774fa063e",
+                "reference": "331138284c7472ba72ea7be5102ba97774fa063e",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
             },
             "type": "library",
             "extra": {
@@ -1961,7 +1962,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-30T15:58:13+00:00"
+            "time": "2018-05-01T23:02:13+00:00"
         },
         {
             "name": "symfony/finder",
@@ -2011,6 +2012,61 @@
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
             "time": "2018-04-04T05:11:41+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3626,17 +3682,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "03620611d2b6cf1d5f217b0c8e2805972fd64614"
+                "reference": "95ca306460850017805a6ff8d140343ce31981a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/03620611d2b6cf1d5f217b0c8e2805972fd64614",
-                "reference": "03620611d2b6cf1d5f217b0c8e2805972fd64614",
+                "url": "https://api.github.com/repos/symfony/config/zipball/95ca306460850017805a6ff8d140343ce31981a3",
+                "reference": "95ca306460850017805a6ff8d140343ce31981a3",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/filesystem": "~3.4|~4.0"
+                "symfony/filesystem": "~3.4|~4.0",
+                "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "symfony/finder": "<3.4"
@@ -3680,7 +3737,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-16T08:25:21+00:00"
+            "time": "2018-05-01T23:02:13+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -3737,16 +3794,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "abab82a85718604d95cbe58dbf464885f37b935a"
+                "reference": "a2e5f1f0f399eaaa36c75a604f4ba0cbe8b2a78c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/abab82a85718604d95cbe58dbf464885f37b935a",
-                "reference": "abab82a85718604d95cbe58dbf464885f37b935a",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/a2e5f1f0f399eaaa36c75a604f4ba0cbe8b2a78c",
+                "reference": "a2e5f1f0f399eaaa36c75a604f4ba0cbe8b2a78c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "symfony/console": "<3.4"
@@ -3787,7 +3845,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-08T09:02:26+00:00"
+            "time": "2018-05-01T23:02:13+00:00"
         },
         {
             "name": "theseer/tokenizer",
