@@ -149,7 +149,7 @@ jQuery(function($) {
          */
         $(window).on('import-init', function(e, trigger) {
             $(trigger).toggleClass('disabled');
-            
+
             $.require('components/papaparse/papaparse.min.js', function() {
                 $(trigger).toggleClass('disabled');
             });
@@ -243,119 +243,110 @@ jQuery(function($) {
         });
 
         $(window).on('calendar-init', function(e, target) {
-            var date = $(target).data('date');
-            var view = 'month';
+            var onAcquire = function() {
+                var ajax = $(target).data('ajax');
+                var date = $(target).data('date');
+                var view = $(target).data('view');
+                var eventStart = $(target).data('event-start');
+                var eventEnd = $(target).data('event-end');
+                var link = $(target).data('event-link');
+                var primary = $(target).data('event-id');
+                var format = $(target).data('event-title');
 
-            if ($(target).data('view')) {
-                view = $(target).data('view');
-            }
+                $(target).fullCalendar({
+                    defaultView: view,
+                    height: 750,
+                    header: {
+                      left: '',
+                      center: 'title',
+                      right: ''
+                    },
+                    eventTextColor: '#fff',
+                    eventLimit: true, // allow "more" link when too many events
+                    navLinks: true,
+                    events: function(start, end, timezone, callback) {
+                        var data = {
+                            render: false,
+                            span: {}
+                        };
 
-            $(target).fullCalendar({
-                defaultView: view,
-                height: 750,
-                header: {
-                  left: '',
-                  center: 'title',
-                  right: ''
-                },
-                eventTextColor: '#fff',
-                eventLimit: true, // allow "more" link when too many events
-                navLinks: true,
-                events: function(start, end, timezone, callback) {
-                    var model = $(target).data('model');
-                    var evntStart = $(target).data('start');
-                    var evntEnd = $(target).data('end');
+                        data.span[eventStart] = [];
+                        data.span[eventStart].push(start.format());
+                        data.span[eventStart].push(end.format());
 
-                    var data = {
-                        render: false,
-                        span: {}
-                    };
-
-                    data.span[evntStart] = [];
-                    data.span[evntStart].push(start.format());
-                    data.span[evntStart].push(end.format());
-
-                    if (evntEnd) {
-                        data.span[evntEnd] = [];
-                        data.span[evntEnd].push(start.format());
-                        data.span[evntEnd].push(end.format());
-                    }
-
-                    jQuery.ajax({
-                        url: '/admin/system/model/'+model+'/pipeline/data',
-                        type: 'GET',
-                        dataType: 'json',
-                        data: data,
-                        success: function(doc) {
-                            var events = [];
-                            if(!!doc.results.rows){
-                                $.map( doc.results.rows, function(res) {
-                                    var row = {
-                                        id: res[model+'_id'],
-                                        start: res[evntStart],
-                                    }
-
-                                    //change row title into suggestion format
-                                    row.title = res['suggestion'];
-
-                                    if (evntEnd) {
-                                        row.end = res[evntEnd];
-                                    }
-
-                                    if (res[model+'_description']) {
-                                        row.description = res[model+'_description'];
-                                    }
-
-                                    if (res[model+'_detail']) {
-                                        row.description = res[model+'_detail'];
-                                    }
-
-                                    if (res[model+'_details']) {
-                                        row.description = res[model+'_details'];
-                                    }
-                                    events.push(row);
-                                });
-                            }
-                            callback(events);
+                        if (eventEnd) {
+                            data.span[eventEnd] = [];
+                            data.span[eventEnd].push(start.format());
+                            data.span[eventEnd].push(end.format());
                         }
-                    });
-                },
-                eventClick: function(eventData, jsEvent, view) {
-                    var model = $(target).data('model');
 
-                    // on click redirect to update page
-                    window.location.href='/admin/system/model/'+model+'/update/' +
-                        eventData.id;
-                },
-                eventRender: function(eventData, $el) {
-                    var content = '';
+                        jQuery.ajax({
+                            url: ajax,
+                            type: 'GET',
+                            dataType: 'json',
+                            data: data,
+                            success: function(response) {
+                                var events = [];
+                                if(!!response.results.rows){
+                                    $.map(response.results.rows, function(result) {
+                                        var row = {
+                                            id: result[primary],
+                                            start: result[eventStart],
+                                            title: 'No Title'
+                                        }
 
-                    if (eventData.description) {
-                        content += eventData.description + ' ';
-                    }
+                                        if (format) {
+                                            row.title = Handlebars.compile(format)(result);
+                                        }
 
-                    content += 'start: ' + eventData.start.format('LLL');
+                                        // display end?
+                                        if (eventEnd && result[eventEnd]) {
+                                            row.end = result[eventEnd];
+                                        }
 
-                    if (eventData.end) {
-                        content += ' end: ' + eventData.end.format('LLL')
-                    }
+                                        events.push(row);
+                                    });
+                                }
+                                callback(events);
+                            }
+                        });
+                    },
+                    eventClick: function(eventData, jsEvent, view) {
+                        // on click redirect to update page
+                        window.location.href = link + '/' + eventData.id;
+                    },
+                    eventRender: function(eventData, $el) {
+                        var content = 'start: ' + eventData.start.format('LLL');
 
-                    $el.popover({
-                        title: eventData.title,
-                        content: content,
-                        trigger: 'hover',
-                        placement: 'top',
-                        container: 'body'
-                    });
-                },
-            });
+                        if (eventData.end) {
+                            content += ' end: ' + eventData.end.format('LLL')
+                        }
 
-            if (date) {
-                $(target).fullCalendar('gotoDate', date);
-            }
+                        $el.popover({
+                            title: eventData.title,
+                            content: content,
+                            trigger: 'hover',
+                            placement: 'top',
+                            container: 'body'
+                        });
+                    },
+                });
+
+                if (date) {
+                    $(target).fullCalendar('gotoDate', date);
+                }
+            };
+
+            $.require([
+                'components/moment/moment.js',
+                'components/fullcalendar/dist/fullcalendar.min.js',
+                'components/fullcalendar/dist/fullcalendar.min.css',
+                'components/handlebars/dist/handlebars.js'
+                // 'components/fullcalendar/dist/fullcalendar.print.css'
+            ], onAcquire);
         });
 
-        $(window).on('board-init', function(e, target) { 
+        $(window).on('board-init', function(e, target) {
             var stage = $(target).data('stage');
             var model = $(target).data('model');
             var field = $(target).data('field');
@@ -423,7 +414,7 @@ jQuery(function($) {
                 var cardTemplate = '<li class="card" data-id="[[card_id]]"' +
                 'data-stage="[[card_stage]]">' +
                     '<div class="card-name">' +
-                        '<i class="pull-right field updated">[[card_diff]]</i>' + 
+                        '<i class="pull-right field updated">[[card_diff]]</i>' +
                         '<a href="[[card_link]]">' +
                             '<strong>' +
                                 '<span class="name" title="[[card_name_title]]">' +
@@ -503,7 +494,7 @@ jQuery(function($) {
 
                             //change card title into suggestion format
                             card = card.replace('[[card_name]]', row['suggestion']);
-                            
+
                             //change tooltip value of card title
                             if (row['suggestion'] == "No Title") {
                                 card = card.replace('[[card_name_title]]', "There's no suggestion format.")
@@ -535,13 +526,13 @@ jQuery(function($) {
 
                         var minMaxRangeColumnLen;
 
-                        // gets the length of entered column names 
+                        // gets the length of entered column names
                         // to determine if range section will be rendered or not
-                        if (minRangeColumn.length == 0 || 
+                        if (minRangeColumn.length == 0 ||
                             maxRangeColumn.length == 0) {
                             minMaxRangeColumnLen = 0;
                         } else {
-                            minMaxRangeColumnLen = minRangeColumn.length + 
+                            minMaxRangeColumnLen = minRangeColumn.length +
                                 maxRangeColumn.length;
                         }
 
@@ -552,13 +543,13 @@ jQuery(function($) {
 
                             // get total number of cards per row
                             var cardTotal = res.results.rows.length;
-                            
+
                             switch (cardTotal) {
                                 case 0: minMaxRange = 0; break;
-                                case 1: minMaxRange = 0 + '-' + 
+                                case 1: minMaxRange = 0 + '-' +
                                     Math.max.apply(Math, maxRangeArr);
                                     break;
-                                default: minMaxRange = Math.min.apply(Math, minRangeArr) + 
+                                default: minMaxRange = Math.min.apply(Math, minRangeArr) +
                                     '-' + Math.max.apply(Math, maxRangeArr);
                                     break;
                             }
@@ -567,16 +558,16 @@ jQuery(function($) {
                             var templates = {
                                 totalTemplate: {
                                     len: totalColumn.length,
-                                    template: 
+                                    template:
                                         '<i class="stage-total">' +
-                                            'Total: [[currency]]' +  total + 
+                                            'Total: [[currency]]' +  total +
                                         '</i>'
-                                }, 
+                                },
                                 rangeTemplate: {
                                     len: minMaxRangeColumnLen,
-                                    template: 
+                                    template:
                                         '<i class="stage-range">' +
-                                            'Range: [[currency]]' +  minMaxRange + 
+                                            'Range: [[currency]]' +  minMaxRange +
                                         '</i>'
                                 }
                             };
@@ -589,13 +580,13 @@ jQuery(function($) {
                                     value['template'] = value['template']
                                         .replace('[[currency]]', '');
                                 }
-                                
+
                                 if (value['len'] != 0) {
                                     // append the template with its values
                                     $('.total-range-container', target).
                                         append(
-                                            '<div>' + 
-                                                value['template'] + 
+                                            '<div>' +
+                                                value['template'] +
                                             '</div>'
                                     );
                                 }
@@ -604,7 +595,7 @@ jQuery(function($) {
                             // make progress bar invisible
                             $('div.progress-container').addClass('d-none');
                         }
-                        
+
 
                         //appends the card in the board-stage
                         $('.board-stage', target).append(lists);
