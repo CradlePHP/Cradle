@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@aprilsacil/number_format.js": "^1.0.1",
     "ace-editor-builds": "^1.2.4",
     "bootstrap": "^4.0.0",
     "bootstrap-markdown-editor-4": "^3.0.0",

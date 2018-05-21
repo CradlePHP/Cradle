@@ -287,7 +287,7 @@ jQuery(function($) {
                             data: data,
                             success: function(response) {
                                 var events = [];
-                                if(!!response.results.rows){
+                                if(!!response.results.rows) {
                                     $.map(response.results.rows, function(result) {
                                         var row = {
                                             id: result[primary],
@@ -347,301 +347,298 @@ jQuery(function($) {
         });
 
         $(window).on('board-init', function(e, target) {
-            var stage = $(target).data('stage');
-            var model = $(target).data('model');
-            var field = $(target).data('field');
-            var sort = $(target).data('order');
-            var columns = $(target).parent().find('.column').length;
-            var width = $('.board-container').width()/columns;
+            $.require([
+                'components/jquery-sortable/source/js/jquery-sortable-min.js',
+                'components/handlebars/dist/handlebars.js',
+                'components/moment/moment.js',
+                'components/@aprilsacil/number_format.js/number_format.min.js',
+            ], function () {
+                    // prepare data
+                    var stage = $(target).data('stage');
+                    var model = $(target).data('model');
+                    var field = $(target).data('field');
+                    var sort = $(target).data('order');
+                    var ajax = $(target).data('ajax-pull');
+                    var update = $(target).data('ajax-update');
+                    var currency = $(target).data('currency');
+                    var primary = $(target).data('primary');
+                    var detail = $(target).data('card-detail');
+                    var title = $(target).data('card-title');
+                    var date = $(target).data('card-date');
+                    var totalFields = [];
+                    var total = [];
 
-            if (width > 250) {
-                $(target).css('width', width);
-            }
-
-            $('.board-stage', target).sortable({
-                group: 'nav',
-                nested: false,
-                vertical: false,
-                onDrop: function(item, container, _super) {
-                    var data = {};
-                    var stage = $(container.el).parents('.column').data('stage');
-
-                    // if status is changed
-                    if ($(item).data('stage') != stage) {
-                        var id = $(item).data('id');
-
-                        data.id = id;
-                        data[field] = stage;
-
-                        $.post('/admin/system/model/'+model+'/pipeline', data)
-                            .done(function(res) {
-                                if (!res.error) {
-                                    var column = field.replace(model+'_', '');
-                                    column = column.charAt(0).toUpperCase() + column.slice(1);
-                                    toastr.success(column + ' updated successfully!');
-                                } else {
-                                    toastr.success('unable to update ' + column);
-                                }
-                            });
+                    // set total
+                    if ($(target).data('total-1')) {
+                        totalFields.push($(target).data('total-1'));
+                        total.push(0);
                     }
 
-                    // if status is the same we're left to assume that the user
-                    // did a re-ordering of cards
-                    if (sort && $(item).data('stage') == stage) {
-                        var order = $(container.el).sortable('serialize').get(0);
+                    // if there's another total for range, add them
+                    if ($(target).data('total-2')) {
+                        totalFields.push($(target).data('total-2'));
+                        total.push(0);
+                    }
 
-                        $.map(order, function(row, position) {
-                            data.id = row.id;
-                            data[sort] = position + 1;
+                    var columns = $(target)
+                        .parent()
+                        .find('.column')
+                        .length;
+                    var width = $('.board-container').width()/columns;
 
-                            $.post('/admin/system/model/'+model+'/pipeline', data)
-                                .done(function(res) {
-                                    if (!res.error && position + 1 == order.length) {
-                                        toastr.success('Order update successful!');
+                    if (width > 250) {
+                        $(target).css('width', width);
+                    }
+
+                    $('.board-stage', target).sortable({
+                        group: 'nav',
+                        nested: false,
+                        vertical: false,
+                        onDrop: function(item, container, _super) {
+                            var data = {};
+                            var stage = $(container.el)
+                                .parents('.column')
+                                .data('stage');
+                            // console.log(item);
+                            // if status is changed
+                            if ($(item).data('stage') != stage) {
+                                var id = $(item).data('id');
+
+                                data.id = id;
+                                data[field] = stage;
+
+                                $.post(update, data)
+                                    .done(function(response) {
+                                        if (response.error) {
+                                            return toastr
+                                                .success('unable to update ' + column);
+                                        }
+
+                                        var column = field.replace(model+'_', '');
+                                        column = column.charAt(0).toUpperCase() + column.slice(1);
+                                        toastr
+                                            .success(column + ' updated successfully!');
+                                    });
+                            }
+
+                            // if status is the same we're left to assume that the user
+                            // did a re-ordering of cards
+                            if (sort && $(item).data('stage') == stage) {
+                                // specify the sort page
+                                data.sort = sort;
+                                // get the primary id
+                                data[primary] = data.id = $(item).data('id');
+                                // get the previous order index
+                                var oldIndex = $(item).data('order');
+                                // get the new order index
+                                var newIndex = $(item)
+                                    .parent()
+                                    .children()
+                                    .index(item);
+
+                                // let's pull the serialize order
+                                // we will be needing this later
+                                var order = $(container.el)
+                                    .sortable('serialize')
+                                    .get(0);
+
+                                // if it's the same, we do nothing
+                                if (newIndex == oldIndex) {
+                                    return;
+                                }
+
+                                data.previous_elder = 0;
+                                if (oldIndex != 1) {
+                                    data.previous_elder = order[eval($(item).data('index') - 1)].order
+                                }
+
+                                data.new_elder = order[newIndex - 1].order
+
+                                // set drag direction downwards
+                                data.moved = 'downwards';
+                                data[sort] = data.new_elder;
+
+                                // but if new index is less than
+                                // the old index that means
+                                // user dragged it downwards
+                                if (newIndex < oldIndex) {
+                                    data.moved = 'upwards';
+                                    data[sort] += 1;
+                                }
+
+                                $.post(update, data)
+                                    .done(function(response) {
+                                        if (!response.error) {
+                                            toastr.success('Order update successful!');
+                                        }
+                                    });
+                            }
+
+                            _super(item, container);
+                        }
+                    });
+
+                    var populateBoard = function(start, callback) {
+                        var cardTemplate = '<li class="card" data-id="[[card_id]]"'
+                            + 'data-stage="[[card_stage]]" data-order="[[card_order]]" '
+                            + 'data-index="[[card_index]]">'
+                            + '<div class="card-name">'
+                            +   '<i class="pull-right field updated">[[card_diff]]</i>'
+                            +       '<a href="[[card_link]]">'
+                            +           '<strong>'
+                            +               '<span class="name" title="[[card_name_title]]">'
+                            +                   '[[card_name]]'
+                            +               '</span>'
+                            +           '</strong>'
+                            +       '</a>'
+                            +       '<p class="value">[[currency]][[card_value]]</p>'
+                            +   '</div>'
+                            +'</li>';
+
+                        var data = {
+                            start: start,
+                            render: false,
+                            range: 20,
+                            filter: {}
+                        };
+
+                        data.filter[field] = stage;
+                        if (sort) {
+                            data.order = {};
+                            data.order[sort] = 'ASC';
+                        }
+
+                        $.get(ajax, data)
+                        .done(function(response) {
+                            // stage total
+                            $(target)
+                                .find('.stage .badge')
+                                .html(response.results.total);
+
+                            if (!!response.results.rows) {
+                                var lists = '';
+
+                                $.map(response.results.rows, function(result, index) {
+                                    var link = detail + '/' + result[primary];
+                                    var relative = '';
+                                    var name = 'No Title';
+                                    var value = '';
+                                    if (title) {
+                                        name = Handlebars.compile(title)(result);
                                     }
+
+                                    // card relative time
+                                    if (date) {
+                                        relative = moment(new Date(result[date]))
+                                            .fromNow();
+                                    }
+
+                                    // // current order number
+                                    // if (order) {
+                                    //     relative = moment(new Date(result[date]))
+                                    //         .fromNow();
+                                    // }
+
+                                    // card value
+                                    if (result[totalFields[0]] && result[totalFields[1]]) {
+                                        value = $.number_format(result[totalFields[0]], 2)
+                                            + ' - '
+                                            + $.number_format(result[totalFields[1]], 2);
+                                    } else if (result[totalFields[0]]) {
+                                        value = $.number_format(result[totalFields[0]], 2);
+                                    }
+
+                                    var card = cardTemplate
+                                        .replace('[[card_id]]', result[primary])
+                                        .replace('[[card_link]]', link)
+                                        .replace('[[card_stage]]', stage)
+                                        .replace('[[card_diff]]', relative)
+                                        .replace('[[card_name]]', name)
+                                        .replace('[[card_index]]', index)
+                                        .replace('[[card_order]]', result[sort])
+                                        .replace('[[card_value]]', value);
+
+                                    if (result[totalFields[0]]) {
+                                        total[0] += eval(result[totalFields[0]]);
+                                    }
+
+                                    if (result[totalFields[1]]) {
+                                        total[1] += eval(result[totalFields[1]]);
+                                    }
+
+                                    lists += card;
                                 });
-                        });
-                    }
 
-                    _super(item, container);
+                                if (total.length) {
+                                    // insert total and range in stage header
+                                    var template = '<span class="stage-total">'
+                                        + 'Total: [[currency]]'
+                                        + $.number_format(total[0], 2);
 
-                    //reload page after updating
-                    window.location.reload();
-                }
-            });
-
-            var populateBoard = function(start, callback) {
-                var cardTemplate = '<li class="card" data-id="[[card_id]]"' +
-                'data-stage="[[card_stage]]">' +
-                    '<div class="card-name">' +
-                        '<i class="pull-right field updated">[[card_diff]]</i>' +
-                        '<a href="[[card_link]]">' +
-                            '<strong>' +
-                                '<span class="name" title="[[card_name_title]]">' +
-                                    '[[card_name]]' +
-                                '</span>' +
-                            '</strong>' +
-                        '</a>' +
-                    '</div>' +
-                '</li>';
-
-                var data = {
-                    start: start,
-                    render: false,
-                    range: 20,
-                    filter: {}
-                };
-
-                data.filter[field] = stage;
-                if (sort) {
-                    data.order = {};
-                    data.order[sort] = 'ASC';
-                }
-
-                $.get('/admin/system/model/'+model+'/pipeline/data', data)
-                .done(function(res) {
-                    // stage total
-                    $(target).find('.stage .badge').html(res.results.total);
-                    if (!!res.results.rows) {
-                        var currency = $(target).data('currency');
-                        var lists = '';
-                        var maxRangeArr = new Array();
-                        var minRangeArr = new Array();
-                        var maxRangeColumn = $(target).data('max-range');
-                        var minRangeColumn = $(target).data('min-range');
-                        var total = 0;
-                        var totalColumn = $(target).data('total');
-
-                        $.map(res.results.rows, function(row) {
-                            var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
-                            var card = cardTemplate
-                                .replace('[[card_id]]', row[model+'_id'])
-                                .replace('[[card_link]]', link)
-                                .replace('[[card_stage]]', stage);
-
-                            // gets the difference of today's date and updated date
-                            // in months, weeks, days, hours, minutes and seconds
-                            var dateUpdated = new Date(row[model+'_updated']);
-                            var dateToday = new Date();
-                            var diffDate = dateToday-dateUpdated;
-                            // gets the difference of date in UTC
-                            diffDate += new Date().getTimezoneOffset() * 60000;
-
-                            var diff = {
-                                month: Math.round(diffDate / 2419200000),
-                                week: Math.round(diffDate / 604800000),
-                                day: Math.round(diffDate / 86400000),
-                                hour: Math.round(diffDate / 3600000),
-                                min: Math.round(diffDate / 60000),
-                                sec: Math.round(diffDate / 1000)
-                            };
-
-                            // replace the value of card_diff with its values
-                            $.each(diff, function(key, value) {
-                                if (value != 0) {
-                                    switch(key) {
-                                        case 'month': value += 'mos'; break;
-                                        case 'week': value += 'w'; break;
-                                        case 'day': value += 'd'; break;
-                                        case 'hour': value += 'h'; break;
-                                        case 'min': value += 'mins'; break;
-                                        case 'sec': value += 's'; break;
+                                    if (total.length == 2) {
+                                        template += ' - ' + $.number_format(total[1], 2);
                                     }
-                                    card = card.replace('[[card_diff]]', value);
-                                    return false;
+
+                                    template += '</span>';
+
+                                    template = template
+                                        .replace("[[currency]]", currency);
+
+                                    $('.total-range-container', target)
+                                        .html('')
+                                        .append(template);
                                 }
-                            });
 
-                            //change card title into suggestion format
-                            card = card.replace('[[card_name]]', row['suggestion']);
+                                lists = lists
+                                    .replace(/\[\[currency\]\]/g, currency);
 
-                            //change tooltip value of card title
-                            if (row['suggestion'] == "No Title") {
-                                card = card.replace('[[card_name_title]]', "There's no suggestion format.")
-                            } else {
-                                card = card.replace('[[card_name_title]]', row['suggestion']);
-                            }
+                                //appends the card in the board-stage
+                                $('.board-stage', target)
+                                    .append(lists);
 
-                            if (totalColumn.length != 0) {
-                                // sums the total per row
-                                total+= (row[totalColumn] * 1);
-                            }
-
-                            if (minRangeColumn.length != 0) {
-                                //gets the min range column value for range array
-                                if (row[minRangeColumn] != 0) {
-                                    minRangeArr.push(row[minRangeColumn] * 1);
+                                if (callback) {
+                                    callback();
                                 }
                             }
 
-                            if (maxRangeColumn.length != 0) {
-                                //gets the max range column value for range array
-                                if (row[maxRangeColumn] != 0) {
-                                    maxRangeArr.push(row[maxRangeColumn] * 1);
-                                }
+                            if (!response.results.rows && callback) {
+                                callback();
                             }
-
-                            lists += card;
                         });
+                    };
 
-                        var minMaxRangeColumnLen;
+                    var start = 0,
+                        paginating = false,
+                        loader = $('.board-stage', target).next(),
+                        paginator = loader.next();
 
-                        // gets the length of entered column names
-                        // to determine if range section will be rendered or not
-                        if (minRangeColumn.length == 0 ||
-                            maxRangeColumn.length == 0) {
-                            minMaxRangeColumnLen = 0;
-                        } else {
-                            minMaxRangeColumnLen = minRangeColumn.length +
-                                maxRangeColumn.length;
+                    $('.board-stage', target).scroll(function() {
+                        //if we are already paginating
+                        if (paginating) {
+                            return;
                         }
 
-                        // render template if column is not empty
-                        if (totalColumn.length != 0 || minMaxRangeColumnLen != 0) {
-                            //get range in stage header
-                            var minMaxRange;
-
-                            // get total number of cards per row
-                            var cardTotal = res.results.rows.length;
-
-                            switch (cardTotal) {
-                                case 0: minMaxRange = 0; break;
-                                case 1: minMaxRange = 0 + '-' +
-                                    Math.max.apply(Math, maxRangeArr);
-                                    break;
-                                default: minMaxRange = Math.min.apply(Math, minRangeArr) +
-                                    '-' + Math.max.apply(Math, maxRangeArr);
-                                    break;
-                            }
-
-                            // insert total and range in stage header
-                            var templates = {
-                                totalTemplate: {
-                                    len: totalColumn.length,
-                                    template:
-                                        '<i class="stage-total">' +
-                                            'Total: [[currency]]' +  total +
-                                        '</i>'
-                                },
-                                rangeTemplate: {
-                                    len: minMaxRangeColumnLen,
-                                    template:
-                                        '<i class="stage-range">' +
-                                            'Range: [[currency]]' +  minMaxRange +
-                                        '</i>'
-                                }
-                            };
-
-                            $.each(templates, function(index, value) {
-                                if (currency.length != 0) {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', currency);
-                                } else {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', '');
-                                }
-
-                                if (value['len'] != 0) {
-                                    // append the template with its values
-                                    $('.total-range-container', target).
-                                        append(
-                                            '<div>' +
-                                                value['template'] +
-                                            '</div>'
-                                    );
-                                }
-                            });
-
-                            // make progress bar invisible
-                            $('div.progress-container').addClass('d-none');
+                        var variableHeight = $(this).scrollTop() + $(this).height();
+                        var totalHeight = $(this).height();
+                        var percent = variableHeight / totalHeight;
+                        var range = 20;
+                        if (percent < 1.75) {
+                            return;
                         }
 
+                        paginating = true;
+                        start += range;
 
-                        //appends the card in the board-stage
-                        $('.board-stage', target).append(lists);
+                        // show ajax loader
+                        loader.removeClass('hide');
+                        populateBoard(start, function () {
+                            paginating = false;
+                        });
+                    });
 
-                        if (callback) {
-                            callback();
-                        }
-                    }
-
-                    if (!res.results.rows && callback) {
-                        callback();
-                    }
-                });
-            };
-
-            var start = 0,
-                paginating = false,
-                loader = $('.board-stage', target).next(),
-                paginator = loader.next();
-
-            $('.board-stage', target).scroll(function() {
-                //if we are already paginating
-                if(paginating) {
-                    return;
+                    populateBoard(0);
                 }
-
-                var variableHeight = $(this).scrollTop() + $(this).height();
-                var totalHeight = $(this).height();
-                var percent = variableHeight / totalHeight;
-                var range = 20;
-                if(percent < 1.75) {
-                    return;
-                }
-
-                paginating = true;
-                start += range;
-                var search = window.location.search;
-
-                // show ajax loader
-                loader.removeClass('hide');
-                populateBoard(start, function() {
-                    paginating = false;
-                });
-            });
-
-            populateBoard(0);
+            );
         });
     })();
 
