@@ -395,46 +395,40 @@ jQuery(function($) {
                         nested: false,
                         vertical: false,
                         onDrop: function(item, container, _super) {
-                            var data = {};
+                            var data = {
+                                id: $(item).data('id'),
+                                stage: field
+                            };
+
                             var stage = $(container.el)
                                 .parents('.column')
                                 .data('stage');
-                            // console.log(item);
-                            // if status is changed
-                            if ($(item).data('stage') != stage) {
-                                var id = $(item).data('id');
 
-                                data.id = id;
-                                data[field] = stage;
-
-                                $.post(update, data)
-                                    .done(function(response) {
-                                        if (response.error) {
-                                            return toastr
-                                                .success('unable to update ' + column);
-                                        }
-
-                                        var column = field.replace(model+'_', '');
-                                        column = column.charAt(0).toUpperCase() + column.slice(1);
-                                        toastr
-                                            .success(column + ' updated successfully!');
-                                    });
+                            // if same status/stage and no sorting field
+                            // specified, we do nothing
+                            if ($(item).data('stage') == stage && !sort) {
+                                return;
                             }
 
-                            // if status is the same we're left to assume that the user
-                            // did a re-ordering of cards
-                            if (sort && $(item).data('stage') == stage) {
+                            data[field] = stage;
+
+                            // if there's sort field provided,
+                            // then we have to consider the re-ordering of cards
+                            if (sort) {
                                 // specify the sort page
                                 data.sort = sort;
                                 // get the primary id
-                                data[primary] = data.id = $(item).data('id');
+                                data[primary] = $(item).data('id');
                                 // get the previous order index
-                                var oldIndex = $(item).data('order');
+                                var previous_order = $(item).data('order');
                                 // get the new order index
                                 var newIndex = $(item)
                                     .parent()
                                     .children()
                                     .index(item);
+
+                                // get the older index
+                                var oldIndex = $(item).data('index');
 
                                 // let's pull the serialize order
                                 // we will be needing this later
@@ -443,16 +437,38 @@ jQuery(function($) {
                                     .get(0);
 
                                 // if it's the same, we do nothing
-                                if (newIndex == oldIndex) {
+                                if (newIndex == previous_order
+                                    && $(item).data('stage') == stage
+                                ) {
                                     return;
                                 }
 
                                 data.previous_elder = 0;
-                                if (oldIndex != 1) {
-                                    data.previous_elder = order[eval($(item).data('index') - 1)].order
+                                if (previous_order != 1
+                                    && order[eval(oldIndex - 1)]) {
+                                    data.previous_elder = order[eval(oldIndex - 1)].order
                                 }
 
-                                data.new_elder = order[newIndex - 1].order
+                                // if it's not the
+                                if ($(item).data('stage') != stage) {
+                                    var oldStage = $(item).data('stage');
+                                    var oldBoard = $('.pipeline-board .column[data-stage="' + oldStage + '"]');
+
+                                    data.previous_elder = oldBoard
+                                        .find('.card[data-index="' + eval(oldIndex - 1) + '"]')
+                                        .data('order');
+
+                                    if (!data.previous_elder) {
+                                        data.previous_elder = 0;
+                                    }
+
+                                    data.previous_stage = $(item).data('stage')
+                                }
+
+                                data.new_elder = 0;
+                                if (order[newIndex - 1]) {
+                                    data.new_elder = order[newIndex - 1].order
+                                }
 
                                 // set drag direction downwards
                                 data.moved = 'downwards';
@@ -460,19 +476,74 @@ jQuery(function($) {
 
                                 // but if new index is less than
                                 // the old index that means
-                                // user dragged it downwards
-                                if (newIndex < oldIndex) {
+                                // user dragged it upwards
+                                // or if the user moved it to another
+                                // status/stage, we also have to tagged
+                                // it as a moved upwards in order to
+                                // update everything down below
+                                if (newIndex < previous_order
+                                    || $(item).data('stage') != stage
+                                ) {
                                     data.moved = 'upwards';
                                     data[sort] += 1;
                                 }
-
-                                $.post(update, data)
-                                    .done(function(response) {
-                                        if (!response.error) {
-                                            toastr.success('Order update successful!');
-                                        }
-                                    });
                             }
+
+                            $.post(update, data)
+                                .done(function(response) {
+                                    if (!response.error) {
+                                        if (sort) {
+                                            // previous stage/status/column
+                                            if ($(item).data('stage') != stage) {
+                                                $('.pipeline-board .column[data-stage="'+data.previous_stage+'"]')
+                                                    .find('.card').each(function(index) {
+
+                                                        // we should be ignoring the index
+                                                        // less than the old index
+                                                        // because we don't need to change them
+                                                        if (index >= oldIndex) {
+                                                            $(this)
+                                                                .data('order', parseInt($(this).data('order')) - 1)
+                                                                .attr('data-order', $(this).data('order'));
+                                                        }
+
+                                                        $(this)
+                                                            .data('index', index)
+                                                            .attr('data-index', index);
+                                                    });
+                                            }
+
+                                            // new stage/status/column
+                                            $(container.el).find('.card').each(function(index) {
+                                                $(this)
+                                                    .data('index', index)
+                                                    .attr('data-index', index);
+
+                                                if (index == newIndex) {
+                                                    $(this)
+                                                        .data('order', data[sort])
+                                                        .attr('data-order', data[sort]);
+                                                    return;
+                                                }
+                                                
+                                                if (($(item).data('stage') == stage
+                                                    && oldIndex >= index)
+                                                    || ($(item).data('stage') != stage
+                                                    && newIndex < index)
+                                                ) {
+                                                    $(this)
+                                                        .data('order', $(this).data('order') + 1)
+                                                        .attr('data-order', $(this).data('order'));
+                                                }
+                                            });
+
+                                            $(item)
+                                                .data('stage', stage)
+                                                .attr('data-stage', stage);
+                                        }
+                                        toastr.success('Update successful!');
+                                    }
+                                });
 
                             _super(item, container);
                         }
@@ -532,12 +603,6 @@ jQuery(function($) {
                                         relative = moment(new Date(result[date]))
                                             .fromNow();
                                     }
-
-                                    // // current order number
-                                    // if (order) {
-                                    //     relative = moment(new Date(result[date]))
-                                    //         .fromNow();
-                                    // }
 
                                     // card value
                                     if (result[totalFields[0]] && result[totalFields[1]]) {

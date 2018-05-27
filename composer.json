@@ -26,6 +26,7 @@
         "cradlephp/cradle-auth": "0.*",
         "cradlephp/cradle-history": "0.*",
         "cradlephp/cradle-profile": "0.*",
+        "cradlephp/cradle-pipeline": "0.*",
         "elasticsearch/elasticsearch": "2.2.2",
         "predis/predis": "1.1.1",
         "aws/aws-sdk-php": "3.19.30",
