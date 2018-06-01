@@ -423,7 +423,7 @@ select.form-control {
     color: #32A3CE;
     content: "\a0";
     display: inline-block;
-    font-family: fontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 12px;
     font-weight: normal;
     height: 16px;
@@ -442,6 +442,7 @@ select.form-control {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
         inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
         inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    font-weight: 900;
 }
 
 .checkbox input:hover + span::before,
@@ -510,7 +511,7 @@ select.form-control {
     color: #32A3CE;
     content: "\a0";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 11px;
     font-weight: normal;
     height: 17px;
@@ -530,6 +531,7 @@ select.form-control {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
         inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
         inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    font-weight: 900;
 }
 
 .radio input:hover + span::before,
@@ -551,6 +553,7 @@ select.form-control {
     border-color: #f9A021;
     color: #FFFFFF;
     content: '\f00c';
+    font-weight: 900;
 }
 
 .radio input:disabled + span::before,
@@ -664,14 +667,16 @@ select.form-control {
 
 .switch.switch-3 input + span::after {
     content: "\f00d";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 13px;
+    font-weight: 900;
     line-height: 23px;
     top: 3px;
 }
 
 .switch.switch-3 input:checked + span::after {
     content: "\f00c";
+    font-weight: 900;
 }
 
 .switch.switch-4 input + span::before,
@@ -751,9 +756,9 @@ select.form-control {
     color: #F2F2F2;
     content: "\f00d";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 16px;
-    font-weight: lighter;
+    font-weight: 900;
     height: 22px;
     line-height: 20px;
     text-indent: 32px;
@@ -812,7 +817,7 @@ select.form-control {
     content: "OFF\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0ON";
     display: inline-block;
     font-size: 14px;
-    font-weight: bolder;
+    font-weight: 900;
     height: 26px;
     line-height: 22px;
     overflow: hidden;
@@ -829,7 +834,7 @@ select.form-control {
     box-shadow: none;
     color: #FFFFFF;
     content: '\f00d';
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 16px;
     height: 20px;
     left: 39px;
