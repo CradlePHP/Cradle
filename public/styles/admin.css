@@ -2129,3 +2129,9 @@ ul.meta-list .key {
 .page-admin-dashboard .welcome p {
     margin-bottom: 20px;
 }
+
+/* Application Form Page
+------------------------------*/
+.page-app-form .form-group.checkboxes .d-flex > * {
+    flex: 1;
+}
