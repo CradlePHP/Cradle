@@ -149,7 +149,7 @@ jQuery(function($) {
          */
         $(window).on('import-init', function(e, trigger) {
             $(trigger).toggleClass('disabled');
-            
+
             $.require('components/papaparse/papaparse.min.js', function() {
                 $(trigger).toggleClass('disabled');
             });
@@ -243,414 +243,467 @@ jQuery(function($) {
         });
 
         $(window).on('calendar-init', function(e, target) {
-            var date = $(target).data('date');
-            var view = 'month';
+            var onAcquire = function() {
+                var ajax = $(target).data('ajax');
+                var date = $(target).data('date');
+                var view = $(target).data('view');
+                var eventStart = $(target).data('event-start');
+                var eventEnd = $(target).data('event-end');
+                var link = $(target).data('event-link');
+                var primary = $(target).data('event-id');
+                var format = $(target).data('event-title');
 
-            if ($(target).data('view')) {
-                view = $(target).data('view');
-            }
+                $(target).fullCalendar({
+                    defaultView: view,
+                    height: 750,
+                    header: {
+                      left: '',
+                      center: 'title',
+                      right: ''
+                    },
+                    eventTextColor: '#fff',
+                    eventLimit: true, // allow "more" link when too many events
+                    navLinks: true,
+                    events: function(start, end, timezone, callback) {
+                        var data = {
+                            render: false,
+                            span: {}
+                        };
 
-            $(target).fullCalendar({
-                defaultView: view,
-                height: 750,
-                header: {
-                  left: '',
-                  center: 'title',
-                  right: ''
-                },
-                eventTextColor: '#fff',
-                eventLimit: true, // allow "more" link when too many events
-                navLinks: true,
-                events: function(start, end, timezone, callback) {
-                    var model = $(target).data('model');
-                    var evntStart = $(target).data('start');
-                    var evntEnd = $(target).data('end');
+                        data.span[eventStart] = [];
+                        data.span[eventStart].push(start.format());
+                        data.span[eventStart].push(end.format());
 
-                    var data = {
-                        render: false,
-                        span: {}
-                    };
-
-                    data.span[evntStart] = [];
-                    data.span[evntStart].push(start.format());
-                    data.span[evntStart].push(end.format());
-
-                    if (evntEnd) {
-                        data.span[evntEnd] = [];
-                        data.span[evntEnd].push(start.format());
-                        data.span[evntEnd].push(end.format());
-                    }
-
-                    jQuery.ajax({
-                        url: '/admin/system/model/'+model+'/pipeline/data',
-                        type: 'GET',
-                        dataType: 'json',
-                        data: data,
-                        success: function(doc) {
-                            var events = [];
-                            if(!!doc.results.rows){
-                                $.map( doc.results.rows, function(res) {
-                                    var row = {
-                                        id: res[model+'_id'],
-                                        start: res[evntStart],
-                                    }
-
-                                    //change row title into suggestion format
-                                    row.title = res['suggestion'];
-
-                                    if (evntEnd) {
-                                        row.end = res[evntEnd];
-                                    }
-
-                                    if (res[model+'_description']) {
-                                        row.description = res[model+'_description'];
-                                    }
-
-                                    if (res[model+'_detail']) {
-                                        row.description = res[model+'_detail'];
-                                    }
-
-                                    if (res[model+'_details']) {
-                                        row.description = res[model+'_details'];
-                                    }
-                                    events.push(row);
-                                });
-                            }
-                            callback(events);
+                        if (eventEnd) {
+                            data.span[eventEnd] = [];
+                            data.span[eventEnd].push(start.format());
+                            data.span[eventEnd].push(end.format());
                         }
-                    });
-                },
-                eventClick: function(eventData, jsEvent, view) {
-                    var model = $(target).data('model');
 
-                    // on click redirect to update page
-                    window.location.href='/admin/system/model/'+model+'/update/' +
-                        eventData.id;
-                },
-                eventRender: function(eventData, $el) {
-                    var content = '';
+                        jQuery.ajax({
+                            url: ajax,
+                            type: 'GET',
+                            dataType: 'json',
+                            data: data,
+                            success: function(response) {
+                                var events = [];
+                                if(!!response.results.rows) {
+                                    $.map(response.results.rows, function(result) {
+                                        var row = {
+                                            id: result[primary],
+                                            start: result[eventStart],
+                                            title: 'No Title'
+                                        }
 
-                    if (eventData.description) {
-                        content += eventData.description + ' ';
-                    }
+                                        if (format) {
+                                            row.title = Handlebars.compile(format)(result);
+                                        }
 
-                    content += 'start: ' + eventData.start.format('LLL');
+                                        // display end?
+                                        if (eventEnd && result[eventEnd]) {
+                                            row.end = result[eventEnd];
+                                        }
 
-                    if (eventData.end) {
-                        content += ' end: ' + eventData.end.format('LLL')
-                    }
-
-                    $el.popover({
-                        title: eventData.title,
-                        content: content,
-                        trigger: 'hover',
-                        placement: 'top',
-                        container: 'body'
-                    });
-                },
-            });
-
-            if (date) {
-                $(target).fullCalendar('gotoDate', date);
-            }
-        });
-
-        $(window).on('board-init', function(e, target) { 
-            var stage = $(target).data('stage');
-            var model = $(target).data('model');
-            var field = $(target).data('field');
-            var sort = $(target).data('order');
-            var columns = $(target).parent().find('.column').length;
-            var width = $('.board-container').width()/columns;
-
-            if (width > 250) {
-                $(target).css('width', width);
-            }
-
-            $('.board-stage', target).sortable({
-                group: 'nav',
-                nested: false,
-                vertical: false,
-                onDrop: function(item, container, _super) {
-                    var data = {};
-                    var stage = $(container.el).parents('.column').data('stage');
-
-                    // if status is changed
-                    if ($(item).data('stage') != stage) {
-                        var id = $(item).data('id');
-
-                        data.id = id;
-                        data[field] = stage;
-
-                        $.post('/admin/system/model/'+model+'/pipeline', data)
-                            .done(function(res) {
-                                if (!res.error) {
-                                    var column = field.replace(model+'_', '');
-                                    column = column.charAt(0).toUpperCase() + column.slice(1);
-                                    toastr.success(column + ' updated successfully!');
-                                } else {
-                                    toastr.success('unable to update ' + column);
+                                        events.push(row);
+                                    });
                                 }
-                            });
-                    }
-
-                    // if status is the same we're left to assume that the user
-                    // did a re-ordering of cards
-                    if (sort && $(item).data('stage') == stage) {
-                        var order = $(container.el).sortable('serialize').get(0);
-
-                        $.map(order, function(row, position) {
-                            data.id = row.id;
-                            data[sort] = position + 1;
-
-                            $.post('/admin/system/model/'+model+'/pipeline', data)
-                                .done(function(res) {
-                                    if (!res.error && position + 1 == order.length) {
-                                        toastr.success('Order update successful!');
-                                    }
-                                });
+                                callback(events);
+                            }
                         });
-                    }
+                    },
+                    eventClick: function(eventData, jsEvent, view) {
+                        // on click redirect to update page
+                        window.location.href = link + '/' + eventData.id;
+                    },
+                    eventRender: function(eventData, $el) {
+                        var content = 'start: ' + eventData.start.format('LLL');
 
-                    _super(item, container);
+                        if (eventData.end) {
+                            content += ' end: ' + eventData.end.format('LLL')
+                        }
 
-                    //reload page after updating
-                    window.location.reload();
-                }
-            });
-
-            var populateBoard = function(start, callback) {
-                var cardTemplate = '<li class="card" data-id="[[card_id]]"' +
-                'data-stage="[[card_stage]]">' +
-                    '<div class="card-name">' +
-                        '<i class="pull-right field updated">[[card_diff]]</i>' + 
-                        '<a href="[[card_link]]">' +
-                            '<strong>' +
-                                '<span class="name" title="[[card_name_title]]">' +
-                                    '[[card_name]]' +
-                                '</span>' +
-                            '</strong>' +
-                        '</a>' +
-                    '</div>' +
-                '</li>';
-
-                var data = {
-                    start: start,
-                    render: false,
-                    range: 20,
-                    filter: {}
-                };
-
-                data.filter[field] = stage;
-                if (sort) {
-                    data.order = {};
-                    data.order[sort] = 'ASC';
-                }
-
-                $.get('/admin/system/model/'+model+'/pipeline/data', data)
-                .done(function(res) {
-                    // stage total
-                    $(target).find('.stage .badge').html(res.results.total);
-                    if (!!res.results.rows) {
-                        var currency = $(target).data('currency');
-                        var lists = '';
-                        var maxRangeArr = new Array();
-                        var minRangeArr = new Array();
-                        var maxRangeColumn = $(target).data('max-range');
-                        var minRangeColumn = $(target).data('min-range');
-                        var total = 0;
-                        var totalColumn = $(target).data('total');
-
-                        $.map(res.results.rows, function(row) {
-                            var link = '/admin/system/model/'+model+'/update/'+row[model+'_id'];
-                            var card = cardTemplate
-                                .replace('[[card_id]]', row[model+'_id'])
-                                .replace('[[card_link]]', link)
-                                .replace('[[card_stage]]', stage);
-
-                            // gets the difference of today's date and updated date
-                            // in months, weeks, days, hours, minutes and seconds
-                            var dateUpdated = new Date(row[model+'_updated']);
-                            var dateToday = new Date();
-                            var diffDate = dateToday-dateUpdated;
-                            // gets the difference of date in UTC
-                            diffDate += new Date().getTimezoneOffset() * 60000;
-
-                            var diff = {
-                                month: Math.round(diffDate / 2419200000),
-                                week: Math.round(diffDate / 604800000),
-                                day: Math.round(diffDate / 86400000),
-                                hour: Math.round(diffDate / 3600000),
-                                min: Math.round(diffDate / 60000),
-                                sec: Math.round(diffDate / 1000)
-                            };
-
-                            // replace the value of card_diff with its values
-                            $.each(diff, function(key, value) {
-                                if (value != 0) {
-                                    switch(key) {
-                                        case 'month': value += 'mos'; break;
-                                        case 'week': value += 'w'; break;
-                                        case 'day': value += 'd'; break;
-                                        case 'hour': value += 'h'; break;
-                                        case 'min': value += 'mins'; break;
-                                        case 'sec': value += 's'; break;
-                                    }
-                                    card = card.replace('[[card_diff]]', value);
-                                    return false;
-                                }
-                            });
-
-                            //change card title into suggestion format
-                            card = card.replace('[[card_name]]', row['suggestion']);
-                            
-                            //change tooltip value of card title
-                            if (row['suggestion'] == "No Title") {
-                                card = card.replace('[[card_name_title]]', "There's no suggestion format.")
-                            } else {
-                                card = card.replace('[[card_name_title]]', row['suggestion']);
-                            }
-
-                            if (totalColumn.length != 0) {
-                                // sums the total per row
-                                total+= (row[totalColumn] * 1);
-                            }
-
-                            if (minRangeColumn.length != 0) {
-                                //gets the min range column value for range array
-                                if (row[minRangeColumn] != 0) {
-                                    minRangeArr.push(row[minRangeColumn] * 1);
-                                }
-                            }
-
-                            if (maxRangeColumn.length != 0) {
-                                //gets the max range column value for range array
-                                if (row[maxRangeColumn] != 0) {
-                                    maxRangeArr.push(row[maxRangeColumn] * 1);
-                                }
-                            }
-
-                            lists += card;
+                        $el.popover({
+                            title: eventData.title,
+                            content: content,
+                            trigger: 'hover',
+                            placement: 'top',
+                            container: 'body'
                         });
-
-                        var minMaxRangeColumnLen;
-
-                        // gets the length of entered column names 
-                        // to determine if range section will be rendered or not
-                        if (minRangeColumn.length == 0 || 
-                            maxRangeColumn.length == 0) {
-                            minMaxRangeColumnLen = 0;
-                        } else {
-                            minMaxRangeColumnLen = minRangeColumn.length + 
-                                maxRangeColumn.length;
-                        }
-
-                        // render template if column is not empty
-                        if (totalColumn.length != 0 || minMaxRangeColumnLen != 0) {
-                            //get range in stage header
-                            var minMaxRange;
-
-                            // get total number of cards per row
-                            var cardTotal = res.results.rows.length;
-                            
-                            switch (cardTotal) {
-                                case 0: minMaxRange = 0; break;
-                                case 1: minMaxRange = 0 + '-' + 
-                                    Math.max.apply(Math, maxRangeArr);
-                                    break;
-                                default: minMaxRange = Math.min.apply(Math, minRangeArr) + 
-                                    '-' + Math.max.apply(Math, maxRangeArr);
-                                    break;
-                            }
-
-                            // insert total and range in stage header
-                            var templates = {
-                                totalTemplate: {
-                                    len: totalColumn.length,
-                                    template: 
-                                        '<i class="stage-total">' +
-                                            'Total: [[currency]]' +  total + 
-                                        '</i>'
-                                }, 
-                                rangeTemplate: {
-                                    len: minMaxRangeColumnLen,
-                                    template: 
-                                        '<i class="stage-range">' +
-                                            'Range: [[currency]]' +  minMaxRange + 
-                                        '</i>'
-                                }
-                            };
-
-                            $.each(templates, function(index, value) {
-                                if (currency.length != 0) {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', currency);
-                                } else {
-                                    value['template'] = value['template']
-                                        .replace('[[currency]]', '');
-                                }
-                                
-                                if (value['len'] != 0) {
-                                    // append the template with its values
-                                    $('.total-range-container', target).
-                                        append(
-                                            '<div>' + 
-                                                value['template'] + 
-                                            '</div>'
-                                    );
-                                }
-                            });
-
-                            // make progress bar invisible
-                            $('div.progress-container').addClass('d-none');
-                        }
-                        
-
-                        //appends the card in the board-stage
-                        $('.board-stage', target).append(lists);
-
-                        if (callback) {
-                            callback();
-                        }
-                    }
-
-                    if (!res.results.rows && callback) {
-                        callback();
-                    }
+                    },
                 });
+
+                if (date) {
+                    $(target).fullCalendar('gotoDate', date);
+                }
             };
 
-            var start = 0,
-                paginating = false,
-                loader = $('.board-stage', target).next(),
-                paginator = loader.next();
+            $.require([
+                'components/moment/moment.js',
+                'components/fullcalendar/dist/fullcalendar.min.js',
+                'components/fullcalendar/dist/fullcalendar.min.css',
+                'components/handlebars/dist/handlebars.js'
+                // 'components/fullcalendar/dist/fullcalendar.print.css'
+            ], onAcquire);
+        });
 
-            $('.board-stage', target).scroll(function() {
-                //if we are already paginating
-                if(paginating) {
-                    return;
+        $(window).on('board-init', function(e, target) {
+            $.require([
+                'components/jquery-sortable/source/js/jquery-sortable-min.js',
+                'components/handlebars/dist/handlebars.js',
+                'components/moment/moment.js',
+                'components/@aprilsacil/number_format.js/number_format.min.js',
+            ], function () {
+                    // prepare data
+                    var stage = $(target).data('stage');
+                    var model = $(target).data('model');
+                    var field = $(target).data('field');
+                    var sort = $(target).data('order');
+                    var ajax = $(target).data('ajax-pull');
+                    var update = $(target).data('ajax-update');
+                    var currency = $(target).data('currency');
+                    var primary = $(target).data('primary');
+                    var detail = $(target).data('card-detail');
+                    var title = $(target).data('card-title');
+                    var date = $(target).data('card-date');
+                    var totalFields = [];
+                    var total = [];
+
+                    // set total
+                    if ($(target).data('total-1')) {
+                        totalFields.push($(target).data('total-1'));
+                        total.push(0);
+                    }
+
+                    // if there's another total for range, add them
+                    if ($(target).data('total-2')) {
+                        totalFields.push($(target).data('total-2'));
+                        total.push(0);
+                    }
+
+                    var columns = $(target)
+                        .parent()
+                        .find('.column')
+                        .length;
+                    var width = $('.board-container').width()/columns;
+
+                    if (width > 250) {
+                        $(target).css('width', width);
+                    }
+
+                    $('.board-stage', target).sortable({
+                        group: 'nav',
+                        nested: false,
+                        vertical: false,
+                        onDrop: function(item, container, _super) {
+                            var data = {
+                                id: $(item).data('id'),
+                                stage: field
+                            };
+
+                            var stage = $(container.el)
+                                .parents('.column')
+                                .data('stage');
+
+                            // if same status/stage and no sorting field
+                            // specified, we do nothing
+                            if ($(item).data('stage') == stage && !sort) {
+                                return;
+                            }
+
+                            data[field] = stage;
+
+                            // if there's sort field provided,
+                            // then we have to consider the re-ordering of cards
+                            if (sort) {
+                                // specify the sort page
+                                data.sort = sort;
+                                // get the primary id
+                                data[primary] = $(item).data('id');
+                                // get the previous order index
+                                var previous_order = $(item).data('order');
+                                // get the new order index
+                                var newIndex = $(item)
+                                    .parent()
+                                    .children()
+                                    .index(item);
+
+                                // get the older index
+                                var oldIndex = $(item).data('index');
+
+                                // let's pull the serialize order
+                                // we will be needing this later
+                                var order = $(container.el)
+                                    .sortable('serialize')
+                                    .get(0);
+
+                                // if it's the same, we do nothing
+                                if (newIndex == previous_order
+                                    && $(item).data('stage') == stage
+                                ) {
+                                    return;
+                                }
+
+                                data.previous_elder = 0;
+                                if (previous_order != 1
+                                    && order[eval(oldIndex - 1)]) {
+                                    data.previous_elder = order[eval(oldIndex - 1)].order
+                                }
+
+                                // if it's not the
+                                if ($(item).data('stage') != stage) {
+                                    var oldStage = $(item).data('stage');
+                                    var oldBoard = $('.pipeline-board .column[data-stage="' + oldStage + '"]');
+
+                                    data.previous_elder = oldBoard
+                                        .find('.card[data-index="' + eval(oldIndex - 1) + '"]')
+                                        .data('order');
+
+                                    if (!data.previous_elder) {
+                                        data.previous_elder = 0;
+                                    }
+
+                                    data.previous_stage = $(item).data('stage')
+                                }
+
+                                data.new_elder = 0;
+                                if (order[newIndex - 1]) {
+                                    data.new_elder = order[newIndex - 1].order
+                                }
+
+                                // set drag direction downwards
+                                data.moved = 'downwards';
+                                data[sort] = data.new_elder;
+
+                                // but if new index is less than
+                                // the old index that means
+                                // user dragged it upwards
+                                // or if the user moved it to another
+                                // status/stage, we also have to tagged
+                                // it as a moved upwards in order to
+                                // update everything down below
+                                if (newIndex < previous_order
+                                    || $(item).data('stage') != stage
+                                ) {
+                                    data.moved = 'upwards';
+                                    data[sort] += 1;
+                                }
+                            }
+
+                            $.post(update, data)
+                                .done(function(response) {
+                                    if (!response.error) {
+                                        if (sort) {
+                                            // previous stage/status/column
+                                            if ($(item).data('stage') != stage) {
+                                                $('.pipeline-board .column[data-stage="'+data.previous_stage+'"]')
+                                                    .find('.card').each(function(index) {
+
+                                                        // we should be ignoring the index
+                                                        // less than the old index
+                                                        // because we don't need to change them
+                                                        if (index >= oldIndex) {
+                                                            $(this)
+                                                                .data('order', parseInt($(this).data('order')) - 1)
+                                                                .attr('data-order', $(this).data('order'));
+                                                        }
+
+                                                        $(this)
+                                                            .data('index', index)
+                                                            .attr('data-index', index);
+                                                    });
+                                            }
+
+                                            // new stage/status/column
+                                            $(container.el).find('.card').each(function(index) {
+                                                $(this)
+                                                    .data('index', index)
+                                                    .attr('data-index', index);
+
+                                                if (index == newIndex) {
+                                                    $(this)
+                                                        .data('order', data[sort])
+                                                        .attr('data-order', data[sort]);
+                                                    return;
+                                                }
+                                                
+                                                if (($(item).data('stage') == stage
+                                                    && oldIndex >= index)
+                                                    || ($(item).data('stage') != stage
+                                                    && newIndex < index)
+                                                ) {
+                                                    $(this)
+                                                        .data('order', $(this).data('order') + 1)
+                                                        .attr('data-order', $(this).data('order'));
+                                                }
+                                            });
+
+                                            $(item)
+                                                .data('stage', stage)
+                                                .attr('data-stage', stage);
+                                        }
+                                        toastr.success('Update successful!');
+                                    }
+                                });
+
+                            _super(item, container);
+                        }
+                    });
+
+                    var populateBoard = function(start, callback) {
+                        var cardTemplate = '<li class="card" data-id="[[card_id]]"'
+                            + 'data-stage="[[card_stage]]" data-order="[[card_order]]" '
+                            + 'data-index="[[card_index]]">'
+                            + '<div class="card-name">'
+                            +   '<i class="pull-right field updated">[[card_diff]]</i>'
+                            +       '<a href="[[card_link]]">'
+                            +           '<strong>'
+                            +               '<span class="name" title="[[card_name_title]]">'
+                            +                   '[[card_name]]'
+                            +               '</span>'
+                            +           '</strong>'
+                            +       '</a>'
+                            +       '<p class="value">[[currency]][[card_value]]</p>'
+                            +   '</div>'
+                            +'</li>';
+
+                        var data = {
+                            start: start,
+                            render: false,
+                            range: 20,
+                            filter: {}
+                        };
+
+                        data.filter[field] = stage;
+                        if (sort) {
+                            data.order = {};
+                            data.order[sort] = 'ASC';
+                        }
+
+                        $.get(ajax, data)
+                        .done(function(response) {
+                            // stage total
+                            $(target)
+                                .find('.stage .badge')
+                                .html(response.results.total);
+
+                            if (!!response.results.rows) {
+                                var lists = '';
+
+                                $.map(response.results.rows, function(result, index) {
+                                    var link = detail + '/' + result[primary];
+                                    var relative = '';
+                                    var name = 'No Title';
+                                    var value = '';
+                                    if (title) {
+                                        name = Handlebars.compile(title)(result);
+                                    }
+
+                                    // card relative time
+                                    if (date) {
+                                        relative = moment(new Date(result[date]))
+                                            .fromNow();
+                                    }
+
+                                    // card value
+                                    if (result[totalFields[0]] && result[totalFields[1]]) {
+                                        value = $.number_format(result[totalFields[0]], 2)
+                                            + ' - '
+                                            + $.number_format(result[totalFields[1]], 2);
+                                    } else if (result[totalFields[0]]) {
+                                        value = $.number_format(result[totalFields[0]], 2);
+                                    }
+
+                                    var card = cardTemplate
+                                        .replace('[[card_id]]', result[primary])
+                                        .replace('[[card_link]]', link)
+                                        .replace('[[card_stage]]', stage)
+                                        .replace('[[card_diff]]', relative)
+                                        .replace('[[card_name]]', name)
+                                        .replace('[[card_index]]', index)
+                                        .replace('[[card_order]]', result[sort])
+                                        .replace('[[card_value]]', value);
+
+                                    if (result[totalFields[0]]) {
+                                        total[0] += eval(result[totalFields[0]]);
+                                    }
+
+                                    if (result[totalFields[1]]) {
+                                        total[1] += eval(result[totalFields[1]]);
+                                    }
+
+                                    lists += card;
+                                });
+
+                                if (total.length) {
+                                    // insert total and range in stage header
+                                    var template = '<span class="stage-total">'
+                                        + 'Total: [[currency]]'
+                                        + $.number_format(total[0], 2);
+
+                                    if (total.length == 2) {
+                                        template += ' - ' + $.number_format(total[1], 2);
+                                    }
+
+                                    template += '</span>';
+
+                                    template = template
+                                        .replace("[[currency]]", currency);
+
+                                    $('.total-range-container', target)
+                                        .html('')
+                                        .append(template);
+                                }
+
+                                lists = lists
+                                    .replace(/\[\[currency\]\]/g, currency);
+
+                                //appends the card in the board-stage
+                                $('.board-stage', target)
+                                    .append(lists);
+
+                                if (callback) {
+                                    callback();
+                                }
+                            }
+
+                            if (!response.results.rows && callback) {
+                                callback();
+                            }
+                        });
+                    };
+
+                    var start = 0,
+                        paginating = false,
+                        loader = $('.board-stage', target).next(),
+                        paginator = loader.next();
+
+                    $('.board-stage', target).scroll(function() {
+                        //if we are already paginating
+                        if (paginating) {
+                            return;
+                        }
+
+                        var variableHeight = $(this).scrollTop() + $(this).height();
+                        var totalHeight = $(this).height();
+                        var percent = variableHeight / totalHeight;
+                        var range = 20;
+                        if (percent < 1.75) {
+                            return;
+                        }
+
+                        paginating = true;
+                        start += range;
+
+                        // show ajax loader
+                        loader.removeClass('hide');
+                        populateBoard(start, function () {
+                            paginating = false;
+                        });
+                    });
+
+                    populateBoard(0);
                 }
-
-                var variableHeight = $(this).scrollTop() + $(this).height();
-                var totalHeight = $(this).height();
-                var percent = variableHeight / totalHeight;
-                var range = 20;
-                if(percent < 1.75) {
-                    return;
-                }
-
-                paginating = true;
-                start += range;
-                var search = window.location.search;
-
-                // show ajax loader
-                loader.removeClass('hide');
-                populateBoard(start, function() {
-                    paginating = false;
-                });
-            });
-
-            populateBoard(0);
+            );
         });
     })();
 
