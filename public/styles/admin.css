@@ -2082,6 +2082,10 @@ ul.meta-list .key {
 .pipeline-board .column .stage .stage-label .stage-name {
     font-weight: 600;
 }
+.pipeline-board .column .stage .total-range-container {
+    padding: 5px;
+    background-color: #eee;
+}
 
 /* Calendar
 ------------------------------*/
