@@ -1863,20 +1863,20 @@ jQuery(function($) {
         /**
          * Webhook event check all
          */
-        $(window).on('event-checkall-init', function(e, trigger) {
-            var target = $(trigger).parents('.webhook-events').eq(0);
+        $(window).on('custom-checkall-init', function(e, trigger) {
+            var target = '.' + $(trigger).data('target');
 
             $(trigger).click(function() {
                 if($(trigger).prop('checked')) {
-                    $('.events input[type="checkbox"]', target).prop('checked', true);
+                    $(target).prop('checked', true);
                 } else {
-                    $('.events input[type="checkbox"]', target).prop('checked', false);
+                    $(target).prop('checked', false);
                 }
             });
 
-            $('.events input[type="checkbox"]', target).click(function() {
+            $(target).click(function() {
                 var allChecked = true;
-                $('.events input[type="checkbox"]', target).each(function() {
+                $(target).each(function() {
                     if(!$(this).prop('checked')) {
                         allChecked = false;
                     }
