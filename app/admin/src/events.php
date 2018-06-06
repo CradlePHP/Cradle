@@ -114,6 +114,8 @@ $this->on('admin-render-page', function ($request, $response) {
     // get navigation
     $navigation = $menuRecordResponse->getResults();
 
+    $packages = $this->package('global')->config('packages');
+
     //path
     $path = $request->getPath('string');
     if (strpos($path, '?') !== false) {
@@ -129,7 +131,8 @@ $this->on('admin-render-page', function ($request, $response) {
             'results' => $response->getResults(),
             'content' => $response->getContent(),
             'navigation' => $navigation,
-            'i18n' => $request->getSession('i18n')
+            'i18n' => $request->getSession('i18n'),
+            'packages' => array_keys($packages)
         ],
         [
             'head',

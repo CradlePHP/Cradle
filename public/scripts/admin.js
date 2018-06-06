@@ -525,7 +525,7 @@ jQuery(function($) {
                                                         .attr('data-order', data[sort]);
                                                     return;
                                                 }
-                                                
+
                                                 if (($(item).data('stage') == stage
                                                     && oldIndex >= index)
                                                     || ($(item).data('stage') != stage
@@ -1857,6 +1857,32 @@ jQuery(function($) {
 
                 var notifier = $.notify(message + progress, 'info', 0);
                 var bar = $('div.progress-bar', notifier);
+            });
+        });
+
+        /**
+         * Webhook event check all
+         */
+        $(window).on('custom-checkall-init', function(e, trigger) {
+            var target = '.' + $(trigger).data('target');
+
+            $(trigger).click(function() {
+                if($(trigger).prop('checked')) {
+                    $(target).prop('checked', true);
+                } else {
+                    $(target).prop('checked', false);
+                }
+            });
+
+            $(target).click(function() {
+                var allChecked = true;
+                $(target).each(function() {
+                    if(!$(this).prop('checked')) {
+                        allChecked = false;
+                    }
+                });
+
+                $(trigger).prop('checked', allChecked);
             });
         });
     })();
