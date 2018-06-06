@@ -77,7 +77,7 @@
                 <div id="system-schema-nav" class="collapse nav-sub nav-sub-1
                     {{~#nav_match '/admin/menu'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/configuration'}} show{{/nav_match~}}
-                    {{~#nav_match '/admin/template'}} show{{/nav_match~}}        
+                    {{~#nav_match '/admin/template'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/system/schema'}} show{{/nav_match~}}
                     {{~#nav_match '/admin/package'}} show{{/nav_match~}}
                 ">
@@ -160,4 +160,45 @@
             </li>
         {{/when}}
     {{/request}}
+    {{#in packages 'cradlephp/cradle-api'}}
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#api-nav">
+                <i class="fas fa-cogs"></i>
+                <span class="nav-title">
+                    <span class="nav-text">API</span>
+                    <span class="nav-right">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </span>
+            </a>
+            <div id="api-nav" class="collapse nav-sub nav-sub-1
+                {{~#nav_match '/admin/app/search'}} show{{/nav_match~}}
+                {{~#nav_match '/admin/app/create'}} show{{/nav_match~}}
+                {{~#nav_match '/admin/app/update'}} show{{/nav_match~}}
+            ">
+                <ul class="nav flex-column ml-4">
+                    <li class="nav-item
+                        {{~#nav_match '/admin/app'}} active{{/nav_match~}}
+                        {{~#nav_match '/admin/app/create'}} active{{/nav_match~}}
+                        {{~#nav_match '/admin/app/update'}} active{{/nav_match~}}"
+                    >
+                        <a class="nav-link" href="/admin/app/search">
+                            <i class="fas fa-database"></i>
+                            <span class="nav-title">
+                                <span class="nav-text">Apps</span>
+                            </span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item{{~#nav_match '/admin/menu'}} active{{/nav_match~}}">
+                        <a class="nav-link" href="/admin/menu">
+                            <i class="fas fa-bars"></i>
+                            <span class="nav-title">
+                                <span class="nav-text">Documentation</span>
+                            </span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </li>
+    {{/in}}
 </ul>
