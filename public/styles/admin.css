@@ -2081,6 +2081,8 @@ ul.meta-list .key {
     z-index: 2000;
 }
 .pipeline-board .column .stage .stage-label {
+    background-color: #429ce2;
+    color: #fff;
     padding: 5px 10px;
     text-align: center;
 }
@@ -2088,8 +2090,9 @@ ul.meta-list .key {
     font-weight: 600;
 }
 .pipeline-board .column .stage .total-range-container {
-    padding: 5px;
     background-color: #eee;
+    font-size: 25px;
+    padding: 5px;
 }
 
 /* Calendar
