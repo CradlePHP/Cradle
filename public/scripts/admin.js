@@ -616,7 +616,7 @@ jQuery(function($) {
                                     }
 
                                     // if range is not specified but total is
-                                    if (!rangeFields.length && total.length) {
+                                    if (!rangeFields.length && total) {
                                         value = result[total];
                                     }
 
@@ -633,7 +633,7 @@ jQuery(function($) {
                                     lists += card;
                                 });
 
-                                if (total.length) {
+                                if (total) {
                                     // insert total and range in stage header
                                     var template = '<span class="stage-total">'
                                         + '[[currency]] '
