@@ -4,6 +4,19 @@ jQuery(function($) {
      */
     (function() {
         /**
+         * Rest button on form page
+         */
+        $('form button[type="reset"]').click(function(e) {
+            e.preventDefault();
+            form = $(this).parents('form').get(0);
+
+
+            $('input', form).each(function () {
+                $(this).val('');
+            });
+        });
+
+        /**
          * Search filter more less toggle
          */
         $(window).on('search-filter-toggle-click', function(e, target) {
