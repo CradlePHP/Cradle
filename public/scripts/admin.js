@@ -365,19 +365,17 @@ jQuery(function($) {
                     var detail = $(target).data('card-detail');
                     var title = $(target).data('card-title');
                     var date = $(target).data('card-date');
-                    var totalFields = [];
-                    var total = [];
+                    var total = $(target).data('total');
+                    var rangeFields = [];
 
-                    // set total
-                    if ($(target).data('total-1')) {
-                        totalFields.push($(target).data('total-1'));
-                        total.push(0);
+                    // set range
+                    if ($(target).data('range-1')) {
+                        rangeFields.push($(target).data('range-1'));
                     }
 
-                    // if there's another total for range, add them
-                    if ($(target).data('total-2')) {
-                        totalFields.push($(target).data('total-2'));
-                        total.push(0);
+                    // if there's another column for range, add them
+                    if ($(target).data('range-2')) {
+                        rangeFields.push($(target).data('range-2'));
                     }
 
                     var columns = $(target)
@@ -562,7 +560,7 @@ jQuery(function($) {
                             +               '</span>'
                             +           '</strong>'
                             +       '</a>'
-                            +       '<p class="value">[[currency]][[card_value]]</p>'
+                            +       '<p class="value">[[currency]] [[card_value]]</p>'
                             +   '</div>'
                             +'</li>';
 
@@ -577,6 +575,10 @@ jQuery(function($) {
                         if (sort) {
                             data.order = {};
                             data.order[sort] = 'ASC';
+                        }
+
+                        if (total) {
+                            data.sum = total;
                         }
 
                         $.get(ajax, data)
@@ -605,12 +607,17 @@ jQuery(function($) {
                                     }
 
                                     // card value
-                                    if (result[totalFields[0]] && result[totalFields[1]]) {
-                                        value = $.number_format(result[totalFields[0]], 2)
+                                    if (result[rangeFields[0]] && result[rangeFields[1]]) {
+                                        value = $.number_format(result[rangeFields[0]], 2)
                                             + ' - '
-                                            + $.number_format(result[totalFields[1]], 2);
-                                    } else if (result[totalFields[0]]) {
-                                        value = $.number_format(result[totalFields[0]], 2);
+                                            + $.number_format(result[rangeFields[1]], 2);
+                                    } else if (result[rangeFields[0]]) {
+                                        value = $.number_format(result[rangeFields[0]], 2);
+                                    }
+
+                                    // if range is not specified but total is
+                                    if (!rangeFields.length && total.length) {
+                                        value = result[total];
                                     }
 
                                     var card = cardTemplate
@@ -623,28 +630,15 @@ jQuery(function($) {
                                         .replace('[[card_order]]', result[sort])
                                         .replace('[[card_value]]', value);
 
-                                    if (result[totalFields[0]]) {
-                                        total[0] += eval(result[totalFields[0]]);
-                                    }
-
-                                    if (result[totalFields[1]]) {
-                                        total[1] += eval(result[totalFields[1]]);
-                                    }
-
                                     lists += card;
                                 });
 
                                 if (total.length) {
                                     // insert total and range in stage header
                                     var template = '<span class="stage-total">'
-                                        + 'Total: [[currency]]'
-                                        + $.number_format(total[0], 2);
-
-                                    if (total.length == 2) {
-                                        template += ' - ' + $.number_format(total[1], 2);
-                                    }
-
-                                    template += '</span>';
+                                        + '[[currency]] '
+                                        + $.number_format(response.results.sum_field, 2)
+                                        + '</span>';
 
                                     template = template
                                         .replace("[[currency]]", currency);
