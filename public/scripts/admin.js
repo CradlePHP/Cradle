@@ -367,38 +367,60 @@ jQuery(function($) {
                 'components/@aprilsacil/number_format.js/number_format.min.js',
             ], function () {
                     // prepare data
-                    var stage = $(target).data('stage');
-                    var model = $(target).data('model');
-                    var field = $(target).data('field');
-                    var sort = $(target).data('order');
-                    var ajax = $(target).data('ajax-pull');
-                    var update = $(target).data('ajax-update');
-                    var currency = $(target).data('currency');
-                    var primary = $(target).data('primary');
-                    var detail = $(target).data('card-detail');
-                    var title = $(target).data('card-title');
-                    var date = $(target).data('card-date');
-                    var total = $(target).data('total');
+                    var $target = $(target);
+                    var stage = $target.data('stage');
+                    var model = $target.data('model');
+                    var field = $target.data('field');
+                    var sort = $target.data('order');
+                    var ajax = $target.data('ajax-pull');
+                    var update = $target.data('ajax-update');
+                    var currency = $target.data('currency');
+                    var primary = $target.data('primary');
+                    var detail = $target.data('card-detail');
+                    var title = $target.data('card-title');
+                    var date = $target.data('card-date');
+                    var total = $target.data('total');
+                    var admin = $target.data('admin');
                     var rangeFields = [];
+                    var relations = {
+                        'name': [],
+                        'title': [],
+                        'primary': []
+                    };
 
                     // set range
-                    if ($(target).data('range-1')) {
-                        rangeFields.push($(target).data('range-1'));
+                    if ($target.data('range-1')) {
+                        rangeFields.push($target.data('range-1'));
                     }
 
                     // if there's another column for range, add them
-                    if ($(target).data('range-2')) {
-                        rangeFields.push($(target).data('range-2'));
+                    if ($target.data('range-2')) {
+                        rangeFields.push($target.data('range-2'));
                     }
 
-                    var columns = $(target)
+                    var columns = $target
                         .parent()
                         .find('.column')
                         .length;
                     var width = $('.board-container').width()/columns;
 
                     if (width > 250) {
-                        $(target).css('width', width);
+                        $target.css('width', width);
+                    }
+
+                    var dataAttributes = $target.data();
+                    for(var name in dataAttributes) {
+                        if(name.indexOf('relationsName-') !== -1) {
+                            relations.name.push(dataAttributes[name]);
+                        }
+
+                        if(name.indexOf('relationsTitle-') !== -1) {
+                            relations.title.push(dataAttributes[name]);
+                        }
+
+                        if(name.indexOf('relationsPrimary-') !== -1) {
+                            relations.primary.push(dataAttributes[name]);
+                        }
                     }
 
                     $('.board-stage', target).sortable({
@@ -574,6 +596,7 @@ jQuery(function($) {
                             +           '</strong>'
                             +       '</a>'
                             +       '<p class="value">[[currency]] [[card_value]]</p>'
+                            +       '<div class="card-relations">[[card_relations]]</div>'
                             +   '</div>'
                             +'</li>';
 
@@ -642,6 +665,39 @@ jQuery(function($) {
                                         .replace('[[card_index]]', index)
                                         .replace('[[card_order]]', result[sort])
                                         .replace('[[card_value]]', value);
+
+                                    if (relations.primary) {
+                                        html = '';
+                                        for (var i in relations.primary) {
+                                            var relationsLink = '';
+                                            if (admin) {
+                                                relationsLink += '/admin';
+                                            }
+
+                                            relationsLink += '/system/model/'
+                                            + relations.name[i] + '/detail/'
+                                            + result[relations.primary[i]];
+
+                                            if (result[relations.title[i]]) {
+                                                html += '<div><a href=" title="'
+                                                + result[relations.title[i]] + '">';
+
+                                                // if there is an image
+                                                if (result[relations.name[i]+'_image']) {
+                                                    html += '<img src="'
+                                                        + result[relations.name[i]+'_image']
+                                                        + '" title="' + result[relations.title[i]]
+                                                        + '" height="20px"/>';
+                                                } else {
+                                                    html += result[relations.title[i]]
+                                                }
+
+                                                html += '</a></div>';
+                                            }
+                                        }
+
+                                        card = card.replace('[[card_relations]]', html);
+                                    }
 
                                     lists += card;
                                 });
@@ -2262,7 +2318,6 @@ jQuery(function($) {
         $('body.theme-top aside.sidebar a[data-toggle="collapse"]').click(function() {
             var trigger = this;
             $('body.theme-top aside.sidebar > ul.nav > li.nav-item').each(function() {
-                console.log('clack')
                 if($.contains(this, trigger)) {
                     return;
                 }
