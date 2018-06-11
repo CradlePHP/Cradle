@@ -679,7 +679,8 @@ jQuery(function($) {
                                             + result[relations.primary[i]];
 
                                             if (result[relations.title[i]]) {
-                                                html += '<div><a href=" title="'
+                                                html += '<div><a href="'
+                                                + relationsLink + '" title="'
                                                 + result[relations.title[i]] + '">';
 
                                                 // if there is an image
@@ -687,7 +688,7 @@ jQuery(function($) {
                                                     html += '<img src="'
                                                         + result[relations.name[i]+'_image']
                                                         + '" title="' + result[relations.title[i]]
-                                                        + '" height="20px"/>';
+                                                        + '" height="25px"/>';
                                                 } else {
                                                     html += result[relations.title[i]]
                                                 }
