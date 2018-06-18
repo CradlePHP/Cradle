@@ -33,10 +33,26 @@ $this->on('admin-menu-count', function ($request, $response) {
     // get table record count
     $recordCount = Service::get('sql')->getSchemaTableRecordCount($schema);
 
+    // auth request
+    $authRequest = Request::i()->load();
+    // auth response
+    $authResponse = Response::i()->load();
+
+    $authRequest->setStage('auth_id', $request->getSession('me', 'auth_id'));
+    $this->trigger('auth-roles', $authRequest, $authResponse);
+
+    $roles = $authResponse->getResults();
+    $roles = array_keys($roles);
+
     // map navigation
-    $map = function($navigation, $recordCount) use (&$map) {
+    $map = function($navigation, $recordCount, $roles) use (&$map) {
         // iterate on each navigation
         foreach ($navigation as $key => $value) {
+            if (!empty($value['roles']) && !array_intersect($roles, $value['roles'])) {
+                unset($navigation[$key]);
+                continue;
+            }
+
             // do we have child navigation?
             if (isset($value['children'])
                 && is_array($value['children'])
@@ -62,7 +78,7 @@ $this->on('admin-menu-count', function ($request, $response) {
     };
 
     // map through navigation and set record count
-    $navigation = $map($navigation, $recordCount);
+    $navigation = $map($navigation, $recordCount, $roles);
 
     // set response
     return $response->setResults($navigation);
