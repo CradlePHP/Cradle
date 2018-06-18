@@ -35,6 +35,18 @@
         type="text"
         value="{{path}}"
     />
+    <select
+        class="form-control"
+        data-do="select-field"
+        multiple="multiple"
+        data-name="roles"
+    >
+        {{#each ../role_permissions}}
+            <option value="{{role_id}}" {{#in ../roles role_id}}selected{{/in}}>
+                {{role_name}}
+            </option>
+        {{/each}}
+    </select>
     <div class="input-group-append">
         <button class="btn btn-success menu-builder-action-add" type="button">
             <i class="fas fa-plus"></i>
