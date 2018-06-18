@@ -17,6 +17,8 @@ $this->get('/admin/menu', function ($request, $response) {
     //----------------------------//
     // 1. Prepare Data
     $data = [ 'item' => $this->package('global')->config('admin/menu') ];
+    $this->trigger('role-search', $request, $response);
+    $data['role_permissions'] = $response->getResults('rows');
 
     //----------------------------//
     // 2. Render Template

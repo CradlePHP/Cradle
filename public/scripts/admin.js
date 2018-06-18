@@ -1956,47 +1956,7 @@ jQuery(function($) {
      */
     (function() {
         $(window).on('menu-builder-init', function(e, target) {
-            var itemTemplate =
-                '<li class="menu-builder-item" data-level="{LEVEL}">'
-                    + '<div class="menu-builder-input input-group">'
-                        + '<div class="input-group-prepend">'
-                            + '<button class="menu-builder-handle btn btn-light" type="button">'
-                                + '<i class="fas fa-arrows-alt fa-fw"></i>'
-                            + '</button>'
-                            + '<button class="menu-builder-handle btn btn-default" type="button">'
-                                + '<i '
-                                    + 'class="fas fa-question fa-fw" '
-                                    + 'data-do="icon-field" '
-                                    + 'data-target-parent="3"'
-                                + '></i>'
-                                + '<input '
-                                    + 'class="form-control" '
-                                    + 'data-name="icon" '
-                                    + 'type="hidden" '
-                                + '/>'
-                            + '</button>'
-                        + '</div>'
-                        + '<input '
-                            + 'class="form-control" '
-                            + 'data-name="label" '
-                            + 'placeholder="Menu Title" '
-                            + 'type="text" '
-                        + '/>'
-                        + '<input '
-                            + 'class="form-control" '
-                            + 'data-name="path" '
-                            + 'placeholder="/some/path" '
-                            + 'type="text" '
-                        + '/>'
-                        + '<div class="input-group-append">'
-                            + '{ACTION_ADD}'
-                            + '<button class="btn btn-danger menu-builder-action-remove" type="button">'
-                                + '<i class="fas fa-times"></i>'
-                            + '</button>'
-                        + '</div>'
-                    + '</div>'
-                    + '<ol class="menu-builder-list"></ol>'
-                + '</li>';
+            var itemTemplate = $('#menu-item').html();
 
             var addTemplate =
                 '<button class="btn btn-success menu-builder-action-add" type="button">'
@@ -2013,11 +1973,25 @@ jQuery(function($) {
                     var newPath = path.replace('{INDEX}', i);
                     $('div.menu-builder-input:first', this).find('input').each(function() {
                         var name = $(this).attr('data-name');
-                        if(!name.length) {
+                        if (!name || !name.length) {
                             return;
                         }
 
                         $(this).attr('name', newPath + '[' + name + ']');
+                    });
+                    $('div.menu-builder-input:first', this).find('select').each(function() {
+                        var name = $(this).attr('data-name');
+                        var multiple = $(this).attr('multiple');
+
+                        if(!name || !name.length) {
+                            return;
+                        }
+
+                        if (multiple == 'multiple') {
+                            $(this).attr('name', newPath + '[' + name + '][]');
+                        } else {
+                            $(this).attr('name', newPath + '[' + name + ']');
+                        }
                     });
 
                     reindex($('ol.menu-builder-list:first', this), level + 1, newPath + '[children]');
