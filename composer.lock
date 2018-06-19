@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e89b7050a1c647d81fdf3913f5fda242",
+    "content-hash": "4877c4dd058958e51151fa8df1effd13",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -395,12 +395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/components.git",
-                "reference": "9f3163c02f1746a7cfb103bc3b1ce5eb0646e4fc"
+                "reference": "1f81a553d198c65986ec3956ddad1ebff66bee11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/components/zipball/9f3163c02f1746a7cfb103bc3b1ce5eb0646e4fc",
-                "reference": "9f3163c02f1746a7cfb103bc3b1ce5eb0646e4fc",
+                "url": "https://api.github.com/repos/CradlePHP/components/zipball/1f81a553d198c65986ec3956ddad1ebff66bee11",
+                "reference": "1f81a553d198c65986ec3956ddad1ebff66bee11",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +436,7 @@
                 "php70",
                 "php71"
             ],
-            "time": "2018-06-08T11:27:37+00:00"
+            "time": "2018-06-13T11:25:10+00:00"
         },
         {
             "name": "cradlephp/composer",
@@ -476,6 +476,52 @@
             ],
             "description": "Composer and Packagist Helpers",
             "time": "2018-04-03T06:58:02+00:00"
+        },
+        {
+            "name": "cradlephp/cradle-api",
+            "version": "0.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/cradle-api.git",
+                "reference": "433d42ed983d51ea42edcb8535a9049f3b3edafa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/433d42ed983d51ea42edcb8535a9049f3b3edafa",
+                "reference": "433d42ed983d51ea42edcb8535a9049f3b3edafa",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/cradle-queue": "0.*",
+                "cradlephp/cradle-system": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.2",
+                "satooshi/php-coveralls": "2.0.0",
+                "squizlabs/php_codesniffer": "3.2.3"
+            },
+            "type": "cradle-package",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\Package\\Api\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "April Sacil",
+                    "email": "aprilvsacil@gmail.com"
+                },
+                {
+                    "name": "Charles Zamora",
+                    "email": "charles.andacc@gmail.com"
+                }
+            ],
+            "description": "Cradle API Package",
+            "time": "2018-06-18T09:00:21+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
@@ -722,6 +768,52 @@
                 "cradlephp"
             ],
             "time": "2018-03-22T12:15:21+00:00"
+        },
+        {
+            "name": "cradlephp/cradle-queue",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CradlePHP/cradle-queue.git",
+                "reference": "2566a8a6b9b932120102ac1073bd2555053e0433"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-queue/zipball/2566a8a6b9b932120102ac1073bd2555053e0433",
+                "reference": "2566a8a6b9b932120102ac1073bd2555053e0433",
+                "shasum": ""
+            },
+            "require": {
+                "cradlephp/framework": "2.*",
+                "php-amqplib/php-amqplib": "^2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.2",
+                "satooshi/php-coveralls": "2.0.0",
+                "squizlabs/php_codesniffer": "3.2.3"
+            },
+            "type": "cradle-package",
+            "autoload": {
+                "psr-4": {
+                    "Cradle\\Framework\\Queue\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "AMQ handler for Cradle",
+            "keywords": [
+                "cradle",
+                "cradlephp"
+            ],
+            "time": "2018-03-25T04:35:03+00:00"
         },
         {
             "name": "cradlephp/cradle-role",
@@ -1504,6 +1596,77 @@
             "time": "2016-12-03T22:08:25+00:00"
         },
         {
+            "name": "php-amqplib/php-amqplib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-amqplib/php-amqplib.git",
+                "reference": "08a81740a76af14eb1fb9de09ee3680e6ab82c91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/08a81740a76af14eb1fb9de09ee3680e6ab82c91",
+                "reference": "08a81740a76af14eb1fb9de09ee3680e6ab82c91",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "replace": {
+                "videlalvaro/php-amqplib": "self.version"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "^2.9",
+                "phpunit/phpunit": "^4.8",
+                "scrutinizer/ocular": "^1.1",
+                "squizlabs/php_codesniffer": "^2.5"
+            },
+            "suggest": {
+                "ext-sockets": "Use AMQPSocketConnection"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpAmqpLib\\": "PhpAmqpLib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla",
+                    "role": "Original Maintainer"
+                },
+                {
+                    "name": "John Kelly",
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Raúl Araya",
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
+            "homepage": "https://github.com/php-amqplib/php-amqplib/",
+            "keywords": [
+                "message",
+                "queue",
+                "rabbitmq"
+            ],
+            "time": "2018-04-23T12:02:46+00:00"
+        },
+        {
             "name": "predis/predis",
             "version": "v1.1.1",
             "source": {
@@ -1656,12 +1819,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "8345e877c29f8d691963bfc4ccf6b57afc6b6f09"
+                "reference": "f4edc2581617431aea50430749db55cc3fc031b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8345e877c29f8d691963bfc4ccf6b57afc6b6f09",
-                "reference": "8345e877c29f8d691963bfc4ccf6b57afc6b6f09",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/f4edc2581617431aea50430749db55cc3fc031b3",
+                "reference": "f4edc2581617431aea50430749db55cc3fc031b3",
                 "shasum": ""
             },
             "require": {
@@ -1694,7 +1857,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2018-06-11T07:17:43+00:00"
+            "time": "2018-06-13T15:59:06+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -2238,12 +2401,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "cfd694a76182f68ac662f8d60852dd42fd2d0892"
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/cfd694a76182f68ac662f8d60852dd42fd2d0892",
-                "reference": "cfd694a76182f68ac662f8d60852dd42fd2d0892",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
                 "shasum": ""
             },
             "require": {
@@ -2278,7 +2441,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2018-06-03T10:06:13+00:00"
+            "time": "2018-06-11T23:09:50+00:00"
         },
         {
             "name": "phar-io/manifest",
