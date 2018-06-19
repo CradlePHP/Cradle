@@ -2075,6 +2075,9 @@ ul.meta-list .key {
 .pipeline-board .column .draggable-wrapper .card .card-name .pull-left {
     float: left!important;
 }
+.pipeline-board .column .draggable-wrapper .card .card-relations {
+    text-align: right;
+}
 .pipeline-board .column .draggable-wrapper .dragged {
     opacity: 0.8;
     position: absolute;
