@@ -58,7 +58,7 @@ $this->on('admin-menu-count', function ($request, $response) {
                 && is_array($value['children'])
             ) {
                 // recurse through child navigations
-                $navigation[$key]['children'] = $map($value['children'], $recordCount);
+                $navigation[$key]['children'] = $map($value['children'], $recordCount, $roles);
             }
 
             // iterate on each record count
@@ -76,6 +76,7 @@ $this->on('admin-menu-count', function ($request, $response) {
 
         return $navigation;
     };
+
 
     // map through navigation and set record count
     $navigation = $map($navigation, $recordCount, $roles);
