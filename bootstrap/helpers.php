@@ -695,7 +695,10 @@ $handlebars->registerHelper('notin', function ($array, $value, $options) {
  *
  * @return [BLOCK]
  */
-$handlebars->registerHelper('is_array', function ($param, $options) {
+$handlebars->registerHelper('is_array', function (...$args) {
+    $options = array_pop($args);
+    $param = array_pop($args);
+
     if (is_array($param)) {
         return $options['fn']();
     }
