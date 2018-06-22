@@ -1044,7 +1044,7 @@ jQuery(function($) {
             var metaTemplate ='<div class="meta">'
                 + '<input type="text" class="meta-input key" /> '
                 + '<input type="text" class="meta-input value" /> '
-                + '<input type="hidden" name="post_tags[{{@key}}]" value=""/> '
+                + '<input type="hidden" name="" value=""/> '
                 + '<a class="remove text-danger" href="javascript:void(0)"><i class="fa fa-times"></i></a>'
                 + '</div>';
 
