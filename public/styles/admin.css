@@ -2108,6 +2108,14 @@ ul.meta-list .key {
     border-color: #888;
 }
 
+/* Page Admin Globals
+------------------------------*/
+.page-admin .form-multifield {
+    border: 1px solid #ccc;
+    padding-bottom: 0;
+    padding: 10px;
+}
+
 /* Dashboard
 ------------------------------*/
 .page-admin-dashboard ul {
