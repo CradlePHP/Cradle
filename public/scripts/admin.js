@@ -769,6 +769,15 @@ jQuery(function($) {
                 }
             );
         });
+
+        $(window).on('excerpt-init', function(e, target) {
+            $(target).parent().next().css('display', 'none');
+        });
+
+        $(window).on('excerpt-click', function(e, target) {
+            $(target).parent().css('display', 'none');
+            $(target).parent().next().css('display', 'block');
+        });
     })();
 
     /**

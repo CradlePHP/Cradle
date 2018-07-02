@@ -42,7 +42,7 @@ $this->on('admin-menu-count', function ($request, $response) {
     $this->trigger('auth-roles', $authRequest, $authResponse);
 
     $roles = $authResponse->getResults();
-    $roles = array_keys($roles);
+    $roles = $roles ? array_keys($roles) : [];
 
     // map navigation
     $map = function($navigation, $recordCount, $roles) use (&$map) {
