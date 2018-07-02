@@ -92,6 +92,32 @@ $handlebars->registerHelper('strip', function ($html, $options) {
 });
 
 /**
+ * Strips HTML tags and then limits the
+ * string to specified word count to make an excerpt
+ *
+ * @param *string HTML string
+ * @param string  Allowable tags
+ *
+ * @return string
+ */
+$handlebars->registerHelper('excerpt', function ($html, $length, $options) {
+    $allowable = '<p><br>';
+    if (is_string($options)) {
+        $allowable = $options;
+    }
+
+    $value = strip_tags($html, $allowable);
+
+    if (str_word_count($value, 0) > $length) {
+        $words = str_word_count($value, 2);
+        $position = array_keys($words);
+        $value = substr($value, 0, $position[$length]);
+    }
+
+    return $value;
+});
+
+/**
  * Parses Markdown
  *
  * @param *string HTML string
