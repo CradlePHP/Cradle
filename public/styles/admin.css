@@ -2149,3 +2149,209 @@ ul.meta-list .key {
 .page-app-form .form-group.checkboxes .d-flex > * {
     flex: 1;
 }
+
+/* Admin Activity Page
+------------------------------*/
+.page-admin-activity .schema .btn-submit {
+    width: 100%;
+    text-transform: capitalize;
+}
+.page-admin-activity .timeline-wrapper {
+    border-top: 1px solid #ccc;
+}
+.page-admin-activity .timeline {
+    margin-bottom: 30px;
+    padding: 21px 0px 10px;
+    position: relative;
+}
+
+.page-admin-activity .timeline .line {
+    background: currentColor;
+    bottom: 0px;
+    color: #ccc;
+    display: block;
+    margin-left: 45px;
+    position: absolute;
+    top: 0px;
+    width: 1px;
+}
+
+.page-admin-activity .timeline .separator {
+    border-top: 1px solid currentColor;
+    font-size: .9em;
+    font-style: italic;
+    margin-left: 30px;
+    padding: 5px;
+    padding-left: 40px;
+}
+
+.page-admin-activity .timeline .line::before {
+    top: -4px;
+}
+.page-admin-activity .timeline .line::after {
+    bottom: -4px;
+}
+
+.page-admin-activity .timeline .line::after {
+    background: currentColor;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    width: 12px;
+}
+
+.page-admin-activity .timeline .panel {
+    border: 1px solid;
+    clear: both;
+    margin: 10px 0px 21px 85px;
+    position: relative;
+}
+
+.page-admin-activity .timeline .panel::before {
+    border: inherit;
+    border-width: 12px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    content: '';
+    display: block;
+    left: -24px;
+    height: 0px;
+    position: absolute;
+    top: 8px;
+    width: 0px;
+}
+
+.page-admin-activity .timeline .panel .panel-heading.icon * {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+}
+.page-admin-activity .timeline .panel .icon {
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid;
+    display: block;
+    float: left;
+    height: 40px;
+    left: -60px;
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    width: 40px;
+}
+
+.page-admin-activity .timeline .panel-outline {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.page-admin-activity .timeline .panel-body {
+    padding: 10px;
+}
+
+.page-admin-activity .timeline .panel-body .main-content {
+    display: flex;
+}
+
+.page-admin-activity .timeline .panel-body img {
+    height: 50px;
+    border-radius: 50px;
+}
+
+.page-admin-activity .timeline .panel-title {
+    padding: 5px;
+}
+
+.page-admin-activity .timeline .panel-title a {
+    color: #fff;
+}
+
+.page-admin-activity .timeline .card-datetime {
+    font-size:0.8em
+}
+
+.page-admin-activity .timeline .panel-outline .panel-heading:not(.icon),
+.page-admin-activity .timeline .panel-outline .panel-footer {
+    display: none;
+}
+
+.page-admin-activity .timeline .create {
+    background: transparent;
+    border-color: #4FC3F7;
+    box-shadow: 5px 10px #8888881f;
+}
+
+.page-admin-activity .timeline .create .panel-title {
+    background: #4FC3F7;
+    border-color: #4FC3F7;
+    box-shadow: none;
+    color: white;
+}
+
+.page-admin-activity .timeline .create .icon {
+    background: #4FC3F7;
+    border-color: #4FC3F7;
+    color: white;
+}
+
+.page-admin-activity .timeline .update {
+    background: transparent;
+    border-color: #9575CD;
+    box-shadow: 5px 10px #8888881f;
+}
+
+.page-admin-activity .timeline .update .panel-title {
+    background: #9575CD;
+    border-color: #9575CD;
+    box-shadow: none;
+    color: white;
+}
+
+.page-admin-activity .timeline .update .icon {
+    background: #9575CD;
+    border-color: #9575CD;
+    color: white;
+}
+
+.page-admin-activity .timeline .remove {
+    background: transparent;
+    border-color: #D15B47;
+    box-shadow: 5px 10px #8888881f;
+}
+
+.page-admin-activity .timeline .remove .panel-title {
+    background: #D15B47;
+    border-color: #D15B47;
+    box-shadow: none;
+    color: white;
+}
+
+.page-admin-activity .timeline .remove .icon {
+    background: #D15B47;
+    border-color: #D15B47;
+    color: white;
+}
+
+.page-admin-activity .timeline .restore {
+    background: transparent;
+    border-color: #28a745;
+    box-shadow: 5px 10px #8888881f;
+}
+
+.page-admin-activity .timeline .restore .panel-title {
+    background: #28a745;
+    border-color: #28a745;
+    box-shadow: none;
+    color: white;
+}
+
+.page-admin-activity .timeline .restore .icon {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
