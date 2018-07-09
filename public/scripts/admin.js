@@ -1958,6 +1958,41 @@ jQuery(function($) {
                 $(trigger).prop('checked', allChecked);
             });
         });
+
+
+        $(window).on('package-move-up-click', function(e, trigger) {
+            row = $(trigger).parents('tr');
+            var prev = row.prev();
+
+            if(prev.length && !prev.hasClass('file-field-none')) {
+                prev.before(row);
+                var data = [];
+
+                $(trigger).parents('tbody').find('tr').each(function(index, tr) {
+                    data.push($(tr).data('package'));
+                });
+
+                $.post('/admin/package/rearrange', {packages: data})
+                    .done(function(response) {});
+            }
+        });
+
+        $(window).on('package-move-down-click', function(e, trigger) {
+            row = $(trigger).parents('tr');
+            var next = row.next();
+
+            if(next.length) {
+                next.after(row);
+                var data = [];
+
+                $(trigger).parents('tbody').find('tr').each(function(index, tr) {
+                    data.push($(tr).data('package'));
+                });
+
+                $.post('/admin/package/rearrange', {packages: data})
+                    .done(function(response) {});
+            }
+        });
     })();
 
     /**
