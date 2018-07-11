@@ -10,7 +10,7 @@ config/test.php
 config/version.php
 config/schema/*.php
 config/admin/*.php
-config/packages/*
+config/packages/*.php
 public/components
 public/upload
 log/
