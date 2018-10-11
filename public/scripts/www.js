@@ -263,6 +263,224 @@ jQuery(function($) {
         });
 
         /**
+         * Texts Field
+         */
+        $(window).on('texts-field-init', function(e, target) {
+            target = $(target);
+
+            var name = target.attr('data-name');
+            var placeholder = target.attr('data-placeholder');
+
+            //TEMPLATES
+            var template ='<div class="field-row input-group mb-3">'
+                + '<div class="input-group-prepend">'
+                + '<a class="input-group-text text-success move-up" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-up"></i></a></div><div class="input-group-prepend">'
+                + '<a class="input-group-text text-orange move-down" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-down"></i></a></div>'
+                + '<input class="text-field form-control" type="text" name="'
+                + name + '[]" value="" /><div class="input-group-append">'
+                + '<a class="input-group-text text-danger remove" '
+                + 'href="javascript:void(0)">'
+                + '<i class="fas fa-times"></i></a></div></div>';
+
+            //INITITALIZERS
+            var initTag = function(filter) {
+                $('a.remove', filter).click(function() {
+                    filter.remove();
+                });
+
+                $('a.move-up', filter).click(function() {
+                    var prev = filter.prev();
+
+                    if(prev.length && prev.hasClass('field-row')) {
+                        prev.before(filter);
+                    }
+                });
+
+                $('a.move-down', filter).click(function() {
+                    var next = filter.next();
+
+                    if(next.length && next.hasClass('field-row')) {
+                        next.after(filter);
+                    }
+                });
+            };
+
+            //append meta template
+            $('a.field-add', target).click(function() {
+                var key = $('div.field-row', target).length;
+                $(this).before(template);
+                var item = $(this).prev();
+
+                if(placeholder) {
+                    $('input.text-field', item).attr('placeholder', placeholder);
+                }
+
+                initTag(item);
+
+                return false;
+            });
+
+            //INITIALIZE
+            $('div.field-row', target).each(function() {
+                initTag($(this));
+            });
+        });
+
+        /**
+         * Textareas Field
+         */
+        $(window).on('textareas-field-init', function(e, target) {
+            target = $(target);
+
+            var name = target.attr('data-name');
+            var rows = target.attr('data-rows');
+            var placeholder = target.attr('data-placeholder');
+
+            //TEMPLATES
+            var template ='<div class="field-row input-group mb-3">'
+                + '<div class="input-group-prepend">'
+                + '<a class="input-group-text text-success move-up" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-up"></i></a></div><div class="input-group-prepend">'
+                + '<a class="input-group-text text-orange move-down" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-down"></i></a></div>'
+                + '<textarea class="text-field form-control" name="'
+                + name + '[]"></textarea><div class="input-group-append">'
+                + '<a class="input-group-text text-danger remove" '
+                + 'href="javascript:void(0)">'
+                + '<i class="fas fa-times"></i></a></div></div>';
+
+            //INITITALIZERS
+            var initTag = function(filter) {
+                $('a.remove', filter).click(function() {
+                    filter.remove();
+                });
+
+                $('a.move-up', filter).click(function() {
+                    var prev = filter.prev();
+
+                    if(prev.length && prev.hasClass('field-row')) {
+                        prev.before(filter);
+                    }
+                });
+
+                $('a.move-down', filter).click(function() {
+                    var next = filter.next();
+
+                    if(next.length && next.hasClass('field-row')) {
+                        next.after(filter);
+                    }
+                });
+            };
+
+            //append meta template
+            $('a.field-add', target).click(function() {
+                var key = $('div.field-row', target).length;
+                $(this).before(template);
+                var item = $(this).prev();
+
+                if(placeholder) {
+                    $('textarea.text-field', item).attr('placeholder', placeholder);
+                }
+
+                if(rows) {
+                    $('textarea.text-field', item).attr('rows', rows);
+                }
+
+                initTag(item);
+
+                return false;
+            });
+
+            //INITIALIZE
+            $('div.field-row', target).each(function() {
+                initTag($(this));
+            });
+        });
+
+        /**
+         * WYSIWYGs Field
+         */
+        $(window).on('wysiwygs-field-init', function(e, target) {
+            target = $(target);
+
+            var name = target.attr('data-name');
+            var rows = target.attr('data-rows');
+            var placeholder = target.attr('data-placeholder');
+
+            //TEMPLATES
+            var template = '<div class="field-row mb-3">'
+                + '<div class="btn-group mb-2"><a class="btn btn-danger remove" '
+                + 'href="javascript:void(0)">'
+                + '<i class="fas fa-times"></i></a>'
+                + '<a class="btn btn-success move-up" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-up"></i></a>'
+                + '<a class="btn btn-orange move-down" href="javascript:void(0)">'
+                + '<i class="fas fa-arrow-down"></i></a></div>'
+                + '<textarea data-do="wysiwyg" class="text-field form-control" name="'
+                + name + '[]"></textarea></div>';
+
+            //INITITALIZERS
+            var initTag = function(filter) {
+                $('a.remove', filter).click(function() {
+                    console.log(filter[0])
+                    filter.remove();
+                });
+
+                $('a.move-up', filter).click(function() {
+                    var prev = filter.prev();
+
+                    if(prev.length && prev.hasClass('field-row')) {
+                        var value1 = $('textarea', filter).data('editor').getValue();
+                        var value2 = $('textarea', prev).data('editor').getValue();
+
+                        $('textarea', prev).data('editor').setValue(value1);
+                        $('textarea', filter).data('editor').setValue(value2);
+                    }
+                });
+
+                $('a.move-down', filter).click(function() {
+                    var next = filter.next();
+
+                    if(next.length && next.hasClass('field-row')) {
+                        var value1 = $('textarea', filter).data('editor').getValue();
+                        var value2 = $('textarea', next).data('editor').getValue();
+
+                        $('textarea', next).data('editor').setValue(value1);
+                        $('textarea', filter).data('editor').setValue(value2);
+                    }
+                });
+            };
+
+            //append meta template
+            $('a.field-add', target).click(function() {
+                var key = $('div.field-row', target).length;
+                $(this).before(template);
+                var item = $(this).prev();
+
+                if(placeholder) {
+                    $('textarea.text-field', item).attr('placeholder', placeholder);
+                }
+
+                if(rows) {
+                    $('textarea.text-field', item).attr('rows', rows);
+                }
+
+                initTag(item);
+
+                item.doon();
+
+                return false;
+            });
+
+            //INITIALIZE
+            $('div.field-row', target).each(function() {
+                initTag($(this));
+            });
+        });
+
+        /**
          * Meta Field
          */
         $(window).on('meta-field-init', function(e, target) {
