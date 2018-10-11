@@ -487,64 +487,57 @@ jQuery(function($) {
             target = $(target);
 
             //TEMPLATES
-            var metaTemplate ='<div class="meta">'
-                + '<input type="text" class="meta-input key" /> '
-                + '<input type="text" class="meta-input value" /> '
-                + '<input type="hidden" name="post_tags[{{@key}}]" value=""/> '
-                + '<a class="remove" href="javascript:void(0)"><i class="fa fa-times"></i></a>'
-                + '</div>';
-
-
-            var addRemove = function(filter) {
-                $('a.remove', filter).click(function() {
-                    var val = $('input', filter).val();
-
-                    $(this).parent().remove();
-                });
-            };
+            var template ='<div class="field-row input-group mb-3">'
+                + '<input class="meta-input key form-control" type="text" placeholder="Key" />'
+                + '<textarea class="meta-input value form-control" placeholder="Value" rows="1"></textarea>'
+                + '<input type="hidden" name="" value=""/>'
+                + '<div class="input-group-append">'
+                + '<a class="input-group-text text-danger remove" '
+                + 'href="javascript:void(0)">'
+                + '<i class="fas fa-times"></i></a></div></div>';
 
             //INITITALIZERS
             var initTag = function(filter) {
-                addRemove(filter);
+                var hidden = filter.find('input[type="hidden"]')
 
-                $('.meta-input.key', filter).blur(function() {
-                    var hidden = $(this).parent().find('input[type="hidden"]');
-
-                    //if no value
-                    if(!$(this).val() || !$(this).val().length) {
-                        $(hidden).attr('name', '');
-                        return;
-                    }
-
-                    $(hidden).attr('name', $(target).data('name') + '[' + $(this).val() +']');
+                $('a.remove', filter).click(function() {
+                    filter.remove();
                 });
 
-                $('.meta-input.value', filter).blur(function() {
-                    var hidden = $(this).parent().find('input[type="hidden"]');
-
+                $('input.meta-input.key', filter).blur(function() {
                     //if no value
                     if(!$(this).val() || !$(this).val().length) {
-                        $(hidden).attr('name', '');
+                        hidden.attr('name', '');
                         return;
                     }
 
-                    $(hidden).attr('value', $(this).val());
+                    hidden.attr('name', $(target).data('name') + '[' + $(this).val() +']');
+                });
+
+                $('textarea.meta-input.value', filter).blur(function() {
+                    //if no value
+                    if(!$(this).val() || !$(this).val().length) {
+                        hidden.attr('value', '');
+                        return;
+                    }
+
+                    hidden.attr('value', $(this).val());
                 });
             };
 
             //append meta template
-            $('.add-meta').click(function() {
-                var last = $('div.meta:last', target);
-                if(!last.length || $('input', last).val()) {
-                    target.append(metaTemplate);
-                    initTag(target);
-                }
+            $('a.field-add', target).click(function() {
+                var key = $('div.field-row', target).length;
+                $(this).before(template);
+                var item = $(this).prev();
+
+                initTag(item);
 
                 return false;
             });
 
             //INITIALIZE
-            $('div.meta', target).each(function() {
+            $('div.field-row', target).each(function() {
                 initTag($(this));
             });
         });
