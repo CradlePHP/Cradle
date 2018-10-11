@@ -287,7 +287,11 @@ $handlebars->registerHelper('relative', function ($date, $options) {
  *
  * @return string
  */
-$handlebars->registerHelper('join', function (array $list, $separator, $options) {
+$handlebars->registerHelper('join', function ($list, $separator, $options) {
+    if(!is_array($list)) {
+        return;
+    }
+
     foreach ($list as $i => $variable) {
         if (is_string($variable)) {
             $list[$i] = "'".$variable."'";
