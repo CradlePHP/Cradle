@@ -287,6 +287,18 @@ $handlebars->registerHelper('relative', function ($date, $options) {
  *
  * @return string
  */
+$handlebars->registerHelper('json_pretty', function ($value, $options) {
+    return nl2br(str_replace(' ', '&nbsp;', json_encode($value, JSON_PRETTY_PRINT)));
+});
+
+/**
+ * Joins an array together
+ *
+ * @param *array
+ * @param string The connecting string
+ *
+ * @return string
+ */
 $handlebars->registerHelper('join', function ($list, $separator, $options) {
     if(!is_array($list)) {
         return;

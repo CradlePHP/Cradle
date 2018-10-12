@@ -1617,7 +1617,7 @@ jQuery(function($) {
             require.load(
                 'components/ace-editor-builds/src/ace.js',
                 function() {
-                    target = $(target);
+                    target = $(target).addClass('ace-textarea').hide();
 
                     var mode = target.attr('data-mode');
                     var width = target.attr('data-height') || 0;

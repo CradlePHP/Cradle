@@ -862,16 +862,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.51",
+            "version": "1.2.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "eb4dfe6988252784631b2da9070266728ebe1729"
+                "reference": "297508b46d4d3c876b2871c60c9692d0d2cc4e3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/eb4dfe6988252784631b2da9070266728ebe1729",
-                "reference": "eb4dfe6988252784631b2da9070266728ebe1729",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/297508b46d4d3c876b2871c60c9692d0d2cc4e3c",
+                "reference": "297508b46d4d3c876b2871c60c9692d0d2cc4e3c",
                 "shasum": ""
             },
             "require": {
@@ -903,7 +903,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-10-11T07:09:32+00:00"
+            "time": "2018-10-12T05:11:53+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -1601,12 +1601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "4b84fa258d8d92c38bc0371e97b2ec56d26c1517"
+                "reference": "3edc3941dd79c46253e2d179b03d9bcbc1e8a98d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/4b84fa258d8d92c38bc0371e97b2ec56d26c1517",
-                "reference": "4b84fa258d8d92c38bc0371e97b2ec56d26c1517",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/3edc3941dd79c46253e2d179b03d9bcbc1e8a98d",
+                "reference": "3edc3941dd79c46253e2d179b03d9bcbc1e8a98d",
                 "shasum": ""
             },
             "require": {
@@ -1628,7 +1628,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -1663,7 +1663,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-10-09T21:49:00+00:00"
+            "time": "2018-10-11T18:41:27+00:00"
         },
         {
             "name": "predis/predis",
@@ -2363,12 +2363,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3"
+                "reference": "04b851250dc4988d2ba24f6475f7af93d37bafd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3",
-                "reference": "dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3",
+                "url": "https://api.github.com/repos/symfony/process/zipball/04b851250dc4988d2ba24f6475f7af93d37bafd8",
+                "reference": "04b851250dc4988d2ba24f6475f7af93d37bafd8",
                 "shasum": ""
             },
             "require": {
@@ -2404,7 +2404,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-10T13:54:27+00:00"
+            "time": "2018-10-11T17:22:38+00:00"
         }
     ],
     "packages-dev": [
