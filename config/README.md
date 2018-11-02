@@ -30,4 +30,4 @@ To create an entirely new configuration, you can do so with the following comman
 cradle()->packages('global')->config('settings', 'foobar', [
     'foo' => 'bar'
 ]);
-```
+``` 
