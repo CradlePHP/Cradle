@@ -479,16 +479,16 @@
         },
         {
             "name": "cradlephp/cradle-api",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-api.git",
-                "reference": "1f73b367289752846b89022127e59ba58e016c61"
+                "reference": "2741696093656bdaf33733e250ecd176fd9d8aac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/1f73b367289752846b89022127e59ba58e016c61",
-                "reference": "1f73b367289752846b89022127e59ba58e016c61",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/2741696093656bdaf33733e250ecd176fd9d8aac",
+                "reference": "2741696093656bdaf33733e250ecd176fd9d8aac",
                 "shasum": ""
             },
             "require": {
@@ -525,7 +525,7 @@
                 }
             ],
             "description": "Cradle API Package",
-            "time": "2018-11-02T15:15:39+00:00"
+            "time": "2018-11-02T15:46:50+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
