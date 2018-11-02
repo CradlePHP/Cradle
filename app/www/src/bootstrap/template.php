@@ -4,7 +4,7 @@
 */
 return function ($request, $response) {
     /**
-     * Generic template method for app/admin
+     * Generic template method for app/wwww
      *
      * @param *string $path
      * @param array   $data
@@ -12,9 +12,13 @@ return function ($request, $response) {
      *
      * @return string
      */
-    $this->package('/app/admin')->addMethod('template', function ($file, array $data = [], $partials = []) {
+    $this->package('/app/www')->addMethod('template', function (
+        $file, array
+        $data = [],
+        $partials = []
+    ) {
         // get the root directory
-        $root = __DIR__ . '/template/';
+        $root = dirname(__DIR__) . '/template/';
 
         // check for partials
         if (!is_array($partials)) {
@@ -47,5 +51,4 @@ return function ($request, $response) {
         //render
         return cradle('global')->template($file, $data, $paths);
     });
-
 };

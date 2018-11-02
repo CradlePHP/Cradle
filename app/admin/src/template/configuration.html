@@ -34,25 +34,25 @@
                     </option>
                     <option
                         value="general"
-                        {{#when type '==' 'general'}}selected{{/when}}                        
+                        {{#when type '==' 'general'}}selected{{/when}}
                     >
                         General Settings
                     </option>
                     <option
                         value="deploy"
-                        {{#when type '==' 'deploy'}}selected{{/when}}                        
+                        {{#when type '==' 'deploy'}}selected{{/when}}
                     >
                         Deployment Settings
                     </option>
                     <option
                         value="service"
-                        {{#when type '==' 'service'}}selected{{/when}}                        
+                        {{#when type '==' 'service'}}selected{{/when}}
                     >
                         System Services
                     </option>
                     <option
                         value="test"
-                        {{#when type '==' 'test'}}selected{{/when}}                        
+                        {{#when type '==' 'test'}}selected{{/when}}
                     >
                         Test Suite
                     </option>
@@ -63,12 +63,12 @@
 
     <form class="config-builder" data-do="config-builder" data-depth="3" method="post">
         {{#when type '!==' 'none'}}
-        <button type="button" class="btn btn-success config-builder-action-add">
-            <i class="fas fa-plus"></i>
-            Add Configuration
-        </button>
+            <button type="button" class="btn btn-success config-builder-action-add">
+                <i class="fas fa-plus"></i>
+                Add Configuration
+            </button>
         {{/when}}
-        
+
         <ol class="config-builder-list">
             {{#each item}}
                 {{> configuration_item}}

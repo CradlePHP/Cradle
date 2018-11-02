@@ -32,7 +32,7 @@
 <body class="admin-layout">
     <header class="head" data-do="fixed-scroll">{{> head}}</header>
     <section class="body">
-        <aside class="sidebar">{{> side}}</aside>
+        {{> side}}
         <main class="main">{{{content}}}</main>
     </section>
     {{#if page.flash}}

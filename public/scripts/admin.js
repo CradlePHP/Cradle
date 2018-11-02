@@ -1694,6 +1694,7 @@ jQuery(function($) {
             }
 
             var upper = $(target).attr('data-upper');
+            var lower = $(target).attr('data-lower');
             var space = $(target).attr('data-space') || '-';
 
             $(source).keyup(function() {
@@ -1714,6 +1715,10 @@ jQuery(function($) {
                             return s.toUpperCase();
                         }
                     );
+                }
+
+                if (lower != 0) {
+                    slug = slug.toLowerCase();
                 }
 
                 slug = slug.replace(/\-/g, space);
@@ -2211,140 +2216,6 @@ jQuery(function($) {
      * Other UI
      */
     (function() {
-        $(window).on('menu-builder-init', function(e, target) {
-            var itemTemplate = $('#menu-item').html();
-
-            var addTemplate =
-                '<button class="btn btn-success menu-builder-action-add" type="button">'
-                    + '<i class="fas fa-plus"></i>'
-                + '</button>';
-
-            var depth = $(target).attr('data-depth') || 9;
-            var message = $(target).attr('data-error') || 'Some items were empty';
-
-            var reindex = function(list, level, path) {
-                path = path || 'item';
-                path += '[{INDEX}]';
-                $(list).children('li.menu-builder-item').each(function(i) {
-                    var newPath = path.replace('{INDEX}', i);
-                    $('div.menu-builder-input:first', this).find('input').each(function() {
-                        var name = $(this).attr('data-name');
-                        if (!name || !name.length) {
-                            return;
-                        }
-
-                        $(this).attr('name', newPath + '[' + name + ']');
-                    });
-                    $('div.menu-builder-input:first', this).find('select').each(function() {
-                        var name = $(this).attr('data-name');
-                        var multiple = $(this).attr('multiple');
-
-                        if(!name || !name.length) {
-                            return;
-                        }
-
-                        if (multiple == 'multiple') {
-                            $(this).attr('name', newPath + '[' + name + '][]');
-                        } else {
-                            $(this).attr('name', newPath + '[' + name + ']');
-                        }
-                    });
-
-                    reindex($('ol.menu-builder-list:first', this), level + 1, newPath + '[children]');
-                });
-            };
-
-            var listen = function(item, level) {
-                //by default level 1
-                level = level || 1;
-                item = $(item);
-
-                //on button add click
-                $('button.menu-builder-action-add:first', item).click(function() {
-                    //do we need the add action?
-                    var add = '';
-                    if(level < depth) {
-                        add = addTemplate;
-                    }
-
-                    //make the template
-                    var newItem = $(
-                        itemTemplate
-                            .replace('{LEVEL}', level)
-                            .replace('{ACTION_ADD}', add)
-                    ).doon();
-
-                    //append the template
-                    $('ol.menu-builder-list:first', item).append(newItem);
-
-                    //reindex the names
-                    reindex($('ol.menu-builder-list:first', target), level);
-
-                    //listen to the item
-                    listen(newItem, level + 1);
-                });
-
-                //on button remove click
-                $('button.menu-builder-action-remove:first', item).click(function() {
-                    $(this).closest('li.menu-builder-item').remove();
-
-                    //reindex the names
-                    reindex($('ol.menu-builder-list:first', target), level);
-                });
-
-                return item;
-            };
-
-            var checkForm = function(e) {
-                var errors = false;
-                $('input[data-name="label"]', target).each(function() {
-                    if(!$(this).val().trim().length) {
-                        $(this).parent().addClass('has-error');
-                        errors = true;
-                    }
-                });
-
-                $('input[data-name="path"]', target).each(function() {
-                    if(!$(this).val().trim().length) {
-                        $(this).parent().addClass('has-error');
-                        errors = true;
-                    }
-                });
-
-                if(errors) {
-                    $('span.help-text', target).html(message);
-                    e.preventDefault();
-                    return false;
-                }
-            };
-
-            //listen to the root
-            listen(target)
-                .submit(checkForm)
-                //find all the current elements
-                .find('li.menu-builder-item')
-                .each(function() {
-                    listen(this).doon();
-                });
-
-            $.require('components/jquery-sortable/source/js/jquery-sortable-min.js', function() {
-                var root = $('ol.menu-builder-list:first');
-
-                root.sortable({
-                    onDrop: function ($item, container, _super, event) {
-                        $item.removeClass(container.group.options.draggedClass).removeAttr('style');
-                        $('body').removeClass(container.group.options.bodyClass);
-
-                        setTimeout(function() {
-                            reindex(root, 1);
-                        }, 10);
-                    }
-                });
-
-                reindex(root, 1);
-            });
-        });
-
         /**
          * Prettyfy
          */
@@ -2366,130 +2237,6 @@ jQuery(function($) {
      * Other UI
      */
     (function() {
-        $(window).on('permission-field-init', function(e, target) {
-            var itemTemplate =
-                '<li class="permission-item">'
-                    + '<div class="permission-input input-group">'
-                        + '<input '
-                            + 'class="form-control"'
-                            + 'data-name="label"'
-                            + 'placeholder="Label"'
-                            + 'type="text"'
-                        + '/>'
-                        + '<select '
-                            + 'class="form-control"'
-                            + 'data-name="method">'
-                            + '<option value="">Method</option>'
-                            + '<option value="get">GET</option>'
-                            + '<option value="post">POST</option>'
-                            + '<option value="put">PUT</option>'
-                            + '<option value="delete">DELETE</option>'
-                            + '<option value="all">ALL</option>'
-                        + '</select>'
-                        + '<input '
-                            + 'class="form-control"'
-                            + 'data-name="path"'
-                            + 'placeholder="/some/path"'
-                            + 'type="text"'
-                        + '/>'
-                        + '<div class="input-group-append">'
-                            + '<button class="btn btn-danger permission-action-remove" type="button">'
-                                + '<i class="fas fa-times"></i>'
-                            + '</button>'
-                        + '</div>'
-                    + '</div>'
-                + '</li>';
-
-            var message = $(target).attr('data-error') || 'Some items were empty';
-
-            var reindex = function(list, path) {
-                path = path || 'role_permissions';
-                path += '[{INDEX}]';
-                $(list).children('li.permission-item').each(function(i) {
-                    var newPath = path.replace('{INDEX}', i);
-                    $('div.permission-input:first', this).find('.form-control').each(function() {
-                        var name = $(this).attr('data-name');
-                        if(!name.length) {
-                            return;
-                        }
-
-                        $(this).attr('name', newPath + '[' + name + ']');
-                    });
-                });
-            };
-
-            var listen = function(item) {
-                item = $(item);
-
-                //on button add click
-                $('button.permission-action-add:first', item).click(function() {
-                    //make the template
-                    var newItem = $(
-                        itemTemplate
-                    ).doon();
-
-                    //append the template
-                    $('ul.permission-list:first', item).append(newItem);
-
-                    listen(newItem);
-
-                    reindex($('ul.permission-list:first', target));
-                });
-
-                //on button remove click
-                $('button.permission-action-remove:first', item).click(function() {
-                    $(this).closest('li.permission-item').remove();
-
-                    reindex($('ul.permission-list:first', target));
-                });
-
-                return item;
-            };
-
-            var checkForm = function(e) {
-                var errors = false;
-                $('input[data-name="label"]', target).each(function() {
-                    if(!$(this).val().trim().length) {
-                        $(this).parent().addClass('has-error');
-                        errors = true;
-                    }
-                });
-
-                $('input[data-name="path"]', target).each(function() {
-                    if(!$(this).val().trim().length) {
-                        $(this).parent().addClass('has-error');
-                        errors = true;
-                    }
-                });
-
-                $('select[data-name="method"]', target).each(function() {
-                    if(!$(this).val()) {
-                        $(this).parent().addClass('has-error');
-                        errors = true;
-                    }
-                });
-
-                if(errors) {
-                    $.notify(message, 'error');
-                    e.preventDefault();
-                    return false;
-                }
-            };
-
-            //listen to the root
-            listen(target)
-                .submit(checkForm)
-                //find all the current elements
-                .find('li.permission-item')
-                .each(function() {
-                    listen(this).doon();
-                });
-
-            var root = $('ul.permission-list:first');
-
-            reindex(root);
-        });
-
         /**
          * Prettyfy
          */
@@ -2566,11 +2313,6 @@ jQuery(function($) {
             var itemTemplate =
                 '<li class="config-builder-item" data-level="{LEVEL}">'
                     + '<div class="config-builder-input input-group">'
-                        + '<div class="input-group-prepend">'
-                            + '<button class="config-builder-handle btn btn-light" type="button">'
-                                + '<i class="fas fa-arrows-alt fa-fw"></i>'
-                            + '</button>'
-                        + '</div>'
                         + '<input '
                             + 'class="form-control" '
                             + 'data-name="key" '
@@ -2584,7 +2326,6 @@ jQuery(function($) {
                             + 'type="text" '
                         + '/>'
                         + '<div class="input-group-append">'
-                            + '{ACTION_ADD}'
                             + '<button class="btn btn-danger config-builder-action-remove" type="button">'
                                 + '<i class="fas fa-times"></i>'
                             + '</button>'
@@ -2592,11 +2333,6 @@ jQuery(function($) {
                     + '</div>'
                     + '<ol class="config-builder-list"></ol>'
                 + '</li>';
-
-            var addTemplate =
-                '<button class="btn btn-success config-builder-action-add" type="button">'
-                    + '<i class="fas fa-plus"></i>'
-                + '</button>';
 
             var depth = $(target).attr('data-depth') || 9;
             var message = $(target).attr('data-error') || 'Some items were empty';
@@ -2626,17 +2362,10 @@ jQuery(function($) {
 
                 //on button add click
                 $('button.config-builder-action-add:first', item).click(function() {
-                    //do we need the add action?
-                    var add = '';
-                    if(level < depth) {
-                        add = addTemplate;
-                    }
-
                     //make the template
                     var newItem = $(
                         itemTemplate
                             .replace('{LEVEL}', level)
-                            .replace('{ACTION_ADD}', add)
                     ).doon();
 
                     //append the template

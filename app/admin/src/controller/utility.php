@@ -6,14 +6,125 @@
  * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
+use Cradle\Package\System\Schema\Service;
 
 /**
- * Render the Configuration Page
- * 
+ * Render Template Actions
+ *
  * @param Request $request
  * @param Response $response
  */
-$this->get('/admin/configuration', function ($request, $response) {  
+$this->get('/admin', function ($request, $response) {
+    return $this->routeTo('get', '/admin/dashboard', $request, $response);
+});
+
+/**
+ * Render Template Actions
+ *
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/dashboard', function ($request, $response) {
+    //----------------------------//
+    // 1. Prepare body
+    $data = $request->getStage();
+
+    // pull top 5 recent activities
+    $request->setStage('range', 5);
+    $request->setStage('order', ['history_created' => 'DESC']);
+    $this->trigger('history-search', $request, $response);
+    $data['activities'] = $response->getResults('rows');
+
+    // get schemas
+    $this->trigger('system-schema-search', $request, $response);
+
+    // schemas
+    $schemas = [];
+
+    // get the schemas
+    $results = $response->getResults('rows');
+
+    // if we have results
+    if (!empty($results)) {
+        foreach($results as $schema) {
+            $schemas[$schema['name']] = [
+                'name' => $schema['name'],
+                'label' => ucwords($schema['name']),
+                'path' => sprintf(
+                    '/admin/system/model/%s/search',
+                    $schema['name']
+                ),
+                'records' => 0
+            ];
+        }
+
+        // get the database name
+        $database = $this->package('global')->config('services', 'sql-main')['name'];
+
+        // get the record count
+        $records = Service::get('sql')->getSchemaTableRecordCount($database);
+
+        // on each record
+        foreach($records as $record) {
+            if (isset($schemas[$record['table_name']])) {
+                $schemas[$record['table_name']]['records'] = $record['table_rows'];
+            }
+        }
+    }
+
+    // set schemas to data
+    $data['schemas'] = $schemas;
+    $data['title'] = $this->package('global')->translate('Admin Dashboard');
+
+    //----------------------------//
+    // 2. Render Template
+    $class = sprintf('page-admin-dashboard page-admin');
+    $body = cradle('/app/admin')->template('dashboard', $data);
+
+    //set content
+    $response
+        ->setPage('title', $data['title'])
+        ->setPage('class', $class)
+        ->setContent($body);
+
+    //render page
+    $this->trigger('admin-render-page', $request, $response);
+});
+
+/**
+ * Render Template Actions
+ *
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/template/:action', function ($request, $response) {
+    //----------------------------//
+    // 1. Prepare body
+    $action = $request->getStage('action');
+    $data['title'] = $this->package('global')->translate('System Template ' . ucfirst($action));
+
+    //----------------------------//
+    // 2. Render Template
+    $class = sprintf('page-admin-template-%s page-admin', $action);
+    $body = cradle('/app/admin')->template('template/' . $action, $data);
+
+    //set content
+    $response
+        ->setPage('title', $data['title'])
+        ->setPage('class', $class)
+        ->setContent($body);
+
+    //render page
+    $this->trigger('admin-render-page', $request, $response);
+});
+
+/**
+ * Render the Configuration Page
+ *
+ * @param Request $request
+ * @param Response $response
+ */
+$this->get('/admin/configuration', function ($request, $response) {
     //----------------------------//
     // 1. Security Checks
     //only for admin
@@ -21,7 +132,7 @@ $this->get('/admin/configuration', function ($request, $response) {
 
     //----------------------------//
     // 2. Prepare Data
-    
+
     // default type
     if (!$request->hasStage('type')) {
         $request->setStage('type', 'none');
@@ -44,7 +155,7 @@ $this->get('/admin/configuration', function ($request, $response) {
         case 'general' :
             $data['item'] = $this->package('global')->config('settings');
             break;
-        
+
         case 'deploy' :
             $data['item'] = $this->package('global')->config('deploy');
             break;
@@ -52,7 +163,7 @@ $this->get('/admin/configuration', function ($request, $response) {
         case 'service' :
             $data['item'] = $this->package('global')->config('services');
             break;
-        
+
         case 'test' :
             $data['item'] = $this->package('global')->config('test');
             break;
@@ -121,7 +232,7 @@ $this->get('/admin/configuration', function ($request, $response) {
 
 /**
  * Process the Configuration Page
- * 
+ *
  * @param Request $request
  * @param Response $response
  */
@@ -133,7 +244,7 @@ $this->post('/admin/configuration', function ($request, $response) {
 
     //----------------------------//
     // 2. Prepare Data
-    
+
     // default type
     if (!$request->hasStage('type')) {
         $request->setStage('type', 'none');
@@ -162,7 +273,7 @@ $this->post('/admin/configuration', function ($request, $response) {
         case 'general' :
             $file = 'settings';
             break;
-        
+
         case 'deploy' :
             $file = 'deploy';
             break;
@@ -170,7 +281,7 @@ $this->post('/admin/configuration', function ($request, $response) {
         case 'service' :
             $file = 'services';
             break;
-        
+
         case 'test' :
             $file = 'test';
             break;
@@ -196,7 +307,7 @@ $this->post('/admin/configuration', function ($request, $response) {
             }
 
             // if value has children
-            if (isset($value['children']) 
+            if (isset($value['children'])
             && is_array($value['children'])) {
                 // loop through
                 $paired[$value['key']] = $pair($value['children']);

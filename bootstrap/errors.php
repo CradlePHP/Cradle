@@ -10,24 +10,6 @@ return function ($request, $response) {
 
     //this happens on an error
     $this->error(function ($request, $response, $error) use ($mode) {
-        // if an exception was thrown from the role package
-        if ($error instanceof \Cradle\Package\Role\Exception) {
-            // set default redirect
-            $redirect = '/';
-
-            // if config home url is set
-            if (isset($config['home'])) {
-                // get the home url
-                $redirect = $config['home'];
-            }
-
-            // let them know
-            $this->package('global')->flash($error->getMessage(), 'error');
-
-            // redirect
-            return $this->package('global')->redirect($redirect);
-        }
-
         //if this error has already been handled
         if ($response->hasContent()) {
             return;
@@ -49,6 +31,13 @@ return function ($request, $response) {
 
         switch (true) {
             case strpos($type, 'html') !== false:
+                //if its a 404
+                if ($response->getCode() === 404) {
+                    //no need to spazz out..
+                    $body = $body = '<h1>404 Not Found</h1>';
+                    break;
+                }
+
                 $message = 'A Server Error occurred';
 
                 if (!$detail) {
@@ -73,7 +62,21 @@ return function ($request, $response) {
 
                 break;
             case strpos($type, 'json') !== false:
-                $message = 'A Server Error occurred';
+                //if its a 404
+                if ($response->getCode() === 404) {
+                    //no need to spazz out..
+                    $body = json_encode(
+                        [
+                            'error' => true,
+                            'message' => 'Resource not found.'
+                        ],
+                        JSON_PRETTY_PRINT
+                    );
+
+                    break;
+                }
+
+                $message = 'A Server Error occurred.';
 
                 if (!$detail) {
                     $body = json_encode(

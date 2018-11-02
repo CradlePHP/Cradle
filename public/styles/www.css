@@ -14,6 +14,125 @@ body {
     display: none;
 }
 
+/* Text
+------------------------------*/
+.text-default {
+    color: #ABBAC3 !important;
+}
+
+.text-primary {
+    color: #428BCA !important;
+}
+
+.text-info {
+    color: #6FB3E0 !important;
+}
+
+.text-warning {
+    color: #FFB752 !important;
+}
+
+.text-success {
+    color: #87B87F !important;
+}
+
+.text-danger {
+    color: #D15B47 !important;
+}
+
+.text-inverse {
+    color: #555555 !important;
+}
+
+.text-pink {
+    color: #D6487E !important;
+}
+
+.text-purple {
+    color: #9585BF !important;
+}
+
+.text-yellow {
+    color: #FEE188 !important;
+}
+
+.text-orange {
+    color: #F0854F !important;
+}
+
+.text-grey {
+    color: #A0A0A0 !important;
+}
+
+.text-light {
+    color: #E7E7E7 !important;
+}
+
+.text-white {
+    color: #F9F9F9 !important;
+}
+
+/* UI - Pretty Print
+------------------------------*/
+.prettyprint .com {
+    color: #93A1A1;
+}
+
+.prettyprint .lit {
+    color: #195F91;
+}
+
+.prettyprint .pun,
+.prettyprint .opn,
+.prettyprint .clo {
+    color: #93A1A1;
+}
+
+.prettyprint .fun {
+    color: #DC322F;
+}
+
+.prettyprint .str,
+.prettyprint .atv {
+    color: #D14D14;
+}
+
+.prettyprint .kwd,
+.prettyprint .tag {
+    color: #1E347B;
+}
+
+.prettyprint .typ,
+.prettyprint .atn,
+.prettyprint .dec,
+.prettyprint .var {
+    color: teal;
+}
+
+.prettyprint .pln {
+    color: #48484C;
+}
+
+.prettyprint {
+    padding: 8px;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+}
+.prettyprint.linenums {
+    box-shadow: inset 40px 0 0 #FBFBFC, inset 41px 0 0 #ECECF0;
+}
+
+.prettyprint ol.linenums {
+    margin: 0;
+}
+
+.prettyprint ol.linenums li {
+    padding-left: 12px;
+    color: #BEBEC5;
+    line-height: 20px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
 /* Bootstrap
 ------------------------------*/
 .form-control {
