@@ -156,7 +156,7 @@ $handlebars->registerHelper('number', function ($number, $options) {
  *
  * @return string
  */
-$handlebars->registerHelper('price', function ($price, $options) {
+$handlebars->registerHelper('price', function ($price) {
     return number_format((float) $price, 2);
 });
 
@@ -168,8 +168,9 @@ $handlebars->registerHelper('price', function ($price, $options) {
  *
  * @return string
  */
-$handlebars->registerHelper('formula', function ($template, $variables = []) {
+$handlebars->registerHelper('formula', function ($template, $variables = [], $options) {
     $compiler = cradle('global')->handlebars()->getHelper('compile');
+    $price = cradle('global')->handlebars()->getHelper('price');
     $formula = $compiler($template, $variables);
 
     if (preg_match('/[a-zA-Z]/', $formula)) {
@@ -179,10 +180,12 @@ $handlebars->registerHelper('formula', function ($template, $variables = []) {
     $expression = sprintf('return %s ;', $formula);
 
     try {
-        return @eval($expression);
+        $value = @eval($expression);
     } catch (Throwable $e) {
         return 'Parse Error';
     }
+
+    return $price($value);
 });
 
 /**
