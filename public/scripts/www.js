@@ -543,6 +543,79 @@ jQuery(function($) {
         });
 
         /**
+         * Table Field
+         */
+        $(window).on('table-field-init', function(e, target) {
+            target = $(target);
+
+            //attributes
+            var name = target.data('name');
+            var columns = target.data('columns') || '';
+            columns = columns.split('|');
+
+            //TEMPLATES
+            var template ='<tr><td><a class="btn btn-danger '
+                + 'remove" href="javascript:void(0)"><i class="fas fa-times">'
+                + '</i></a></td></tr>';
+
+            var templateRow = '<td><input class="input-column '
+                + 'form-control" type="text" /></td>';
+
+            //INITITALIZERS
+            var init = function(row) {
+                $('a.remove', row).click(function() {
+                    row.remove();
+
+                    $('tbody tr', target).each(function(index) {
+                        $(this)
+                            .data('index', index)
+                            .attr('data-index', index);
+
+                        $('input', this).attr(
+                            'name',
+                            name + '[' + index + '][]'
+                        );
+                    });
+                });
+            };
+
+            //append meta template
+            $('a.field-add', target).click(function() {
+                var index = $('tbody tr', target).length;
+                var row = $(template)
+                    .data('index', index)
+                    .attr('data-index', index);
+
+                columns.forEach(function(label) {
+                    var column = $(templateRow);
+
+                    $('input', column)
+                        .attr(
+                            'name',
+                            name + '[' + index + '][]'
+                        )
+                        .attr(
+                            'placeholder',
+                            label
+                        );
+
+                    row.append(column);
+                });
+
+                $('tbody', target).append(row);
+
+                init(row);
+
+                return false;
+            });
+
+            //INITIALIZE
+            $('tbody tr', target).each(function() {
+                init($(this));
+            });
+        });
+
+        /**
          * File Field
          * HTML config for single files
          * data-do="file-field"
