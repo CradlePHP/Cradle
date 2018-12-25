@@ -27,6 +27,9 @@ return [
     'cradlephp/cradle-api' => [
         'active' => true
     ],
+    'cradlephp/cradle-admin' => [
+        'active' => true
+    ],
     'cradlephp/cradle-captcha' => [
         'active' => true
     ],
