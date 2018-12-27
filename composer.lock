@@ -290,12 +290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "a9860f92852935add41fc125f21295c7d8284843"
+                "reference": "5781a46078ca46330d05f46f90c42eaacba85749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/a9860f92852935add41fc125f21295c7d8284843",
-                "reference": "a9860f92852935add41fc125f21295c7d8284843",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/5781a46078ca46330d05f46f90c42eaacba85749",
+                "reference": "5781a46078ca46330d05f46f90c42eaacba85749",
                 "shasum": ""
             },
             "require": {
@@ -343,7 +343,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-12-21T12:08:54+00:00"
+            "time": "2018-12-26T21:53:59+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -913,16 +913,16 @@
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.73",
+            "version": "1.2.75",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "91b06e923fd65e4eb7aca9a6fc8de954b00cd26f"
+                "reference": "3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/91b06e923fd65e4eb7aca9a6fc8de954b00cd26f",
-                "reference": "91b06e923fd65e4eb7aca9a6fc8de954b00cd26f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54",
+                "reference": "3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +955,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-12-26T14:53:47+00:00"
+            "time": "2018-12-27T09:44:38+00:00"
         },
         {
             "name": "cradlephp/framework",
