@@ -148,12 +148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "ebde0bab7e14aa838f36f51bff7a04719fe9bc39"
+                "reference": "2b9fee4cd0c73f023560618ea59a350c0c4e68b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/ebde0bab7e14aa838f36f51bff7a04719fe9bc39",
-                "reference": "ebde0bab7e14aa838f36f51bff7a04719fe9bc39",
+                "url": "https://api.github.com/repos/composer/composer/zipball/2b9fee4cd0c73f023560618ea59a350c0c4e68b7",
+                "reference": "2b9fee4cd0c73f023560618ea59a350c0c4e68b7",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +220,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2018-12-21T10:58:52+00:00"
+            "time": "2018-12-26T12:10:27+00:00"
         },
         {
             "name": "composer/semver",
@@ -290,12 +290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "a9860f92852935add41fc125f21295c7d8284843"
+                "reference": "5781a46078ca46330d05f46f90c42eaacba85749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/a9860f92852935add41fc125f21295c7d8284843",
-                "reference": "a9860f92852935add41fc125f21295c7d8284843",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/5781a46078ca46330d05f46f90c42eaacba85749",
+                "reference": "5781a46078ca46330d05f46f90c42eaacba85749",
                 "shasum": ""
             },
             "require": {
@@ -343,7 +343,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-12-21T12:08:54+00:00"
+            "time": "2018-12-26T21:53:59+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -525,16 +525,16 @@
         },
         {
             "name": "cradlephp/cradle-api",
-            "version": "0.1.6",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-api.git",
-                "reference": "618d83e3ae2fcce00c422200632c49f5c150eb94"
+                "reference": "d52ac673652c5d4752937329eb922c2624227144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/618d83e3ae2fcce00c422200632c49f5c150eb94",
-                "reference": "618d83e3ae2fcce00c422200632c49f5c150eb94",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/d52ac673652c5d4752937329eb922c2624227144",
+                "reference": "d52ac673652c5d4752937329eb922c2624227144",
                 "shasum": ""
             },
             "require": {
@@ -571,7 +571,7 @@
                 }
             ],
             "description": "Cradle API Package",
-            "time": "2018-12-20T16:25:11+00:00"
+            "time": "2018-12-26T14:57:59+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
@@ -665,16 +665,16 @@
         },
         {
             "name": "cradlephp/cradle-history",
-            "version": "0.0.18",
+            "version": "0.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-history.git",
-                "reference": "7fb016a99410874006908db14b1d68d59554d347"
+                "reference": "670e854c201ffd95fb6bc9040d86a8708357a3b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/7fb016a99410874006908db14b1d68d59554d347",
-                "reference": "7fb016a99410874006908db14b1d68d59554d347",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/670e854c201ffd95fb6bc9040d86a8708357a3b0",
+                "reference": "670e854c201ffd95fb6bc9040d86a8708357a3b0",
                 "shasum": ""
             },
             "require": {
@@ -702,7 +702,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-12-13T06:20:06+00:00"
+            "time": "2018-12-26T15:00:38+00:00"
         },
         {
             "name": "cradlephp/cradle-install",
@@ -868,16 +868,16 @@
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.1.7",
+            "version": "0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "0803fd8967131828fd629e9bf008898a238f0e82"
+                "reference": "7e6d64786730430f46f2a0537d71658821dd5149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/0803fd8967131828fd629e9bf008898a238f0e82",
-                "reference": "0803fd8967131828fd629e9bf008898a238f0e82",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/7e6d64786730430f46f2a0537d71658821dd5149",
+                "reference": "7e6d64786730430f46f2a0537d71658821dd5149",
                 "shasum": ""
             },
             "require": {
@@ -909,20 +909,20 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-12-20T16:24:13+00:00"
+            "time": "2018-12-25T05:30:22+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.72",
+            "version": "1.2.75",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "7e34ed12f4d88ec096390fd469c933b6e2465c5f"
+                "reference": "3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/7e34ed12f4d88ec096390fd469c933b6e2465c5f",
-                "reference": "7e34ed12f4d88ec096390fd469c933b6e2465c5f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54",
+                "reference": "3b65bb86d3a0b2a7e86a74c2eb5a5bb64487cd54",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +955,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-12-25T04:54:39+00:00"
+            "time": "2018-12-27T09:44:38+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -4180,16 +4180,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "dev-master",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "827c644ba622ec00776cba8bbb80ebbc3f201536"
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/827c644ba622ec00776cba8bbb80ebbc3f201536",
-                "reference": "827c644ba622ec00776cba8bbb80ebbc3f201536",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/83e253c8e0be5b0257b881e1827274667c5c17a9",
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9",
                 "shasum": ""
             },
             "require": {
@@ -4227,7 +4227,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2018-12-24T23:31:46+00:00"
+            "time": "2018-12-25T11:19:39+00:00"
         }
     ],
     "aliases": [],
