@@ -1,6 +1,6 @@
 # All the Back End You'll Ever Need
 
-**Cradle** is a feature rich, modern admin builder. Build apps faster. Developer friendly. Open Source.
+**Cradle** is a feature rich, modern Content Management System. Build apps faster. Developer friendly. Open Source.
 
 ![Demo](https://github.com/CradlePHP/oms/blob/master/public/images/cradle/showntell.png?raw=true)
 
