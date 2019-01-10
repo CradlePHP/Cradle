@@ -341,6 +341,10 @@ $handlebars->registerHelper('scope', function (...$args) {
     $scope = Registry::i($array)->get(...$args);
 
     if (is_null($scope)) {
+        $scope = Registry::i($array)->getDot(...$args);
+    }
+
+    if (is_null($scope)) {
         return $options['inverse']();
     }
 
@@ -766,6 +770,7 @@ $handlebars->registerHelper('partial', function ($name, $variables) {
     $handlebars = cradle('global')->handlebars();
     $partial = $handlebars->getPartial($name);
     $template = $handlebars->compile($partial);
+
     return $template($variables);
 });
 
