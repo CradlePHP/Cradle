@@ -36,7 +36,7 @@ return function ($request, $response) {
      * @param *string $path
      */
     ->addMethod('redirect', function ($path) {
-        cradle()->getDispatcher()->redirect($path);
+        cradle()->getResponse()->addHeader('Location', $path);
     })
 
     /**

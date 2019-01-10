@@ -31,7 +31,8 @@ return [
         'token' => '<AWS TOKEN>',
         'secret' => '<AWS SECRET>',
         'bucket' => '<S3 BUCKET>',
-        'host' => 'https://<AWS REGION>.amazonaws.com'
+        'host' => 'https://<AWS REGION>.amazonaws.com',
+        'root' => '<ROOT PATH IN BUCKET OR REMOVE THIS>'
     ],
     'mail-main' => [
         'host' => 'smtp.gmail.com',

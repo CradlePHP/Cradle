@@ -36,9 +36,6 @@ return [
     'cradlephp/cradle-csrf' => [
         'active' => true
     ],
-    'cradlephp/cradle-pipeline' => [
-        'active' => true
-    ],
     '/module/utility' =>  [
         'active' => true
     ]
