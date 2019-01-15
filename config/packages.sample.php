@@ -6,6 +6,12 @@ return [
     'cradlephp/cradle-queue' => [
         'active' => true
     ],
+    'cradlephp/cradle-captcha' => [
+        'active' => true
+    ],
+    'cradlephp/cradle-csrf' => [
+        'active' => true
+    ],
     'cradlephp/cradle-system' => [
         'active' => true
     ],
@@ -15,10 +21,10 @@ return [
     'cradlephp/cradle-profile' => [
         'active' => true
     ],
-    'cradlephp/cradle-history' => [
+    'cradlephp/cradle-auth' => [
         'active' => true
     ],
-    'cradlephp/cradle-auth' => [
+    'cradlephp/cradle-history' => [
         'active' => true
     ],
     'cradlephp/cradle-role' => [
@@ -30,13 +36,7 @@ return [
     'cradlephp/cradle-admin' => [
         'active' => true
     ],
-    'cradlephp/cradle-captcha' => [
-        'active' => true
-    ],
-    'cradlephp/cradle-csrf' => [
-        'active' => true
-    ],
-    '/module/utility' =>  [
+    '/module/utility' => [
         'active' => true
     ]
 ];

@@ -39,6 +39,10 @@ return function ($request, $response) {
             return $services[$name];
         }
 
+        if (isset($services[$name]['active']) && !$services[$name]['active']) {
+            return null;
+        }
+
         foreach ($services[$name] as $value) {
             //if there are still default values
             if (strpos($value, '<') === 0) {
