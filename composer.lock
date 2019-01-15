@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2aff1aeab9b2a9a5b838fb9be7f7c6b7",
+    "content-hash": "0ab627d0f46032a06e6ec608584a783f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -391,24 +391,24 @@
         },
         {
             "name": "cradlephp/components",
-            "version": "2.1.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/components.git",
-                "reference": "892088649374624df2aa441207b03d020df70c41"
+                "reference": "33e2637644821f5cbeac3a72a345e12b3b36b468"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/components/zipball/892088649374624df2aa441207b03d020df70c41",
-                "reference": "892088649374624df2aa441207b03d020df70c41",
+                "url": "https://api.github.com/repos/CradlePHP/components/zipball/33e2637644821f5cbeac3a72a345e12b3b36b468",
+                "reference": "33e2637644821f5cbeac3a72a345e12b3b36b468",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "library",
@@ -436,7 +436,7 @@
                 "php70",
                 "php71"
             ],
-            "time": "2019-01-11T04:52:19+00:00"
+            "time": "2019-01-15T07:00:03+00:00"
         },
         {
             "name": "cradlephp/composer",
@@ -479,27 +479,26 @@
         },
         {
             "name": "cradlephp/cradle-admin",
-            "version": "0.0.8",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-admin.git",
-                "reference": "4bb07d50d1979e9d616fa1f76e84c01082644aba"
+                "reference": "a54f9655bccee151b51726adfd05c85ab642cea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-admin/zipball/4bb07d50d1979e9d616fa1f76e84c01082644aba",
-                "reference": "4bb07d50d1979e9d616fa1f76e84c01082644aba",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-admin/zipball/a54f9655bccee151b51726adfd05c85ab642cea5",
+                "reference": "a54f9655bccee151b51726adfd05c85ab642cea5",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-captcha": "0.*",
-                "cradlephp/cradle-csrf": "0.*",
-                "cradlephp/framework": "2.*",
-                "cradlephp/handlebars": "1.*"
+                "cradlephp/cradle-csrf": "~2.2.0",
+                "cradlephp/framework": "~2.2.0",
+                "cradlephp/handlebars": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -518,25 +517,25 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-11T04:43:52+00:00"
+            "time": "2019-01-15T06:46:12+00:00"
         },
         {
             "name": "cradlephp/cradle-api",
-            "version": "0.1.10",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-api.git",
-                "reference": "c45e0dd7cd5c61fa68da95ce213c8e68422ee7f8"
+                "reference": "60424aa565f6920286bae337e1c8755d6d96bc8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/c45e0dd7cd5c61fa68da95ce213c8e68422ee7f8",
-                "reference": "c45e0dd7cd5c61fa68da95ce213c8e68422ee7f8",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/60424aa565f6920286bae337e1c8755d6d96bc8c",
+                "reference": "60424aa565f6920286bae337e1c8755d6d96bc8c",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-queue": "0.*",
-                "cradlephp/cradle-system": "1.*"
+                "cradlephp/cradle-profile": "~2.2.0",
+                "cradlephp/cradle-queue": "~2.2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.0.2",
@@ -568,28 +567,31 @@
                 }
             ],
             "description": "Cradle API Package",
-            "time": "2019-01-10T16:10:54+00:00"
+            "time": "2019-01-15T04:31:02+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
-            "version": "0.1.10",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "76e04ee596d9980a1a0839deffcaafb8881a7ad2"
+                "reference": "8c3ebb722d61b584066ac3ac614c115d2e78a876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/76e04ee596d9980a1a0839deffcaafb8881a7ad2",
-                "reference": "76e04ee596d9980a1a0839deffcaafb8881a7ad2",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/8c3ebb722d61b584066ac3ac614c115d2e78a876",
+                "reference": "8c3ebb722d61b584066ac3ac614c115d2e78a876",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-profile": "0.*"
+                "cradlephp/cradle-captcha": "~2.2.0",
+                "cradlephp/cradle-profile": "~2.2.0",
+                "cradlephp/cradle-queue": "~2.2.0",
+                "swiftmailer/swiftmailer": "5.4.3"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -613,28 +615,28 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-11T05:36:13+00:00"
+            "time": "2019-01-15T07:03:21+00:00"
         },
         {
             "name": "cradlephp/cradle-captcha",
-            "version": "0.0.5",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-captcha.git",
-                "reference": "34cba329effdea4ee49649906d89c79e8e0021d6"
+                "reference": "131ad8969b2d474ed0d6bb381c0643471fab2747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-captcha/zipball/34cba329effdea4ee49649906d89c79e8e0021d6",
-                "reference": "34cba329effdea4ee49649906d89c79e8e0021d6",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-captcha/zipball/131ad8969b2d474ed0d6bb381c0643471fab2747",
+                "reference": "131ad8969b2d474ed0d6bb381c0643471fab2747",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/framework": "2.*"
+                "cradlephp/framework": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -653,28 +655,28 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-11-23T05:10:02+00:00"
+            "time": "2019-01-15T03:47:10+00:00"
         },
         {
             "name": "cradlephp/cradle-csrf",
-            "version": "0.0.4",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-csrf.git",
-                "reference": "38fb4a8a8fccf6c3eae4c7b0a708c0e80045187b"
+                "reference": "fc092cf24115e5c8d90cc5b13f3688daf7626a00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-csrf/zipball/38fb4a8a8fccf6c3eae4c7b0a708c0e80045187b",
-                "reference": "38fb4a8a8fccf6c3eae4c7b0a708c0e80045187b",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-csrf/zipball/fc092cf24115e5c8d90cc5b13f3688daf7626a00",
+                "reference": "fc092cf24115e5c8d90cc5b13f3688daf7626a00",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/framework": "2.*"
+                "cradlephp/framework": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -693,29 +695,30 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-10-10T02:55:30+00:00"
+            "time": "2019-01-15T03:47:42+00:00"
         },
         {
             "name": "cradlephp/cradle-developer",
-            "version": "1.0.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "be125429d7ba584a66686c4646b7dacec9f70c9a"
+                "reference": "43ff8629c4f47e14e7d0ab9758112673bb92648f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/be125429d7ba584a66686c4646b7dacec9f70c9a",
-                "reference": "be125429d7ba584a66686c4646b7dacec9f70c9a",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/43ff8629c4f47e14e7d0ab9758112673bb92648f",
+                "reference": "43ff8629c4f47e14e7d0ab9758112673bb92648f",
                 "shasum": ""
             },
             "require": {
+                "aws/aws-sdk-php": "3.19.30",
                 "cradlephp/composer": "dev-master",
-                "cradlephp/framework": "2.*"
+                "cradlephp/framework": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -738,29 +741,28 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-04-20T08:57:46+00:00"
+            "time": "2019-01-15T04:54:17+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
-            "version": "0.0.19",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-history.git",
-                "reference": "670e854c201ffd95fb6bc9040d86a8708357a3b0"
+                "reference": "ff92661e32bdc686f22b35f6a114113d00f9fafc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/670e854c201ffd95fb6bc9040d86a8708357a3b0",
-                "reference": "670e854c201ffd95fb6bc9040d86a8708357a3b0",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-history/zipball/ff92661e32bdc686f22b35f6a114113d00f9fafc",
+                "reference": "ff92661e32bdc686f22b35f6a114113d00f9fafc",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-system": "~1.2.64",
-                "cradlephp/handlebars": "~1.0.3"
+                "cradlephp/cradle-profile": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -779,24 +781,25 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-12-26T15:00:38+00:00"
+            "time": "2019-01-15T05:44:31+00:00"
         },
         {
             "name": "cradlephp/cradle-install",
-            "version": "0.0.7",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-install.git",
-                "reference": "96ebdb34dae56246438f5ac0da6bc6261a2db61a"
+                "reference": "bb67bccb2a8756247e5d07ca450847c122e9189e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-install/zipball/96ebdb34dae56246438f5ac0da6bc6261a2db61a",
-                "reference": "96ebdb34dae56246438f5ac0da6bc6261a2db61a",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-install/zipball/bb67bccb2a8756247e5d07ca450847c122e9189e",
+                "reference": "bb67bccb2a8756247e5d07ca450847c122e9189e",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-developer": "1.*"
+                "cradlephp/cradle-admin": "~2.2.0",
+                "cradlephp/cradle-developer": "~2.2.0"
             },
             "type": "cradle-package",
             "notification-url": "https://packagist.org/downloads/",
@@ -810,28 +813,28 @@
                 }
             ],
             "description": "Cradle Admin Package Manager",
-            "time": "2018-12-13T06:29:42+00:00"
+            "time": "2019-01-15T04:39:53+00:00"
         },
         {
             "name": "cradlephp/cradle-profile",
-            "version": "0.1.4",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-profile.git",
-                "reference": "6d59d263f6793e69438b816a8d0fc3fae7afd71b"
+                "reference": "a3ff59c721950503d5d2aab662022ca3672a1e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/6d59d263f6793e69438b816a8d0fc3fae7afd71b",
-                "reference": "6d59d263f6793e69438b816a8d0fc3fae7afd71b",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-profile/zipball/a3ff59c721950503d5d2aab662022ca3672a1e04",
+                "reference": "a3ff59c721950503d5d2aab662022ca3672a1e04",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-system": "1.*"
+                "cradlephp/cradle-system": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -850,29 +853,29 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-10T16:15:36+00:00"
+            "time": "2019-01-15T07:05:09+00:00"
         },
         {
             "name": "cradlephp/cradle-queue",
-            "version": "0.0.3",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-queue.git",
-                "reference": "2566a8a6b9b932120102ac1073bd2555053e0433"
+                "reference": "7a3029a97c67bdfe656d9eea9e894f0157e45462"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-queue/zipball/2566a8a6b9b932120102ac1073bd2555053e0433",
-                "reference": "2566a8a6b9b932120102ac1073bd2555053e0433",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-queue/zipball/7a3029a97c67bdfe656d9eea9e894f0157e45462",
+                "reference": "7a3029a97c67bdfe656d9eea9e894f0157e45462",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/framework": "2.*",
+                "cradlephp/framework": "~2.2.0",
                 "php-amqplib/php-amqplib": "^2.6"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -896,28 +899,28 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2018-03-25T04:35:03+00:00"
+            "time": "2019-01-15T03:48:10+00:00"
         },
         {
             "name": "cradlephp/cradle-role",
-            "version": "0.2.0",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "fed058fc7528b7ff3dfaa1abf418e1552879cd69"
+                "reference": "6678b40e8519bd99c3a2f8536f7d6cbc35251a58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/fed058fc7528b7ff3dfaa1abf418e1552879cd69",
-                "reference": "fed058fc7528b7ff3dfaa1abf418e1552879cd69",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/6678b40e8519bd99c3a2f8536f7d6cbc35251a58",
+                "reference": "6678b40e8519bd99c3a2f8536f7d6cbc35251a58",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-auth": "0.*"
+                "cradlephp/cradle-auth": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -941,29 +944,32 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-10T07:32:00+00:00"
+            "time": "2019-01-15T07:06:04+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
-            "version": "1.2.88",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "a7b30fb2f96212c4c209d472f964b496bb47eb46"
+                "reference": "a81d6c0603b46ea114902bbb48e0e032897265f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/a7b30fb2f96212c4c209d472f964b496bb47eb46",
-                "reference": "a7b30fb2f96212c4c209d472f964b496bb47eb46",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/a81d6c0603b46ea114902bbb48e0e032897265f6",
+                "reference": "a81d6c0603b46ea114902bbb48e0e032897265f6",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/cradle-admin": "0.*",
-                "cradlephp/storm": "1.*"
+                "cradlephp/cradle-admin": "~2.2.0",
+                "cradlephp/storm": "~2.2.0",
+                "elasticsearch/elasticsearch": "2.2.2",
+                "erusev/parsedown": "1.7.1",
+                "predis/predis": "1.1.1"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "cradle-package",
@@ -987,28 +993,28 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-11T05:35:33+00:00"
+            "time": "2019-01-15T07:38:34+00:00"
         },
         {
             "name": "cradlephp/framework",
-            "version": "2.1.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/framework.git",
-                "reference": "3134fed53057a3cd026ce2da9c05a8d8c4b468dd"
+                "reference": "5afda66c56a032c25aec2045adb5388d40d27196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/3134fed53057a3cd026ce2da9c05a8d8c4b468dd",
-                "reference": "3134fed53057a3cd026ce2da9c05a8d8c4b468dd",
+                "url": "https://api.github.com/repos/CradlePHP/framework/zipball/5afda66c56a032c25aec2045adb5388d40d27196",
+                "reference": "5afda66c56a032c25aec2045adb5388d40d27196",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/components": "2.1.*"
+                "cradlephp/components": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "bin": [
@@ -1037,28 +1043,28 @@
                 "cradlephp",
                 "framework"
             ],
-            "time": "2019-01-08T15:24:15+00:00"
+            "time": "2019-01-15T07:06:54+00:00"
         },
         {
             "name": "cradlephp/handlebars",
-            "version": "1.0.3",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/Handlebars.git",
-                "reference": "406ae4ac7c8bae7b78cea609e5f071d7d0c45db7"
+                "reference": "5fa95601d2851ebe313f2846ccf31bd8641d601f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/Handlebars/zipball/406ae4ac7c8bae7b78cea609e5f071d7d0c45db7",
-                "reference": "406ae4ac7c8bae7b78cea609e5f071d7d0c45db7",
+                "url": "https://api.github.com/repos/CradlePHP/Handlebars/zipball/5fa95601d2851ebe313f2846ccf31bd8641d601f",
+                "reference": "5fa95601d2851ebe313f2846ccf31bd8641d601f",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/components": "2.1.*"
+                "cradlephp/components": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "library",
@@ -1084,28 +1090,28 @@
                 "cradlephp",
                 "handlebars"
             ],
-            "time": "2018-11-07T08:19:51+00:00"
+            "time": "2019-01-15T07:08:02+00:00"
         },
         {
             "name": "cradlephp/storm",
-            "version": "1.0.4",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/Storm.git",
-                "reference": "1cb6e0bacef8cd1f43ea25ff6b8dc5a10bfed3ae"
+                "reference": "635809a39dc25d0c6f92b1f4d255d59b342ac138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/Storm/zipball/1cb6e0bacef8cd1f43ea25ff6b8dc5a10bfed3ae",
-                "reference": "1cb6e0bacef8cd1f43ea25ff6b8dc5a10bfed3ae",
+                "url": "https://api.github.com/repos/CradlePHP/Storm/zipball/635809a39dc25d0c6f92b1f4d255d59b342ac138",
+                "reference": "635809a39dc25d0c6f92b1f4d255d59b342ac138",
                 "shasum": ""
             },
             "require": {
-                "cradlephp/components": "2.1.*"
+                "cradlephp/components": "~2.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "~2.1.0",
                 "phpunit/phpunit": "7.0.2",
-                "satooshi/php-coveralls": "2.0.0",
                 "squizlabs/php_codesniffer": "3.2.3"
             },
             "type": "library",
@@ -1134,7 +1140,7 @@
                 "postgres",
                 "sqlite"
             ],
-            "time": "2018-11-02T08:28:20+00:00"
+            "time": "2019-01-15T07:08:44+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1509,74 +1515,24 @@
             "time": "2016-04-13T16:32:01+00:00"
         },
         {
-            "name": "jakoch/phantomjs-installer",
-            "version": "2.1.1-p07",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "4d0e994f110a79738b73083c2c3086d162547bd6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/4d0e994f110a79738b73083c2c3086d162547bd6",
-                "reference": "4d0e994f110a79738b73083c2c3086d162547bd6",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bz2": "*",
-                "ext-openssl": "*",
-                "php": ">5.3"
-            },
-            "require-dev": {
-                "composer/composer": "^1.2",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "custom-installer",
-            "autoload": {
-                "psr-4": {
-                    "PhantomInstaller\\Test\\": "tests/"
-                },
-                "psr-0": {
-                    "PhantomInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jens-André Koch",
-                    "email": "jakoch@web.de"
-                }
-            ],
-            "description": "A Composer package which installs the PhantomJS binary (Linux, Windows, Mac) into `/bin` of your project.",
-            "keywords": [
-                "binaries",
-                "headless",
-                "phantomjs"
-            ],
-            "time": "2016-10-12T01:52:42+00:00"
-        },
-        {
             "name": "justinrainbow/json-schema",
             "version": "5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "8560d4314577199ba51bf2032f02cd1315587c23"
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/8560d4314577199ba51bf2032f02cd1315587c23",
-                "reference": "8560d4314577199ba51bf2032f02cd1315587c23",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.1",
+                "friendsofphp/php-cs-fixer": "~2.2.20",
                 "json-schema/json-schema-test-suite": "1.2.0",
                 "phpunit/phpunit": "^4.8.35"
             },
@@ -1622,7 +1578,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2018-02-14T22:26:30+00:00"
+            "time": "2019-01-14T23:55:14+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -1685,12 +1641,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "655d9fb71a688b54fa250acc138ad078c85f7ae6"
+                "reference": "853eed5d4bc1309910c4cd25b5929370f6191096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/655d9fb71a688b54fa250acc138ad078c85f7ae6",
-                "reference": "655d9fb71a688b54fa250acc138ad078c85f7ae6",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/853eed5d4bc1309910c4cd25b5929370f6191096",
+                "reference": "853eed5d4bc1309910c4cd25b5929370f6191096",
                 "shasum": ""
             },
             "require": {
@@ -1750,7 +1706,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-12-11T20:25:11+00:00"
+            "time": "2019-01-08T19:41:15+00:00"
         },
         {
             "name": "predis/predis",
@@ -2097,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4a5d48d2ca2422c5c02ed37e4146fb65591369d5"
+                "reference": "410ec9f8f85a1af9120c4e0469dbf8141b98b2da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/4a5d48d2ca2422c5c02ed37e4146fb65591369d5",
-                "reference": "4a5d48d2ca2422c5c02ed37e4146fb65591369d5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/410ec9f8f85a1af9120c4e0469dbf8141b98b2da",
+                "reference": "410ec9f8f85a1af9120c4e0469dbf8141b98b2da",
                 "shasum": ""
             },
             "require": {
@@ -2114,6 +2070,9 @@
                 "symfony/dependency-injection": "<3.4",
                 "symfony/process": "<3.3"
             },
+            "provide": {
+                "psr/log-implementation": "1.0"
+            },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~3.4|~4.0",
@@ -2123,7 +2082,7 @@
                 "symfony/process": "~3.4|~4.0"
             },
             "suggest": {
-                "psr/log-implementation": "For using the console logger",
+                "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
                 "symfony/lock": "",
                 "symfony/process": ""
@@ -2158,7 +2117,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-10T07:43:17+00:00"
+            "time": "2019-01-14T15:34:34+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -2699,6 +2658,89 @@
             ],
             "description": "Library for handling version information and constraints",
             "time": "2017-03-05T17:38:23+00:00"
+        },
+        {
+            "name": "php-coveralls/php-coveralls",
+            "version": "2.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-coveralls/php-coveralls.git",
+                "reference": "0de855a138444f33372e1e787e5af68f24f3a12f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/0de855a138444f33372e1e787e5af68f24f3a12f",
+                "reference": "0de855a138444f33372e1e787e5af68f24f3a12f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "^6.0",
+                "php": "^5.5 || ^7.0",
+                "psr/log": "^1.0",
+                "symfony/config": "^2.1 || ^3.0 || ^4.0",
+                "symfony/console": "^2.1 || ^3.0 || ^4.0",
+                "symfony/stopwatch": "^2.0 || ^3.0 || ^4.0",
+                "symfony/yaml": "^2.0 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0"
+            },
+            "suggest": {
+                "symfony/http-kernel": "Allows Symfony integration"
+            },
+            "bin": [
+                "bin/php-coveralls"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpCoveralls\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kitamura Satoshi",
+                    "email": "with.no.parachute@gmail.com",
+                    "homepage": "https://www.facebook.com/satooshi.jp",
+                    "role": "Original creator"
+                },
+                {
+                    "name": "Takashi Matsuo",
+                    "email": "tmatsuo@google.com"
+                },
+                {
+                    "name": "Google Inc"
+                },
+                {
+                    "name": "Dariusz Ruminski",
+                    "email": "dariusz.ruminski@gmail.com",
+                    "homepage": "https://github.com/keradus"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/php-coveralls/php-coveralls/graphs/contributors"
+                }
+            ],
+            "description": "PHP client library for Coveralls API",
+            "homepage": "https://github.com/php-coveralls/php-coveralls",
+            "keywords": [
+                "ci",
+                "coverage",
+                "github",
+                "test"
+            ],
+            "time": "2018-09-04T18:18:27+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3299,90 +3341,6 @@
                 "xunit"
             ],
             "time": "2018-09-09T05:49:38+00:00"
-        },
-        {
-            "name": "satooshi/php-coveralls",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-coveralls/php-coveralls.git",
-                "reference": "3eaf7eb689cdf6b86801a3843940d974dc657068"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/3eaf7eb689cdf6b86801a3843940d974dc657068",
-                "reference": "3eaf7eb689cdf6b86801a3843940d974dc657068",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-simplexml": "*",
-                "guzzlehttp/guzzle": "^6.0",
-                "php": "^5.5 || ^7.0",
-                "psr/log": "^1.0",
-                "symfony/config": "^2.1 || ^3.0 || ^4.0",
-                "symfony/console": "^2.1 || ^3.0 || ^4.0",
-                "symfony/stopwatch": "^2.0 || ^3.0 || ^4.0",
-                "symfony/yaml": "^2.0 || ^3.0 || ^4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0"
-            },
-            "suggest": {
-                "symfony/http-kernel": "Allows Symfony integration"
-            },
-            "bin": [
-                "bin/php-coveralls"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpCoveralls\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kitamura Satoshi",
-                    "email": "with.no.parachute@gmail.com",
-                    "homepage": "https://www.facebook.com/satooshi.jp",
-                    "role": "Original creator"
-                },
-                {
-                    "name": "Takashi Matsuo",
-                    "email": "tmatsuo@google.com"
-                },
-                {
-                    "name": "Google Inc"
-                },
-                {
-                    "name": "Dariusz Ruminski",
-                    "email": "dariusz.ruminski@gmail.com",
-                    "homepage": "https://github.com/keradus"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/php-coveralls/php-coveralls/graphs/contributors"
-                }
-            ],
-            "description": "PHP client library for Coveralls API",
-            "homepage": "https://github.com/php-coveralls/php-coveralls",
-            "keywords": [
-                "ci",
-                "coverage",
-                "github",
-                "test"
-            ],
-            "abandoned": "php-coveralls/php-coveralls",
-            "time": "2017-12-08T14:28:16+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
