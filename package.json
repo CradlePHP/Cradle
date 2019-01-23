@@ -1,31 +1,36 @@
 {
-  "dependencies": {
-    "@aprilsacil/number_format.js": "^1.0.1",
-    "ace-editor-builds": "^1.2.4",
-    "bootstrap": "^4.0.0",
-    "bootstrap-markdown-editor-4": "^3.0.0",
-    "doon": "^1.0.0",
-    "flatpickr": "^4.3.2",
-    "@fortawesome/fontawesome-free": "5.6.3",
-    "fullcalendar": "3.9.0",
-    "google-code-prettify": "^1.0.5",
-    "handlebars": "^4.0.11",
-    "inputmask": "^3.3.11",
-    "ion-rangeslider": "^2.2.0",
-    "jquery": "^3.3.1",
-    "jquery-knob": "^1.2.11",
-    "jquery-sortable": "^0.9.13",
-    "moment": "^2.21.0",
-    "npm": "^5.8.0",
-    "open-sans-fontface": "^1.4.0",
-    "papaparse": "^4.3.7",
-    "select2": "^4.0.6-rc.1",
-    "toastr": "^2.1.4",
-    "wysihtml": "^0.6.0-beta1",
-    "yarn-acquire": "^0.0.8",
-    "yarn-cropper": "^0.0.1"
-  },
-  "scripts": {
-    "build": "yarn install --modules-folder ./public/components"
-  }
+    "name": "CradlePHP",
+    "description": "PHP Micro Framework powered by Event Pipes",
+    "repository": "https://github.com/cradlephp/cradle.git",
+    "author": "Christian Blanquera <cblanquera@openovate.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@aprilsacil/number_format.js": "^1.0.1",
+        "@fortawesome/fontawesome-free": "5.6.3",
+        "ace-editor-builds": "^1.2.4",
+        "bootstrap": "^4.0.0",
+        "bootstrap-markdown-editor-4": "^3.0.0",
+        "doon": "^1.0.0",
+        "flatpickr": "^4.3.2",
+        "fullcalendar": "3.9.0",
+        "google-code-prettify": "^1.0.5",
+        "handlebars": "^4.0.11",
+        "inputmask": "^3.3.11",
+        "ion-rangeslider": "^2.2.0",
+        "jquery": "^3.3.1",
+        "jquery-knob": "^1.2.11",
+        "jquery-sortable": "^0.9.13",
+        "moment": "^2.21.0",
+        "npm": "^5.8.0",
+        "open-sans-fontface": "^1.4.0",
+        "papaparse": "^4.3.7",
+        "select2": "^4.0.6-rc.1",
+        "toastr": "^2.1.4",
+        "wysihtml": "^0.6.0-beta1",
+        "yarn-acquire": "^0.0.8",
+        "yarn-cropper": "^0.0.1"
+    },
+    "scripts": {
+        "build": "yarn install --modules-folder ./public/components"
+    }
 }
