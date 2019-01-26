@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ab627d0f46032a06e6ec608584a783f",
+    "content-hash": "ba31fbb73b085f85d96107522dbe751c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -525,12 +525,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-api.git",
-                "reference": "40db2af70763f3227f92a211fb3b751d334929ab"
+                "reference": "dd0e0d5f49bcf40aeca1ec359963ad298c663e7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/40db2af70763f3227f92a211fb3b751d334929ab",
-                "reference": "40db2af70763f3227f92a211fb3b751d334929ab",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-api/zipball/dd0e0d5f49bcf40aeca1ec359963ad298c663e7d",
+                "reference": "dd0e0d5f49bcf40aeca1ec359963ad298c663e7d",
                 "shasum": ""
             },
             "require": {
@@ -567,7 +567,7 @@
                 }
             ],
             "description": "Cradle API Package",
-            "time": "2019-01-23T02:33:29+00:00"
+            "time": "2019-01-25T08:49:43+00:00"
         },
         {
             "name": "cradlephp/cradle-auth",
@@ -703,12 +703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-developer.git",
-                "reference": "43ff8629c4f47e14e7d0ab9758112673bb92648f"
+                "reference": "488f8ec6ef58cd4c3748eb364f47a731148682d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/43ff8629c4f47e14e7d0ab9758112673bb92648f",
-                "reference": "43ff8629c4f47e14e7d0ab9758112673bb92648f",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-developer/zipball/488f8ec6ef58cd4c3748eb364f47a731148682d0",
+                "reference": "488f8ec6ef58cd4c3748eb364f47a731148682d0",
                 "shasum": ""
             },
             "require": {
@@ -741,7 +741,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-15T04:54:17+00:00"
+            "time": "2019-01-26T06:20:35+00:00"
         },
         {
             "name": "cradlephp/cradle-history",
@@ -907,12 +907,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-role.git",
-                "reference": "daac2bc36d84d078b421c20ec3b5b548fe7af369"
+                "reference": "09af4462338bf81d82a555afbfca0575f665da0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/daac2bc36d84d078b421c20ec3b5b548fe7af369",
-                "reference": "daac2bc36d84d078b421c20ec3b5b548fe7af369",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-role/zipball/09af4462338bf81d82a555afbfca0575f665da0e",
+                "reference": "09af4462338bf81d82a555afbfca0575f665da0e",
                 "shasum": ""
             },
             "require": {
@@ -944,7 +944,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-23T02:41:08+00:00"
+            "time": "2019-01-25T17:43:56+00:00"
         },
         {
             "name": "cradlephp/cradle-system",
@@ -952,12 +952,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "b0244fb902eeacdff8dc0f9ccbb224a2f5fa3204"
+                "reference": "1a1b49fecafa3d4eb0d1002ac391f6290d9b49f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/b0244fb902eeacdff8dc0f9ccbb224a2f5fa3204",
-                "reference": "b0244fb902eeacdff8dc0f9ccbb224a2f5fa3204",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/1a1b49fecafa3d4eb0d1002ac391f6290d9b49f7",
+                "reference": "1a1b49fecafa3d4eb0d1002ac391f6290d9b49f7",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +993,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-23T02:32:04+00:00"
+            "time": "2019-01-26T03:49:11+00:00"
         },
         {
             "name": "cradlephp/framework",
@@ -2053,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d78ff9239213a6349455d08325ae2ca9b57f25c9"
+                "reference": "c195108dddab91f51b9c57f63e8b184d0a257a54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d78ff9239213a6349455d08325ae2ca9b57f25c9",
-                "reference": "d78ff9239213a6349455d08325ae2ca9b57f25c9",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c195108dddab91f51b9c57f63e8b184d0a257a54",
+                "reference": "c195108dddab91f51b9c57f63e8b184d0a257a54",
                 "shasum": ""
             },
             "require": {
@@ -2117,7 +2117,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-16T21:53:45+00:00"
+            "time": "2019-01-25T14:35:46+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -2409,12 +2409,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "e9f208633ac7ef167801cf4da916e07a6149fa33"
+                "reference": "9a8319d32b6c338826f9181aadfa8865b31ed9f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/e9f208633ac7ef167801cf4da916e07a6149fa33",
-                "reference": "e9f208633ac7ef167801cf4da916e07a6149fa33",
+                "url": "https://api.github.com/repos/symfony/process/zipball/9a8319d32b6c338826f9181aadfa8865b31ed9f8",
+                "reference": "9a8319d32b6c338826f9181aadfa8865b31ed9f8",
                 "shasum": ""
             },
             "require": {
@@ -2450,7 +2450,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-16T21:53:39+00:00"
+            "time": "2019-01-24T22:35:38+00:00"
         }
     ],
     "packages-dev": [
