@@ -483,12 +483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-admin.git",
-                "reference": "aee798e93ae706f990587f36fc1ffb9d49f2a814"
+                "reference": "a39cbf4cdd7e7dc5c198136104c6852e8724e18f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-admin/zipball/aee798e93ae706f990587f36fc1ffb9d49f2a814",
-                "reference": "aee798e93ae706f990587f36fc1ffb9d49f2a814",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-admin/zipball/a39cbf4cdd7e7dc5c198136104c6852e8724e18f",
+                "reference": "a39cbf4cdd7e7dc5c198136104c6852e8724e18f",
                 "shasum": ""
             },
             "require": {
@@ -517,7 +517,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2019-01-17T02:43:03+00:00"
+            "time": "2019-01-26T06:25:56+00:00"
         },
         {
             "name": "cradlephp/cradle-api",
