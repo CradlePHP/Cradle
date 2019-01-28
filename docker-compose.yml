@@ -1,48 +1,42 @@
-version: '2'
-
+version: "3.1"
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      MYSQL_DATABASE: "${DB_DATABASE}"
-      MYSQL_USER: "${DB_USER}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
 
-  web:
-    build: .
-    image: cryptocharts/cryptocharts:latest
-    depends_on:
-      - db
-    ports:
-      - "${WEB_PORT}:80"
-    volumes:
-      - web_data:/var/www/html
-    restart: always
-    environment:
-      DB_HOST: "${DB_HOST}"
-      DB_USER: "${DB_USER}"
-      DB_PASSWORD: "${DB_PASSWORD}"
+    redis:
+      image: redis:alpine
+      container_name: cradlephp-2-2-redis
 
-  composer:
-    image: kzap/composer:latest
-    depends_on:
-      - web
-    volumes_from:
-      - web
-    working_dir: /var/www/html
+    mysql:
+      image: mysql:8.0
+      container_name: cradlephp-2-2-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=cradlephp
+        - MYSQL_DATABASE=cradlephp_dev
+        - MYSQL_USER=cradlephp
+        - MYSQL_PASSWORD=cradlephp
+      ports:
+        - "8084:3306"
 
-  bower:
-    image: kzap/bower:latest
-    depends_on:
-      - web
-    volumes_from:
-      - web
-    working_dir: /var/www/html
+    elasticsearch:
+      image: elasticsearch:6.5.4
+      container_name: cradlephp-2-2-elasticsearch
 
-volumes:
-  db_data:
-  web_data:
+    webserver:
+      image: nginx:alpine
+      container_name: cradlephp-2-2-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8082:80"
+
+    php-fpm:
+      build: docker/php-fpm
+      container_name: cradlephp-2-2-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
