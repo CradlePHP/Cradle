@@ -13,6 +13,7 @@ before_install:
 install:
 - phpenv rehash
 sudo: required
+cache: yarn
 before_script:
 - echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | sudo debconf-set-selections
 - wget http://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
@@ -27,9 +28,9 @@ before_script:
 - cp config/deploy.sample.php config/deploy.php
 - composer self-update
 - composer install
-- npm install -g bower
-- bower install
-- bin/cradle faucet install -f --skip-configs
+- bin/cradle install -f --skip-configs
+- bin/cradle sql populate
+- yarn build
 - php -S 127.0.0.1:8888 -t ./public >/dev/null 2>&1 &
 - bin/phantomjs --webdriver=4444 >/dev/null 2>&1 &
 script:
