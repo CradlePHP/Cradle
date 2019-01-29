@@ -20,7 +20,8 @@
         "cradlephp/cradle-role": "~2.2.0",
         "cradlephp/cradle-api": "~2.2.0",
         "cradlephp/cradle-history": "~2.2.0",
-        "cradlephp/cradle-install": "~2.2.0"
+        "cradlephp/cradle-install": "~2.2.0",
+        "jakoch/phantomjs-installer": "2.1.1-p07"
     },
     "autoload": {
         "psr-4": {
@@ -29,5 +30,13 @@
     },
     "config": {
         "bin-dir": "bin"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ]
     }
 }
