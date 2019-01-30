@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Latest Articles</h1>
+    {{#each rows}}
+        <hr />
+        <h3>{{article_title}}</h3>
+        <p>{{relative article_published}}</p>
+        <a href="/article/{{article_id}}">Read More</a>
+    {{/each}}
+</div>

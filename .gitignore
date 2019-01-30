@@ -8,7 +8,6 @@ config/services.php
 config/settings.php
 config/test.php
 config/version.php
-config/schema/*.php
 config/fieldset/*.php
 config/admin/*.php
 config/packages/*.php

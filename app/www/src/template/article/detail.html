@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>{{item.article_title}}</h1>
+    <p>{{relative item.article_published}}</p>
+    {{{item.article_detail}}}
+
+    <h3 class="mt-5">Comments</h3>
+    {{#each item.comment}}
+        <hr />
+        <p>{{profile_name}} {{relative comment_created}}:</p>
+        {{{comment_detail}}}
+    {{/each}}
+
+    <h4 class="mt-5">Add a Comment</h4>
+    <form method="post">
+        <div class="form-group{{#if errors.comment_detail}} has-error{{/if}}">
+            <textarea class="form-control" name="comment_detail"></textarea>
+            {{#if errors.comment_detail}}
+                <div class="help-text">{{errors.comment_detail}}</div>
+            {{/if}}
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
