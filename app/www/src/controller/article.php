@@ -39,8 +39,7 @@ $this->get('/article/:article_id', function($req, $res) {
     }
 
     //get the article
-    $req->setStage('schema', 'article');
-    $this->trigger('system-model-detail', $req, $res);
+    $this->trigger('article-detail-2', $req, $res);
 
     //if there is no data
     if (!$res->hasResults()) {

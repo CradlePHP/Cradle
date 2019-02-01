@@ -25,7 +25,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Cradle\\Module\\Utility\\": "module/utility/src/"
+            "Cradle\\Module\\Utility\\": "module/utility/src/",
+            "Cradle\\Module\\Article\\": "module/article/src/"
         }
     },
     "config": {

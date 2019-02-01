@@ -8,6 +8,14 @@
         <hr />
         <p>{{profile_name}} {{relative comment_created}}:</p>
         {{{comment_detail}}}
+        {{#if children}}
+            {{#each children}}
+                <div class="ml-5 mt-3">
+                    <p>{{profile_name}} {{relative comment_created}}:</p>
+                    {{{comment_detail}}}
+                </div>
+            {{/each}}
+        {{/if}}
     {{/each}}
 
     <h4 class="mt-5">Add a Comment</h4>
