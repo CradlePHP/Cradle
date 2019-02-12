@@ -23,6 +23,18 @@ services:
       image: elasticsearch:6.5.4
       container_name: cradlephp-2-2-elasticsearch
 
+    rabbit:
+        hostname: rabbit
+        image: rabbitmq:latest
+        environment:
+            - RABBITMQ_DEFAULT_USER=admin
+            - RABBITMQ_DEFAULT_PASS=mypass
+        ports:
+          - "15672:15672"
+          - "5672:5672"
+        volumes:
+        - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+
     webserver:
       image: nginx:alpine
       container_name: cradlephp-2-2-webserver
