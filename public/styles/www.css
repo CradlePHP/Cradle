@@ -1434,6 +1434,9 @@ select.form-control {
 .auth-form .social-login .btn-google {
     background-color: #DE4C34;
 }
+.auth-form .social-login .btn-twitter {
+    background-color: #25b2f7;
+}
 
 /* Partial - Head
 ------------------------------*/
