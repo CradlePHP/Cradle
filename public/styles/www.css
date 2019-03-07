@@ -1421,6 +1421,23 @@ select.form-control {
     line-height: 24px;
 }
 
+.auth-form .social-login .btn {
+    border: 0;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.auth-form .social-login .btn-facebook {
+    background-color: #3498CB;
+}
+
+.auth-form .social-login .btn-google {
+    background-color: #DE4C34;
+}
+.auth-form .social-login .btn-twitter {
+    background-color: #25b2f7;
+}
+
 /* Partial - Head
 ------------------------------*/
 /* Partial - Foot
