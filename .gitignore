@@ -15,5 +15,6 @@ config/packages/*.php
 public/components
 public/upload
 log/
+compiled/*.php
 package-install.log
 .DS_Store

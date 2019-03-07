@@ -11,10 +11,12 @@ return function ($request, $response) {
     //sync the session
     $request->setSession($_SESSION);
 
+    $global = $this->package('global');
+
     //set the language
     if (!$request->hasSession('i18n')) {
         $request->setSession('i18n', 'en_US');
-        $settings = $this->package('global')->config('settings');
+        $settings = $global->config('settings');
         if (isset($settings['i18n'])) {
             $request->setSession('i18n', $settings['i18n']);
         }
@@ -28,23 +30,21 @@ return function ($request, $response) {
     }
 
     //create some global methods
-    $this->package('global')
-
     /**
      * Short Hand Redirect
      *
      * @param *string $path
      */
-    ->addMethod('redirect', function ($path) {
+    $global->addMethod('redirect', function ($path) {
         cradle()->getResponse()->addHeader('Location', $path);
-    })
+    });
 
     /**
      * Short Hand Redirect
      *
      * @param *string $path
      */
-    ->addMethod('requireLogin', function ($type = null) use ($request) {
+    $global->addMethod('requireLogin', function ($type = null) use ($request) {
         // TEMPORARY UNTIL I GOT THE
         // OAUTH PROCESS WORKING
         if ($request->getStage('session') === 'false') {
@@ -60,16 +60,16 @@ return function ($request, $response) {
             cradle('global')->flash('Unauthorized', 'danger');
             return cradle()->getDispatcher()->redirect('/');
         }
-    })
+    });
 
     /**
      * Short Hand Redirect
      *
      * @param *string $path
      */
-    ->addMethod('flash', function ($message, $type = 'info', array $list = []) {
+    $global->addMethod('flash', function ($message, $type = 'info', array $list = []) use (&$global) {
         $_SESSION['flash'] = [
-            'message' => cradle()->package('global')->translate($message),
+            'message' => $global->translate($message),
             'type' => $type,
             'list' => $list
         ];

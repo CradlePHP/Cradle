@@ -3,14 +3,15 @@
 use Cradle\I18n\Language;
 
 return function ($request, $response) {
+    $global = $this->package('global');
     //get the settings
-    $settings = $this->package('global')->config('settings');
+    $settings = $global->config('settings');
 
     //make a default translation list
     $translations = array();
 
     //check if there is a translation file
-    $config = $this->package('global')->path('config');
+    $config = $global->path('config');
 
     $i18n = 'en_US';
 
@@ -59,14 +60,11 @@ return function ($request, $response) {
     //it exists?
     if (file_exists($config . '/i18n/' . $i18n . '.php')) {
         //load the translation file
-        $translations = $this->package('global')->config('i18n/' . $i18n);
+        $translations = $global->config('i18n/' . $i18n);
     }
 
     //load the language class
     $language = Language::i($translations);
-
-    //create some global methods
-    $this->package('global')
 
     /**
      * Translate
@@ -76,7 +74,7 @@ return function ($request, $response) {
      *
      * @return string
      */
-    ->addMethod('translate', function ($string, $args = []) use ($language) {
+    $global->addMethod('translate', function ($string, $args = []) use ($language) {
         //fix the arguments
         if (!is_array($args)) {
             $args = func_get_args();
