@@ -17,12 +17,11 @@
         "php-coveralls/php-coveralls": "~2.1.0"
     },
     "require": {
-        "cradlephp/cradle-role": "~2.2.0",
-        "cradlephp/cradle-api": "~2.2.0",
-        "cradlephp/cradle-history": "~2.2.0",
-        "cradlephp/cradle-install": "~2.2.5",
-        "cradlephp/cradle-website": "~2.0.1",
-        "jakoch/phantomjs-installer": "2.1.1-p07"
+        "cradlephp/cradle-developer": "~2.2.7",
+        "cradlephp/cradle-role": "~2.2.4",
+        "cradlephp/cradle-api": "~2.2.2",
+        "cradlephp/cradle-history": "~2.2.5",
+        "cradlephp/cradle-website": "~2.0.1"
     },
     "autoload": {
         "psr-4": {
@@ -31,13 +30,5 @@
     },
     "config": {
         "bin-dir": "bin"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "PhantomInstaller\\Installer::installPhantomJS"
-        ],
-        "post-update-cmd": [
-            "PhantomInstaller\\Installer::installPhantomJS"
-        ]
     }
 }
