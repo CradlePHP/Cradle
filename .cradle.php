@@ -1,6 +1,11 @@
 <?php //-->
 require_once 'vendor/autoload.php';
 
+//denote the CWD
+if (!defined('CRADLE_CWD')) {
+    define('CRADLE_CWD', __DIR__);
+}
+
 //use the cradle function
 Cradle\Framework\Decorator::DECORATE;
 

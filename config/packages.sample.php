@@ -36,6 +36,9 @@ return [
     'cradlephp/cradle-admin' => [
         'active' => true
     ],
+    'cradlephp/cradle-website' => [
+        'active' => true
+    ],
     '/module/utility' => [
         'active' => true
     ]
