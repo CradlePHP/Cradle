@@ -269,19 +269,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-auth.git",
-                "reference": "6f8904c72040b4d7abb4c8bf49c47107408a2390"
+                "reference": "85eaff601993567f4b012b5f40c825ec7708c6c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/6f8904c72040b4d7abb4c8bf49c47107408a2390",
-                "reference": "6f8904c72040b4d7abb4c8bf49c47107408a2390",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-auth/zipball/85eaff601993567f4b012b5f40c825ec7708c6c8",
+                "reference": "85eaff601993567f4b012b5f40c825ec7708c6c8",
                 "shasum": ""
             },
             "require": {
                 "cradlephp/cradle-captcha": "~2.2.0",
                 "cradlephp/cradle-profile": "~2.2.0",
                 "cradlephp/cradle-queue": "~2.2.0",
-                "swiftmailer/swiftmailer": "5.4.3"
+                "swiftmailer/swiftmailer": "~5.4.12"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "~2.1.0",
@@ -309,7 +309,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2020-06-05T11:59:55+00:00"
+            "time": "2020-07-23T16:09:03+00:00"
         },
         {
             "name": "cradlephp/cradle-captcha",
@@ -614,12 +614,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CradlePHP/cradle-system.git",
-                "reference": "ad5e044889cdf58384d4dd8afb76b4ba29c9afeb"
+                "reference": "752a6fb8678831f4ebeb9f07d7e7d4ce22277ec0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/ad5e044889cdf58384d4dd8afb76b4ba29c9afeb",
-                "reference": "ad5e044889cdf58384d4dd8afb76b4ba29c9afeb",
+                "url": "https://api.github.com/repos/CradlePHP/cradle-system/zipball/752a6fb8678831f4ebeb9f07d7e7d4ce22277ec0",
+                "reference": "752a6fb8678831f4ebeb9f07d7e7d4ce22277ec0",
                 "shasum": ""
             },
             "require": {
@@ -655,7 +655,7 @@
                 "cradle",
                 "cradlephp"
             ],
-            "time": "2020-07-11T03:45:29+00:00"
+            "time": "2020-07-23T16:14:43+00:00"
         },
         {
             "name": "cradlephp/cradle-website",
@@ -1648,23 +1648,24 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.3",
+            "version": "v5.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
+                "reference": "181b89f18a90f8925ef805f950d47a7190e9b950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/181b89f18a90f8925ef805f950d47a7190e9b950",
+                "reference": "181b89f18a90f8925ef805f950d47a7190e9b950",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1"
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.2"
             },
             "type": "library",
             "extra": {
@@ -1691,13 +1692,13 @@
                 }
             ],
             "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "http://swiftmailer.org",
+            "homepage": "https://swiftmailer.symfony.com",
             "keywords": [
                 "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-08T11:51:25+00:00"
+            "time": "2018-07-31T09:26:32+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2644,6 +2645,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-09-09T05:49:38+00:00"
         },
         {
