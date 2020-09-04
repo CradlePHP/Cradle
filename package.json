@@ -23,7 +23,7 @@
         "moment": "^2.21.0",
         "npm": "^6.14.6",
         "open-sans-fontface": "^1.4.0",
-        "papaparse": "^4.3.7",
+        "papaparse": "^5.2.0",
         "select2": "^4.0.6-rc.1",
         "toastr": "^2.1.4",
         "wysihtml": "^0.6.0-beta1",
